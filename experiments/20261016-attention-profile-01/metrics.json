@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "backend": "torch_eager",
+  "scope": "model_forward_only",
+  "ap50": null,
+  "end_to_end_seconds": null,
+  "unprofiled_forward_ms_per_batch_median": 28.276275634765625,
+  "unprofiled_forward_ms_per_batch_runs": [
+    28.276275634765625,
+    28.346829223632813,
+    28.244940185546874
+  ],
+  "self_attention_gpu_kernel_percent": 7.331599191613103,
+  "self_attention_percent_runs": [
+    7.259157129808186,
+    7.3602807116874525,
+    7.372258618736001
+  ],
+  "cross_attention_gpu_kernel_percent": 7.931450612523166,
+  "cross_attention_percent_runs": [
+    7.972695109448151,
+    7.915385994086381,
+    7.908037169278867
+  ],
+  "normalization": "exclusive operator GPU kernel time summed over CPU launch events; CUDA events not added again; module parent/child not added twice",
+  "raw_trace": {
+    "path": "output/experiments/profile-attention-20261016-01/trace.json",
+    "sha256": "a18478f945d4d6932f0e169472059afe175c71b39a1f3e15aab2aae747013f4c"
+  },
+  "tensorrt_profile_performed": false
+}

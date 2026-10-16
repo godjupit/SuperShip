@@ -205,6 +205,16 @@ cython_debug/
 output/
 data/SuperShip/
 *.engine
+*.onnx
+*.onnx.data
+*.plan
+*.pth
+*.pt
+*.calibration.cache
+*.timing.cache
+*.whl
+experiments/**/trace.json
+experiments/**/trace.json.gz
 
 # Marimo
 marimo/_static/
