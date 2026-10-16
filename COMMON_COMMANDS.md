@@ -1,5 +1,44 @@
 # SuperShip 常用命令
 
+## CUDA Graph、TensorRT、INT8 与剪枝蒸馏
+
+下面的评测都只跑一次，保留原模型作为对照；性能优化参数可按需组合。复测时请更换输出目录和引擎文件名，保留低精度和失败记录。
+
+```bash
+# CUDA Graph（初始化阶段捕获，尾批自动补齐）
+BACKEND=cuda_graph BATCH_COPY=1 PIN_MEMORY=1 NON_BLOCKING=1 BUFFERED_JSON=1 \
+RUNS=1 OUTPUT_DIR=output/experiments/cuda_graph bash evaluate.sh val
+
+# 安装部署依赖，然后导出并验证 ONNX（固定 batch=8）
+PIP_INDEX_URL=https://pypi.org/simple PIP_NO_CACHE_DIR=1 \
+.venv/bin/python -m pip install -r requirements-deploy.txt --extra-index-url https://pypi.nvidia.com
+.venv/bin/python supership/deploy.py export --batch-size 8
+
+# 构建 FP16 引擎；INT8 默认用训练集 128 张图像做显式 Q/DQ 校准
+# INT8 默认仅量化骨干卷积，其他计算允许 FP16/FP32 回退
+.venv/bin/python supership/deploy.py build --precision fp16 --output output/deploy/model.fp16.engine
+.venv/bin/python supership/deploy.py build --precision int8 --calib-samples 128 --output output/deploy/model.int8.engine
+
+# 修改 ENGINE_PATH 可比较两个引擎；BATCH_SIZE 必须与导出值一致
+BACKEND=tensorrt ENGINE_PATH=output/deploy/model.fp16.engine BATCH_SIZE=8 \
+BATCH_COPY=1 PIN_MEMORY=1 NON_BLOCKING=1 BUFFERED_JSON=1 RUNS=1 \
+OUTPUT_DIR=output/experiments/trt_fp16 bash evaluate.sh val
+
+# TensorRT 与 CUDA Graph 组合：在上一条命令中增加 CUDA_GRAPH=1
+# 本次已建好的 INT8 引擎为 output/deploy/model.int8-qdq2.engine（32张校准样本）
+
+# 解码器从 3 层结构剪枝到 2 层，并使用训练集做 20 步监督+蒸馏训练
+.venv/bin/python supership/compress.py --student-layers 2 --steps 20 --output-dir output/compression
+# --steps 0 只生成剪枝模型；--steps -1 --epochs 10 执行完整 10 个训练 epoch
+
+# 对比训练前 pruned_initial.pth 与训练后 distilled.pth
+MODEL_WEIGHTS=output/compression/distilled.pth BATCH_COPY=1 WARMUP=3 \
+PIN_MEMORY=1 NON_BLOCKING=1 BUFFERED_JSON=1 RUNS=1 \
+OUTPUT_DIR=output/experiments/distilled bash evaluate.sh val
+```
+
+训练输出会保留模型结构覆盖参数，推理与 ONNX 导出会自动读取。20 步只用于验证训练流程，不代表已收敛；剪枝/量化/蒸馏后的模型必须重新评分。校准与训练均不使用验证集。TensorRT 引擎绑定导出 batch、权重和构建环境，改变 batch 或权重后需重新导出构建。
+
 ## 推荐：一条命令直接看时间、精度和基线比较
 
 ```bash
