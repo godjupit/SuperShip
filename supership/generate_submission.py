@@ -91,16 +91,18 @@ def run_inference(
                 labels = detection["labels"].tolist()
                 for index, score in enumerate(scores):
                     x1, y1, x2, y2 = boxes[index].tolist()
+                    width = round(x2 - x1, 2)
+                    height = round(y2 - y1, 2)
+                    if width <= 0 or height <= 0:
+                        # The official output checker rejects non-positive
+                        # bbox sizes; a few degenerate low-score queries would
+                        # otherwise make the whole submission invalid.
+                        continue
                     results.append(
                         {
                             "image_id": image_id,
                             "category_id": int(labels[index]),
-                            "bbox": [
-                                round(x1, 2),
-                                round(y1, 2),
-                                round(x2 - x1, 2),
-                                round(y2 - y1, 2),
-                            ],
+                            "bbox": [round(x1, 2), round(y1, 2), width, height],
                             "score": round(score, 5),
                         }
                     )
