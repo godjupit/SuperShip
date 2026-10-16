@@ -85,19 +85,6 @@ ONNX、TensorRT FP16、显式 INT8、CUDA Graph、结构剪枝和监督蒸馏均
 
 失败记录也保留：旧式 INT8 在优化级别1和0下均报内部图错误；显式校准首次因 ORT 缓存参数清空统计而失败，移除参数后成功；TensorRT + Graph 首次因引擎生命周期问题失败，修复后通过整批/尾批测试及评测。详细参数及结果见[部署与压缩实验索引](experiments/ADVANCED_RESULTS_20261016.md)，复现命令见 `COMMON_COMMANDS.md`。
 
-## 2026-10-16｜推理瓶颈 Profile｜已完成
+## 性能分析分支
 
-参数：RTX 3090、PyTorch Eager、FP32、640×640、batch=8；验证集固定取样 40 张，预热 5 次，三轮采集；不带 Profiler 的前向计时每轮 20 次，共三轮。
-
-| 指标 | 结果 |
-| --- | ---: |
-| 模型前向耗时中位数（不带 Profiler） | 28.28 ms/批 |
-| 卷积 GPU 算子耗时占比 | 28.92% |
-| BatchNorm GPU 算子耗时占比 | 10.85% |
-| Self Attention GPU 算子耗时占比（合计） | 7.33% |
-| Cross Attention GPU 算子耗时占比（合计） | 7.93% |
-| 端到端耗时 / AP50 | 本次未测 |
-
-结论：当前路径中 Self Attention 未占主导，优先尝试卷积与 BatchNorm 融合。占比以互斥 GPU kernel 耗时为分母，算子分类与 attention 模块分类不可相加；本次未采集 TensorRT，转换后需重新分析。
-
-详细结果：[实验文件夹与报告](experiments/20261016-attention-profile-01/notes.md)，内含参数、指标、算子排名、代码快照及原始 trace 的位置与校验值。
+模型算子分析、流水线分阶段计时及其详细实验记录单独保存在 `exp/performance-analysis` 分支。当前分支仅保留推理优化和常规时间/精度评估。

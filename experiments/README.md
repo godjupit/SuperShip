@@ -10,6 +10,7 @@
 
 ## 已执行的瓶颈实验
 
-- [20261016-attention-profile-01](20261016-attention-profile-01/notes.md)：PyTorch FP32、batch=8、真实验证集 40 张，三轮 profiler；Self Attention 约 7.33%，卷积约 28.92%。
 
 [本次部署与压缩实验结果](ADVANCED_RESULTS_20261016.md)（含低精度与失败记录）。
+
+性能分析记录（算子分析、流水线耗时占比）位于 `exp/performance-analysis` 分支。
