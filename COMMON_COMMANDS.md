@@ -199,3 +199,15 @@ tail -n 30 output/reference_runtime.log
 ```bash
 watch -n 1 nvidia-smi
 ```
+
+查看最快 CUDA Graph 配置的流水线耗时占比（完整 val 一次，同时评分）：
+
+```bash
+BACKEND=cuda_graph PRECISION=fp32 BATCH_SIZE=8 BATCH_COPY=1 WARMUP=0 \
+PIN_MEMORY=1 NON_BLOCKING=1 BUFFERED_JSON=1 NUM_WORKERS=4 PREFETCH_FACTOR=2 \
+RUNS=1 EVAL_SPLIT=val STAGE_PROFILE=output/profile-new/stages.json \
+OUTPUT_DIR=output/profile-new bash evaluate.sh
+cat output/profile-new/stages.json
+```
+
+每次更换 `profile-new` 目录名，避免覆盖。诊断会在阶段间同步 GPU，改变流水线重叠；常规测速去掉 `STAGE_PROFILE`。JSON 中百分比以函数内阶段合计为分母，不包含进程退出；完整报告的百分比另以外层 benchmark 总时间为分母。

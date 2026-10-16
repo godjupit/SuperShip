@@ -101,3 +101,7 @@ ONNX、TensorRT FP16、显式 INT8、CUDA Graph、结构剪枝和监督蒸馏均
 结论：当前路径中 Self Attention 未占主导，优先尝试卷积与 BatchNorm 融合。占比以互斥 GPU kernel 耗时为分母，算子分类与 attention 模块分类不可相加；本次未采集 TensorRT，转换后需重新分析。
 
 详细结果：[实验文件夹与报告](experiments/20261016-attention-profile-01/notes.md)，内含参数、指标、算子排名、代码快照及原始 trace 的位置与校验值。
+
+### 2026-10-16 最快配置的流水线占比（各模式一次）
+
+FP32 CUDA Graph、batch=8、workers=4、整批回传+锁页+异步传输+缓冲 JSON。正常 val **9.731 秒、AP50=0.9170**；同步分阶段诊断 **9.950 秒、AP50=0.9170**，两次输出完全相同。占诊断总时间：前向 **34.8%**、读取等待 **19.9%**、CPU 结果整理 **19.5%**、JSON **7.5%**。优先试批量结果整理与降低读取开销；同步改变重叠，占比不能直接套用历史 9.384 秒。[完整占比、参数与计时限制](experiments/20261016T141336Z-fastest-pipeline-profile/notes.md)。

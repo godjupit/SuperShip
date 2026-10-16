@@ -24,6 +24,7 @@ export CUDA_GRAPH="${CUDA_GRAPH:-0}"        # 1=捕获所选后端，可与 Tens
 # export ENGINE_PATH=output/deploy/model.fp16.engine  # TensorRT 引擎，与 batch 匹配
 # export MODEL_WEIGHTS=output/compression/distilled.pth  # 剪枝/蒸馏模型
 # export NUM_WORKERS=4                       # 取消注释可覆盖 YAML 的读取进程数
+# export STAGE_PROFILE=output/profile/stages.json  # 分阶段诊断：插入 GPU 同步，会影响耗时
 PYTHON_BIN="${PYTHON_BIN:-$ROOT/.venv/bin/python}"
 # ===== 参数区结束 =====
 

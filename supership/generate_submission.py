@@ -96,20 +96,27 @@ def run_inference(
     output_file,
     options=None,
 ):
+    from supership.stage_timing import StageTimer
+    timer = StageTimer(getattr(options, "stage_profile", None), device)
     # Loader creation is timed because it reads the evaluation metadata.
     loader = create_loader(cfg, image_dir, meta_file, batch_size, options)
     precision = options.precision if options else "fp32"
     non_blocking = options.non_blocking if options else False
     results = []
+    timer.mark("loader_setup")
 
     with torch.inference_mode():
         for samples, targets in loader:
+            timer.mark("loader_wait")
             samples = samples.to(device, non_blocking=non_blocking)
             original_sizes = torch.stack(
                 [target["orig_size"] for target in targets], dim=0
             ).to(device, non_blocking=non_blocking)
+            timer.mark("host_to_device")
             outputs = model_forward(model, samples, precision)
+            timer.mark("model_forward")
             detections = postprocessor(outputs, original_sizes)
+            timer.mark("gpu_postprocess")
 
             if options and options.batch_copy:
                 boxes_batch = torch.stack([d["boxes"] for d in detections]).cpu().tolist()
@@ -117,6 +124,7 @@ def run_inference(
                 labels_batch = torch.stack([d["labels"] for d in detections]).cpu().tolist()
                 detections = [dict(boxes=b, scores=s, labels=l)
                               for b, s, l in zip(boxes_batch, scores_batch, labels_batch)]
+            timer.mark("device_to_host_and_lists")
             for target, detection in zip(targets, detections):
                 image_id = target["image_id"].item()
                 boxes = detection["boxes"]
@@ -143,19 +151,26 @@ def run_inference(
                             "score": round(score, 5),
                         }
                     )
+            timer.mark("cpu_result_assembly")
+    timer.mark("loader_finish")
 
     if str(device).startswith("cuda"):
         torch.cuda.synchronize(device)
 
     output_path = os.path.abspath(output_file)
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    timer.mark("final_sync_and_output_setup")
     with open(output_path, "w", encoding="utf-8") as output:
         if options and options.buffered_json:
-            output.write(json.dumps(results, separators=(",", ":"), allow_nan=False))
+            serialized = json.dumps(results, separators=(",", ":"), allow_nan=False)
+            timer.mark("json_serialize")
+            output.write(serialized)
         else:
             json.dump(results, output, separators=(",", ":"), allow_nan=False)
         output.flush()
         os.fsync(output.fileno())
+    timer.mark("output_write_fsync")
+    timer.finish(len(results))
 
     return len(results)
 
@@ -192,6 +207,8 @@ def parse_args():
     parser.add_argument("--backend", choices=["torch", "cuda_graph", "tensorrt"], default=os.environ.get("BACKEND", "torch"))
     parser.add_argument("--engine", default=os.environ.get("ENGINE_PATH"))
     parser.add_argument("--cuda-graph", action="store_true", default=os.environ.get("CUDA_GRAPH", "0") == "1")
+    parser.add_argument("--stage-profile", default=os.environ.get("STAGE_PROFILE"),
+                        help="optional JSON path for synchronized stage diagnosis (changes overlap)")
     parser.add_argument(
         "--worker",
         action="store_true",

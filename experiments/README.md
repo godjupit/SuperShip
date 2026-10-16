@@ -13,3 +13,5 @@
 - [20261016-attention-profile-01](20261016-attention-profile-01/notes.md)：PyTorch FP32、batch=8、真实验证集 40 张，三轮 profiler；Self Attention 约 7.33%，卷积约 28.92%。
 
 [本次部署与压缩实验结果](ADVANCED_RESULTS_20261016.md)（含低精度与失败记录）。
+
+- [20261016T141336Z-fastest-pipeline-profile](20261016T141336Z-fastest-pipeline-profile/notes.md)：最快 CUDA Graph 配置的完整 val 流水线占比；正常 9.731s，AP50=0.9170。
