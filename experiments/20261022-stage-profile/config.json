@@ -1,0 +1,9 @@
+{
+  "source_commit": "0770db8",
+  "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python BACKEND=cuda_graph BATCH_COPY=1 WARMUP=3 PRECISION=fp32 PIN_MEMORY=1 NON_BLOCKING=1 BUFFERED_JSON=1 NUM_WORKERS=4 PREFETCH_FACTOR=2 BATCH_SIZE=8 RUNS=1 STAGE_PROFILE=output/submissions/20261022-stage-profile/stages.json bash benchmark_reference.sh",
+  "dataset": "public v2 reference 200 images",
+  "gpu": "RTX 4090",
+  "torch": "2.6.0+cu124",
+  "python": "3.12",
+  "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e"
+}
