@@ -1,0 +1,7 @@
+{
+  "commit": "963d025eb394579cc884897e307f97d9ccc3b427",
+  "branch": "exp/inference-backends",
+  "tracked_changes": "OPTIMIZATION_EXPERIMENTS.md | 4 ++++\n 1 file changed, 4 insertions(+)",
+  "status": "M OPTIMIZATION_EXPERIMENTS.md\n?? data/SuperShip\n?? experiments/20261022-torch-optimized/",
+  "note": "Data symlink and experiment records are not inference source changes."
+}
