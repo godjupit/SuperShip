@@ -83,6 +83,8 @@ SuperShip/
 
 ## Environment
 
+For proxy tunnels, Codex CLI installation, and GitHub authentication, run `bash setup_dev.sh`. See [开发机一键配置](DEV_SETUP.md) for first-time setup and later reuse.
+
 The official evaluation device is one NVIDIA GeForce RTX 3090. Python 3.11 is recommended.
 
 ```bash
