@@ -1,7 +1,5 @@
 # SuperShip: GPU End-to-End Inference Optimization
 
-项目协作与冲榜入口：[所有 agent 的共同规则](AGENTS.md) · [实验台账与当前候选](experiments/README.md) · [新实验记录模板](experiments/TEMPLATE.md)。
-
 This repository is the public code package for the SuperShip competition task. It contains the fixed RT-DETRv4 source, the official baseline inference weight, and the reference timing/scoring tools. The public dataset is distributed separately through Tsinghua Cloud.
 
 The full competition rules are available in [COMPETITION.md](COMPETITION.md).
