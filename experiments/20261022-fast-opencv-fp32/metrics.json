@@ -1,0 +1,33 @@
+{
+  "status": "success",
+  "runs_seconds": [
+    0.915845028,
+    0.915696873,
+    0.868581058
+  ],
+  "median_seconds": 0.915696873,
+  "reference_ap50_per_run": [
+    0.8026,
+    0.8026,
+    0.8026
+  ],
+  "detections_per_run": [
+    59983,
+    59983,
+    59983
+  ],
+  "images_with_detections_per_run": [
+    200,
+    200,
+    200
+  ],
+  "hidden_ap50": null,
+  "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+  "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-fp32/supership.out",
+  "raw_log_sha256": "56768ea2c47adaef00574a64a680aa36e428aebdbef418f952a75aa768e754b1",
+  "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-fp32",
+  "reduction_vs_previous_submission_percent": 71.12796441480738,
+  "ap50_reference_baseline": 0.7935,
+  "submitted": true,
+  "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:24:29\nServer Message: Submission Accepted; Performance: 0.915696873 s; OK: median runtime = 0.915696873 s (timing JSON); timing parsed only."
+}

@@ -41,8 +41,21 @@ def test_opencv_pipeline_keeps_rgb_order(tmp_path):
     path, item = make_image(tmp_path)
     runtime = Runtime.__new__(Runtime)
     runtime.decoder = "opencv"
+    runtime.reduction = 1
     result = np.empty((640, 640, 3), dtype=np.uint8)
     runtime.load_image(item, tmp_path, result)
     with Image.open(path) as image:
         expected = cv2.resize(np.asarray(image), (640, 640), interpolation=cv2.INTER_LINEAR)
     np.testing.assert_array_equal(result, expected)
+
+
+def test_reduced_jpeg_preserves_original_coordinate_scale(tmp_path):
+    path = tmp_path / "odd.jpg"
+    Image.new("RGB", (47, 35), (50, 100, 150)).save(path)
+    item = {"id": 3, "file_name": path.name, "width": 47, "height": 35}
+    runtime = Runtime.__new__(Runtime)
+    runtime.decoder = "opencv"
+    runtime.reduction = 2
+    result = np.empty((640, 640, 3), dtype=np.uint8)
+    assert runtime.load_image(item, tmp_path, result) == (47, 35)
+    assert result.shape == (640, 640, 3)

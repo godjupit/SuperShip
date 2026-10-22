@@ -27,6 +27,8 @@ class Runtime:
         self.backend = os.environ.get("BACKEND", "cuda_graph")
         self.threshold = float(os.environ.get("SCORE_THRESHOLD", "0"))
         self.decoder = os.environ.get("IMAGE_DECODER", "pil")
+        self.reduction = int(os.environ.get("JPEG_REDUCTION", "1"))
+        self.antialias = os.environ.get("RESIZE_ANTIALIAS", "1") == "1"
         self.vectorized = os.environ.get("VECTORIZED_RESULTS", "0") == "1"
         if min(self.batch, self.workers, self.prefetch) < 1:
             raise ValueError("batch, workers and pipeline depth must be positive")
@@ -36,6 +38,8 @@ class Runtime:
             raise ValueError("score threshold must be in [0, 1]")
         if self.decoder not in ("pil", "opencv", "cuda"):
             raise ValueError("unsupported image decoder")
+        if self.reduction not in (1, 2) or (self.reduction != 1 and self.decoder != "opencv"):
+            raise ValueError("JPEG_REDUCTION=2 is supported only by the OpenCV decoder")
         torch.set_num_threads(int(os.environ.get("TORCH_THREADS", "1")))
         if self.decoder == "opencv":
             import cv2
@@ -49,7 +53,7 @@ class Runtime:
             Image.new("RGB", (64, 64), (127, 127, 127)).save(buffer, format="JPEG")
             encoded = torch.frombuffer(bytearray(buffer.getvalue()), dtype=torch.uint8)
             synthetic = decode_jpeg([encoded], mode="RGB", device=self.device)[0]
-            resize(synthetic, [640, 640], antialias=True)
+            resize(synthetic, [640, 640], antialias=self.antialias)
             torch.cuda.synchronize(self.device)
         _, self.model, self.post = build_runtime(
             os.environ.get("MODEL_CONFIG", "configs/dfine/dfine_hgnetv2_s_supership.yml"),
@@ -101,7 +105,8 @@ class Runtime:
             return torch.frombuffer(bytearray(path.read_bytes()), dtype=torch.uint8)
         if self.decoder == "opencv":
             import cv2
-            image = cv2.imread(str(path), cv2.IMREAD_COLOR)
+            flag = cv2.IMREAD_REDUCED_COLOR_2 if self.reduction == 2 else cv2.IMREAD_COLOR
+            image = cv2.imread(str(path), flag)
             if image is None:
                 raise ValueError(f"cannot decode image: {path}")
             h, w = image.shape[:2]
@@ -112,9 +117,11 @@ class Runtime:
                 image = image.convert("RGB")
                 w, h = image.size
                 destination[:] = np.asarray(image.resize((640, 640), Image.Resampling.BILINEAR))
-        if (w, h) != (item["width"], item["height"]):
+        reduction = self.reduction if self.decoder == "opencv" else 1
+        expected = tuple((item[key] + reduction - 1) // reduction for key in ("width", "height"))
+        if (w, h) != expected:
             raise ValueError(f"metadata dimensions disagree with decoded image: {path}")
-        return w, h
+        return item["width"], item["height"]
 
     def run(self, request):
         metadata = json.loads(Path(request["meta_file"]).read_text())
@@ -146,13 +153,18 @@ class Runtime:
                     from torchvision.transforms.v2.functional import resize
                     decoded = decode_jpeg(loaded, mode="RGB", device=self.device)
                     sizes = []
+                    groups = {}
                     for row, (item, image) in enumerate(zip(batch, decoded)):
                         h, w = image.shape[-2:]
                         if (w, h) != (item["width"], item["height"]):
                             raise ValueError("metadata dimensions disagree with decoded image")
                         sizes.append((w, h))
-                        resized = resize(image, [640, 640], antialias=True)
-                        self.images[row].copy_(resized.permute(1, 2, 0))
+                        groups.setdefault((h, w), []).append(row)
+                    for indices in groups.values():
+                        images = torch.stack([decoded[row] for row in indices])
+                        resized = resize(images, [640, 640], antialias=self.antialias)
+                        for row, image in zip(indices, resized):
+                            self.images[row].copy_(image.permute(1, 2, 0))
                     if n < self.batch:
                         self.images[n:].zero_()
                 else:

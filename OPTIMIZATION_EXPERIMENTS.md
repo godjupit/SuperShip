@@ -102,3 +102,75 @@ RTX 4090，公开参考集 200 张，cuda_graph、fp32、batch=8、workers=4，�
 同一台 RTX 4090、同一公开参考集：main 中位数 5.128391426 秒；inference-backends 普通组合 3.220965060 秒，CUDA Graph 3.171570187 秒；performance-analysis 的 CUDA Graph 3.221062850 秒。各轮 AP50 均为 0.7935，优化分支所有三轮输出均与基线第一轮逐项相同，覆盖 200 张图像、59,974 个检测。
 
 已先提交主分支，再正式提交 inference-backends 的 CUDA Graph 完整三轮日志；服务器接受最终耗时 **3.171570187 秒**（比本次基线缩短约 38.2%）。分析分支未体现进一步收益；约 0.05 秒差异不足以说明分支本身有稳定性能差异。服务器仅解析计时，隐藏集精度未测。
+
+## 2026-10-22｜20261022-fast-fp32
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.667770 秒**；各轮 AP50=[0.7935, 0.7935, 0.7935]；参数差异 `{}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-fp32/notes.md)。
+
+## 2026-10-22｜20261022-fast-fp32-vector
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.366626 秒**；各轮 AP50=[0.7935, 0.7935, 0.7935]；参数差异 `{"VECTORIZED_RESULTS": "1"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-fp32-vector/notes.md)。
+
+## 2026-10-22｜20261022-fast-fp16-vector
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.367429 秒**；各轮 AP50=[0.7926, 0.7926, 0.7926]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-fp16-vector/notes.md)。
+
+## 2026-10-22｜20261022-fast-fp16-b16
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.416532 秒**；各轮 AP50=[0.7926, 0.7926, 0.7926]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "BATCH_SIZE": "16"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-fp16-b16/notes.md)。
+
+## 2026-10-22｜20261022-fast-fp16-b32
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.416860 秒**；各轮 AP50=[0.7926, 0.7926, 0.7926]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "BATCH_SIZE": "32"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-fp16-b32/notes.md)。
+
+## 2026-10-22｜20261022-fast-fp16-w4
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.667300 秒**；各轮 AP50=[0.7926, 0.7926, 0.7926]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "NUM_WORKERS": "4"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-fp16-w4/notes.md)。
+
+## 2026-10-22｜20261022-fast-fp16-opencv
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **0.865479 秒**；各轮 AP50=[0.8025, 0.8025, 0.8025]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "opencv"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-fp16-opencv/notes.md)。
+
+## 2026-10-22｜20261022-fast-fp16-deploy
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.316620 秒**；各轮 AP50=[0.7926, 0.7926, 0.7926]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "MODEL_DEPLOY": "1"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-fp16-deploy/notes.md)。
+
+## 2026-10-22｜20261022-fast-fp16-score001
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.366588 秒**；各轮 AP50=[0.7926, 0.7926, 0.7926]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "SCORE_THRESHOLD": "0.001"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-fp16-score001/notes.md)。
+
+## 2026-10-22｜20261022-fast-fp32-contiguous
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.416726 秒**；各轮 AP50=[0.7931, 0.7931, 0.7931]；参数差异 `{"VECTORIZED_RESULTS": "1", "CHANNELS_LAST": "0"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-fp32-contiguous/notes.md)。
+
+## 2026-10-22｜20261022-fast-fp16-normal-exit
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **2.118622 秒**；各轮 AP50=[0.7926, 0.7926, 0.7926]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "FAST_EXIT": "0"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-fp16-normal-exit/notes.md)。
+
+## 2026-10-22｜20261022-fast-cuda-fp32
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.968371 秒**；各轮 AP50=[0.7933, 0.7933, 0.7933]；参数差异 `{"VECTORIZED_RESULTS": "1", "IMAGE_DECODER": "cuda"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-cuda-fp32/notes.md)。
+
+## 2026-10-22｜20261022-fast-cuda-fp16
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.918164 秒**；各轮 AP50=[0.7935, 0.7935, 0.7935]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "cuda"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-cuda-fp16/notes.md)。
+
+## 2026-10-22｜20261022-fast-cuda-fp16-b16
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.918214 秒**；各轮 AP50=[0.7933, 0.7933, 0.7933]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "cuda", "BATCH_SIZE": "16"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-cuda-fp16-b16/notes.md)。
+
+## 2026-10-22｜20261022-fast-opencv-fp32
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **0.915697 秒**；各轮 AP50=[0.8026, 0.8026, 0.8026]；参数差异 `{"VECTORIZED_RESULTS": "1", "IMAGE_DECODER": "opencv"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-opencv-fp32/notes.md)。
+
+## 2026-10-22｜20261022-fast-opencv-score001
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **0.815510 秒**；各轮 AP50=[0.8025, 0.8025, 0.8025]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "opencv", "SCORE_THRESHOLD": "0.001"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-opencv-score001/notes.md)。
+
+## 2026-10-22｜20261022-fast-opencv-deploy
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **0.865432 秒**；各轮 AP50=[0.8027, 0.8027, 0.8027]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "opencv", "MODEL_DEPLOY": "1"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-opencv-deploy/notes.md)。
+
+## 2026-10-22｜20261022-fast-opencv-w12
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **0.865521 秒**；各轮 AP50=[0.8025, 0.8025, 0.8025]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "opencv", "NUM_WORKERS": "12"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-opencv-w12/notes.md)。
