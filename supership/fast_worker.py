@@ -34,12 +34,23 @@ class Runtime:
             raise ValueError("unsupported precision or backend")
         if not 0 <= self.threshold <= 1:
             raise ValueError("score threshold must be in [0, 1]")
-        if self.decoder not in ("pil", "opencv"):
+        if self.decoder not in ("pil", "opencv", "cuda"):
             raise ValueError("unsupported image decoder")
         torch.set_num_threads(int(os.environ.get("TORCH_THREADS", "1")))
         if self.decoder == "opencv":
             import cv2
             cv2.setNumThreads(1)
+        if self.decoder == "cuda":
+            # Initialize nvJPEG using a synthetic JPEG, without opening any dataset.
+            import io
+            from torchvision.io import decode_jpeg
+            from torchvision.transforms.v2.functional import resize
+            buffer = io.BytesIO()
+            Image.new("RGB", (64, 64), (127, 127, 127)).save(buffer, format="JPEG")
+            encoded = torch.frombuffer(bytearray(buffer.getvalue()), dtype=torch.uint8)
+            synthetic = decode_jpeg([encoded], mode="RGB", device=self.device)[0]
+            resize(synthetic, [640, 640], antialias=True)
+            torch.cuda.synchronize(self.device)
         _, self.model, self.post = build_runtime(
             os.environ.get("MODEL_CONFIG", "configs/dfine/dfine_hgnetv2_s_supership.yml"),
             os.environ.get("MODEL_WEIGHTS", "weights/baseline.pth"), self.device,
@@ -86,6 +97,8 @@ class Runtime:
     def load_image(self, item, image_dir, destination):
         # image_dir and metadata are obtained only after READY.
         path = Path(image_dir) / item["file_name"]
+        if self.decoder == "cuda":
+            return torch.frombuffer(bytearray(path.read_bytes()), dtype=torch.uint8)
         if self.decoder == "opencv":
             import cv2
             image = cv2.imread(str(path), cv2.IMREAD_COLOR)
@@ -126,11 +139,27 @@ class Runtime:
             for index in range(count):
                 slot = index % self.prefetch
                 batch = items[index * self.batch:(index + 1) * self.batch]
-                sizes = [job.result() for job in jobs.pop(index)]
+                loaded = [job.result() for job in jobs.pop(index)]
                 n = len(batch)
-                if n < self.batch:
-                    self.host[slot][n:].zero_()
-                self.images.copy_(self.host[slot], non_blocking=True)
+                if self.decoder == "cuda":
+                    from torchvision.io import decode_jpeg
+                    from torchvision.transforms.v2.functional import resize
+                    decoded = decode_jpeg(loaded, mode="RGB", device=self.device)
+                    sizes = []
+                    for row, (item, image) in enumerate(zip(batch, decoded)):
+                        h, w = image.shape[-2:]
+                        if (w, h) != (item["width"], item["height"]):
+                            raise ValueError("metadata dimensions disagree with decoded image")
+                        sizes.append((w, h))
+                        resized = resize(image, [640, 640], antialias=True)
+                        self.images[row].copy_(resized.permute(1, 2, 0))
+                    if n < self.batch:
+                        self.images[n:].zero_()
+                else:
+                    sizes = loaded
+                    if n < self.batch:
+                        self.host[slot][n:].zero_()
+                    self.images.copy_(self.host[slot], non_blocking=True)
                 self.sizes[:n].copy_(torch.tensor(sizes, dtype=torch.float32), non_blocking=True)
                 if n < self.batch:
                     self.sizes[n:].fill_(1)
