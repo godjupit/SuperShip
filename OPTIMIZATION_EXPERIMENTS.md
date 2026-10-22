@@ -210,3 +210,61 @@ RTX 4090，参考集 200 张，三轮端到端中位数 **0.514573 秒**；各�
 ## 2026-10-22｜最终官方复测和提交
 
 当前官方工具完整三轮：主分支4.853070409秒，全量检测优化0.895794447秒，阈值0.05优化0.562363170秒，缩小JPEG解码+阈值0.05为 **0.476629654秒**；均正式提交并保存回执，最后保留0.476629654秒。最快方案公开验证集AP50=0.9101，基线0.9170；隐藏集精度未测。[完整优化方案与时间表](OPTIMIZATION_RESULTS_20261022.md)。
+
+- 20261022-194940 [control](experiments/20261022-194940-further-control/notes.md): median 0.477079557 s, reference AP50=[0.7808, 0.7808, 0.7808]; submitted=True.
+
+- 20261022-194940 [cvtcolor](experiments/20261022-194940-further-cvtcolor/notes.md): median 0.459317472 s, reference AP50=[0.7808, 0.7808, 0.7808]; submitted=True.
+
+- 20261022-194940 [direct](experiments/20261022-194940-further-direct/notes.md): median 0.465033972 s, reference AP50=[0.7808, 0.7808, 0.7808]; submitted=True.
+
+- 20261022-194940 [async](experiments/20261022-194940-further-async/notes.md): median 0.458977147 s, reference AP50=[0.7808, 0.7808, 0.7808]; submitted=True.
+
+- 20261022-194940 [async-cvtcolor](experiments/20261022-194940-further-async-cvtcolor/notes.md): median 0.456020483 s, reference AP50=[0.7808, 0.7808, 0.7808]; submitted=True.
+
+- 20261022-195126 [async-cvtcolor-b16](experiments/20261022-195126-further-async-cvtcolor-b16/notes.md): median 0.515991054 s, reference AP50=[0.781, 0.781, 0.781]; submitted=True.
+
+- 20261022-195126 [async-cvtcolor-w4](experiments/20261022-195126-further-async-cvtcolor-w4/notes.md): median 0.478162180 s, reference AP50=[0.7808, 0.7808, 0.7808]; submitted=True.
+
+- 20261022-195126 [async-cvtcolor-cudnn](experiments/20261022-195126-further-async-cvtcolor-cudnn/notes.md): median 0.447681871 s, reference AP50=[0.781, 0.7809, 0.781]; submitted=True.
+
+- 20261022-195126 [decoder2](experiments/20261022-195126-further-decoder2/notes.md): median 0.426459931 s, reference AP50=[0.7763, 0.7763, 0.7763]; submitted=False.
+
+- 20261022-195126 [decoder1](experiments/20261022-195126-further-decoder1/notes.md): median 0.403493509 s, reference AP50=[0.7764, 0.7764, 0.7764]; submitted=False.
+
+- 20261022-195339 [decoder2-score004](experiments/20261022-195339-further-decoder2-score004/notes.md): median 0.417805221 s, reference AP50=[0.7786, 0.7784, 0.7782]; submitted=True.
+
+- 20261022-195339 [decoder1-score004](experiments/20261022-195339-further-decoder1-score004/notes.md): median 0.405175354 s, reference AP50=[0.7789, 0.7789, 0.7789]; submitted=True.
+
+- 20261022-195339 [decoder1-score003](experiments/20261022-195339-further-decoder1-score003/notes.md): median 0.435693499 s, reference AP50=[0.779, 0.779, 0.779]; submitted=True.
+
+- 20261022-195339 [size576-half](experiments/20261022-195339-further-size576-half/notes.md): median 0.390968942 s, reference AP50=[0.7887, 0.7888, 0.7887]; submitted=True.
+
+- 20261022-195339 [size576-full](experiments/20261022-195339-further-size576-full/notes.md): median 0.462455832 s, reference AP50=[0.7931, 0.7931, 0.793]; submitted=True.
+
+- 20261022-195339 [size512-full](experiments/20261022-195339-further-size512-full/notes.md): median 0.446113230 s, reference AP50=[0.7873, 0.7873, 0.7874]; submitted=True.
+
+- Validation [20261022-195339-further-size576-half](experiments/20261022-195339-further-size576-half/notes.md): AP50=0.9067, baseline=0.9170, precision pass=True.
+
+- Validation [20261022-195339-further-decoder1-score004](experiments/20261022-195339-further-decoder1-score004/notes.md): AP50=0.8926, baseline=0.9170, precision pass=False.
+
+- Validation [20261022-195126-further-async-cvtcolor-cudnn](experiments/20261022-195126-further-async-cvtcolor-cudnn/notes.md): AP50=0.91, baseline=0.9170, precision pass=True.
+
+- 20261022-195623 [size512-half](experiments/20261022-195623-further-size512-half/notes.md): median 0.362355174 s, reference AP50=[0.7873, 0.787, 0.7873]; submitted=True.
+
+- 20261022-195623 [size544-half](experiments/20261022-195623-further-size544-half/notes.md): median 0.380510271 s, reference AP50=[0.7816, 0.7819, 0.7819]; submitted=True.
+
+- 20261022-195623 [size576-decoder2](experiments/20261022-195623-further-size576-decoder2/notes.md): median 0.390023948 s, reference AP50=[0.7735, 0.7736, 0.7735]; submitted=False.
+
+- 20261022-195623 [size576-decoder1](experiments/20261022-195623-further-size576-decoder1/notes.md): median 0.392777066 s, reference AP50=[0.7635, 0.7631, 0.7631]; submitted=False.
+
+- Validation [20261022-195623-further-size512-half](experiments/20261022-195623-further-size512-half/notes.md): AP50=0.896, baseline=0.9170, precision pass=False.
+
+- Validation [20261022-195623-further-size544-half](experiments/20261022-195623-further-size544-half/notes.md): AP50=0.9054, baseline=0.9170, precision pass=True.
+
+- Validation [20261022-195339-further-decoder2-score004](experiments/20261022-195339-further-decoder2-score004/notes.md): AP50=0.9039, baseline=0.9170, precision pass=True.
+
+- 20261022-195852 [confirm-control](experiments/20261022-195852-further-confirm-control/notes.md): median 0.475669439 s, reference AP50=[0.7808, 0.7808, 0.7808]; submitted=True.
+
+- 20261022-195852 [confirm-size544](experiments/20261022-195852-further-confirm-size544/notes.md): median 0.379818620 s, reference AP50=[0.7819, 0.7817, 0.7814]; submitted=True.
+
+- Validation [20261022-195852-further-confirm-size544](experiments/20261022-195852-further-confirm-size544/notes.md): AP50=0.9054, baseline=0.9170, precision pass=True.

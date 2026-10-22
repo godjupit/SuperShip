@@ -2,7 +2,12 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT"
-# Measured on RTX 4090; environment overrides remain available.
+# Follow-up sweep on RTX 4090; defaults passed reference and full validation checks.
+export INPUT_SIZE="${INPUT_SIZE:-544}"
+export OPENCV_COPY_MODE="${OPENCV_COPY_MODE:-cvtcolor}"
+export ASYNC_OUTPUT="${ASYNC_OUTPUT:-1}"
+export CUDNN_BENCHMARK="${CUDNN_BENCHMARK:-1}"
+export DECODER_LAYERS="${DECODER_LAYERS:-0}"
 export PIPELINE="${PIPELINE:-fast}"
 export PRECISION="${PRECISION:-fp16}"
 export BACKEND="${BACKEND:-cuda_graph}"
