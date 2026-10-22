@@ -29,5 +29,6 @@
   "reduction_vs_previous_submission_percent": 72.71000961770612,
   "ap50_reference_baseline": 0.7935,
   "submitted": true,
-  "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:25:37\nServer Message: Submission Accepted; Performance: 0.865521199 s; OK: median runtime = 0.865521199 s (timing JSON); timing parsed only."
+  "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:25:37\nServer Message: Submission Accepted; Performance: 0.865521199 s; OK: median runtime = 0.865521199 s (timing JSON); timing parsed only.",
+  "reference_check_passed": true
 }

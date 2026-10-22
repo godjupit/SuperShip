@@ -175,6 +175,38 @@ RTX 4090，参考集 200 张，三轮端到端中位数 **0.865432 秒**；各�
 
 RTX 4090，参考集 200 张，三轮端到端中位数 **0.865521 秒**；各轮 AP50=[0.8025, 0.8025, 0.8025]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "opencv", "NUM_WORKERS": "12"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-opencv-w12/notes.md)。
 
+## 2026-10-22｜20261022-fast-cuda-grouped-fp16
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.867984 秒**；各轮 AP50=[0.7935, 0.7935, 0.7935]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "cuda"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-cuda-grouped-fp16/notes.md)。
+
+## 2026-10-22｜20261022-fast-cuda-no-antialias
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **1.867476 秒**；各轮 AP50=[0.8024, 0.8024, 0.8024]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "cuda", "RESIZE_ANTIALIAS": "0"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-cuda-no-antialias/notes.md)。
+
+## 2026-10-22｜20261022-fast-opencv-score005
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **0.570945 秒**；各轮 AP50=[0.7962, 0.7962, 0.7962]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "opencv", "SCORE_THRESHOLD": "0.05"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-opencv-score005/notes.md)。
+
+## 2026-10-22｜20261022-fast-opencv-score010
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **0.564683 秒**；各轮 AP50=[0.7753, 0.7753, 0.7753]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "opencv", "SCORE_THRESHOLD": "0.1"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-opencv-score010/notes.md)。
+
+## 2026-10-22｜20261022-fast-opencv-half
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **0.815272 秒**；各轮 AP50=[0.7858, 0.7858, 0.7858]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "opencv", "JPEG_REDUCTION": "2"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-opencv-half/notes.md)。
+
+## 2026-10-22｜20261022-fast-opencv-half-score005
+
+RTX 4090，参考集 200 张，三轮端到端中位数 **0.514573 秒**；各轮 AP50=[0.7808, 0.7808, 0.7808]；参数差异 `{"VECTORIZED_RESULTS": "1", "PRECISION": "fp16", "IMAGE_DECODER": "opencv", "JPEG_REDUCTION": "2", "SCORE_THRESHOLD": "0.05"}`。隐藏集精度未测。[详细记录](experiments/20261022-fast-opencv-half-score005/notes.md)。
+
+## 2026-10-22｜独立验证集精度复核
+
+公开验证集 1,030 张，各一次完整运行；基线 AP50=0.917，选中方案 `20261022-fast-opencv-half-score005` AP50=0.9101。达到同集基线98%；该单次验证时间不与200张排行榜时间混比，隐藏集精度未测。[详细记录](experiments/20261022-validation/notes.md)。
+
 ## 2026-10-22｜最终复测与优化时间记录
 
 当前官方工具复测：单张 RTX 4090、公开参考集200张、完整三轮，基线4.853070秒；最快0.476630秒（验证集AP50=0.9101），保守方案0.562363秒（AP50=0.9167）。最终最快日志于北京时间19:32:23正式提交并获Accepted。测试30通过、1跳过，隐藏集未测。方案、逐轮时间、实验起止与回执见[完整记录](OPTIMIZATION_VERIFIED_20261022.md)。
+
+## 2026-10-22｜最终官方复测和提交
+
+当前官方工具完整三轮：主分支4.853070409秒，全量检测优化0.895794447秒，阈值0.05优化0.562363170秒，缩小JPEG解码+阈值0.05为 **0.476629654秒**；均正式提交并保存回执，最后保留0.476629654秒。最快方案公开验证集AP50=0.9101，基线0.9170；隐藏集精度未测。[完整优化方案与时间表](OPTIMIZATION_RESULTS_20261022.md)。
