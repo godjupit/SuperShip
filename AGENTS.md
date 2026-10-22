@@ -12,3 +12,9 @@
 ## 远程仓库
 
 - `origin`：`https://github.com/godjupit/SuperShip.git`
+
+## 本机提交配置
+
+- 若存在 `.local/AGENTS.md`，执行竞赛提交前先读取其中的本机账号和操作说明。
+- `.local/` 和 `.thuscc_credentials` 只供本机使用，不得加入 Git 或推送到 GitHub；日志和实验记录不得包含密码。
+- 用户已授权：完成本项目修改并检查后自动提交、推送到 `origin` 当前工作分支，无需重复确认。
