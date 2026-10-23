@@ -268,3 +268,7 @@ RTX 4090，参考集 200 张，三轮端到端中位数 **0.514573 秒**；各�
 - 20261022-195852 [confirm-size544](experiments/20261022-195852-further-confirm-size544/notes.md): median 0.379818620 s, reference AP50=[0.7819, 0.7817, 0.7814]; submitted=True.
 
 - Validation [20261022-195852-further-confirm-size544](experiments/20261022-195852-further-confirm-size544/notes.md): AP50=0.9054, baseline=0.9170, precision pass=True.
+
+## 2026-10-23｜20261023-230700-convbn-root｜running
+
+负责人 Codex /root，分支exp/convbn-root，父提交4971fb72cf67f6295da02bd25b9f204c766a95e3，父实验20261022-195852-further-confirm-size544。GPU0 RTX4090，23:07起预约。独立开关FUSE_CONV_BN，544配置及其余参数不变；先检查融合覆盖、数值、完整覆盖/尾批，三轮计时逐轮评分，随后完整验证集。仅本地实验，不进行竞赛提交。

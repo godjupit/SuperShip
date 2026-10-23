@@ -90,6 +90,10 @@ class Runtime:
             self.model.decoder.decoder.eval_idx = self.eval_layers - 1
         if os.environ.get("MODEL_DEPLOY", "0") == "1":
             self.model.deploy()
+        if os.environ.get("FUSE_CONV_BN", "0") == "1":
+            from supership.conv_bn_fusion import fuse_model_conv_bn
+            fused = fuse_model_conv_bn(self.model)
+            print(f"Conv-BN fused pairs: {len(fused)}", file=sys.stderr, flush=True)
         if os.environ.get("CHANNELS_LAST", "1") == "1":
             self.model.to(memory_format=torch.channels_last)
         self.post.deploy()
