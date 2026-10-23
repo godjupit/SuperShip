@@ -438,3 +438,7 @@ GPU0 RTX4090 exclusive; Codex /root; [10对交错确认](experiments/20261024-00
 ## 2026-10-24｜20261024-002500-kernel-winner-profile｜completed
 
 Codex /root，GPU0 RTX4090；[三项组合真实输入profile](experiments/20261024-002500-kernel-winner-profile/notes.md)，对照融合baseline的同方法Nsight数据，初始化排除。
+
+## 2026-10-24｜20261024-002900-kernel-default-confirm｜planned
+
+GPU0 RTX4090，Codex /root，默认wrapper三轮确认与完整验证集；[详细记录](experiments/20261024-002900-kernel-default-confirm/notes.md)。
