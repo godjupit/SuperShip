@@ -353,10 +353,12 @@ RTX 4090，公开参考集 200 张，torch、fp32、batch=8、workers=4，独立
 
 北京时间23:27:49已正式提交一次并获Submission Accepted，系统解析中位数 **0.340258450秒**；逐轮0.361170067/0.340258450/0.327337284秒，reference AP50=0.7816/0.7812/0.7820。日志SHA256 `7df2f1ffe686526ea3e95a99221ee82d36cb84c497214ea0afebc2d8695d23e5`，提交前后一致；提交原始三轮完整日志，未拼接或挑选10次交错结果。新三轮输出均通过官方校验和score_reference.sh评分；本次未重新测validation（同一融合实现此前AP50=0.9057），hidden AP50=null。GPU于23:28释放，状态completed。最近被接受提交更新为本次0.340258450秒，官方隐藏集最优仍未知；仅计时被接收，保守候选保留。用户仅授权本次提交，未重传旧日志。[脱敏回执及完整记录](experiments/20261023-232613-submit-convbn/notes.md)。
 
-## 2026-10-23｜20261023-235500-main-fastest-merge｜planned
+## 2026-10-23｜20261023-235500-main-fastest-merge｜running
 
 负责人Codex /root；用户要求将当前最快方案自动合入main。合并父分支exp/convbn-root（c6d860d6b09e4566494ab2314f6482f1bb0a2a5d），保留主分支已有文档、环境安装脚本及历史回执。将benchmark_optimized.sh默认FUSE_CONV_BN设置为1，采用已验证99对融合/544配置；仍可FUSE_CONV_BN=0复现未融合对照。合并后检查测试、独立三轮参考计时和评分，并重新检查完整验证集；不自动进行新的竞赛提交。正式GPU运行前再次检查独占情况并更新状态。
 
 ## 2026-10-23｜20261023-fast544-bottlenecks｜诊断完成
 
 最快有效544/FP16/b8/CUDA Graph配置，RTX4090，真实200张参考输入；Nsight Systems排除初始化/合成预热，内核累计217.579ms，BN34.552ms（15.88%）、FP16转换23.478ms（10.79%）、Half拷贝18.087ms（8.31%）、concat14.265ms（6.56%）。Nsight Compute五类单调用取样：concat样本DRAM82.70%/L2吞吐88.81%，具有访存吞吐受限证据；BN/卷积样本未达吞吐饱和。首末GPU活动之间的时间线覆盖率98.51%，不等于SM利用率。Nsight输出参考AP50=0.7817，五次NCU取样运行各自评分0.7815–0.7827，均通过官方输出检查；本次完整验证集和隐藏集未测，无新正式端到端成绩或竞赛提交。旧NCU不兼容和首次模板过滤失败均保留原因。见[优化过程](优化过程.md)与[详细实验记录](experiments/20261023-fast544-bottlenecks/notes.md)。
+
+合并后验证：GPU0 RTX4090，负责人Codex /root，2026-10-23 23:56预检无其他GPU进程，开始独占参考三轮及完整验证集一轮。有效参数及精确命令见experiments/20261023-235500-main-fastest-merge/；运行结束后释放并记录全部结果。
