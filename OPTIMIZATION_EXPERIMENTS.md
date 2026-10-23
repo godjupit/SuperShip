@@ -411,6 +411,8 @@ Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [weights-linear]
 
 weights-linear: runs=[0.359631911, 0.311155924, 0.34447236], median=0.34447236, reference AP50=[0.7812, 0.7812, 0.7812], validation AP50=0.9058, submitted=True. Error=None.
 
-## 2026-10-24｜20261024-001631-kernel-weights-affine｜planned
+## 2026-10-24｜20261024-001631-kernel-weights-affine｜success
 
 Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [weights-affine](experiments/20261024-001631-kernel-weights-affine/notes.md).
+
+weights-affine: runs=[0.344889588, 0.32487112, 0.331088401], median=0.331088401, reference AP50=[0.7811, 0.7815, 0.7813], validation AP50=0.9054, submitted=True. Error=None.
