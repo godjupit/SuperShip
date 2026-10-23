@@ -374,3 +374,7 @@ RTX 4090，公开参考集 200 张，torch、fp32、batch=8、workers=4，独立
 Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [control](experiments/20261024-001212-kernel-control/notes.md).
 
 control: runs=[0.322793661, 0.366654933, 0.33017573], median=0.33017573, reference AP50=[0.7818, 0.7816, 0.7817], validation AP50=0.9055, submitted=False. Error=None.
+
+## 2026-10-24｜20261024-001241-kernel-weight-half｜planned
+
+Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [weight-half](experiments/20261024-001241-kernel-weight-half/notes.md).
