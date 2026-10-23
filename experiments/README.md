@@ -45,3 +45,4 @@
 | 20261022-195623-further-size576-decoder2 | success | [参数与结果](20261022-195623-further-size576-decoder2/notes.md) |
 | 20261022-195852-further-confirm-control | success | [参数与结果](20261022-195852-further-confirm-control/notes.md) |
 | 20261022-195852-further-confirm-size544 | success | [参数与结果](20261022-195852-further-confirm-size544/notes.md) |
+| 20261023-fast544-bottlenecks | 诊断完成 | [最快544方案：Nsight内核与五类瓶颈](20261023-fast544-bottlenecks/notes.md) |

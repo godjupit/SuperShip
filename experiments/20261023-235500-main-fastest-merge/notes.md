@@ -1,0 +1,5 @@
+# 当前最快融合方案合入main
+
+状态planned；用户授权自动合入。父main 5231b92fabf4a7efd125b046719510b4f4fc8e3c；融合分支c6d860d6b09e4566494ab2314f6482f1bb0a2a5d。首个合并提交0ada0c4已包含融合实现，并将benchmark_optimized.sh默认FUSE_CONV_BN设为1；随后合入exp/rtx4090-e2e的诊断脚本与文档。保留main原有协作规则、安装脚本和全部历史记录，不改已有未跟踪ship_prof报告。
+
+必要检查：56 passed, 1 skipped（可选TensorRT引擎缺失）；默认融合参数变更由实际参考与完整验证集重跑确认。当前文档未将未融合profile冒充融合内核排名。待记录合并后独立三轮、精度及最终推送。

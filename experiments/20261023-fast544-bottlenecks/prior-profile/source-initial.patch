@@ -1,0 +1,220 @@
+diff --git a/OPTIMIZATION_EXPERIMENTS.md b/OPTIMIZATION_EXPERIMENTS.md
+index d78f14e..47586da 100644
+--- a/OPTIMIZATION_EXPERIMENTS.md
++++ b/OPTIMIZATION_EXPERIMENTS.md
+@@ -268,3 +268,10 @@ RTX 4090，参考集 200 张，三轮端到端中位数 **0.514573 秒**；各
+ - 20261022-195852 [confirm-size544](experiments/20261022-195852-further-confirm-size544/notes.md): median 0.379818620 s, reference AP50=[0.7819, 0.7817, 0.7814]; submitted=True.
+ 
+ - Validation [20261022-195852-further-confirm-size544](experiments/20261022-195852-further-confirm-size544/notes.md): AP50=0.9054, baseline=0.9170, precision pass=True.
++
++## 20261023-223213-profile-fast544｜最快544配置性能诊断
++
++- Owner: Codex /root; branch `exp/profile-fast544`; parent `4971fb72cf67f6295da02bd25b9f204c766a95e3`; parent experiment `20261022-195852-further-confirm-size544`.
++- Status: running; GPU 0 RTX 4090 reserved starting 2026-10-23T22:32:23.078597; nvidia-smi found no other GPU processes.
++- Scope: unchanged baseline worker three runs, then opt-in profiling; official timer unchanged; reference 200 images. Validation/hidden AP50 unmeasured.
++- Details: experiments/20261023-223213-profile-fast544/notes.md; artifacts output/20261023-223213-profile-fast544/. No competition submission is authorized by this profiling request.
+diff --git a/supership/fast_worker.py b/supership/fast_worker.py
+index dd879ca..81ca293 100644
+--- a/supership/fast_worker.py
++++ b/supership/fast_worker.py
+@@ -7,6 +7,7 @@ import os
+ from pathlib import Path
+ import sys
+ import threading
++import time
+ 
+ sys.path.insert(0, os.getcwd())
+ 
+@@ -135,6 +136,13 @@ class Runtime:
+         return torch.cat((boxes, scores.unsqueeze(-1), labels.unsqueeze(-1)), dim=-1)
+ 
+     def load_image(self, item, image_dir, destination):
++        profile = getattr(self, "profile", None)
++        if profile is None:
++            return self._load_image(item, image_dir, destination)
++        with profile.host("loader_thread_total"):
++            return self._load_image(item, image_dir, destination)
++
++    def _load_image(self, item, image_dir, destination):
+         # image_dir and metadata are obtained only after READY.
+         path = Path(image_dir) / item["file_name"]
+         if self.decoder == "cuda":
+@@ -169,11 +177,19 @@ class Runtime:
+         return item["width"], item["height"]
+ 
+     def run(self, request):
++        profile = None
++        if os.environ.get("FAST_PROFILE"):
++            from supership.pipeline_profile import PipelineProfile
++            profile = PipelineProfile(request["output_file"] + ".profile.json")
++        self.profile = profile
++        stamp = time.perf_counter() if profile else 0
+         metadata = json.loads(Path(request["meta_file"]).read_text())
+         items = metadata["images"]
+         ids = [item["id"] for item in items]
+         if len(ids) != len(set(ids)):
+             raise ValueError("duplicate image ids")
++        if profile:
++            profile.add("metadata", time.perf_counter() - stamp)
+         jobs = {}
+         count = (len(items) + self.batch - 1) // self.batch
+ 
+@@ -190,6 +206,7 @@ class Runtime:
+         pending = deque()
+ 
+         def collect(batch, output):
++            stamp = time.perf_counter() if profile else 0
+             if not np.isfinite(output).all():
+                 raise ValueError("nonfinite detection")
+             for item, detections in zip(batch, output):
+@@ -209,11 +226,17 @@ class Runtime:
+                             results.append(dict(image_id=int(item["id"]), category_id=int(label),
+                                                 bbox=[round(x1, 2), round(y1, 2), w, h],
+                                                 score=round(score, 5)))
++            if profile:
++                profile.add("cpu_collect", time.perf_counter() - stamp)
+         with torch.inference_mode():
+             for index in range(count):
+                 slot = index % self.prefetch
+                 batch = items[index * self.batch:(index + 1) * self.batch]
++                stamp = time.perf_counter() if profile else 0
+                 loaded = [job.result() for job in jobs.pop(index)]
++                if profile:
++                    profile.add("loader_wait", time.perf_counter() - stamp)
++                    transfer_end = profile.begin_gpu("h2d")
+                 n = len(batch)
+                 if self.decoder == "cuda":
+                     from torchvision.io import decode_jpeg
+@@ -242,25 +265,37 @@ class Runtime:
+                 self.sizes[:n].copy_(torch.tensor(sizes, dtype=torch.float32), non_blocking=True)
+                 if n < self.batch:
+                     self.sizes[n:].fill_(1)
++                if profile:
++                    transfer_end.record()
++                    graph_end = profile.begin_gpu("graph_preprocess_model_postprocess")
+                 if self.graph is not None:
+                     self.graph.replay()
+                     device_output = self.captured
+                 else:
+                     device_output = self.forward()
++                if profile:
++                    graph_end.record()
+                 if self.async_output:
+                     # Copy off the graph's static output before its next replay.
+                     # The next batch can execute while Python formats older results.
+                     current = torch.cuda.current_stream(self.device)
+                     self.output_stream.wait_stream(current)
+                     with torch.cuda.stream(self.output_stream):
++                        if profile:
++                            output_end = profile.begin_gpu("d2h", self.output_stream)
+                         self.host_outputs[slot].copy_(device_output, non_blocking=True)
++                        if profile:
++                            output_end.record(self.output_stream)
+                         ready = torch.cuda.Event()
+                         ready.record(self.output_stream)
+                     current.wait_event(ready)
+                     pending.append((index, batch, ready))
+                     if len(pending) >= min(2, self.prefetch):
+                         previous, previous_batch, event = pending.popleft()
++                        stamp = time.perf_counter() if profile else 0
+                         event.synchronize()
++                        if profile:
++                            profile.add("output_wait", time.perf_counter() - stamp)
+                         previous_slot = previous % self.prefetch
+                         # This completion also fences the pinned input's H2D copy.
+                         if previous + self.prefetch < count:
+@@ -272,18 +307,31 @@ class Runtime:
+                         schedule(index + self.prefetch)
+                     collect(batch, output)
+             for previous, previous_batch, event in pending:
++                stamp = time.perf_counter() if profile else 0
+                 event.synchronize()
++                if profile:
++                    profile.add("output_wait", time.perf_counter() - stamp)
+                 collect(previous_batch, self.host_outputs[previous % self.prefetch][:len(previous_batch)].numpy())
++        stamp = time.perf_counter() if profile else 0
+         self.pool.shutdown(wait=True)
+         torch.cuda.synchronize(self.device)
+         # Nonfinite model outputs were rejected before orjson serialization.
++        if profile:
++            profile.add("shutdown_sync", time.perf_counter() - stamp)
++            stamp = time.perf_counter()
+         payload = orjson.dumps(results)
++        if profile:
++            profile.add("serialize", time.perf_counter() - stamp)
++            stamp = time.perf_counter()
+         path = Path(request["output_file"])
+         path.parent.mkdir(parents=True, exist_ok=True)
+         with path.open("wb") as f:
+             f.write(payload)
+             f.flush()
+             os.fsync(f.fileno())
++        if profile:
++            profile.add("write_fsync", time.perf_counter() - stamp)
++            profile.finish(len(items), len(results))
+         return len(results), len(items)
+ 
+ 
+diff --git a/supership/pipeline_profile.py b/supership/pipeline_profile.py
+new file mode 100644
+index 0000000..d366265
+--- /dev/null
++++ b/supership/pipeline_profile.py
+@@ -0,0 +1,57 @@
++"""Opt-in pipeline diagnosis; CUDA events preserve asynchronous execution."""
++
++from collections import defaultdict
++from contextlib import contextmanager
++import json
++from pathlib import Path
++import threading
++import time
++
++import torch
++
++
++class PipelineProfile:
++    def __init__(self, output):
++        self.output = output
++        self.cpu = defaultdict(float)
++        self.calls = defaultdict(int)
++        self.events = []
++        self.lock = threading.Lock()
++        self.started = time.perf_counter()
++
++    def add(self, name, seconds):
++        with self.lock:
++            self.cpu[name] += seconds
++            self.calls[name] += 1
++
++    @contextmanager
++    def host(self, name):
++        started = time.perf_counter()
++        try:
++            yield
++        finally:
++            self.add(name, time.perf_counter() - started)
++
++    def begin_gpu(self, name, stream=None):
++        start = torch.cuda.Event(enable_timing=True)
++        end = torch.cuda.Event(enable_timing=True)
++        start.record(stream)
++        self.events.append((name, start, end))
++        return end
++
++    def finish(self, images, detections):
++        # Called after the worker's existing final device synchronization/fsync.
++        elapsed = time.perf_counter() - self.started
++        gpu = defaultdict(float)
++        gpu_calls = defaultdict(int)
++        for name, start, end in self.events:
++            gpu[name] += start.elapsed_time(end) / 1000
++            gpu_calls[name] += 1
++        report = dict(
++            wall_seconds=elapsed, images=images, detections=detections,
++            cpu_seconds=dict(self.cpu), cpu_calls=dict(self.calls),
++            gpu_seconds=dict(gpu), gpu_calls=dict(gpu_calls),
++            method='perf_counter host regions and CUDA events, no added per-batch synchronization',
++            caveats='Thread CPU regions are summed wall times, overlap each other and GPU; do not add CPU and GPU columns. Graph covers preprocessing, model and GPU postprocessing. Excludes init, report writing and process exit. Instrumentation adds overhead.',
++        )
++        Path(self.output).write_text(json.dumps(report, indent=2) + '\n')
