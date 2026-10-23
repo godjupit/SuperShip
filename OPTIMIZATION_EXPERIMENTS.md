@@ -423,6 +423,8 @@ Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [weights-linear-
 
 weights-linear-layout: runs=[0.333718261, 0.344893666, 0.313621394], median=0.333718261, reference AP50=[0.7813, 0.781, 0.7816], validation AP50=0.9055, submitted=True. Error=None.
 
-## 2026-10-24｜20261024-001935-kernel-weights-linear-concat｜planned
+## 2026-10-24｜20261024-001935-kernel-weights-linear-concat｜success
 
 Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [weights-linear-concat](experiments/20261024-001935-kernel-weights-linear-concat/notes.md).
+
+weights-linear-concat: runs=[0.313306679, 0.302713346, 0.300934084], median=0.302713346, reference AP50=[0.7812, 0.7812, 0.7816], validation AP50=0.9058, submitted=True. Error=None.
