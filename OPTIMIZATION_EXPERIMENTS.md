@@ -392,3 +392,7 @@ affine-half: runs=[0.35012063, 0.310748555, 0.341132634], median=0.341132634, re
 Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [concat-half](experiments/20261024-001340-kernel-concat-half/notes.md).
 
 concat-half: runs=[0.337413893, 0.317121803, 0.342875711], median=0.337413893, reference AP50=[0.7814, 0.7817, 0.7816], validation AP50=0.9057, submitted=True. Error=None.
+
+## 2026-10-24｜20261024-001413-kernel-encoder-layout｜planned
+
+Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [encoder-layout](experiments/20261024-001413-kernel-encoder-layout/notes.md).
