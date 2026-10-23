@@ -380,3 +380,7 @@ control: runs=[0.322793661, 0.366654933, 0.33017573], median=0.33017573, referen
 Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [weight-half](experiments/20261024-001241-kernel-weight-half/notes.md).
 
 weight-half: runs=[0.319338027, 0.317976677, 0.331978987], median=0.319338027, reference AP50=[0.7816, 0.7817, 0.7811], validation AP50=0.9056, submitted=True. Error=None.
+
+## 2026-10-24｜20261024-001310-kernel-affine-half｜planned
+
+Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [affine-half](experiments/20261024-001310-kernel-affine-half/notes.md).
