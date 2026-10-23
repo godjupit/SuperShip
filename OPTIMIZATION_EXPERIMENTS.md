@@ -368,3 +368,7 @@ RTX 4090，公开参考集 200 张，torch、fp32、batch=8、workers=4，独立
 ## 2026-10-24｜20261024-000500-kernel-sweep｜planned
 
 负责人Codex /root；exp/kernel-sweep-20261024，父main121df82。对融合544/FP16/b8/Graph分别检查类型转换、concat、布局拷贝和卷积替代。GPU0 RTX4090，00:04预检空闲，现独占；各方案独立目录、完整三轮与评分，失败保留。不将旧未融合profile当作当前热点。详细记录[实验目录](experiments/20261024-000500-kernel-sweep/notes.md)。
+
+## 2026-10-24｜20261024-001212-kernel-control｜planned
+
+Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [control](experiments/20261024-001212-kernel-control/notes.md).
