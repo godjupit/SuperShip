@@ -42,7 +42,7 @@ def apply_kernel_options(model, precision):
                 if (isinstance(child, nn.Conv2d) and child.kernel_size == (1, 1)
                         and child.stride == (1, 1) and child.padding == (0, 0)
                         and child.groups == 1 and child.padding_mode == "zeros"):
-                    parent._modules[name] = LinearPointwise(child)
+                    parent._modules[name] = LinearPointwise(child).eval()
                     count += 1
         changes["linear_1x1"] = count
     return changes

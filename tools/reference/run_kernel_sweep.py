@@ -176,7 +176,11 @@ def main():
                  f'Error={metric.get("error")}.\n')
         ledger.write_text(text)
         version([exp, ledger], f'Record kernel experiment {name} results and submission status')
-        subprocess.run(['git', 'push', 'origin', 'HEAD'], check=True)
+        try:
+            subprocess.run(['git', '-c', 'http.lowSpeedLimit=1000', '-c', 'http.lowSpeedTime=15',
+                            'push', 'origin', 'HEAD'], check=True, timeout=35)
+        except (subprocess.TimeoutExpired, subprocess.CalledProcessError):
+            print('PUSH DEFERRED; local results retained for final retry', flush=True)
         print('RESULT', name, metric.get('median_seconds'), metric.get('validation_ap50'),
               metric['status'], 'submitted', metric['submitted'], flush=True)
     print('BEST', json.dumps(best), flush=True)
