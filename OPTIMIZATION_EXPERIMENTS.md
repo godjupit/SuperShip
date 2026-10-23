@@ -434,3 +434,7 @@ weights-linear-concat: runs=[0.313306679, 0.302713346, 0.300934084], median=0.30
 GPU0 RTX4090 exclusive; Codex /root; [10对交错确认](experiments/20261024-002139-kernel-paired10/notes.md).
 
 10对：control=0.333047512s，candidate=0.310723347s，改善6.70%，9/10更快；完整逐轮精度和bootstrap区间见详细记录。
+
+## 2026-10-24｜20261024-002500-kernel-winner-profile｜planned
+
+Codex /root，GPU0 RTX4090；[三项组合真实输入profile](experiments/20261024-002500-kernel-winner-profile/notes.md)，对照融合baseline的同方法Nsight数据，初始化排除。
