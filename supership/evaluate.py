@@ -98,6 +98,14 @@ def main():
     os.chdir(ROOT)
     os.environ["PYTHON_BIN"] = sys.executable
     print(f"设备：{os.environ.get('DEVICE', 'cuda:0')}；batch size：{os.environ.get('BATCH_SIZE', '8')}")
+    backend = os.environ.get("BACKEND", "torch")
+    precision = os.environ.get("PRECISION", "fp32")
+    if backend == "tensorrt" and os.environ.get("ENGINE_PATH"):
+        metadata_path = Path(os.environ["ENGINE_PATH"] + ".json")
+        if metadata_path.exists():
+            precision = json.loads(metadata_path.read_text()).get("precision", "unknown")
+    backend_label = backend + ("+cuda_graph" if os.environ.get("CUDA_GRAPH") == "1" and backend != "cuda_graph" else "")
+    print(f"后端：{backend_label}；精度：{precision}")
     print("计时不含模型初始化，包含读取、预处理、推理、后处理、写盘和退出。评分在计时之外进行。")
     for split in (["val", "reference"] if args.split == "all" else [args.split]):
         evaluate(split, args)

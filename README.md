@@ -178,3 +178,13 @@ python3 supership/score_submission.py \
 ```
 
 Official ranking is performed by the organizer on the unreleased 4,300-image hidden test set.
+
+## RTX 4090 optimized pipeline
+
+The optimized worker is opt-in and retains the official READY/timing protocol. Install the extra dependencies with `python -m pip install -r requirements-fast.txt`, then run `bash benchmark_optimized.sh`. The wrapper delegates timing and output validation to the unchanged official `benchmark_reference.sh`. Set `PYTHON_BIN` to your Python environment as usual.
+
+The optimized wrapper now defaults to 544-pixel inputs and evaluation Conv-BN fusion (`FUSE_CONV_BN=1`, 99 pairs). Use `FUSE_CONV_BN=0` to reproduce the unfused control. The accepted fused three-run median was 0.340258450 seconds on RTX 4090; complete validation AP50 was 0.9057. See [the optimization log](OPTIMIZATION_EXPERIMENTS.md) for the paired comparisons and receipt.
+
+The measured fastest configuration uses 8 image threads, bounded prefetch, reduced JPEG decoding, OpenCV resizing, FP16 CUDA Graph inference and postprocessing, vectorized result assembly, `orjson`, and score threshold 0.05. Every input image is decoded and inferred after READY. The output is flushed, fsynced, closed, and GPU work synchronized before process exit. Initialization uses synthetic images only.
+
+For the higher accuracy alternative, use `JPEG_REDUCTION=1 bash benchmark_optimized.sh`. For the original inference route, continue using `bash benchmark_reference.sh` without `PIPELINE=fast`. Full measurements, accuracy checks and accepted submission receipts are linked in [OPTIMIZATION_RESULTS_20261022.md](OPTIMIZATION_RESULTS_20261022.md). Public validation cannot guarantee the organizer's hidden-set accuracy.
