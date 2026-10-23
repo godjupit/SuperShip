@@ -1,0 +1,264 @@
+{
+  "experiment_id": "20261023-230700-convbn-root",
+  "status": "completed",
+  "parent_commit": "4971fb72cf67f6295da02bd25b9f204c766a95e3",
+  "runtime_source_commit": "84fd5fe09124a8b8ee28f7e6cc1d9a60f6e70165",
+  "parent_experiment": "20261022-195852-further-confirm-size544",
+  "hardware": "GPU0 RTX4090",
+  "gpu_reserved_beijing": [
+    "2026-10-23 23:07",
+    "2026-10-23 23:14"
+  ],
+  "runs": {
+    "baseline": {
+      "runs_seconds": [
+        0.342843022,
+        0.34398909,
+        0.376995317
+      ],
+      "median_seconds": 0.34398909,
+      "split": "reference",
+      "fuse": "0",
+      "source_commit": "4971fb72cf67f6295da02bd25b9f204c766a95e3",
+      "config": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "1",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "0"
+      },
+      "reference_ap50_per_run": [
+        0.7814,
+        0.7815,
+        0.7814
+      ],
+      "prediction_sha256": [
+        "a43374c1ed165494a0f98d112b6c351c04c5c09ec37a442a437e90194297d19f",
+        "854e7793585ba69bf8b9ae8104d0cbc3ba3b612fc3ec9dee34c317038e71ed0e",
+        "e5621814668ee27f2bae9742940630e9d061e809b05d890386778fe315ab3585"
+      ],
+      "hidden_ap50": null
+    },
+    "fused": {
+      "runs_seconds": [
+        0.327972431,
+        0.335364142,
+        0.332367181
+      ],
+      "median_seconds": 0.332367181,
+      "split": "reference",
+      "fuse": "1",
+      "source_commit": "84fd5fe09124a8b8ee28f7e6cc1d9a60f6e70165",
+      "config": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "1",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1"
+      },
+      "reference_ap50_per_run": [
+        0.7814,
+        0.7813,
+        0.7817
+      ],
+      "prediction_sha256": [
+        "c4015d05beaae2d496dd17b5c7815f41ee713d9e73f2b3e3c2046ab1e6c8aeb2",
+        "87bedf53ec626942e689d0eaa7a0544a154a2f3080654898661c0135c4155152",
+        "7c155fb2f85115a20ba36e56603e81f079c23187e438fb148c31580dba3bbd31"
+      ],
+      "hidden_ap50": null
+    },
+    "baseline-repeat": {
+      "runs_seconds": [
+        0.350231934,
+        0.380820684,
+        0.345110039
+      ],
+      "median_seconds": 0.350231934,
+      "split": "reference",
+      "fuse": "0",
+      "source_commit": "4971fb72cf67f6295da02bd25b9f204c766a95e3",
+      "config": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "1",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "0"
+      },
+      "reference_ap50_per_run": [
+        0.7816,
+        0.7813,
+        0.7819
+      ],
+      "prediction_sha256": [
+        "f0033d34447b9dd5338d4b92884c2e95b24a680420c87e9bf3395b42f026f445",
+        "383385d11d67fe2710aebbd527e9108637445621d07be63bebd30a62f0f4d43f",
+        "a43adf09dbf0df737b06533a8b25b73c65ed7379c6a512cda9d6d822fc412562"
+      ],
+      "hidden_ap50": null
+    },
+    "fused-repeat": {
+      "runs_seconds": [
+        0.3672035,
+        0.324805539,
+        0.365588829
+      ],
+      "median_seconds": 0.365588829,
+      "split": "reference",
+      "fuse": "1",
+      "source_commit": "84fd5fe09124a8b8ee28f7e6cc1d9a60f6e70165",
+      "config": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "1",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1"
+      },
+      "reference_ap50_per_run": [
+        0.7813,
+        0.7813,
+        0.7814
+      ],
+      "prediction_sha256": [
+        "a758d2a98c106f3a7177c19edf8aefb102535a9ae08dd13d55d769016ca814a6",
+        "87bedf53ec626942e689d0eaa7a0544a154a2f3080654898661c0135c4155152",
+        "999672b9f13bb481cc91516e9c3122ba2c85808bd6371452e8a70f38267daeeb"
+      ],
+      "hidden_ap50": null
+    },
+    "validation-fused": {
+      "runs_seconds": [
+        1.478530406
+      ],
+      "median_seconds": 1.478530406,
+      "split": "val",
+      "fuse": "1",
+      "source_commit": "84fd5fe09124a8b8ee28f7e6cc1d9a60f6e70165",
+      "config": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "1",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1"
+      },
+      "prediction_sha256": [
+        "74cd7bbaa1178953aadfebd61e73c1d41c9daa44a7b5592012c0146127aa742e"
+      ],
+      "hidden_ap50": null,
+      "validation_ap50_per_run": [
+        0.9057
+      ]
+    }
+  },
+  "combined_six_run_medians": {
+    "baseline": 0.3476709865,
+    "fused": 0.33386566149999997,
+    "reduction_percent": 3.9708015727680013
+  },
+  "reference_baseline_ap50": 0.7935,
+  "reference_threshold": 0.7776299999999999,
+  "validation_baseline_ap50": 0.917,
+  "validation_threshold": 0.89866,
+  "validation_ap50": 0.9057,
+  "hidden_ap50": null,
+  "fused_pairs": 99,
+  "remaining_bn": 0,
+  "checksums": {
+    "supership/benchmark_submission.py": "0befe3aadd1860460d53e5ea2b141d3310edcf5391f9ab4c3a7727244e7d7c02",
+    "supership/submission.py": "79f47d58cd11ae9ba5b2ac1d9613d053c41bda3d1fb457ede78453d3c15a4e7f",
+    "weights/baseline.pth": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+    "data/SuperShip/reference/reference_images_meta.json": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443",
+    "data/SuperShip/val/annotations/instances_val.json": "fcf0bcbca918ac2e380b92ddc284046d8bd4a9d61579b71465ef04e45bf1bde1"
+  },
+  "tests": "56 passed, 1 skipped",
+  "eligible_for_promotion": false,
+  "conclusion": "Accuracy passed; timing improvement did not repeat consistently; keep opt-in, retain previous default candidate.",
+  "competition_submitted": false,
+  "artifacts": "/home/ubuntu/SuperShip-convbn-root/output/20261023-230700-convbn-root",
+  "timing_scope": "unchanged official READY to process-group exit, fsync included; initialization excluded"
+}

@@ -269,6 +269,6 @@ RTX 4090，参考集 200 张，三轮端到端中位数 **0.514573 秒**；各�
 
 - Validation [20261022-195852-further-confirm-size544](experiments/20261022-195852-further-confirm-size544/notes.md): AP50=0.9054, baseline=0.9170, precision pass=True.
 
-## 2026-10-23｜20261023-230700-convbn-root｜running
+## 2026-10-23｜20261023-230700-convbn-root｜completed
 
-负责人 Codex /root，分支exp/convbn-root，父提交4971fb72cf67f6295da02bd25b9f204c766a95e3，父实验20261022-195852-further-confirm-size544。GPU0 RTX4090，23:07起预约。独立开关FUSE_CONV_BN，544配置及其余参数不变；先检查融合覆盖、数值、完整覆盖/尾批，三轮计时逐轮评分，随后完整验证集。仅本地实验，不进行竞赛提交。
+负责人Codex /root；分支exp/convbn-root，父提交4971fb72cf67f6295da02bd25b9f204c766a95e3；GPU0 RTX4090，独占23:07–23:14，已释放。仅Conv-BN折叠，544其余配置不变，融合99对、剩余BN=0。首组三轮中位数未融合0.343989090秒、融合0.332367181秒（快3.38%）；复测未融合0.350231934秒、融合0.365588829秒（慢4.38%）。全部逐轮结果均保留，收益未稳定复现，不晋级默认最快候选；保留FUSE_CONV_BN可选开关。融合reference AP50最低0.7813；完整1030张validation AP50=0.9057，通过同组98%门槛0.89866；hidden AP50=null。56测试通过、1跳过；官方完整覆盖和尾批检查通过。未进行竞赛提交，原最快/保守候选及最近Accepted记录保持不变，官方隐藏集最优未知。[完整记录](experiments/20261023-230700-convbn-root/notes.md)。

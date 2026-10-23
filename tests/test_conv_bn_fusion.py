@@ -1,6 +1,7 @@
 """Check inference equivalence, padding and unsupported graph connections."""
 
 import copy
+import json
 
 import pytest
 import torch
@@ -63,3 +64,56 @@ def test_module_registration_order_does_not_imply_a_forward_connection():
 
     model = Branched().eval()
     assert fuse_model_conv_bn(model) == []
+
+
+@pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA required")
+def test_fused_graph_preserves_tail_and_input_coverage(tmp_path, monkeypatch):
+    from PIL import Image
+    from supership import fast_worker
+
+    class Model(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.block = ConvBNAct(3, 3, 1)
+
+        def forward(self, images):
+            return self.block(images).mean(dim=(2, 3))
+
+    class Post(nn.Module):
+        def deploy(self):
+            return self
+
+        def forward(self, output, sizes):
+            boxes = torch.cat((sizes * 0.1, sizes * 0.9), dim=1).unsqueeze(1)
+            return torch.zeros_like(output[:, :1]), boxes, output[:, :1]
+
+    def build(*args):
+        torch.manual_seed(42)
+        return None, Model().eval().cuda(), Post().cuda()
+
+    monkeypatch.setattr(fast_worker, "build_runtime", build)
+    for key, value in dict(INPUT_SIZE="640", BATCH_SIZE="2", NUM_WORKERS="2",
+                           PIPELINE_DEPTH="3", PRECISION="fp32", BACKEND="cuda_graph",
+                           IMAGE_DECODER="opencv", JPEG_REDUCTION="1", SCORE_THRESHOLD="0",
+                           DECODER_LAYERS="0", OPENCV_COPY_MODE="cvtcolor",
+                           VECTORIZED_RESULTS="1", ASYNC_OUTPUT="1", MODEL_DEPLOY="0").items():
+        monkeypatch.setenv(key, value)
+    items = []
+    for index in range(11):
+        Image.new("RGB", (47, 35), (index * 20, 100, 150)).save(tmp_path / f"{index}.png")
+        items.append(dict(id=index, file_name=f"{index}.png", width=47, height=35))
+    meta = tmp_path / "meta.json"
+    meta.write_text(json.dumps(dict(images=items)))
+    outputs = []
+    for enabled in ["0", "1"]:
+        monkeypatch.setenv("FUSE_CONV_BN", enabled)
+        runtime = fast_worker.Runtime()
+        path = tmp_path / f"output-{enabled}.json"
+        assert runtime.run(dict(image_dir=str(tmp_path), meta_file=str(meta),
+                                output_file=str(path))) == (11, 11)
+        outputs.append(json.loads(path.read_text()))
+    assert {row["image_id"] for row in outputs[1]} == set(range(11))
+    for before, after in zip(*outputs):
+        assert before["image_id"] == after["image_id"]
+        assert before["bbox"] == after["bbox"]
+        assert abs(before["score"] - after["score"]) <= 1e-5
