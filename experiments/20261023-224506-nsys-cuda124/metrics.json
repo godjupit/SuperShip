@@ -1,0 +1,46 @@
+{
+  "experiment_id": "20261023-224506-nsys-cuda124",
+  "status": "completed",
+  "source_commit": "c189fe62e4428a07f34eda61e3cb59ddefc2f7ed",
+  "source_dirty": true,
+  "source_patch_sha256": "8151c78191b0d2a938bf1cacf0ca529bc3f0d06a1889923891c17ac01771674c",
+  "nsys_before": "2022.4.2.1",
+  "nsys_after": "2024.2.3.38",
+  "runtime_cuda": "12.4",
+  "driver": "550.142",
+  "gpu": "RTX 4090 GPU0 single, empty before and after",
+  "diagnostic_runs_seconds": [
+    0.545753089
+  ],
+  "reference_ap50": 0.7818,
+  "reference_images": 200,
+  "detections": 6303,
+  "validation_ap50": null,
+  "hidden_ap50": null,
+  "exit_code": 0,
+  "reports": [
+    "cuda_gpu_kern_sum",
+    "cuda_api_sum",
+    "osrt_sum"
+  ],
+  "report_scope": "Full process tree including initialization, cuDNN search and synthetic warmup; not inference-only statistics.",
+  "artifact_directory": "/home/ubuntu/SuperShip-profile-fast544/output/20261023-224506-nsys-cuda124",
+  "artifacts": {
+    "ship_prof.nsys-rep": "f3d5dc42930c7e4dafc4867a4d77db6c85d54fedfe7caedd0b35e0a3288d8946",
+    "score.log": "1ade6bfe27fd39a843504063084d6d30fd52b4b951163c924fe822dc885c90ea",
+    "ship_prof.sqlite": "393c25c1ec0c84864f65c0f0c216c428d98ed7089ca31aea962bca27a6db98bb",
+    "ship_prof.predictions.json": "b28c7dda18203690445f33d4da56035440290933660eb1dee9ca3908121acad7",
+    "profile-stats.log": "e1f6557bf55e9348a7486f8d7a3d05474db34830d0c56982d2d494bb19ca280c"
+  },
+  "archive_url": "https://developer.download.nvidia.com/compute/cuda/redist/nsight_systems/linux-x86_64/nsight_systems-linux-x86_64-2024.2.3.38-archive.tar.xz",
+  "archive_sha256": "36b457ec34572699c7ddba94aec659a02d4ec78fe19bec7750918fd7e9b79119",
+  "archive_manifest": "https://developer.download.nvidia.com/compute/cuda/redist/redistrib_12.5.0.json",
+  "nsys_binary": "/home/ubuntu/.local/opt/nsight-systems-2024.2.3/target-linux-x64/nsys",
+  "command": [
+    "bash",
+    "tools/profile_nsys_fast544.sh",
+    "/home/ubuntu/SuperShip-profile-fast544/output/20261023-224506-nsys-cuda124/ship_prof"
+  ],
+  "finished_beijing": "2026-10-23T22:49:00.484565",
+  "competition_submitted": false
+}

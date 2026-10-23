@@ -279,3 +279,10 @@ RTX 4090，参考集 200 张，三轮端到端中位数 **0.514573 秒**；各�
 - Completed 2026-10-23T22:39:37.856666; GPU released. Unchanged parent baseline: [0.373381679, 0.343036264, 0.359185144] s, median **0.359185144 s**; reference AP50=[0.7815,0.7813,0.7817].
 - Stage diagnosis three runs median 0.342910136 s (instrumented, not a promoted performance result); internal median 239.42ms, GPU graph 206.14ms, loader wait49.26ms, CPU collect21.50ms, serialization2.90ms, fsync7.79ms; overlap prevents addition. CUDA kernel trace: BatchNorm15.01%, FP16 cast10.50%, other copy/cast13.14% of CUDA activity time.
 - Status: completed; 48 tests passed, 1 optional TRT skipped. Validation/hidden AP50=null; no competition submission; existing local-fastest/conservative recommendations unchanged; official hidden best unknown. [Detailed report](experiments/20261023-223213-profile-fast544/notes.md).
+
+## 20261023-224506-nsys-cuda124｜Nsight CUDA12.4兼容修复
+
+- Owner Codex /root; branch exp/profile-fast544; source c189fe62e4428a07f34eda61e3cb59ddefc2f7ed; parent 20261023-223213-profile-fast544.
+- Status running; updated 2026-10-23T22:45:06.919809; GPU0 RTX4090 empty at preflight. Scope: locally unpack newer Nsight, profile unchanged fastest candidate once, verify stats; diagnostic only, no candidate promotion or competition submission.
+
+- Completed 2026-10-23T22:49:00.485057; GPU released. Nsight2024.2.3.38 locally unpacked (official SHA256 verified); profile + CUDA kernel/API/OSRT stats exit0; diagnostic one-run0.545753089s, reference AP50=0.7818,200images. No candidate promotion; validation/hidden unmeasured; no competition submission. [Notes](experiments/20261023-224506-nsys-cuda124/notes.md).
