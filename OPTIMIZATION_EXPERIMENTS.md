@@ -398,3 +398,7 @@ concat-half: runs=[0.337413893, 0.317121803, 0.342875711], median=0.337413893, r
 Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [encoder-layout](experiments/20261024-001413-kernel-encoder-layout/notes.md).
 
 encoder-layout: runs=[0.354918758, 0.327095394, 0.332704269], median=0.332704269, reference AP50=[0.7815, 0.782, 0.7818], validation AP50=0.9056, submitted=True. Error=None.
+
+## 2026-10-24｜20261024-001443-kernel-linear1x1｜planned
+
+Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [linear1x1](experiments/20261024-001443-kernel-linear1x1/notes.md).
