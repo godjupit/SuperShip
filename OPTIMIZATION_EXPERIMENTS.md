@@ -435,6 +435,6 @@ GPU0 RTX4090 exclusive; Codex /root; [10对交错确认](experiments/20261024-00
 
 10对：control=0.333047512s，candidate=0.310723347s，改善6.70%，9/10更快；完整逐轮精度和bootstrap区间见详细记录。
 
-## 2026-10-24｜20261024-002500-kernel-winner-profile｜planned
+## 2026-10-24｜20261024-002500-kernel-winner-profile｜completed
 
 Codex /root，GPU0 RTX4090；[三项组合真实输入profile](experiments/20261024-002500-kernel-winner-profile/notes.md)，对照融合baseline的同方法Nsight数据，初始化排除。

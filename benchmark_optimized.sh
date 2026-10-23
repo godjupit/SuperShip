@@ -3,6 +3,9 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT"
 # Follow-up sweep on RTX 4090; defaults passed reference and full validation checks.
+export KERNEL_WEIGHT_HALF="${KERNEL_WEIGHT_HALF:-1}"
+export KERNEL_LINEAR1X1="${KERNEL_LINEAR1X1:-1}"
+export FEATURE_CAT="${FEATURE_CAT:-triton_half}"
 export FUSE_CONV_BN="${FUSE_CONV_BN:-1}"
 export INPUT_SIZE="${INPUT_SIZE:-544}"
 export OPENCV_COPY_MODE="${OPENCV_COPY_MODE:-cvtcolor}"

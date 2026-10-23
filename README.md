@@ -181,7 +181,9 @@ Official ranking is performed by the organizer on the unreleased 4,300-image hid
 
 ## RTX 4090 optimized pipeline
 
-The optimized worker is opt-in and retains the official READY/timing protocol. Install the extra dependencies with `python -m pip install -r requirements-fast.txt`, then run `bash benchmark_optimized.sh`. The wrapper delegates timing and output validation to the unchanged official `benchmark_reference.sh`. Set `PYTHON_BIN` to your Python environment as usual.
+The optimized worker is opt-in and retains the official READY/timing protocol. Install the extra dependencies with `python -m pip install -r requirements-kernels.txt`, then run `bash benchmark_optimized.sh`. The wrapper delegates timing and output validation to the unchanged official `benchmark_reference.sh`. Set `PYTHON_BIN` to your Python environment as usual.
+
+The optimized wrapper also enables FP16 Conv/Linear weights, NHWC linear replacements for eligible 1x1 convolutions, and Triton feature packing (`KERNEL_WEIGHT_HALF=1 KERNEL_LINEAR1X1=1 FEATURE_CAT=triton_half`). Ten alternating pairs measured a 6.70% median reduction, with 9/10 pairs faster; complete validation AP50 was 0.9058. Set `KERNEL_WEIGHT_HALF=0 KERNEL_LINEAR1X1=0 FEATURE_CAT=torch` to restore the previous fused control.
 
 The optimized wrapper now defaults to 544-pixel inputs and evaluation Conv-BN fusion (`FUSE_CONV_BN=1`, 99 pairs). Use `FUSE_CONV_BN=0` to reproduce the unfused control. The accepted fused three-run median was 0.340258450 seconds on RTX 4090; complete validation AP50 was 0.9057. See [the optimization log](OPTIMIZATION_EXPERIMENTS.md) for the paired comparisons and receipt.
 
