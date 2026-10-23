@@ -42,3 +42,7 @@ RTX 4090，公开参考集 200 张，torch、fp32、batch=8、workers=4，独立
 用户追加10对复测已完成：GPU0 RTX4090于北京时间23:17–23:20独占，现已释放。每方案10次独立worker，AB/BA轮换先后顺序，每轮均完成官方计时、完整输出校验和评分。未融合中位数0.3454462245秒，融合0.3289938185秒（缩短4.7627%），8/10对更快；范围分别0.340679127–0.376887739秒、0.324713411–0.368183548秒。融合reference AP50最低0.7812，仍通过门槛；validation AP50沿用本次前阶段0.9057，hidden AP50=null。完整逐轮结果、配置及校验和保存在exp/convbn-root的同实验paired10.json。初始六轮及不利结果全部保留。最终结论：中位数有改善，但存在回退，保留FUSE_CONV_BN可选开关和原默认方案；未竞赛提交。状态completed，更新时间北京时间23:20。
 
 追加10对的可复现记录提交：`c6d860d6b09e4566494ab2314f6482f1bb0a2a5d`；[完整逐轮记录](https://github.com/godjupit/SuperShip/blob/c6d860d6b09e4566494ab2314f6482f1bb0a2a5d/experiments/20261023-230700-convbn-root/notes.md)。
+
+## 2026-10-23｜20261023-232613-submit-convbn｜running
+
+负责人Codex /root；用户明确授权正式提交一次，账号已按本机说明核对。运行分支exp/convbn-root，源码c6d860d6b09e4566494ab2314f6482f1bb0a2a5d，父实验20261023-230700-convbn-root；544融合配置不变。GPU0 RTX4090，23:26预检空闲，预约生成一次完整三轮原始日志并校验各轮精度后提交；不拼接10次交错日志。原始产物独立存于融合worktree的output/submissions/20261023-232613-submit-convbn；提交前核对日志SHA256，提交后保存脱敏回执。本次只提交该新日志一次，不自动重传旧成绩。
