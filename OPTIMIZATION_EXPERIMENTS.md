@@ -35,4 +35,8 @@ RTX 4090，公开参考集 200 张，torch、fp32、batch=8、workers=4，独立
 
 ## 2026-10-23｜20261023-230700-convbn-root｜running
 
-负责人 Codex /root；优化分支 exp/convbn-root；父提交 `4971fb72cf67f6295da02bd25b9f204c766a95e3`；父实验 `20261022-195852-further-confirm-size544`。独立 worktree `/tmp/SuperShip-convbn-root`。主要假设：仅将相邻 Conv2d 与评估态 BN 权重融合，不启用整模型 deploy 或改变结构；检查覆盖、数值、完整输入与尾批，三轮端到端对比并逐轮评分，通过后复核完整验证集。GPU0 RTX4090，23:07 预检空闲，预约本次检查/计时，结束时更新释放时间。当前状态 running；不进行竞赛提交。
+负责人 Codex /root；优化分支 exp/convbn-root；父提交 `4971fb72cf67f6295da02bd25b9f204c766a95e3`；父实验 `20261022-195852-further-confirm-size544`。实现/检查及初步记录提交 `50ddc7319e3e2ac4185d5e16a96f22a1566456e4`；运行时提交 `84fd5fe09124a8b8ee28f7e6cc1d9a60f6e70165`。独立 worktree 已从/tmp迁移至 `/home/ubuntu/SuperShip-convbn-root`。GPU0 RTX4090独占北京时间23:07–23:14，已释放。仅融合Conv-BN，未启用整模型deploy，544其余配置不变。
+
+融合99对、剩余BN=0；参考集200张均通过校验与逐轮评分，含完整验证集和尾批检查。首组三轮中位数未融合0.343989090秒、融合0.332367181秒（快3.38%）；复测未融合0.350231934秒、融合0.365588829秒（慢4.38%）。全部逐轮结果保留；加速未稳定复现，不晋级默认最快候选，保留FUSE_CONV_BN可选开关。融合reference AP50最低0.7813，高于同组门槛0.77763；完整1030张validation AP50=0.9057，高于同组门槛0.89866；hidden AP50=null。56项测试通过、1跳过，格式检查通过。本次未进行竞赛提交；原最快/保守候选及最近Accepted记录不变，官方隐藏集最优未知。完整命令、环境、数值检查、所有逐轮结果和校验和保存在exp/convbn-root分支 `experiments/20261023-230700-convbn-root/`。
+
+用户追加要求每方案重复10次。北京时间23:17重新预约GPU0 RTX4090（预检空闲）；计划10对交错独立worker，AB/BA轮换顺序，每轮保留官方计时和评分。状态running，最终候选结论待补充复测后更新。
