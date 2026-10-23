@@ -61,10 +61,17 @@ def test_async_ring_matches_sync_with_tail_and_reuse(tmp_path, monkeypatch, dept
     meta = tmp_path / 'meta.json'
     meta.write_text(json.dumps(dict(images=items)))
     results = []
-    for enabled in ['0', '1']:
+    for enabled, profiling in [('0', '0'), ('1', '0'), ('1', '1')]:
+        monkeypatch.setenv('FAST_PROFILE', profiling)
         monkeypatch.setenv('ASYNC_OUTPUT', enabled)
         runtime = fast_worker.Runtime()
-        output = tmp_path / f'result-{enabled}.json'
+        output = tmp_path / f'result-{enabled}-{profiling}.json'
         assert runtime.run(dict(image_dir=str(tmp_path), meta_file=str(meta), output_file=str(output))) == (11, 11)
         results.append(output.read_bytes())
-    assert results[0] == results[1]
+        if profiling == '1':
+            report = json.loads((tmp_path / (output.name + '.profile.json')).read_text())
+            assert report['images'] == 11
+            assert report['cpu_calls']['loader_thread_total'] == 11
+            assert report['gpu_calls']['graph_preprocess_model_postprocess'] == 6
+            assert report['gpu_calls']['d2h'] == 6
+    assert results[0] == results[1] == results[2]

@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import sys
 import threading
+import time
 
 sys.path.insert(0, os.getcwd())
 
@@ -135,6 +136,13 @@ class Runtime:
         return torch.cat((boxes, scores.unsqueeze(-1), labels.unsqueeze(-1)), dim=-1)
 
     def load_image(self, item, image_dir, destination):
+        profile = getattr(self, "profile", None)
+        if profile is None:
+            return self._load_image(item, image_dir, destination)
+        with profile.host("loader_thread_total"):
+            return self._load_image(item, image_dir, destination)
+
+    def _load_image(self, item, image_dir, destination):
         # image_dir and metadata are obtained only after READY.
         path = Path(image_dir) / item["file_name"]
         if self.decoder == "cuda":
@@ -142,7 +150,12 @@ class Runtime:
         if self.decoder == "opencv":
             import cv2
             flag = cv2.IMREAD_REDUCED_COLOR_2 if self.reduction == 2 else cv2.IMREAD_COLOR
+            profile = getattr(self, "profile", None)
+            stamp = time.perf_counter() if profile else 0
             image = cv2.imread(str(path), flag)
+            if profile:
+                profile.add("loader_imread_decode", time.perf_counter() - stamp)
+                stamp = time.perf_counter()
             if image is None:
                 raise ValueError(f"cannot decode image: {path}")
             h, w = image.shape[:2]
@@ -157,6 +170,8 @@ class Runtime:
                 cv2.cvtColor(resized, cv2.COLOR_BGR2RGB, dst=destination)
             else:
                 destination[:] = resized[:, :, ::-1]
+            if profile:
+                profile.add("loader_resize_rgb", time.perf_counter() - stamp)
         else:
             with Image.open(path) as image:
                 image = image.convert("RGB")
@@ -169,11 +184,19 @@ class Runtime:
         return item["width"], item["height"]
 
     def run(self, request):
+        profile = None
+        if os.environ.get("FAST_PROFILE") == "1":
+            from supership.pipeline_profile import PipelineProfile
+            profile = PipelineProfile(request["output_file"] + ".profile.json")
+        self.profile = profile
+        stamp = time.perf_counter() if profile else 0
         metadata = json.loads(Path(request["meta_file"]).read_text())
         items = metadata["images"]
         ids = [item["id"] for item in items]
         if len(ids) != len(set(ids)):
             raise ValueError("duplicate image ids")
+        if profile:
+            profile.add("metadata", time.perf_counter() - stamp)
         jobs = {}
         count = (len(items) + self.batch - 1) // self.batch
 
@@ -190,6 +213,7 @@ class Runtime:
         pending = deque()
 
         def collect(batch, output):
+            stamp = time.perf_counter() if profile else 0
             if not np.isfinite(output).all():
                 raise ValueError("nonfinite detection")
             for item, detections in zip(batch, output):
@@ -209,11 +233,17 @@ class Runtime:
                             results.append(dict(image_id=int(item["id"]), category_id=int(label),
                                                 bbox=[round(x1, 2), round(y1, 2), w, h],
                                                 score=round(score, 5)))
+            if profile:
+                profile.add("cpu_collect", time.perf_counter() - stamp)
         with torch.inference_mode():
             for index in range(count):
                 slot = index % self.prefetch
                 batch = items[index * self.batch:(index + 1) * self.batch]
+                stamp = time.perf_counter() if profile else 0
                 loaded = [job.result() for job in jobs.pop(index)]
+                if profile:
+                    profile.add("loader_wait", time.perf_counter() - stamp)
+                    transfer_end = profile.begin_gpu("h2d")
                 n = len(batch)
                 if self.decoder == "cuda":
                     from torchvision.io import decode_jpeg
@@ -242,25 +272,37 @@ class Runtime:
                 self.sizes[:n].copy_(torch.tensor(sizes, dtype=torch.float32), non_blocking=True)
                 if n < self.batch:
                     self.sizes[n:].fill_(1)
+                if profile:
+                    transfer_end.record()
+                    graph_end = profile.begin_gpu("graph_preprocess_model_postprocess")
                 if self.graph is not None:
                     self.graph.replay()
                     device_output = self.captured
                 else:
                     device_output = self.forward()
+                if profile:
+                    graph_end.record()
                 if self.async_output:
                     # Copy off the graph's static output before its next replay.
                     # The next batch can execute while Python formats older results.
                     current = torch.cuda.current_stream(self.device)
                     self.output_stream.wait_stream(current)
                     with torch.cuda.stream(self.output_stream):
+                        if profile:
+                            output_end = profile.begin_gpu("d2h", self.output_stream)
                         self.host_outputs[slot].copy_(device_output, non_blocking=True)
+                        if profile:
+                            output_end.record(self.output_stream)
                         ready = torch.cuda.Event()
                         ready.record(self.output_stream)
                     current.wait_event(ready)
                     pending.append((index, batch, ready))
                     if len(pending) >= min(2, self.prefetch):
                         previous, previous_batch, event = pending.popleft()
+                        stamp = time.perf_counter() if profile else 0
                         event.synchronize()
+                        if profile:
+                            profile.add("output_wait", time.perf_counter() - stamp)
                         previous_slot = previous % self.prefetch
                         # This completion also fences the pinned input's H2D copy.
                         if previous + self.prefetch < count:
@@ -272,18 +314,31 @@ class Runtime:
                         schedule(index + self.prefetch)
                     collect(batch, output)
             for previous, previous_batch, event in pending:
+                stamp = time.perf_counter() if profile else 0
                 event.synchronize()
+                if profile:
+                    profile.add("output_wait", time.perf_counter() - stamp)
                 collect(previous_batch, self.host_outputs[previous % self.prefetch][:len(previous_batch)].numpy())
+        stamp = time.perf_counter() if profile else 0
         self.pool.shutdown(wait=True)
         torch.cuda.synchronize(self.device)
         # Nonfinite model outputs were rejected before orjson serialization.
+        if profile:
+            profile.add("shutdown_sync", time.perf_counter() - stamp)
+            stamp = time.perf_counter()
         payload = orjson.dumps(results)
+        if profile:
+            profile.add("serialize", time.perf_counter() - stamp)
+            stamp = time.perf_counter()
         path = Path(request["output_file"])
         path.parent.mkdir(parents=True, exist_ok=True)
         with path.open("wb") as f:
             f.write(payload)
             f.flush()
             os.fsync(f.fileno())
+        if profile:
+            profile.add("write_fsync", time.perf_counter() - stamp)
+            profile.finish(len(items), len(results))
         return len(results), len(items)
 
 

@@ -268,3 +268,14 @@ RTX 4090，参考集 200 张，三轮端到端中位数 **0.514573 秒**；各�
 - 20261022-195852 [confirm-size544](experiments/20261022-195852-further-confirm-size544/notes.md): median 0.379818620 s, reference AP50=[0.7819, 0.7817, 0.7814]; submitted=True.
 
 - Validation [20261022-195852-further-confirm-size544](experiments/20261022-195852-further-confirm-size544/notes.md): AP50=0.9054, baseline=0.9170, precision pass=True.
+
+## 20261023-223213-profile-fast544｜最快544配置性能诊断
+
+- Owner: Codex /root; branch `exp/profile-fast544`; parent `4971fb72cf67f6295da02bd25b9f204c766a95e3`; parent experiment `20261022-195852-further-confirm-size544`.
+- Initial reservation: GPU 0 RTX 4090 reserved starting 2026-10-23T22:32:23.078597; nvidia-smi found no other GPU processes.
+- Scope: unchanged baseline worker three runs, then opt-in profiling; official timer unchanged; reference 200 images. Validation/hidden AP50 unmeasured.
+- Details: experiments/20261023-223213-profile-fast544/notes.md; artifacts output/20261023-223213-profile-fast544/. No competition submission is authorized by this profiling request.
+
+- Completed 2026-10-23T22:39:37.856666; GPU released. Unchanged parent baseline: [0.373381679, 0.343036264, 0.359185144] s, median **0.359185144 s**; reference AP50=[0.7815,0.7813,0.7817].
+- Stage diagnosis three runs median 0.342910136 s (instrumented, not a promoted performance result); internal median 239.42ms, GPU graph 206.14ms, loader wait49.26ms, CPU collect21.50ms, serialization2.90ms, fsync7.79ms; overlap prevents addition. CUDA kernel trace: BatchNorm15.01%, FP16 cast10.50%, other copy/cast13.14% of CUDA activity time.
+- Status: completed; 48 tests passed, 1 optional TRT skipped. Validation/hidden AP50=null; no competition submission; existing local-fastest/conservative recommendations unchanged; official hidden best unknown. [Detailed report](experiments/20261023-223213-profile-fast544/notes.md).
