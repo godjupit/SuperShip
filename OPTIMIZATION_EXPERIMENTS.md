@@ -268,3 +268,8 @@ RTX 4090，参考集 200 张，三轮端到端中位数 **0.514573 秒**；各�
 - 20261022-195852 [confirm-size544](experiments/20261022-195852-further-confirm-size544/notes.md): median 0.379818620 s, reference AP50=[0.7819, 0.7817, 0.7814]; submitted=True.
 
 - Validation [20261022-195852-further-confirm-size544](experiments/20261022-195852-further-confirm-size544/notes.md): AP50=0.9054, baseline=0.9170, precision pass=True.
+
+
+## 2026-10-23｜20261023-fast544-bottlenecks｜诊断完成
+
+最快有效544/FP16/b8/CUDA Graph配置，RTX4090，真实200张参考输入；Nsight Systems排除初始化/合成预热，内核累计217.579ms，BN34.552ms（15.88%）、FP16转换23.478ms（10.79%）、Half拷贝18.087ms（8.31%）、concat14.265ms（6.56%）。Nsight Compute五类单调用取样：concat样本DRAM82.70%/L2吞吐88.81%，具有访存吞吐受限证据；BN/卷积样本未达吞吐饱和。首末GPU活动之间的时间线覆盖率98.51%，不等于SM利用率。Nsight输出参考AP50=0.7817，五次NCU取样运行各自评分0.7815–0.7827，均通过官方输出检查；本次完整验证集和隐藏集未测，无新正式端到端成绩或竞赛提交。旧NCU不兼容和首次模板过滤失败均保留原因。见[优化过程](优化过程.md)与[详细实验记录](experiments/20261023-fast544-bottlenecks/notes.md)。
