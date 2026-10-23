@@ -404,3 +404,7 @@ encoder-layout: runs=[0.354918758, 0.327095394, 0.332704269], median=0.332704269
 Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [linear1x1](experiments/20261024-001443-kernel-linear1x1/notes.md).
 
 linear1x1: runs=[0.318179532, 0.318393595, 0.336021234], median=0.318393595, reference AP50=[0.7812, 0.7811, 0.7812], validation AP50=0.9058, submitted=True. Error=None.
+
+## 2026-10-24｜20261024-001602-kernel-weights-linear｜planned
+
+Codex /root, GPU0 RTX4090 exclusive, exp/kernel-sweep-20261024; [weights-linear](experiments/20261024-001602-kernel-weights-linear/notes.md).
