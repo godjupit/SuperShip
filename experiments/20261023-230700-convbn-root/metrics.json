@@ -6,8 +6,14 @@
   "parent_experiment": "20261022-195852-further-confirm-size544",
   "hardware": "GPU0 RTX4090",
   "gpu_reserved_beijing": [
-    "2026-10-23 23:07",
-    "2026-10-23 23:14"
+    [
+      "2026-10-23 23:07",
+      "2026-10-23 23:14"
+    ],
+    [
+      "2026-10-23 23:17",
+      "2026-10-23 23:20"
+    ]
   ],
   "runs": {
     "baseline": {
@@ -257,8 +263,76 @@
   },
   "tests": "56 passed, 1 skipped",
   "eligible_for_promotion": false,
-  "conclusion": "Accuracy passed; timing improvement did not repeat consistently; keep opt-in, retain previous default candidate.",
+  "conclusion": "Ten new alternating pairs: fused median 4.7627% lower, faster in 8/10 pairs; two regressions remain, preserve opt-in and original default.",
   "competition_submitted": false,
   "artifacts": "/home/ubuntu/SuperShip-convbn-root/output/20261023-230700-convbn-root",
-  "timing_scope": "unchanged official READY to process-group exit, fsync included; initialization excluded"
+  "timing_scope": "unchanged official READY to process-group exit, fsync included; initialization excluded",
+  "paired10": {
+    "baseline": {
+      "runs_seconds": [
+        0.340679127,
+        0.342089602,
+        0.341628983,
+        0.343331954,
+        0.346039983,
+        0.376887739,
+        0.370527978,
+        0.344852466,
+        0.347860401,
+        0.360548746
+      ],
+      "median_seconds": 0.3454462245,
+      "mean_seconds": 0.3514446979,
+      "min_seconds": 0.340679127,
+      "max_seconds": 0.376887739,
+      "stdev_seconds": 0.013104280340262274,
+      "ap50": [
+        0.7813,
+        0.7814,
+        0.7813,
+        0.7816,
+        0.7814,
+        0.7814,
+        0.7812,
+        0.7821,
+        0.7814,
+        0.7815
+      ]
+    },
+    "fused": {
+      "runs_seconds": [
+        0.328809255,
+        0.332211467,
+        0.346657672,
+        0.329178382,
+        0.32534042,
+        0.327131195,
+        0.328363897,
+        0.336293224,
+        0.368183548,
+        0.324713411
+      ],
+      "median_seconds": 0.3289938185,
+      "mean_seconds": 0.3346882471,
+      "min_seconds": 0.324713411,
+      "max_seconds": 0.368183548,
+      "stdev_seconds": 0.013428078104423471,
+      "ap50": [
+        0.7813,
+        0.7816,
+        0.7817,
+        0.7816,
+        0.7812,
+        0.7817,
+        0.7812,
+        0.7818,
+        0.7812,
+        0.7815
+      ]
+    },
+    "median_reduction_percent": 4.762653296852005,
+    "paired_median_reduction_seconds": 0.013011722000000003,
+    "fused_faster_pairs": 8
+  },
+  "paired10_runtime_source_commit": "2cbe945ff7ec8b9f186ca6764e33255688d0ec31"
 }
