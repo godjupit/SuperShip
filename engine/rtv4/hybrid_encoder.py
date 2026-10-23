@@ -7,6 +7,7 @@ Copyright (c) 2024 The DEIM Authors. All Rights Reserved.
 """
 
 import copy
+import os
 from collections import OrderedDict
 
 import torch
@@ -14,6 +15,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from .utils import get_activation
+from ..misc.feature_ops import feature_cat
 
 from ..core import register
 
@@ -208,12 +210,12 @@ class RepNCSPELAN4(nn.Module):
     def forward_chunk(self, x):
         y = list(self.cv1(x).chunk(2, 1))
         y.extend((m(y[-1])) for m in [self.cv2, self.cv3])
-        return self.cv4(torch.cat(y, 1))
+        return self.cv4(feature_cat(y))
 
     def forward(self, x):
         y = list(self.cv1(x).split((self.c, self.c), 1))
         y.extend(m(y[-1]) for m in [self.cv2, self.cv3])
-        return self.cv4(torch.cat(y, 1))
+        return self.cv4(feature_cat(y))
 
 
 # transformer
@@ -430,7 +432,8 @@ class HybridEncoder(nn.Module):
                 memory :torch.Tensor = self.encoder[i](src_flatten, src_mask=None, pos_embed=pos_embed)
 
                 # Reshape back to [B, C, H, W] for subsequent FPN/PAN layers
-                proj_feats[enc_ind] = memory.permute(0, 2, 1).reshape(-1, self.hidden_dim, h, w).contiguous()
+                layout = torch.channels_last if os.environ.get("KERNEL_ENCODER_LAYOUT", "0") == "1" else torch.contiguous_format
+                proj_feats[enc_ind] = memory.permute(0, 2, 1).reshape(-1, self.hidden_dim, h, w).contiguous(memory_format=layout)
 
                 # Apply feature projector to F5
                 if self.training and self.feature_projector is not None and enc_ind == self.encoder_idx_for_distillation:
@@ -446,7 +449,7 @@ class HybridEncoder(nn.Module):
             feat_heigh = self.lateral_convs[len(self.in_channels) - 1 - idx](feat_heigh)
             inner_outs[0] = feat_heigh
             upsample_feat = F.interpolate(feat_heigh, scale_factor=2., mode='nearest')
-            inner_out = self.fpn_blocks[len(self.in_channels)-1-idx](torch.concat([upsample_feat, feat_low], dim=1))
+            inner_out = self.fpn_blocks[len(self.in_channels)-1-idx](feature_cat([upsample_feat, feat_low]))
             inner_outs.insert(0, inner_out)
 
         outs = [inner_outs[0]]
@@ -454,7 +457,7 @@ class HybridEncoder(nn.Module):
             feat_low = outs[-1]
             feat_height = inner_outs[idx + 1]
             downsample_feat = self.downsample_convs[idx](feat_low)
-            out = self.pan_blocks[idx](torch.concat([downsample_feat, feat_height], dim=1))
+            out = self.pan_blocks[idx](feature_cat([downsample_feat, feat_height]))
             outs.append(out)
 
         if self.training and distill_student_output is not None:

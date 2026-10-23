@@ -94,6 +94,10 @@ class Runtime:
             from supership.conv_bn_fusion import fuse_model_conv_bn
             fused = fuse_model_conv_bn(self.model)
             print(f"Conv-BN fused pairs: {len(fused)}", file=sys.stderr, flush=True)
+        from supership.kernel_optimizations import apply_kernel_options
+        changes = apply_kernel_options(self.model, self.precision)
+        if changes:
+            print(f"Kernel options: {changes}", file=sys.stderr, flush=True)
         if os.environ.get("CHANNELS_LAST", "1") == "1":
             self.model.to(memory_format=torch.channels_last)
         self.post.deploy()
