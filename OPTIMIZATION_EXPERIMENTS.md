@@ -32,3 +32,7 @@ RTX 4090，公开参考集 200 张，torch、fp32、batch=8、workers=4，独立
 - 已核对的最近 Accepted 提交：544 确认实验，北京时间 2026-10-22 19:59:29，0.379818620 秒，timing parsed only；未在线核验账号当前状态。官方隐藏集最优：未知。
 - 用户本次要求：后续先分析所有分支，再优先优化最快的有效方案。优化从上述 544 父版本建立独立分支/worktree；profile-fast544 仅提供诊断能力。cuDNN 自动选算法、FP16、channels-last、CUDA Graph、异步回传均已启用，不重复计作新优化。
 - 优先检查 READY 后 GPU 图内 Conv-BN 融合覆盖及重复类型/布局转换，再根据具体卷积形状决定替换实现。现有全进程 Nsight stats 包含算法搜索、预热，不能直接当成稳态推理热点。每个新假设先登记、同协议复测三轮，并检查完整输入/尾批与精度后再晋级。
+
+## 2026-10-23｜20261023-230700-convbn-root｜running
+
+负责人 Codex /root；优化分支 exp/convbn-root；父提交 `4971fb72cf67f6295da02bd25b9f204c766a95e3`；父实验 `20261022-195852-further-confirm-size544`。独立 worktree `/tmp/SuperShip-convbn-root`。主要假设：仅将相邻 Conv2d 与评估态 BN 权重融合，不启用整模型 deploy 或改变结构；检查覆盖、数值、完整输入与尾批，三轮端到端对比并逐轮评分，通过后复核完整验证集。GPU0 RTX4090，23:07 预检空闲，预约本次检查/计时，结束时更新释放时间。当前状态 running；不进行竞赛提交。
