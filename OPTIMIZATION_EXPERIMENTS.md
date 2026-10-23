@@ -43,6 +43,8 @@ RTX 4090，公开参考集 200 张，torch、fp32、batch=8、workers=4，独立
 
 追加10对的可复现记录提交：`c6d860d6b09e4566494ab2314f6482f1bb0a2a5d`；[完整逐轮记录](https://github.com/godjupit/SuperShip/blob/c6d860d6b09e4566494ab2314f6482f1bb0a2a5d/experiments/20261023-230700-convbn-root/notes.md)。
 
-## 2026-10-23｜20261023-232613-submit-convbn｜running
+## 2026-10-23｜20261023-232613-submit-convbn｜completed
 
 负责人Codex /root；用户明确授权正式提交一次，账号已按本机说明核对。运行分支exp/convbn-root，源码c6d860d6b09e4566494ab2314f6482f1bb0a2a5d，父实验20261023-230700-convbn-root；544融合配置不变。GPU0 RTX4090，23:26预检空闲，预约生成一次完整三轮原始日志并校验各轮精度后提交；不拼接10次交错日志。原始产物独立存于融合worktree的output/submissions/20261023-232613-submit-convbn；提交前核对日志SHA256，提交后保存脱敏回执。本次只提交该新日志一次，不自动重传旧成绩。
+
+北京时间23:27:49已正式提交一次并获Submission Accepted，系统解析中位数 **0.340258450秒**；逐轮0.361170067/0.340258450/0.327337284秒，reference AP50=0.7816/0.7812/0.7820。日志SHA256 `7df2f1ffe686526ea3e95a99221ee82d36cb84c497214ea0afebc2d8695d23e5`，提交前后一致；提交原始三轮完整日志，未拼接或挑选10次交错结果。新三轮输出均通过官方校验和score_reference.sh评分；本次未重新测validation（同一融合实现此前AP50=0.9057），hidden AP50=null。GPU于23:28释放，状态completed。最近被接受提交更新为本次0.340258450秒，官方隐藏集最优仍未知；仅计时被接收，保守候选保留。用户仅授权本次提交，未重传旧日志。[脱敏回执及完整记录](experiments/20261023-232613-submit-convbn/notes.md)。
