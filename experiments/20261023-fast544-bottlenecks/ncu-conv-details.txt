@@ -16,9 +16,9 @@
     Compute (SM) Throughput           %        24.38
     ----------------------- ----------- ------------
 
-    OPT   This kernel exhibits low compute throughput and memory bandwidth utilization relative to the peak performance 
-          of this device. Achieved compute throughput and/or memory bandwidth below 60.0% of peak typically indicate    
-          latency issues. Look at Scheduler Statistics and Warp State Statistics for potential reasons.                 
+    OPT   This kernel exhibits low compute throughput and memory bandwidth utilization relative to the peak performance
+          of this device. Achieved compute throughput and/or memory bandwidth below 60.0% of peak typically indicate
+          latency issues. Look at Scheduler Statistics and Warp State Statistics for potential reasons.
 
     Section: Memory Workload Analysis
     --------------------------- ----------- ------------
@@ -66,10 +66,10 @@
     Achieved Active Warps Per SM           warp         6.96
     ------------------------------- ----------- ------------
 
-    OPT   Est. Local Speedup: 83.33%                                                                                    
-          The 2.00 theoretical warps per scheduler this kernel can issue according to its occupancy are below the       
-          hardware maximum of 12. This kernel's theoretical occupancy (16.7%) is limited by the required amount of      
-          shared memory.                                                                                                
+    OPT   Est. Local Speedup: 83.33%
+          The 2.00 theoretical warps per scheduler this kernel can issue according to its occupancy are below the
+          hardware maximum of 12. This kernel's theoretical occupancy (16.7%) is limited by the required amount of
+          shared memory.
 
     Section: GPU and Memory Workload Distribution
     -------------------------- ----------- ------------
@@ -87,17 +87,16 @@
     Total SMSP Elapsed Cycles        cycle     21849752
     -------------------------- ----------- ------------
 
-    OPT   Est. Speedup: 15.18%                                                                                          
-          One or more SMs have a much higher number of active cycles than the average number of active cycles. Maximum  
-          instance value is 19.79% above the average, while the minimum instance value is 10.02% below the average.     
+    OPT   Est. Speedup: 15.18%
+          One or more SMs have a much higher number of active cycles than the average number of active cycles. Maximum
+          instance value is 19.79% above the average, while the minimum instance value is 10.02% below the average.
     ----- --------------------------------------------------------------------------------------------------------------
-    OPT   Est. Speedup: 15.13%                                                                                          
-          One or more SMSPs have a much higher number of active cycles than the average number of active cycles.        
-          Maximum instance value is 20.30% above the average, while the minimum instance value is 11.32% below the      
-          average.                                                                                                      
+    OPT   Est. Speedup: 15.13%
+          One or more SMSPs have a much higher number of active cycles than the average number of active cycles.
+          Maximum instance value is 20.30% above the average, while the minimum instance value is 11.32% below the
+          average.
     ----- --------------------------------------------------------------------------------------------------------------
-    OPT   Est. Speedup: 15.18%                                                                                          
-          One or more L1 Slices have a much higher number of active cycles than the average number of active cycles.    
-          Maximum instance value is 19.79% above the average, while the minimum instance value is 10.02% below the      
-          average.                                                                                                      
-
+    OPT   Est. Speedup: 15.18%
+          One or more L1 Slices have a much higher number of active cycles than the average number of active cycles.
+          Maximum instance value is 19.79% above the average, while the minimum instance value is 10.02% below the
+          average.

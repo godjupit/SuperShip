@@ -64,3 +64,5 @@ Nsight Systems成功完成200张输入、6300检测，官方validate_output通�
 五条NCU命令和五组硬件样本已保存。具体样本调用不是逐形状完整覆盖，没有测整个模型的FLOPs、TFLOP/s、roofline或warp stall；没有声称找到全局唯一瓶颈。
 
 检查：两个新增脚本py_compile通过；Nsight汇总独立重算的全部数值字段一致；六份有效预测通过官方输出检查并分别评分；Git diff --check通过。没有修改模型实现，未运行新的全套模型测试。未提出新优化候选，未提交竞赛成绩。
+
+Git中的NCU文本导出只去掉行末空白，原始导出和报告保留在output目录且记录SHA256；原始patch逐字节保留并沿用.gitattributes的patch空白豁免。

@@ -16,9 +16,9 @@
     Compute (SM) Throughput           %        19.82
     ----------------------- ----------- ------------
 
-    INF   The kernel is utilizing greater than 80.0% of the available compute or memory performance of the device. To   
-          further improve performance, work will likely need to be shifted from the most utilized to another unit.      
-          Start by analyzing L2 in the Memory Workload Analysis section.                                                
+    INF   The kernel is utilizing greater than 80.0% of the available compute or memory performance of the device. To
+          further improve performance, work will likely need to be shifted from the most utilized to another unit.
+          Start by analyzing L2 in the Memory Workload Analysis section.
 
     Section: Memory Workload Analysis
     --------------------------- ----------- ------------
@@ -81,4 +81,3 @@
     Average SMSP Active Cycles       cycle    336150.22
     Total SMSP Elapsed Cycles        cycle    177034320
     -------------------------- ----------- ------------
-
