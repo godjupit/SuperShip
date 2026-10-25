@@ -50,3 +50,18 @@ def test_half_store_keeps_float32_scalar_arithmetic(dtype):
     with torch.inference_mode():actual=relu_affine(x,scale,bias,output_half=True)
     torch.testing.assert_close(actual,expected,rtol=0,atol=0)
     assert actual.dtype==torch.float16
+
+
+@pytest.mark.parametrize('half',[False,True])
+def test_apply_options_replaces_only_eligible_blocks(monkeypatch,half):
+    from engine.backbone.hgnetv2 import ConvBNAct
+    from supership.kernel_optimizations import apply_kernel_options
+    model=torch.nn.Sequential(ConvBNAct(3,7,3,use_lab=True)).cuda().eval()
+    keys=list(model.state_dict())
+    for key,value in dict(KERNEL_WEIGHT_HALF='0',KERNEL_AFFINE_HALF='0',KERNEL_LINEAR1X1='0',KERNEL_RELU_AFFINE_FUSE='1',KERNEL_RELU_AFFINE_HALF_OUT=str(int(half))).items():monkeypatch.setenv(key,value)
+    changes=apply_kernel_options(model,'fp16')
+    assert changes=={'relu_affine_fused':1}
+    assert isinstance(model[0].act,torch.nn.Identity)
+    assert isinstance(model[0].lab,FusedReLUAffine)
+    assert model[0].lab.output_half==half
+    assert list(model.state_dict())==keys

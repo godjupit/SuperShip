@@ -47,7 +47,7 @@ def apply_kernel_options(model, precision):
                     parent._modules[name] = LinearPointwise(child).eval()
                     count += 1
         changes["linear_1x1"] = count
-    if options["KERNEL_RELU_AFFINE_FUSE", "KERNEL_RELU_AFFINE_HALF_OUT"]:
+    if options["KERNEL_RELU_AFFINE_FUSE"]:
         from engine.backbone.hgnetv2 import ConvBNAct, LearnableAffineBlock
         from engine.misc.relu_affine_triton import FusedReLUAffine
         count=0
