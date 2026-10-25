@@ -69,3 +69,10 @@ Completion 2026-10-26 01:40 CST —20261026-013427-validation-sweep: **completed
 - Registered: fuse uint8 normalization, fuse detection output geometry/gather, segmented feature packing, kernel block tuning, light inference imports, query-count/output-count screening. Opt-in individual gates and full200-image three-round checks, no large validation; only faster valid logs uploaded.
 
 2026-10-26 01:50 CST GPU handover: configwide17-case suite complete,51worker outputs,2reference precision-failed configurations (decoder2,score0.075) not uploaded; latestAccepted266.237340ms (cudnn-fixed), timing-only. GPU0 verified idle and reserved now for fusedio tests/screens. All16 fusedio configs inherit new CUDNN_BENCHMARK=0 parent from configwide/cudnn-fixed; baseline floor refreshed266.237340ms. No larger validation jobs.
+
+
+## 20261026-075543-continued-sweep
+
+- Owner Codex current /root continuation; branch `exp/continued-sweep-20261026`; status **running**; updated 2026-10-26 07:58 CST. Parent `0cd93cb12821da085172ca470c0e71e836de7016`; isolated worktree `/tmp/SuperShip-continued-20261026`.
+- Fresh process audit found no benchmark/worker/scoring processes and idle GPU0; fusedio last raw result at01:55 (6 hours old). Reserve GPU0 from07:58 for this continuation; output-overlap has CPU-only reservation and must wait for handover. Other worktree modifications left untouched.
+- New hypotheses: pinned reusable image-size transfers, CUDA event reuse, batch7/9/14 tails, smaller/larger model geometry under reference accuracy gate, intermediate query counts, top-k output sizing, GLIBC mmap/arena and torch/OMP thread settings. Each variant registered in plan.json before running, unchanged official timer/scorer, all200 inputs afterREADY, complete3-round timing, no larger validation. Current floor266.237340ms; only fresh passing improvements eligible for competition upload.

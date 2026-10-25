@@ -59,6 +59,8 @@ class Runtime:
         self.vectorized = os.environ.get("VECTORIZED_RESULTS", "0") == "1"
         self.early_recycle = os.environ.get("EARLY_INPUT_RECYCLE", "0") == "1"
         self.bulk_results = os.environ.get("BULK_RESULTS", "0") == "1"
+        self.pinned_sizes = os.environ.get("PINNED_SIZES", "0") == "1"
+        self.reuse_events = os.environ.get("REUSE_EVENTS", "0") == "1"
         self.fused_normalize = os.environ.get("FUSED_NORMALIZE", "0") == "1"
         self.fused_postprocess = os.environ.get("FUSED_POSTPROCESS", "0") == "1"
         if self.fused_normalize and (self.precision != "fp16" or os.environ.get("CHANNELS_LAST", "1") != "1"):
@@ -154,6 +156,13 @@ class Runtime:
         self.host = [torch.empty_like(self.images, device="cpu", pin_memory=True)
                      for _ in range(self.prefetch)]
         self.host_arrays = [x.numpy() for x in self.host]
+        if self.pinned_sizes:
+            self.host_sizes = [torch.empty(self.batch, 2, dtype=torch.float32, pin_memory=True)
+                               for _ in range(self.prefetch)]
+            self.size_arrays = [x.numpy() for x in self.host_sizes]
+        if self.reuse_events:
+            self.copy_events = [torch.cuda.Event() for _ in range(self.prefetch)]
+            self.output_events = [torch.cuda.Event() for _ in range(self.prefetch)]
         self.output_stream = torch.cuda.Stream(device=self.device) if self.async_output else None
         self.host_outputs = None
         self.pool = concurrent.futures.ThreadPoolExecutor(max_workers=self.workers)
@@ -320,10 +329,16 @@ class Runtime:
                         self.host[slot][n:].zero_()
                     self.images.copy_(self.host[slot], non_blocking=True)
                     if self.early_recycle and index + self.prefetch < count:
-                        copied = torch.cuda.Event()
+                        copied = self.copy_events[slot] if self.reuse_events else torch.cuda.Event()
                         copied.record(torch.cuda.current_stream(self.device))
                         schedule(index + self.prefetch, dependency=copied)
-                self.sizes[:n].copy_(torch.tensor(sizes, dtype=torch.float32), non_blocking=True)
+                if self.pinned_sizes:
+                    # Loaded jobs validate dimensions before these values are copied.
+                    # Reuse is fenced by completion of this slot's previous output.
+                    self.size_arrays[slot][:n] = sizes
+                    self.sizes[:n].copy_(self.host_sizes[slot][:n], non_blocking=True)
+                else:
+                    self.sizes[:n].copy_(torch.tensor(sizes, dtype=torch.float32), non_blocking=True)
                 if n < self.batch:
                     self.sizes[n:].fill_(1)
                 if self.graph is not None:
@@ -338,7 +353,7 @@ class Runtime:
                     self.output_stream.wait_stream(current)
                     with torch.cuda.stream(self.output_stream):
                         self.host_outputs[slot].copy_(device_output, non_blocking=True)
-                        ready = torch.cuda.Event()
+                        ready = self.output_events[slot] if self.reuse_events else torch.cuda.Event()
                         ready.record(self.output_stream)
                     current.wait_event(ready)
                     pending.append((index, batch, ready))

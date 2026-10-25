@@ -1,0 +1,77 @@
+{
+  "control": {},
+  "pinned-sizes": {
+    "PINNED_SIZES": "1"
+  },
+  "reuse-events": {
+    "REUSE_EVENTS": "1"
+  },
+  "pinned-events": {
+    "PINNED_SIZES": "1",
+    "REUSE_EVENTS": "1"
+  },
+  "batch7": {
+    "BATCH_SIZE": "7"
+  },
+  "batch9": {
+    "BATCH_SIZE": "9"
+  },
+  "batch14": {
+    "BATCH_SIZE": "14"
+  },
+  "queries175": {
+    "NUM_QUERIES": "175"
+  },
+  "queries225": {
+    "NUM_QUERIES": "225"
+  },
+  "queries250": {
+    "NUM_QUERIES": "250"
+  },
+  "top100": {
+    "POST_TOP_QUERIES": "100"
+  },
+  "top150": {
+    "POST_TOP_QUERIES": "150"
+  },
+  "fused-io": {
+    "FUSED_NORMALIZE": "1",
+    "FUSED_POSTPROCESS": "1"
+  },
+  "gpu-resize512": {
+    "UPLOAD_SIZE": "512"
+  },
+  "model-deploy": {
+    "MODEL_DEPLOY": "1"
+  },
+  "torch2": {
+    "TORCH_THREADS": "2"
+  },
+  "torch2-passive": {
+    "TORCH_THREADS": "2",
+    "OMP_WAIT_POLICY": "PASSIVE",
+    "KMP_BLOCKTIME": "0"
+  },
+  "arena1": {
+    "MALLOC_ARENA_MAX": "1"
+  },
+  "arena4": {
+    "MALLOC_ARENA_MAX": "4"
+  },
+  "mmap64k": {
+    "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1:glibc.malloc.mmap_threshold=65536"
+  },
+  "mmap16m": {
+    "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1:glibc.malloc.mmap_threshold=16777216"
+  },
+  "tcache0": {
+    "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1:glibc.malloc.tcache_count=0"
+  },
+  "trim16m": {
+    "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1:glibc.malloc.trim_threshold=16777216"
+  },
+  "direct-copy": {
+    "OPENCV_COPY_MODE": "direct"
+  },
+  "control-end": {}
+}

@@ -46,7 +46,8 @@ class SyntheticPost(torch.nn.Module):
 @pytest.mark.skipif(not torch.cuda.is_available(), reason='CUDA required')
 @pytest.mark.parametrize('depth', [1, 2, 3])
 @pytest.mark.parametrize('backend', ['torch', 'cuda_graph'])
-def test_async_ring_matches_sync_with_tail_and_reuse(tmp_path, monkeypatch, depth, backend):
+@pytest.mark.parametrize('transport', ['0', '1'])
+def test_async_ring_matches_sync_with_tail_and_reuse(tmp_path, monkeypatch, depth, backend, transport):
     monkeypatch.setattr(fast_worker, 'build_runtime',
                         lambda *_: (None, SyntheticModel().cuda(), SyntheticPost().cuda()))
     for key, value in dict(BATCH_SIZE='2', NUM_WORKERS='2', PIPELINE_DEPTH=str(depth),
@@ -56,13 +57,16 @@ def test_async_ring_matches_sync_with_tail_and_reuse(tmp_path, monkeypatch, dept
         monkeypatch.setenv(key, value)
     items = []
     for index in range(11):
-        Image.new('RGB', (47, 35), (index * 20, 100, 150)).save(tmp_path / f'{index}.png')
-        items.append(dict(id=index, file_name=f'{index}.png', width=47, height=35))
+        width, height = 47 + index, 35 + index
+        Image.new('RGB', (width, height), (index * 20, 100, 150)).save(tmp_path / f'{index}.png')
+        items.append(dict(id=index, file_name=f'{index}.png', width=width, height=height))
     meta = tmp_path / 'meta.json'
     meta.write_text(json.dumps(dict(images=items)))
     results = []
     for enabled in ['0', '1']:
         monkeypatch.setenv('ASYNC_OUTPUT', enabled)
+        monkeypatch.setenv('PINNED_SIZES', transport if enabled == '1' else '0')
+        monkeypatch.setenv('REUSE_EVENTS', transport if enabled == '1' else '0')
         runtime = fast_worker.Runtime()
         output = tmp_path / f'result-{enabled}.json'
         assert runtime.run(dict(image_dir=str(tmp_path), meta_file=str(meta), output_file=str(output))) == (11, 11)
