@@ -33,3 +33,10 @@
 
 
 主线已合并官方42460fba规范/评分更新，历史指标按各自固定SHA保留；后续性能比较需复测当前基线。本轮未竞赛提交。
+
+## 20261026-000619-exit-rootcause
+
+- Owner: Codex /root; branch `exp/exit-rootcause-20261026`; status **running**; updated 2026-10-26 00:06 CST.
+- Base: main `90bcc6165f6d65b5f6a16bb1298af83465a54d04`; optimized runtime parent `9a195679dbea` (full SHA recorded in experiment). Current main official protocol/scorer retained; new comparison group, historical timings are context only.
+- Scope: reproduce and trace the ~105ms exit interval, implement a measured fix without changing timing boundaries, validate reference/validation accuracy and >=3 full runs.
+- GPU0 RTX4090 reserved from 00:06 CST after nvidia-smi confirmed idle; no concurrent GPU performance tasks. Worktree `/tmp/SuperShip-exit-20261026`. Hidden AP50 unmeasured; no competition submission.
