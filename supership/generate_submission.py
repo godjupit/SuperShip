@@ -119,22 +119,21 @@ def run_inference(
                               for b, s, l in zip(boxes_batch, scores_batch, labels_batch)]
             for target, detection in zip(targets, detections):
                 image_id = target["image_id"].item()
+                # Transfer each tensor once; batch-copy mode already provides lists.
                 boxes = detection["boxes"]
                 scores = detection["scores"]
                 labels = detection["labels"]
+                if isinstance(boxes, torch.Tensor):
+                    boxes = boxes.tolist()
                 if isinstance(scores, torch.Tensor):
                     scores = scores.tolist()
+                if isinstance(labels, torch.Tensor):
                     labels = labels.tolist()
                 for index, score in enumerate(scores):
-                    box = boxes[index]
-                    x1, y1, x2, y2 = box.tolist() if isinstance(box, torch.Tensor) else box
+                    x1, y1, x2, y2 = boxes[index]
                     width = round(x2 - x1, 2)
                     height = round(y2 - y1, 2)
-                    if width <= 0 or height <= 0:
-                        # The official output checker rejects non-positive
-                        # bbox sizes; a few degenerate low-score queries would
-                        # otherwise make the whole submission invalid.
-                        continue
+                    # Preserve non-positive boxes for the upstream unmatched-detection rule.
                     results.append(
                         {
                             "image_id": image_id,

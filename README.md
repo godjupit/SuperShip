@@ -10,7 +10,7 @@ The upstream RT-DETRv4 source is pinned to commit:
 55fefaaed7efe2a5f72d0a18fd4e05965e35c292
 ```
 
-See [UPSTREAM_README.md](UPSTREAM_README.md) for the original RT-DETRv4 documentation and [LICENSE](LICENSE) for the upstream license.
+See [UPSTREAM_README.md](experiments/guides/upstream.md) for the original RT-DETRv4 documentation and [LICENSE](LICENSE) for the upstream license.
 Machine-readable release metadata and checksums are stored in [RELEASE_INFO.json](RELEASE_INFO.json).
 
 ## Public Data
@@ -27,10 +27,10 @@ The remaining 4,300 hidden-test images, metadata, and annotations are not includ
 
 ### Download and install
 
-Download `SuperShip-public-data.tar.zst` from the [Tsinghua Cloud link](https://cloud.tsinghua.edu.cn/d/da024b91e33a46cb8200/). Its expected SHA-256 is:
+Download `SuperShip-public-data-v2.tar.zst` from the [Tsinghua Cloud link](https://cloud.tsinghua.edu.cn/d/da024b91e33a46cb8200/). Its expected SHA-256 is:
 
 ```text
-46e0b3a18ceaa0a95d8093aa7c4211c16dd69e4e27247a82146131e50e18f3fb
+4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71
 ```
 
 Install an archive already downloaded to the local machine:
@@ -83,7 +83,7 @@ SuperShip/
 
 ## Environment
 
-For proxy tunnels, Codex CLI installation, and GitHub authentication, run `bash setup_dev.sh`. See [开发机一键配置](DEV_SETUP.md) for first-time setup and later reuse.
+For proxy tunnels, Codex CLI installation, and GitHub authentication, run `bash tools/dev/setup_dev.sh`. See [开发机一键配置](experiments/guides/development.md) for first-time setup and later reuse.
 
 The official evaluation device is one NVIDIA GeForce RTX 3090. Python 3.11 is recommended.
 
@@ -114,7 +114,7 @@ python3 supership/generate_submission.py \
 Score the result:
 
 ```bash
-bash score_reference.sh output/reference_submission.json
+bash tools/benchmark/score_reference.sh output/reference_submission.json
 ```
 
 The validation baseline reported by the organizer is `AP50 = 0.916`.
@@ -131,7 +131,7 @@ The competition protocol separates untimed initialization from timed inference:
 Run the same protocol locally on the 200-image public reference split:
 
 ```bash
-bash benchmark_reference.sh
+bash tools/benchmark/benchmark_reference.sh
 ```
 
 The default is three independent runs. Results are written to:
@@ -145,13 +145,13 @@ output/reference_submission.run3.json
 Score all generated runs:
 
 ```bash
-bash score_reference.sh
+bash tools/benchmark/score_reference.sh
 ```
 
 Environment overrides are supported:
 
 ```bash
-BATCH_SIZE=16 RUNS=3 DEVICE=cuda:0 bash benchmark_reference.sh
+BATCH_SIZE=16 RUNS=3 DEVICE=cuda:0 bash tools/benchmark/benchmark_reference.sh
 ```
 
 ## Training
@@ -181,10 +181,28 @@ Official ranking is performed by the organizer on the unreleased 4,300-image hid
 
 ## RTX 4090 optimized pipeline
 
-The optimized worker is opt-in and retains the official READY/timing protocol. Install the extra dependencies with `python -m pip install -r requirements-fast.txt`, then run `bash benchmark_optimized.sh`. The wrapper delegates timing and output validation to the unchanged official `benchmark_reference.sh`. Set `PYTHON_BIN` to your Python environment as usual.
+The optimized worker is opt-in and retains the official READY/timing protocol. Install the extra dependencies with `python -m pip install -r requirements-fast.txt`, then run `bash tools/benchmark/benchmark_optimized.sh`. The wrapper delegates timing and output validation to the unchanged official `benchmark_reference.sh`. Set `PYTHON_BIN` to your Python environment as usual.
 
 The optimized wrapper now defaults to 544-pixel inputs and evaluation Conv-BN fusion (`FUSE_CONV_BN=1`, 99 pairs). Use `FUSE_CONV_BN=0` to reproduce the unfused control. The accepted fused three-run median was 0.340258450 seconds on RTX 4090; complete validation AP50 was 0.9057. See [the optimization log](OPTIMIZATION_EXPERIMENTS.md) for the paired comparisons and receipt.
 
 The measured fastest configuration uses 8 image threads, bounded prefetch, reduced JPEG decoding, OpenCV resizing, FP16 CUDA Graph inference and postprocessing, vectorized result assembly, `orjson`, and score threshold 0.05. Every input image is decoded and inferred after READY. The output is flushed, fsynced, closed, and GPU work synchronized before process exit. Initialization uses synthetic images only.
 
-For the higher accuracy alternative, use `JPEG_REDUCTION=1 bash benchmark_optimized.sh`. For the original inference route, continue using `bash benchmark_reference.sh` without `PIPELINE=fast`. Full measurements, accuracy checks and accepted submission receipts are linked in [OPTIMIZATION_RESULTS_20261022.md](OPTIMIZATION_RESULTS_20261022.md). Public validation cannot guarantee the organizer's hidden-set accuracy.
+For the higher accuracy alternative, use `JPEG_REDUCTION=1 bash tools/benchmark/benchmark_optimized.sh`. For the original inference route, continue using `bash tools/benchmark/benchmark_reference.sh` without `PIPELINE=fast`. Full measurements, accuracy checks and accepted submission receipts are linked in [OPTIMIZATION_RESULTS_20261022.md](experiments/reports/OPTIMIZATION_RESULTS_20261022.md). Public validation cannot guarantee the organizer's hidden-set accuracy.
+
+Predictions with non-positive width or height are accepted but cannot match any
+ground-truth object. They remain in confidence ranking and COCO `maxDets`
+selection as unmatched detections; they are not silently removed. Malformed
+JSON, invalid IDs, non-finite numbers, and scores outside `[0, 1]` are rejected.
+The reported `0.916` baseline is for validation, not the public reference split.
+
+Worker processes must finish their child tasks and close the output before
+completion. The Linux timing tool waits for remaining processes in the worker
+process group within the run timeout, including that time in the measurement.
+Failure or timeout terminates the process group. Workers must not detach tasks
+into a separate session or process group.
+
+## Tests
+
+```bash
+python3 -m unittest discover -s tests -v
+```

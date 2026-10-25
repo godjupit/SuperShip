@@ -424,7 +424,7 @@ class HybridEncoder(nn.Module):
                     pos_embed = self.build_2d_sincos_position_embedding(
                         w, h, self.hidden_dim, self.pe_temperature, device=src_flatten.device)
                 else:
-                    # Registered buffers move with the model to the inference device.
+                    # Non-persistent buffers follow model device/dtype without changing checkpoints.
                     pos_embed = getattr(self, f'pos_embed{enc_ind}', None)
 
                 memory :torch.Tensor = self.encoder[i](src_flatten, src_mask=None, pos_embed=pos_embed)
