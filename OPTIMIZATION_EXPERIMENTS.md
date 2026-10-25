@@ -74,3 +74,9 @@ CPU-supply route20261026-004444-supply-exit abandoned at user request. Ten-pair 
 
 
 Completion 2026-10-26 01:40 CST —20261026-013427-validation-sweep: **completed**, GPU0 released. User clarified200-image reference allowed, larger validation skipped thereafter. Three candidate logs /9reference outputs passed. half-w10 median275.737156ms (268.183722/275.737156/304.649908), half-w10-b16 median276.850853ms, half-w10-depth5 median291.720128ms. Only half-w10 uploaded;Accepted2026-10-26 01:39:08,275.737156ms, timing parsed only. Reference AP50>=0.7809; prior validation0.9055–0.9056 for half-w10, hidden=null. Slight score improvement1.60% vs prior280.231356ms overlaps observed variance. [Results](experiments/20261026-013427-validation-sweep/notes.md); source/commands/hashes preserved; no timer/model source changes.
+
+
+## 20261026-014213-configwide
+
+- Codex /root; branch `exp/configwide-20261026`; status **running**; updated2026-10-26 01:42 CST. Parent `509fe983b6864cbcbda1b8f52641c942dd11328a`; worktree `/tmp/SuperShip-configwide-20261026`. GPU0 RTX4090 reserved from01:42 after idle checks.
+- User explicitly requests sustained optimization until quota ends.200-image reference-only search; no larger validation.17 individually registered config hypotheses (batch6/10/12/24/32, workers9/11, depth2/4, decoder2, encoder layout, native cat, exact affine, fixed cuDNN, arena2, score0.075, control). Complete3-round logs/output checks before immediate upload of strict improvements overAccepted275.737156ms. All outcomes retained; hidden=null.
