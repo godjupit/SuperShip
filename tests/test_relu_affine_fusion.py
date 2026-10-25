@@ -1,0 +1,42 @@
+"""Protect separate float32 arithmetic and layout across CUDA Graph replays."""
+import pytest
+import torch
+
+from engine.misc.relu_affine_triton import relu_affine,FusedReLUAffine
+from engine.backbone.hgnetv2 import LearnableAffineBlock
+
+pytestmark=pytest.mark.skipif(not torch.cuda.is_available(),reason='CUDA required')
+
+
+@pytest.mark.parametrize('dtype',[torch.float16,torch.float32])
+@pytest.mark.parametrize('layout',['nchw','channels_last','strided'])
+def test_matches_original_relu_mul_add_exactly(dtype,layout):
+    generator=torch.Generator(device='cuda').manual_seed(123)
+    x=torch.randn((2,7,23,19),generator=generator,device='cuda',dtype=dtype)
+    if layout=='channels_last':x=x.contiguous(memory_format=torch.channels_last)
+    if layout=='strided':x=x[:,:,:,::2]
+    scale=torch.tensor([-1.1379],device='cuda');bias=torch.tensor([.08613],device='cuda')
+    expected=torch.relu(x)*scale+bias
+    with torch.inference_mode():actual=relu_affine(x,scale,bias)
+    torch.testing.assert_close(actual,expected,rtol=0,atol=0)
+    assert actual.dtype==torch.float32
+    if layout=='channels_last':assert actual.is_contiguous(memory_format=torch.channels_last)
+
+
+def test_nonfinite_and_zero_semantics():
+    x=torch.tensor([float('nan'),float('inf'),-float('inf'),0.,-0.,1.,-1.],device='cuda').view(1,1,1,7)
+    scale=torch.tensor([1.37],device='cuda');bias=torch.tensor([-.18],device='cuda')
+    with torch.inference_mode():actual=relu_affine(x,scale,bias)
+    torch.testing.assert_close(actual,torch.relu(x)*scale+bias,rtol=0,atol=0,equal_nan=True)
+
+
+def test_graph_replay_reads_current_inputs_and_scalars():
+    x=torch.zeros((2,8,16,16),device='cuda',dtype=torch.float16).contiguous(memory_format=torch.channels_last)
+    original=LearnableAffineBlock().cuda().eval();fused=FusedReLUAffine(original).eval()
+    with torch.inference_mode():
+        for _ in range(3):fused(x)
+        torch.cuda.synchronize();graph=torch.cuda.CUDAGraph()
+        with torch.cuda.graph(graph):captured=fused(x)
+        x.normal_();original.scale.fill_(1.234);original.bias.fill_(-.765)
+        graph.replay();torch.cuda.synchronize()
+        torch.testing.assert_close(captured,original(torch.relu(x)),rtol=0,atol=0)
