@@ -12,6 +12,9 @@ if mode=='empty-cache':
     torch.cuda.empty_cache()
     torch.cuda.synchronize()
     print(json.dumps(dict(diagnostic='trimmed-memory',allocated=torch.cuda.memory_allocated(),reserved=torch.cuda.memory_reserved())),file=sys.stderr,flush=True)
+if os.environ.get('EXIT_KERNEL_TRACE')=='1':
+    marker=Path(os.environ['EXIT_SAMPLE_MARKER']);marker.with_suffix('.ready').touch()
+    while not marker.with_suffix('.armed').exists():time.sleep(.005)
 print('THU_RS_READY',flush=True)
 request=read_worker_request();received=time.monotonic_ns()
 detections,images=runtime.run(request);finished=time.monotonic_ns()

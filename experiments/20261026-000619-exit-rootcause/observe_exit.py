@@ -12,7 +12,7 @@ def record_exit(process,completed,result):
     sampler=None
     marker=os.environ.get('EXIT_SAMPLE_MARKER')
     if marker:
-        sampler=subprocess.Popen(['sudo','-n','/usr/bin/python3',str(Path(__file__).with_name('sample_proc.py')),marker,str(process.pid),marker+'.stacks.json'])
+        sampler=subprocess.Popen(['sudo','-n','/usr/bin/python3',str(Path(__file__).with_name('kernel_trace.py' if os.environ.get('EXIT_KERNEL_TRACE')=='1' else 'sample_proc.py')),marker,str(process.pid),marker+'.stacks.json'])
     original_exit(process,completed,result)
     if sampler: sampler.wait(timeout=10)
     records.append(dict(pid=process.pid,**result))
