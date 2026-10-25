@@ -10,7 +10,9 @@ functions=['exit_mmap','exit_files','unmap_vmas','free_pgtables','unmap_single_v
 created=[];trace.mkdir()
 def put(name,value):(trace/name).write_text(value)
 def probe(value):
- with (base/'kprobe_events').open('a') as f:f.write(value+'\n')
+ fd=os.open(base/'kprobe_events',os.O_WRONLY|os.O_APPEND)
+ try:os.write(fd,(value+'\n').encode())
+ finally:os.close(fd)
 try:
  put('tracing_on','0');put('buffer_size_kb','8192');put('set_event_pid',' '.join(p.name for p in Path('/proc',pid,'task').iterdir()))
  for i,fn in enumerate(functions):
