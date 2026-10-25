@@ -23,11 +23,11 @@
 | 当前状态 | 定位 |
 | --- | --- |
 | 历史最短有效完整参考日志 | 20261024-001935-kernel-weights-linear-concat，0.302713346秒；[记录](experiments/20261024-001935-kernel-weights-linear-concat/notes.md) |
-| 当前比较组推荐候选 | 20261026-013427-validation-sweep half-w10：batch8、10解码线程、depth3、融合半精度输出；完整三轮中位275.737156ms已Accepted；小幅收益有波动重叠；[记录](experiments/20261026-013427-validation-sweep/notes.md) |
+| 当前比较组推荐候选 | 20261026-014213-configwide/cudnn-fixed：batch8,w10,depth3,融合半精度输出,CUDNN_BENCHMARK=0；完整三轮266.237340ms已Accepted，波动重叠；[记录](experiments/20261026-014213-configwide/notes.md) |
 | 保守高精度候选 | 640完整JPEG解码，validation AP50=0.9167；[记录](experiments/20261022-official-fast-opencv-score005/notes.md) |
-| 最近Accepted信息 | 2026-10-26 01:39:08，账号ruc2602，SUPERSHIP **0.275737156秒**；[脱敏回执](experiments/20261026-013427-validation-sweep/submission-receipt.txt)；仅计时解析，hidden AP50未测 |
+| 最近Accepted信息 | 2026-10-26 01:49:15，ruc2602，**0.266237340秒**；[脱敏回执](experiments/20261026-014213-configwide/submission-receipt.txt)；timing parsed only，hidden未测 |
 | 官方隐藏集最优 | 未知 |
-| 任务状态 | 20261026-013427-validation-sweep：completed；200张三配置九轮通过，Accepted275.737156ms；GPU0已释放；优化源码保留实验分支 |
+| 任务状态 | configwide completed；fusedio running，GPU0独占算子检查与200张刷分；不跑大验证集 |
 
 **常用入口**：运行`bash run.sh --worker`；基准/评分脚本在[tools/benchmark/](tools/benchmark/)；开发环境在[tools/dev/](tools/dev/)；主目录源码保持main原版本，其他优化代码见[分支快照](experiments/branches/README.md)。
 
@@ -80,3 +80,13 @@ Completion 2026-10-26 01:40 CST —20261026-013427-validation-sweep: **completed
 
 - Codex /root; branch `exp/configwide-20261026`; status **running**; updated2026-10-26 01:42 CST. Parent `509fe983b6864cbcbda1b8f52641c942dd11328a`; worktree `/tmp/SuperShip-configwide-20261026`. GPU0 RTX4090 reserved from01:42 after idle checks.
 - User explicitly requests sustained optimization until quota ends.200-image reference-only search; no larger validation.17 individually registered config hypotheses (batch6/10/12/24/32, workers9/11, depth2/4, decoder2, encoder layout, native cat, exact affine, fixed cuDNN, arena2, score0.075, control). Complete3-round logs/output checks before immediate upload of strict improvements overAccepted275.737156ms. All outcomes retained; hidden=null.
+
+
+## 20261026-014417-fusedio
+
+- Codex /root; branch `exp/fusedio-20261026`; status **running** (CPU work only); updated2026-10-26 01:44 CST. Parent `509fe983b6864cbcbda1b8f52641c942dd11328a`; worktree `/tmp/SuperShip-fusedio-20261026`. GPU remains reserved exclusively for configwide; new kernels tested only after handover.
+- Registered: fuse uint8 normalization, fuse detection output geometry/gather, segmented feature packing, kernel block tuning, light inference imports, query-count/output-count screening. Opt-in individual gates and full200-image three-round checks, no large validation; only faster valid logs uploaded.
+
+2026-10-26 01:50 CST GPU handover: configwide17-case suite complete,51worker outputs,2reference precision-failed configurations (decoder2,score0.075) not uploaded; latestAccepted266.237340ms (cudnn-fixed), timing-only. GPU0 verified idle and reserved now for fusedio tests/screens. All16 fusedio configs inherit new CUDNN_BENCHMARK=0 parent from configwide/cudnn-fixed; baseline floor refreshed266.237340ms. No larger validation jobs.
+
+20261026-014213-configwide **completed** at01:50 CST;17configs/51rounds; latestAccepted266.237340ms,cudnn-fixed,01:49:15; decoder2/threshold0.075 failed referenceAP, no upload. GPU handed to fusedio. Full evidence experiments/20261026-014213-configwide/notes.md.
