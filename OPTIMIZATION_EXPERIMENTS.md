@@ -364,3 +364,7 @@ RTX 4090，公开参考集 200 张，torch、fp32、batch=8、workers=4，独立
 合并后验证：GPU0 RTX4090，负责人Codex /root，2026-10-23 23:56预检无其他GPU进程，开始独占参考三轮及完整验证集一轮。有效参数及精确命令见experiments/20261023-235500-main-fastest-merge/；运行结束后释放并记录全部结果。
 
 合并后验证完成：源码49f97ba（完整SHA见详细记录），56 passed/1 skipped；RTX4090参考集三轮0.330820520/0.324560194/0.346345743秒，中位0.330820520秒，AP50=0.7817/0.7823/0.7814；完整1030张验证集AP50=0.9057、单次1.243855975秒，均通过官方输出及精度检查。运行开始23:55，23:57检查GPU空闲并释放。main优化wrapper默认启用99对Conv-BN融合，FUSE_CONV_BN=0可恢复对照。原三轮Accepted 0.340258450秒和保守候选仍保留；本次无新竞赛提交，hidden AP50未测。Nsight内核表明确标注为未融合对照。[完整合并与验证记录](experiments/20261023-235500-main-fastest-merge/notes.md)。
+
+## 2026-10-25｜20261025-174717-profile-current｜running
+
+Codex /root；exp/profile-current-20261025；父源码d0db0d31148319923efe9eb05fb2ad3f19afa4fd。GPU0 RTX4090空闲预检后预约，开始2026-10-25T17:47:17.683715；三轮正式测试及真实输入诊断，不提交竞赛。记录位于 /home/ubuntu/SuperShip-profile-current-20261025/experiments/20261025-174717-profile-current/notes.md。
