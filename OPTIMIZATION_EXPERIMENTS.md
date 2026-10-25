@@ -16,6 +16,7 @@
 | 10-25 | 目录归档、全分支汇集 | 已完成：9分支源码/129份原始记录集中归档，非性能实验 |
 | 10-25 19:00 | Git收尾与官方规范同步 | 上游冲突已解决；批量回传兼容检查及93项测试通过；整理落到main |
 | 10-26 00:06–00:26 | 定位退出时主机小页回收，启用透明大页 | 6对中位356.262→289.449ms，快18.75%；独立三轮285.963ms已Accepted；validation AP50=0.9058，32GiB硬限制通过、峰值RSS2.025GiB |
+| 10-26 00:29–00:37 | 已接受THP版本的时间构成诊断 | 无插桩三轮中位293.056ms；核心约221–232ms、退出61–93ms；GPU活动147–153ms并有38–46ms空档；热缓存下CPU解码供给优先；[记录](experiments/20261026-002932-profile-thp/notes.md) |
 
 以上GPU、数据划分和计时组不同，不能直接按一列排榜。RTX4090参考集不等于RTX3090或隐藏集成绩；所有hidden AP50均未测。
 
@@ -26,7 +27,7 @@
 | 保守高精度候选 | 640完整JPEG解码，validation AP50=0.9167；[记录](experiments/20261022-official-fast-opencv-score005/notes.md) |
 | 最近Accepted信息 | 2026-10-26 00:24:37，账号ruc2602，SUPERSHIP 0.285962649秒；[脱敏回执](experiments/20261026-000619-exit-rootcause/submission-receipt.txt)；仅计时解析，hidden AP50未测 |
 | 官方隐藏集最优 | 未知 |
-| 任务状态 | 20261026-000619-exit-rootcause：completed；退出根因定位、32GiB硬上限验证及系统提交完成；GPU0于00:26释放 |
+| 任务状态 | 20261026-002932-profile-thp：completed；14份参考输出校验/评分通过，时间构成与热点证据已保存；GPU0于00:37释放；Accepted成绩保持285.962649ms |
 
 **常用入口**：运行`bash run.sh --worker`；基准/评分脚本在[tools/benchmark/](tools/benchmark/)；开发环境在[tools/dev/](tools/dev/)；主目录源码保持main原版本，其他优化代码见[分支快照](experiments/branches/README.md)。
 
@@ -41,3 +42,11 @@
 - Base: main `90bcc6165f6d65b5f6a16bb1298af83465a54d04`; optimized runtime parent `9a195679dbea` (full SHA recorded in experiment). Current main official protocol/scorer retained; new comparison group, historical timings are context only.
 - Scope: reproduce and trace the ~105ms exit interval, implement a measured fix without changing timing boundaries, validate reference/validation accuracy and >=3 full runs.
 - GPU0 RTX4090 reserved 00:06–00:26 CST after idle checks; released after final tests/timing. Worktree `/tmp/SuperShip-exit-20261026`. Complete1030-image validation and 32GiB hard memory cap passed (peak worker RSS2.025GiB), 101 tests passed/1 optional skip. User authorized system submission; new intact three-round log accepted at00:24:37,0.285962649s. Hidden AP50 unmeasured; official hidden best unknown. Main receives launcher fix only; optimized runtime remains on experiment branch.
+
+## 20261026-002932-profile-thp
+
+- Owner Codex /root; branch `exp/profile-thp-20261026`; status **completed**; updated 2026-10-26 00:37 CST.
+- Parent `exp/exit-rootcause-20261026` at `6a774ee` (full SHA in experiment); target is the accepted285.962649ms optimized runtime, not main's standard pipeline.
+- GPU0 RTX4090 reserved00:29–00:37 after idle checks, released; worktree `/tmp/SuperShip-time-20261026`. Scope: three unchanged-protocol baseline runs, main-thread stage and boundary probes, inference-only Nsight kernel/transfer timeline, prioritized bottleneck analysis. No inference changes or new competition submission; preserve current Accepted log. Host32GB constraint retained.
+
+诊断结论（20261026-002932-profile-thp）：主线程输入Future等待164–183ms与GPU执行重叠，不能作为纯GPU空闲；Nsight独立测得GPU空档38–46ms。三轮物理读取0bytes，核心约1.6 CPU秒/7.2核；主要方向是解码/预处理供给、退出尾延迟、GPU转换/特征pack。完整三轮参考AP50=0.7809/0.7812/0.7809；validation AP50沿用未改动父版本0.9058，本轮未重测；hidden未测。无推理改动、无新竞赛提交，候选与最近Accepted不变。
