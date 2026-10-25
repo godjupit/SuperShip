@@ -1,5 +1,5 @@
 """Diagnostic worker: preserve input/exit protocol; instrument only real run()."""
-import collections,json,linecache,os,sys,threading,time
+import collections,json,linecache,os,sys,threading,time,resource
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 import torch
@@ -39,15 +39,17 @@ def trace(frame,event,arg):
     return trace
 if mode=='nsys':torch.cuda.cudart().cudaProfilerStart()
 if mode=='line':sys.settrace(trace)
+io_before={k:int(v.strip()) for k,v in (line.split(':') for line in Path('/proc/self/io').read_text().splitlines())};usage_before=resource.getrusage(resource.RUSAGE_SELF)
 start=time.monotonic_ns()
 try:
     with torch.inference_mode():detections,images=runtime.run(request)
 finally:
     if mode=='line':sys.settrace(None)
 finished=time.monotonic_ns()
+io_after={k:int(v.strip()) for k,v in (line.split(':') for line in Path('/proc/self/io').read_text().splitlines())};usage_after=resource.getrusage(resource.RUSAGE_SELF)
 if mode=='nsys':torch.cuda.cudart().cudaProfilerStop()
 rows=[dict(line=k,source=linecache.getline(target.co_filename,k).strip(),milliseconds=v/1e6,calls=calls[k]) for k,v in line_ns.items()]
-record=dict(mode=mode,request_received_ns=received,run_started_ns=start,run_finished_ns=finished,runtime_ms=(finished-start)/1e6,images=images,detections=detections,lines=rows,intervals=intervals,loads=loads,cv_calls=cv_calls,scope='diagnostic; main-thread line intervals are exclusive; background load/GPU times overlap')
+record=dict(io_delta={k:io_after[k]-io_before[k] for k in io_before},cpu_user_ms=(usage_after.ru_utime-usage_before.ru_utime)*1000,cpu_system_ms=(usage_after.ru_stime-usage_before.ru_stime)*1000,major_faults=usage_after.ru_majflt-usage_before.ru_majflt,mode=mode,request_received_ns=received,run_started_ns=start,run_finished_ns=finished,runtime_ms=(finished-start)/1e6,images=images,detections=detections,lines=rows,intervals=intervals,loads=loads,cv_calls=cv_calls,scope='diagnostic; main-thread line intervals are exclusive; background load/GPU times overlap')
 Path(request['output_file']).with_suffix('.stages.json').write_text(json.dumps(record,indent=2)+'\n')
 print(f'processed {images} images; wrote {detections} detections',file=sys.stderr,flush=True)
 print(json.dumps(dict(diagnostic='boundary',mode=mode,request_received_ns=received,run_started_ns=start,run_finished_ns=finished,before_exit_ns=time.monotonic_ns())),file=sys.stderr,flush=True)
