@@ -50,3 +50,9 @@
 - GPU0 RTX4090 reserved00:29–00:37 after idle checks, released; worktree `/tmp/SuperShip-time-20261026`. Scope: three unchanged-protocol baseline runs, main-thread stage and boundary probes, inference-only Nsight kernel/transfer timeline, prioritized bottleneck analysis. No inference changes or new competition submission; preserve current Accepted log. Host32GB constraint retained.
 
 诊断结论（20261026-002932-profile-thp）：主线程输入Future等待164–183ms与GPU执行重叠，不能作为纯GPU空闲；Nsight独立测得GPU空档38–46ms。三轮物理读取0bytes，核心约1.6 CPU秒/7.2核；主要方向是解码/预处理供给、退出尾延迟、GPU转换/特征pack。完整三轮参考AP50=0.7809/0.7812/0.7809；validation AP50沿用未改动父版本0.9058，本轮未重测；hidden未测。无推理改动、无新竞赛提交，候选与最近Accepted不变。
+
+## 20261026-013427-validation-sweep
+
+- Owner Codex /root; branch `exp/validation-sweep-20261026`; status **running**; updated2026-10-26 01:34 CST. Parent `222dc7a6b2c7bdf799e207362d648ff242e23fd3`; isolated worktree `/tmp/SuperShip-val-sweep-20261026`.
+- Latest user instruction: skip reference-set testing; optimize multiple directions and pursue scores. No reference jobs launched by this experiment pending clarification of submission-only timing. Full1030-image validation screens batch size, loader count and queue depth on the existing affine fusion candidates; one hypothesis per configuration, all outcomes retained. No timer/scorer changes or pre-READY data access.
+- GPU0 RTX4090 reserved01:34 after process/idle checks; no previous experiment GPU processes remain. Parent fast-score-results.json and sanitized receipt confirm Accepted **0.280231356s** at2026-10-26 01:28:59 for half-output (log SHA256 `757f6037b42e223f850dffe227a906d812a9f48adcd164f39c1774596d5ddd7c`); main's older285.962649ms entry is stale. Acceptance is timing parsed only; hidden AP50=null. No old log resubmission.

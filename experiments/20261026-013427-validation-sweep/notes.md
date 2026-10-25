@@ -1,0 +1,7 @@
+# Validation-only configuration screen
+
+ID20261026-013427-validation-sweep; owner Codex /root; running. Parent222dc7a6b2c7bdf799e207362d648ff242e23fd3, affine-half-output parent experiment20261026-011014-fuse-affine. RTX4090 GPU0 reserved01:34 CST on2026-10-26 after confirming no GPU processes. User requests no reference tests; no reference input accessed by this experiment. Latest independently verified Accepted receipt is280.231356ms; hidden AP50=null.
+
+Registered hypotheses: half-b8 control; half-b4 and half-b16 batch sizing; half-w10 loader count; half-depth5 queue depth; exact-b8 scalar output precision. Each differs in a single parameter from half-b8. Initial screening one full1030-image validation run per case; these are screens, not statistically established gains. All output coverage, tail and AP50 checks retained. Repeat selected configurations independently three rounds before any local promotion. Validation baseline0.9170, threshold0.89866. No validation log is suitable for competition upload. Submission-only reference timing requires clarification of latest instruction. Official timer/scorer unchanged, THP and worker group exit retained.
+
+Reproduce: `/home/ubuntu/.cache/supership-venv/bin/python experiments/20261026-013427-validation-sweep/run_case.py VARIANT --runs 1 --name UNIQUE_CASE`. Variant JSON records all overrides; command.json stores exact source commit and commands. Raw outputs in output/20261026-013427-validation-sweep (local only).
