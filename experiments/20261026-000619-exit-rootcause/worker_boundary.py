@@ -8,6 +8,23 @@ runtime=Runtime()
 import torch
 mode=os.environ.get('EXIT_PROBE_MODE','boundary')
 print(json.dumps(dict(diagnostic='ready-memory',allocated=torch.cuda.memory_allocated(),reserved=torch.cuda.memory_reserved(),host_maps=len(Path('/proc/self/maps').read_text().splitlines()))),file=sys.stderr,flush=True)
+smaps=Path('/proc/self/smaps').read_text()
+if os.environ.get('EXIT_SMAPS_PATH'):Path(os.environ['EXIT_SMAPS_PATH']).write_text(smaps)
+if mode=='trim-readonly':
+    import ctypes,re
+    libc=ctypes.CDLL(None,use_errno=True)
+    libc.madvise.argtypes=[ctypes.c_void_p,ctypes.c_size_t,ctypes.c_int]
+    total=0;regions=[]
+    for block in re.split(r'(?=^[0-9a-f]+-[0-9a-f]+ )',smaps,flags=re.M):
+        if not block.strip():continue
+        lines=block.splitlines();fields=lines[0].split();metrics={line.split(':')[0]:line.split(':')[1].strip() for line in lines[1:] if ':' in line}
+        if len(fields)<6 or fields[1]!='r--p' or not any(name in fields[-1] for name in ['libcublas','libcudnn','libtorch_cuda','libnvrtc','libcusparse','libcusolver']):continue
+        if int(metrics.get('Private_Dirty','0 kB').split()[0]) or int(metrics.get('Anonymous','0 kB').split()[0]):continue
+        lo,hi=[int(x,16) for x in fields[0].split('-')]
+        code=libc.madvise(lo,hi-lo,4)
+        if code:raise OSError(ctypes.get_errno(),'madvise')
+        rss=int(metrics.get('Rss','0 kB').split()[0]);total+=rss;regions.append([fields[-1],rss,hi-lo])
+    print(json.dumps(dict(diagnostic='trim-readonly',rss_kb=total,regions=regions)),file=sys.stderr,flush=True)
 if mode=='empty-cache':
     torch.cuda.empty_cache()
     torch.cuda.synchronize()
