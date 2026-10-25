@@ -40,5 +40,11 @@
   "fused-io": {
     "FUSED_NORMALIZE": "1",
     "FUSED_POSTPROCESS": "1"
+  },
+  "gpu-resize512": {
+    "UPLOAD_SIZE": "512"
+  },
+  "model-deploy": {
+    "MODEL_DEPLOY": "1"
   }
 }

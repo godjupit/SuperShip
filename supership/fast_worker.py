@@ -42,6 +42,7 @@ def bulk_results(items, chunks, threshold):
 class Runtime:
     def __init__(self):
         self.side = int(os.environ.get("INPUT_SIZE", "640"))
+        self.upload_side = int(os.environ.get("UPLOAD_SIZE", str(self.side)))
         self.batch = int(os.environ.get("BATCH_SIZE", "8"))
         self.workers = int(os.environ.get("NUM_WORKERS", "8"))
         self.prefetch = int(os.environ.get("PIPELINE_DEPTH", "3"))
@@ -62,6 +63,10 @@ class Runtime:
         self.fused_postprocess = os.environ.get("FUSED_POSTPROCESS", "0") == "1"
         if self.fused_normalize and (self.precision != "fp16" or os.environ.get("CHANNELS_LAST", "1") != "1"):
             raise ValueError("fused normalization requires channels-last FP16 inference")
+        if self.upload_side < 320 or self.upload_side > self.side or self.upload_side % 32:
+            raise ValueError("UPLOAD_SIZE must be a multiple of 32 between 320 and INPUT_SIZE")
+        if self.upload_side != self.side and (self.decoder == "cuda" or self.fused_normalize):
+            raise ValueError("reduced upload requires CPU decoding and native normalization")
         if self.early_recycle and self.decoder == "cuda":
             raise ValueError("early input recycling requires CPU image decoding")
         if self.bulk_results and not self.vectorized:
@@ -144,7 +149,7 @@ class Runtime:
         if os.environ.get("CHANNELS_LAST", "1") == "1":
             self.model.to(memory_format=torch.channels_last)
         self.post.deploy()
-        self.images = torch.zeros(self.batch, self.side, self.side, 3, dtype=torch.uint8, device=self.device)
+        self.images = torch.zeros(self.batch, self.upload_side, self.upload_side, 3, dtype=torch.uint8, device=self.device)
         self.sizes = torch.ones(self.batch, 2, dtype=torch.float32, device=self.device)
         self.host = [torch.empty_like(self.images, device="cpu", pin_memory=True)
                      for _ in range(self.prefetch)]
@@ -182,7 +187,12 @@ class Runtime:
             from supership.fused_io import normalized_half
             images = normalized_half(self.images)
         else:
-            images = self.images.permute(0, 3, 1, 2).float().mul_(1 / 255)
+            images = self.images.permute(0, 3, 1, 2).float()
+            if self.upload_side != self.side:
+                images = torch.nn.functional.interpolate(images, size=(self.side, self.side),
+                                                        mode="bilinear", align_corners=False)
+                images.round_()
+            images.mul_(1 / 255)
         if os.environ.get("CHANNELS_LAST", "1") != "1":
             images = images.contiguous()
         outputs = model_forward(self.model, images, self.precision)
@@ -206,7 +216,8 @@ class Runtime:
             h, w = image.shape[:2]
             copy_mode = getattr(self, "copy_mode", "strided")
             if copy_mode != "direct":
-                resized = cv2.resize(image, (destination.shape[1], destination.shape[0]), interpolation=cv2.INTER_LINEAR)
+                resized = (image if image.shape[:2] == destination.shape[:2] else
+                           cv2.resize(image, (destination.shape[1], destination.shape[0]), interpolation=cv2.INTER_LINEAR))
             if copy_mode == "direct":
                 # Reuse the pinned destination for both resize and channel swap.
                 cv2.resize(image, (destination.shape[1], destination.shape[0]), dst=destination, interpolation=cv2.INTER_LINEAR)
