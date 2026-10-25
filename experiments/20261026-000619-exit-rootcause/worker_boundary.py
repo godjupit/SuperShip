@@ -14,7 +14,10 @@ if mode=='empty-cache':
     print(json.dumps(dict(diagnostic='trimmed-memory',allocated=torch.cuda.memory_allocated(),reserved=torch.cuda.memory_reserved())),file=sys.stderr,flush=True)
 if os.environ.get('EXIT_KERNEL_TRACE')=='1':
     marker=Path(os.environ['EXIT_SAMPLE_MARKER']);marker.with_suffix('.ready').touch()
-    while not marker.with_suffix('.armed').exists():time.sleep(.005)
+    deadline=time.monotonic()+15
+    while not marker.with_suffix('.armed').exists():
+        if time.monotonic()>deadline:raise RuntimeError('kernel trace helper failed to arm')
+        time.sleep(.005)
 print('THU_RS_READY',flush=True)
 request=read_worker_request();received=time.monotonic_ns()
 detections,images=runtime.run(request);finished=time.monotonic_ns()
@@ -23,4 +26,11 @@ print(json.dumps(dict(diagnostic='worker-boundary',request_received_ns=received,
 sys.stdout.flush();sys.stderr.flush()
 marker=os.environ.get('EXIT_SAMPLE_MARKER')
 if marker:Path(marker).write_text(json.dumps({'pid':os.getpid(),'ns':time.monotonic_ns()}))
+if mode=='device-reset':
+    import ctypes
+    started=time.monotonic_ns()
+    cudart=ctypes.CDLL(str(Path(torch.__file__).resolve().parent.parent/'nvidia/cuda_runtime/lib/libcudart.so.12'))
+    cudart.cudaDeviceReset.restype=ctypes.c_int
+    code=cudart.cudaDeviceReset()
+    print(json.dumps(dict(diagnostic='device-reset',code=code,duration_ns=time.monotonic_ns()-started)),file=sys.stderr,flush=True)
 os._exit(0)
