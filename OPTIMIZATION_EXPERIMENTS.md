@@ -41,3 +41,9 @@
 - Base: main `90bcc6165f6d65b5f6a16bb1298af83465a54d04`; optimized runtime parent `9a195679dbea` (full SHA recorded in experiment). Current main official protocol/scorer retained; new comparison group, historical timings are context only.
 - Scope: reproduce and trace the ~105ms exit interval, implement a measured fix without changing timing boundaries, validate reference/validation accuracy and >=3 full runs.
 - GPU0 RTX4090 reserved 00:06–00:26 CST after idle checks; released after final tests/timing. Worktree `/tmp/SuperShip-exit-20261026`. Complete1030-image validation and 32GiB hard memory cap passed (peak worker RSS2.025GiB), 101 tests passed/1 optional skip. User authorized system submission; new intact three-round log accepted at00:24:37,0.285962649s. Hidden AP50 unmeasured; official hidden best unknown. Main receives launcher fix only; optimized runtime remains on experiment branch.
+
+## 20261026-002932-profile-thp
+
+- Owner Codex /root; branch `exp/profile-thp-20261026`; status **running**; updated 2026-10-26 00:29 CST.
+- Parent `exp/exit-rootcause-20261026` at `6a774ee` (full SHA in experiment); target is the accepted285.962649ms optimized runtime, not main's standard pipeline.
+- GPU0 RTX4090 reserved from00:29 after idle check; worktree `/tmp/SuperShip-time-20261026`. Scope: three unchanged-protocol baseline runs, main-thread stage and boundary probes, inference-only Nsight kernel/transfer timeline, prioritized bottleneck analysis. No inference changes or new competition submission; preserve current Accepted log. Host32GB constraint retained.
