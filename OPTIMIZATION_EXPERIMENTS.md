@@ -53,6 +53,13 @@
 
 ## 20261026-004444-supply-exit
 
-- Owner Codex /root; branch `exp/supply-exit-20261026`; status **running**; updated2026-10-26 00:44 CST. Parent accepted runtime/diagnostics `67f2d7f` (full SHA in experiment).
+- Owner Codex /root; branch `exp/supply-exit-20261026`; status **abandoned**; updated2026-10-26 01:10 CST; user requested another optimization direction. Parent accepted runtime/diagnostics `67f2d7f` (full SHA in experiment).
 - GPU0 RTX4090 reserved from00:44 after idle check. Worktree `/tmp/SuperShip-supply-20261026`. Separate hypotheses: faster CPU JPEG decoder and supply scheduling; reduce unnecessary inference imports to lower host-memory exit cost. Register each variant before running, preserve failures and compare against unchanged accepted runtime.
 - Required: exact public200 reference/1030 validation coverage, tail handling, >=3 independent complete timings and paired confirmation;32GB host cap; user authorization for Git push and competition submission persists. No altered timer/scorer or pre-READY evaluation access; only a faster validated complete log may replace currentAccepted285.962649ms.
+
+CPU-supply route20261026-004444-supply-exit abandoned at user request. Ten-pair light10 result inconclusive (5/10wins, CI crosses0); resize trials unpromoted. Full records on exp/supply-exit-20261026; local raw artifacts preserved in main output/20261026-004444-supply-exit (dependency symlinks retained). Accepted285.962649ms unchanged. GPU0 handed over to new fusion experiment, no concurrent GPU work.
+
+## 20261026-011014-fuse-affine
+
+- Codex /root; branch `exp/fuse-affine-20261026`; status **running**; updated2026-10-26 01:10 CST. Parent accepted runtime/diagnostics67f2d7f (full SHA in notes).
+- GPU0 RTX4090 reserved from01:10, verified idle. Worktree `/tmp/SuperShip-affine-20261026`. Hypothesis: fuse HGNetv2 ReLU+float32 learned affine without changing scalar dtype, image decode/resize, model structure or precision policy; disable FMA and verify against original arithmetic. Exact-output tests, reference/validation and full timing required before promotion;32GB cap retained.
