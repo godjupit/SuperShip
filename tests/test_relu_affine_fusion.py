@@ -40,3 +40,13 @@ def test_graph_replay_reads_current_inputs_and_scalars():
         x.normal_();original.scale.fill_(1.234);original.bias.fill_(-.765)
         graph.replay();torch.cuda.synchronize()
         torch.testing.assert_close(captured,original(torch.relu(x)),rtol=0,atol=0)
+
+
+@pytest.mark.parametrize('dtype',[torch.float16,torch.float32])
+def test_half_store_keeps_float32_scalar_arithmetic(dtype):
+    x=torch.randn((2,11,19,23),device='cuda',dtype=dtype).contiguous(memory_format=torch.channels_last)
+    scale=torch.tensor([1.137923],device='cuda');bias=torch.tensor([-.073195],device='cuda')
+    expected=(torch.relu(x)*scale+bias).half()
+    with torch.inference_mode():actual=relu_affine(x,scale,bias,output_half=True)
+    torch.testing.assert_close(actual,expected,rtol=0,atol=0)
+    assert actual.dtype==torch.float16

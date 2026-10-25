@@ -18,7 +18,9 @@ class LinearPointwise(nn.Module):
 
 def apply_kernel_options(model, precision):
     options = {key: os.environ.get(key, "0") == "1" for key in
-               ["KERNEL_WEIGHT_HALF", "KERNEL_AFFINE_HALF", "KERNEL_LINEAR1X1", "KERNEL_RELU_AFFINE_FUSE"]}
+               ["KERNEL_WEIGHT_HALF", "KERNEL_AFFINE_HALF", "KERNEL_LINEAR1X1", "KERNEL_RELU_AFFINE_FUSE", "KERNEL_RELU_AFFINE_HALF_OUT"]}
+    if options["KERNEL_RELU_AFFINE_HALF_OUT"] and not options["KERNEL_RELU_AFFINE_FUSE"]:
+        raise ValueError("half output requires ReLU affine fusion")
     if not any(options.values()):
         return {}
     if model.training or precision != "fp16":
@@ -45,7 +47,7 @@ def apply_kernel_options(model, precision):
                     parent._modules[name] = LinearPointwise(child).eval()
                     count += 1
         changes["linear_1x1"] = count
-    if options["KERNEL_RELU_AFFINE_FUSE"]:
+    if options["KERNEL_RELU_AFFINE_FUSE", "KERNEL_RELU_AFFINE_HALF_OUT"]:
         from engine.backbone.hgnetv2 import ConvBNAct, LearnableAffineBlock
         from engine.misc.relu_affine_triton import FusedReLUAffine
         count=0
@@ -54,7 +56,7 @@ def apply_kernel_options(model, precision):
                 if module.lab.scale.dtype!=torch.float32 or module.lab.bias.dtype!=torch.float32:
                     raise ValueError("ReLU affine fusion requires the original float32 affine scalars")
                 module.act=nn.Identity()
-                module.lab=FusedReLUAffine(module.lab).eval()
+                module.lab=FusedReLUAffine(module.lab,options["KERNEL_RELU_AFFINE_HALF_OUT"]).eval()
                 count+=1
         changes["relu_affine_fused"]=count
     return changes
