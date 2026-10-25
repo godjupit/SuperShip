@@ -67,3 +67,5 @@ Completion 2026-10-26 01:40 CST —20261026-013427-validation-sweep: **completed
 
 - Codex /root; branch `exp/fusedio-20261026`; status **running** (CPU work only); updated2026-10-26 01:44 CST. Parent `509fe983b6864cbcbda1b8f52641c942dd11328a`; worktree `/tmp/SuperShip-fusedio-20261026`. GPU remains reserved exclusively for configwide; new kernels tested only after handover.
 - Registered: fuse uint8 normalization, fuse detection output geometry/gather, segmented feature packing, kernel block tuning, light inference imports, query-count/output-count screening. Opt-in individual gates and full200-image three-round checks, no large validation; only faster valid logs uploaded.
+
+2026-10-26 01:50 CST GPU handover: configwide17-case suite complete,51worker outputs,2reference precision-failed configurations (decoder2,score0.075) not uploaded; latestAccepted266.237340ms (cudnn-fixed), timing-only. GPU0 verified idle and reserved now for fusedio tests/screens. All16 fusedio configs inherit new CUDNN_BENCHMARK=0 parent from configwide/cudnn-fixed; baseline floor refreshed266.237340ms. No larger validation jobs.
