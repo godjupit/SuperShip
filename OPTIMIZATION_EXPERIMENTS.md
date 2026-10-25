@@ -63,3 +63,9 @@ CPU-supply route20261026-004444-supply-exit abandoned at user request. Ten-pair 
 
 - Codex /root; branch `exp/fuse-affine-20261026`; status **running**; updated2026-10-26 01:10 CST. Parent accepted runtime/diagnostics67f2d7f (full SHA in notes).
 - GPU0 RTX4090 reserved from01:10, verified idle. Worktree `/tmp/SuperShip-affine-20261026`. Hypothesis: fuse HGNetv2 ReLU+float32 learned affine without changing scalar dtype, image decode/resize, model structure or precision policy; disable FMA and verify against original arithmetic. Exact-output tests, reference/validation and full timing required before promotion;32GB cap retained.
+
+## 20261026-013427-validation-sweep
+
+- Owner Codex /root; branch `exp/validation-sweep-20261026`; status **running**; updated2026-10-26 01:34 CST. Parent `222dc7a6b2c7bdf799e207362d648ff242e23fd3`; isolated worktree `/tmp/SuperShip-val-sweep-20261026`.
+- Latest user instruction: skip reference-set testing; optimize multiple directions and pursue scores. No reference jobs launched by this experiment pending clarification of submission-only timing. Full1030-image validation screens batch size, loader count and queue depth on the existing affine fusion candidates; one hypothesis per configuration, all outcomes retained. No timer/scorer changes or pre-READY data access.
+- GPU0 RTX4090 reserved01:34 after process/idle checks; no previous experiment GPU processes remain. Parent fast-score-results.json and sanitized receipt confirm Accepted **0.280231356s** at2026-10-26 01:28:59 for half-output (log SHA256 `757f6037b42e223f850dffe227a906d812a9f48adcd164f39c1774596d5ddd7c`); main's older285.962649ms entry is stale. Acceptance is timing parsed only; hidden AP50=null. No old log resubmission.
