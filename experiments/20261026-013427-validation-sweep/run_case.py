@@ -2,7 +2,7 @@
 import argparse,hashlib,json,os,re,subprocess,sys
 from pathlib import Path
 root=Path(__file__).resolve().parents[2];exp=Path(__file__).resolve().parent
-p=argparse.ArgumentParser();p.add_argument('variant');p.add_argument('--name');p.add_argument('--runs',type=int,default=3);p.add_argument('--split',choices=['validation'],default='validation');p.add_argument('--combined-log',action='store_true');p.add_argument('--clean-preset',action='store_true');p.add_argument('--boundary',action='store_true');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('variant');p.add_argument('--name');p.add_argument('--runs',type=int,default=3);p.add_argument('--split',choices=['reference','validation'],default='reference');p.add_argument('--combined-log',action='store_true');p.add_argument('--clean-preset',action='store_true');p.add_argument('--boundary',action='store_true');a=p.parse_args()
 case=root/'output'/exp.name/(a.name or a.variant);case.mkdir(parents=True,exist_ok=False)
 config=json.loads((exp/'variants'/f'{a.variant}.json').read_text());env=os.environ.copy();removed=[]
 if a.clean_preset:
