@@ -224,3 +224,8 @@ __marimo__/
 # Local submission credentials and instructions
 .local/
 .thuscc_credentials
+
+# Central local-only optimization artifacts (including preserved merge state).
+/experiments/artifacts/
+/output
+/data/SuperShip

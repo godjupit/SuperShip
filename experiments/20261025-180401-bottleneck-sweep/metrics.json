@@ -1,0 +1,243 @@
+{
+  "status": "completed",
+  "experiment": "20261025-180401-bottleneck-sweep",
+  "parent_source_commit": "f2c4d275295a40b0845f82373a3f9f48178cf0fa",
+  "case_results": [
+    {
+      "case": "control",
+      "experiment": "20261025-180701-bottleneck-control",
+      "source_commit": "3486c21d52cc3a427c6ec17ef349f62b26716bd2",
+      "runs_seconds": [
+        0.398593305,
+        0.409308714,
+        0.37206449
+      ],
+      "median_seconds": 0.398593305,
+      "reference_ap50": [
+        0.7816,
+        0.7817,
+        0.7816
+      ],
+      "validation_ap50": 0.9057,
+      "precision_qualified": true
+    },
+    {
+      "case": "recycle",
+      "experiment": "20261025-180732-bottleneck-recycle",
+      "source_commit": "b1ca0b715c3a677161bf527af2aeb5f68b31e97c",
+      "runs_seconds": [
+        0.367742681,
+        0.364364187,
+        0.386838966
+      ],
+      "median_seconds": 0.367742681,
+      "reference_ap50": [
+        0.7813,
+        0.7817,
+        0.7812
+      ],
+      "validation_ap50": 0.9058,
+      "precision_qualified": true
+    },
+    {
+      "case": "bulk",
+      "experiment": "20261025-180800-bottleneck-bulk",
+      "source_commit": "cd1793d875ebf077a7cace8529e445f5244321e8",
+      "runs_seconds": [
+        0.355592799,
+        0.370316435,
+        0.358422325
+      ],
+      "median_seconds": 0.358422325,
+      "reference_ap50": [
+        0.7812,
+        0.7811,
+        0.7816
+      ],
+      "validation_ap50": 0.9058,
+      "precision_qualified": true
+    },
+    {
+      "case": "fused",
+      "experiment": "20261025-180829-bottleneck-fused",
+      "source_commit": "ec9179b3538ffbe1b830d3df98eaf9a5cce11c85",
+      "runs_seconds": [
+        0.34283452,
+        0.362735055,
+        0.353019234
+      ],
+      "median_seconds": 0.353019234,
+      "reference_ap50": [
+        0.7812,
+        0.7812,
+        0.7812
+      ],
+      "validation_ap50": 0.9058,
+      "precision_qualified": true
+    },
+    {
+      "case": "cpu",
+      "experiment": "20261025-181042-bottleneck-cpu",
+      "source_commit": "d4381182b9e51e83ebee7131c1f682b211e5a6d3",
+      "runs_seconds": [
+        0.347944879,
+        0.338799713,
+        0.390630937
+      ],
+      "median_seconds": 0.347944879,
+      "reference_ap50": [
+        0.7813,
+        0.7812,
+        0.7816
+      ],
+      "validation_ap50": 0.9058,
+      "precision_qualified": true
+    },
+    {
+      "case": "fused-bulk",
+      "experiment": "20261025-181111-bottleneck-fused-bulk",
+      "source_commit": "8c8706088aff38beba36c3c159a5586ed03ffa09",
+      "runs_seconds": [
+        0.390763071,
+        0.345808758,
+        0.346949549
+      ],
+      "median_seconds": 0.346949549,
+      "reference_ap50": [
+        0.7811,
+        0.7812,
+        0.7812
+      ],
+      "validation_ap50": 0.9058,
+      "precision_qualified": true
+    },
+    {
+      "case": "combined",
+      "experiment": "20261025-181140-bottleneck-combined",
+      "source_commit": "6ecf45275c257f28cf9a6a4bdaca7153266c1e9c",
+      "runs_seconds": [
+        0.350488595,
+        0.335181812,
+        0.324410174
+      ],
+      "median_seconds": 0.335181812,
+      "reference_ap50": [
+        0.7817,
+        0.7812,
+        0.7812
+      ],
+      "validation_ap50": 0.9057,
+      "precision_qualified": true
+    },
+    {
+      "case": "cached",
+      "experiment": "20261025-181208-bottleneck-cached",
+      "source_commit": "c509e231c444fa1c44ee28fa7ad5f03671bc6d8c",
+      "runs_seconds": [
+        0.363690871,
+        0.359916427,
+        0.362986489
+      ],
+      "median_seconds": 0.362986489,
+      "reference_ap50": [
+        0.7812,
+        0.7812,
+        0.7817
+      ],
+      "validation_ap50": 0.9058,
+      "precision_qualified": true
+    },
+    {
+      "case": "control",
+      "experiment": "20261025-181236-bottleneck-control",
+      "source_commit": "19b495713773db261cfc4966e301660989cec160",
+      "runs_seconds": [
+        0.381731892,
+        0.354792802,
+        0.358883246
+      ],
+      "median_seconds": 0.358883246,
+      "reference_ap50": [
+        0.7813,
+        0.7812,
+        0.7812
+      ],
+      "validation_ap50": 0.9058,
+      "precision_qualified": true
+    },
+    {
+      "case": "connections1",
+      "experiment": "20261025-181339-bottleneck-connections1",
+      "source_commit": "2dd50dadd4e546ada3c155dc39556b82e7e9232a",
+      "runs_seconds": [
+        0.348532756,
+        0.334954126,
+        0.365031536
+      ],
+      "median_seconds": 0.348532756,
+      "reference_ap50": [
+        0.7817,
+        0.7812,
+        0.7816
+      ],
+      "validation_ap50": 0.9056,
+      "precision_qualified": true
+    },
+    {
+      "case": "async-alloc",
+      "experiment": "20261025-181407-bottleneck-async-alloc",
+      "source_commit": "a4aed3519a8222d4c82e11d51328bf00eec6af9c",
+      "error": "exit 1: /home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-181407-bottleneck-async-alloc/reference-benchmark.log",
+      "precision_qualified": false
+    },
+    {
+      "case": "combined-c1",
+      "experiment": "20261025-181507-bottleneck-combined-c1",
+      "source_commit": "94d2c89d893492ab8c337789528a86604d971c44",
+      "runs_seconds": [
+        0.311277775,
+        0.323396487,
+        0.320160422
+      ],
+      "median_seconds": 0.320160422,
+      "reference_ap50": [
+        0.7817,
+        0.7816,
+        0.7812
+      ],
+      "validation_ap50": 0.9058,
+      "precision_qualified": true
+    }
+  ],
+  "paired_experiment": "20261025-181604-bottleneck-paired10",
+  "paired_control_median": 0.371445563,
+  "paired_candidate_median": 0.32895830049999997,
+  "paired_reduction_percent": 11.438355100233089,
+  "paired_wins": 8,
+  "paired_median_difference_ci95": [
+    0.002177667999999966,
+    0.0489103565
+  ],
+  "final_experiment": "20261025-182026-bottleneck-final",
+  "final_runs_seconds": [
+    0.310915874,
+    0.316507633,
+    0.325236048
+  ],
+  "final_median_seconds": 0.316507633,
+  "final_reference_ap50": [
+    0.7812,
+    0.7812,
+    0.781
+  ],
+  "final_validation_ap50": 0.9056,
+  "final_validation_seconds": 1.048466823,
+  "hidden_ap50": null,
+  "competition_submitted": false,
+  "submission_decision": "Keep existing historical ~304ms submission; final fresh 316.508ms is slower than local historical accepted 302.713346ms. Do not resubmit old logs.",
+  "tests": "83 passed, 1 skipped",
+  "gpu_control_kernel_ms": 166.86126099999998,
+  "gpu_candidate_kernel_ms": 137.530238,
+  "gpu_kernel_reduction_percent": 17.578090219514753,
+  "gpu_released": true
+}

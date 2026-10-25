@@ -1,0 +1,70 @@
+{
+  "status": "success",
+  "split": "val",
+  "images": 1030,
+  "runs_per_mode": 1,
+  "normal_end_to_end_seconds": 9.731464844,
+  "diagnostic_end_to_end_seconds": 9.949605105,
+  "diagnostic_inference_seconds": 8.809239953756332,
+  "normal_ap50": 0.917,
+  "diagnostic_ap50": 0.917,
+  "official_reference_ap50": 0.916,
+  "breakdown": [
+    {
+      "stage": "模型前向（含 Graph 输入复制/回放）",
+      "seconds": 3.458826206624508,
+      "percent_of_diagnostic_end_to_end": 34.76345211817839
+    },
+    {
+      "stage": "读取与预处理等待",
+      "seconds": 1.9785832539200783,
+      "percent_of_diagnostic_end_to_end": 19.88604806964425
+    },
+    {
+      "stage": "CPU 检测结果整理",
+      "seconds": 1.9409561306238174,
+      "percent_of_diagnostic_end_to_end": 19.507871017397704
+    },
+    {
+      "stage": "JSON 序列化",
+      "seconds": 0.7456889823079109,
+      "percent_of_diagnostic_end_to_end": 7.494659078812867
+    },
+    {
+      "stage": "CPU → GPU 传输",
+      "seconds": 0.22424902766942978,
+      "percent_of_diagnostic_end_to_end": 2.253848522658828
+    },
+    {
+      "stage": "GPU → CPU 回传及转列表",
+      "seconds": 0.16277850419282913,
+      "percent_of_diagnostic_end_to_end": 1.636029796911514
+    },
+    {
+      "stage": "GPU 后处理",
+      "seconds": 0.1469404324889183,
+      "percent_of_diagnostic_end_to_end": 1.4768468792301714
+    },
+    {
+      "stage": "文件写入及 fsync",
+      "seconds": 0.05233502388000488,
+      "percent_of_diagnostic_end_to_end": 0.5260010153941169
+    },
+    {
+      "stage": "DataLoader 建立/收尾及输出准备",
+      "seconds": 0.09888239204883575,
+      "percent_of_diagnostic_end_to_end": 0.993832328070429
+    },
+    {
+      "stage": "进程收尾与计时边界余量",
+      "seconds": 1.1403651512436674,
+      "percent_of_diagnostic_end_to_end": 11.461411173701727
+    }
+  ],
+  "note": "Diagnostic synchronization alters overlap. Percentages describe this diagnostic run, not the historical 9.384s run. Initialization and scoring excluded.",
+  "submission_sha256": {
+    "normal": "c9940ab1cb3e0f8b0e7761a1093470958a1cdd954b83727c57b8d9f50d20cc39",
+    "diagnostic": "c9940ab1cb3e0f8b0e7761a1093470958a1cdd954b83727c57b8d9f50d20cc39"
+  },
+  "normal_and_diagnostic_outputs_identical": true
+}

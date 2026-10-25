@@ -1,0 +1,15 @@
+{
+  "pair": 5,
+  "name": "control",
+  "seconds": 0.359814378,
+  "reference_ap50": 0.7813,
+  "source_commit": "30aef67dbba06befd2ddf6f8cfb8854d0c1912cd",
+  "source_dirty": false,
+  "artifact_directory": "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-181604-bottleneck-paired10/pair05-control",
+  "status": "success",
+  "artifacts_sha256": {
+    "score.log": "e6685f76c07f01f31c277f8e1e6c9b53338d72a9a96ffdd3b8b5c3046942f9ed",
+    "benchmark.log": "5c94105ca15de8de5150c9ab7e5574f91e5fd8e86ea650a3804f63e5c54c7a33",
+    "prediction.json": "5a2033552d2c770aebd516b5ac8a66e136f24d34917263c6def669dbb67bfd16"
+  }
+}

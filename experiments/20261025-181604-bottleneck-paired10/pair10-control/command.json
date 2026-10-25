@@ -1,0 +1,18 @@
+[
+  "/home/ubuntu/.cache/supership-venv/bin/python",
+  "supership/benchmark_submission.py",
+  "--image-dir",
+  "data/SuperShip/reference/images",
+  "--meta-file",
+  "data/SuperShip/reference/reference_images_meta.json",
+  "--output-file",
+  "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-181604-bottleneck-paired10/pair10-control/prediction.json",
+  "--runs",
+  "1",
+  "--",
+  "env",
+  "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python",
+  "bash",
+  "run.sh",
+  "--worker"
+]

@@ -1,0 +1,41 @@
+{
+  "wall_seconds": 0.2423157620000893,
+  "images": 200,
+  "detections": 6306,
+  "cpu_seconds": {
+    "metadata": 0.00025209199998244003,
+    "loader_imread_decode": 1.0977540120027243,
+    "loader_resize_rgb": 0.21240022099982525,
+    "loader_thread_total": 1.3168931399982284,
+    "loader_wait": 0.050492648999579615,
+    "output_wait": 0.1419093329993757,
+    "cpu_collect": 0.021822235000399814,
+    "shutdown_sync": 0.0005012540000279841,
+    "serialize": 0.0028193289999762783,
+    "write_fsync": 0.008339017000025706
+  },
+  "cpu_calls": {
+    "metadata": 1,
+    "loader_imread_decode": 200,
+    "loader_resize_rgb": 200,
+    "loader_thread_total": 200,
+    "loader_wait": 25,
+    "output_wait": 25,
+    "cpu_collect": 25,
+    "shutdown_sync": 1,
+    "serialize": 1,
+    "write_fsync": 1
+  },
+  "gpu_seconds": {
+    "h2d": 0.00979660791158676,
+    "graph_preprocess_model_postprocess": 0.20746240043640138,
+    "d2h": 0.00015040000109001992
+  },
+  "gpu_calls": {
+    "h2d": 25,
+    "graph_preprocess_model_postprocess": 25,
+    "d2h": 25
+  },
+  "method": "perf_counter host regions and CUDA events, no added per-batch synchronization",
+  "caveats": "Thread CPU regions are summed wall times, overlap each other and GPU; do not add CPU and GPU columns. Graph covers preprocessing, model and GPU postprocessing. Excludes init, report writing and process exit. Instrumentation adds overhead."
+}

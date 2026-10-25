@@ -1,0 +1,62 @@
+{
+  "case": "fused",
+  "experiment": "20261025-180829-bottleneck-fused",
+  "status": "completed",
+  "source_commit": "ec9179b3538ffbe1b830d3df98eaf9a5cce11c85",
+  "parent_experiment": "20261025-180401-bottleneck-sweep",
+  "started": "2026-10-25T18:08:29.123804",
+  "gpu": "RTX4090 single GPU0",
+  "timing_scope": "Original READY to process-group exit, including inputs and fsync",
+  "hidden_ap50": null,
+  "competition_submitted": false,
+  "artifact_directory": "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-180829-bottleneck-fused",
+  "reference_images": 200,
+  "validation_images": 1030,
+  "runs_seconds": [
+    0.34283452,
+    0.362735055,
+    0.353019234
+  ],
+  "median_seconds": 0.353019234,
+  "reference_ap50": [
+    0.7812,
+    0.7812,
+    0.7812
+  ],
+  "reference_precision_pass": true,
+  "reference_detection_counts": [
+    6323,
+    6315,
+    6323
+  ],
+  "validation_timing": {
+    "runs_seconds": [
+      1.094507836
+    ],
+    "median_seconds": 1.094507836
+  },
+  "validation_ap50": 0.9058,
+  "validation_detection_count": 40351,
+  "validation_precision_pass": true,
+  "precision_qualified": true,
+  "finished": "2026-10-25T18:08:59.452152",
+  "sha256": {
+    "weights/baseline.pth": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+    "supership/benchmark_submission.py": "0befe3aadd1860460d53e5ea2b141d3310edcf5391f9ab4c3a7727244e7d7c02",
+    "supership/submission.py": "79f47d58cd11ae9ba5b2ac1d9613d053c41bda3d1fb457ede78453d3c15a4e7f",
+    "data/SuperShip/reference/reference_images_meta.json": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443",
+    "data/SuperShip/val/annotations/instances_val.json": "fcf0bcbca918ac2e380b92ddc284046d8bd4a9d61579b71465ef04e45bf1bde1"
+  },
+  "artifacts_sha256": {
+    "output/20261025-180829-bottleneck-fused/val.json": "45cabc830cebb3d4d20ca972075f51cffa4a6f73bb30340c126b54b5a0619294",
+    "output/20261025-180829-bottleneck-fused/reference-score1.log": "b8f81a7e18a2aeee926ea1ed04a6a6cbd90f2e47824f3b29978f126e3c18831c",
+    "output/20261025-180829-bottleneck-fused/reference.run2.json": "ca75ed255c8875ff7df2d494bed30cd16b29f462aa889fde0b955b4965ee8a73",
+    "output/20261025-180829-bottleneck-fused/reference-score3.log": "b98c9ee53b56d7cb7732d5a5d5c734cf4abe3b2f81bbd608dbc63394b9669627",
+    "output/20261025-180829-bottleneck-fused/reference-benchmark.log": "e4b345a267065a9c2b8c8587249c0e70ef43712fa9c906c768429b9b91be9ef6",
+    "output/20261025-180829-bottleneck-fused/reference.run1.json": "a100ba0df5f3e44d9061b0d6bbe3e6364bfe7576188d8bc2e7e40d91eb693dc6",
+    "output/20261025-180829-bottleneck-fused/reference-score2.log": "d37297ea4f05cb256703b895c94a045f747e4fecb4045135f3472d07e0bbafcc",
+    "output/20261025-180829-bottleneck-fused/validation-score.log": "d1a8cb62f6ae2f97c36170e708d14edff5c0629b1402b703e3e743c2900e1d24",
+    "output/20261025-180829-bottleneck-fused/validation-benchmark.log": "8b16ae6ceaffae4373c2a92223c64e48fea9a63e6eb6697908de0acb81986c4a",
+    "output/20261025-180829-bottleneck-fused/reference.run3.json": "a100ba0df5f3e44d9061b0d6bbe3e6364bfe7576188d8bc2e7e40d91eb693dc6"
+  }
+}

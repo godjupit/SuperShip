@@ -1,49 +1,22 @@
-# 实验记录索引
+# 优化资料中心
 
-代码位于 `exp/inference-backends` 分支；`baseline-pytorch` 指向优化前的 `cd5fed1`。推理与部署代码提交为 `8b5e90e`，性能剖析工具提交为 `dfcd19d`。历史记录中的基准 SHA、dirty 标记和补丁保留原样，表示实际运行时状态。
+从根目录[精简时间日志](../OPTIMIZATION_EXPERIMENTS.md)进入；本目录汇集所有分支的优化方案、数据索引、历史过程和结果。
 
-| 记录 | 类型 | 分支 | 状态 |
-| --- | --- | --- | --- |
-| [20261016T131655Z-inference-backends-snapshot](20261016T131655Z-inference-backends-snapshot/notes.md) | 当前代码完整快照与历史证据归档 | `exp/inference-backends` | dirty；完整补丁已保存；本次未新运行实验 |
+```text
+experiments/
+├── results/       全部129份实验记录的JSON/CSV索引
+├── branches/      9个分支：源码快照、提交SHA、各自原台账
+├── reports/       原根目录的详细优化报告、CSV及旧热点分析
+├── guides/        常用命令、环境配置和上游文档
+├── data/          统一数据集/权重入口与数据说明
+├── artifacts/     本机大产物，按分支分区，Git忽略
+├── catalog/       文件来源、版本、路径迁移清单
+└── <实验ID>/      完整过程、参数、命令、逐轮结果、校验值
+```
 
-历史汇总见仓库根目录 `OPTIMIZATION_EXPERIMENTS.md`；其部分待办已过时，以各记录的证据和限制为准。新运行使用独立目录，保存实际参数、代码版本、环境、命令和结果，不覆盖旧记录。
-
-## 已执行的瓶颈实验
-
-
-[本次部署与压缩实验结果](ADVANCED_RESULTS_20261016.md)（含低精度与失败记录）。
-
-性能分析记录（算子分析、流水线耗时占比）位于 `exp/performance-analysis` 分支。
-
-## 2026-10-22 追加优化实验导航
-
-2026-10-22 本轮任务：在已有 RTX 4090 最快方案上继续检索、消融、独立验证和复测。负责人：当前 Codex 会话；工作分支 `exp/rtx4090-e2e`；起点 `585d759`；修改范围为 fast worker、其测试和基准默认参数；GPU 为单张 RTX 4090。实验期间依次运行，不并发计时。任务状态：completed（最终检查和提交状态见汇总末尾）。历史实验目录保持原名。
-
-[本轮完整汇总](../OPTIMIZATION_FOLLOWUP_20261022.md)；[逐轮指标](../OPTIMIZATION_FOLLOWUP_20261022.csv)；[历史全局台账](../OPTIMIZATION_EXPERIMENTS.md)。
-
-| 实验 | 状态 | 记录 |
-| --- | --- | --- |
-| 20261022-194940-further-async | success | [参数与结果](20261022-194940-further-async/notes.md) |
-| 20261022-194940-further-async-cvtcolor | success | [参数与结果](20261022-194940-further-async-cvtcolor/notes.md) |
-| 20261022-194940-further-control | success | [参数与结果](20261022-194940-further-control/notes.md) |
-| 20261022-194940-further-cvtcolor | success | [参数与结果](20261022-194940-further-cvtcolor/notes.md) |
-| 20261022-194940-further-direct | success | [参数与结果](20261022-194940-further-direct/notes.md) |
-| 20261022-195126-further-async-cvtcolor-b16 | success | [参数与结果](20261022-195126-further-async-cvtcolor-b16/notes.md) |
-| 20261022-195126-further-async-cvtcolor-cudnn | success | [参数与结果](20261022-195126-further-async-cvtcolor-cudnn/notes.md) |
-| 20261022-195126-further-async-cvtcolor-w4 | success | [参数与结果](20261022-195126-further-async-cvtcolor-w4/notes.md) |
-| 20261022-195126-further-decoder1 | success | [参数与结果](20261022-195126-further-decoder1/notes.md) |
-| 20261022-195126-further-decoder2 | success | [参数与结果](20261022-195126-further-decoder2/notes.md) |
-| 20261022-195339-further-decoder1-score003 | success | [参数与结果](20261022-195339-further-decoder1-score003/notes.md) |
-| 20261022-195339-further-decoder1-score004 | success | [参数与结果](20261022-195339-further-decoder1-score004/notes.md) |
-| 20261022-195339-further-decoder2-score004 | success | [参数与结果](20261022-195339-further-decoder2-score004/notes.md) |
-| 20261022-195339-further-size512-full | success | [参数与结果](20261022-195339-further-size512-full/notes.md) |
-| 20261022-195339-further-size576-full | success | [参数与结果](20261022-195339-further-size576-full/notes.md) |
-| 20261022-195339-further-size576-half | success | [参数与结果](20261022-195339-further-size576-half/notes.md) |
-| 20261022-195623-further-size512-half | success | [参数与结果](20261022-195623-further-size512-half/notes.md) |
-| 20261022-195623-further-size544-half | success | [参数与结果](20261022-195623-further-size544-half/notes.md) |
-| 20261022-195623-further-size576-decoder1 | success | [参数与结果](20261022-195623-further-size576-decoder1/notes.md) |
-| 20261022-195623-further-size576-decoder2 | success | [参数与结果](20261022-195623-further-size576-decoder2/notes.md) |
-| 20261022-195852-further-confirm-control | success | [参数与结果](20261022-195852-further-confirm-control/notes.md) |
-| 20261022-195852-further-confirm-size544 | success | [参数与结果](20261022-195852-further-confirm-size544/notes.md) |
-| 20261023-fast544-bottlenecks | 诊断完成 | [最快544方案：Nsight内核与五类瓶颈](20261023-fast544-bottlenecks/notes.md) |
-| 20261023-235500-main-fastest-merge | completed | [最快融合方案合入main与完整验证](20261023-235500-main-fastest-merge/notes.md) |
+- [结果索引](results/README.md)；[每个分支自己的资料](branches/README.md)；[数据与产物](data/README.md)。
+- [按分支运行方案](guides/branch-runs.md)；[当前主线命令](guides/commands.md)；[开发环境](guides/development.md)；[最新瓶颈候选的原命令](guides/bottleneck-commands-original.md)。
+- [历史汇总报告](reports/)保留原记录；同一实验不同分支的版本保存在各分支源码快照中，合并来源见[catalog/files.json](catalog/files.json)。
+- 原始实验ID目录保持原位置，避免破坏脚本ROOT和历史路径。源码快照保留原文件字节；根AGENTS.md仍是唯一协作规则入口。
+- artifacts只在本机存在，不随Git复制。公开数据和基线权重保留根data/、weights/统一位置，本目录通过相对链接访问，不重复占空间。
+- 各worktree/output继续访问各自独立产物区；原分支已提交代码不变。目录整理与官方规范同步现已落到main；原有分支与固定SHA快照继续保留。

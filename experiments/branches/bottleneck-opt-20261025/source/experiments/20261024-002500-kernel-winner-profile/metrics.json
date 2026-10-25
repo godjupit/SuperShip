@@ -1,0 +1,27 @@
+{
+  "source_commit": "c5056f9a6554f864b216abb52f9056d65ad9f3cd",
+  "source_dirty": false,
+  "status": "completed",
+  "images": 200,
+  "detections": 6323,
+  "reference_ap50": 0.7816,
+  "validation_ap50": null,
+  "hidden_ap50": null,
+  "tool": "Nsight Systems 2024.2.3.38",
+  "gpu": "RTX4090 single GPU0",
+  "python": "3.12.8",
+  "torch": "2.6.0+cu124",
+  "cuda": "12.4",
+  "driver": "550.142",
+  "scope": "Real reference Runtime.run; excludes initialization; kernel sums exclude memcpy and are not E2E",
+  "artifact_directory": "/home/ubuntu/SuperShip-kernels-20261024/output/20261024-002500-kernel-winner-profile",
+  "artifacts_sha256": {
+    "inference.sqlite": "db200c97bfbbc247184e498ddfedfd8cd75d3377e0a75069980c192413357af9",
+    "score.log": "7e4e6536b295283695f124e6a7ca35c83e37fb38e0ddd6454c07b62659d23f4d",
+    "inference.nsys-rep": "ec1f0712752f44e0d5a675807d1587db35a986e2c8a2f414bd56a1e296cacd96",
+    "export.log": "18b03d09d38e99545f306e45df75241b00e1fefc69dbdf5aa2d29638cb879b6e",
+    "predictions.json": "8ff972aa4e1864271e40409db1a29163e257728625002102804fbe4ff4fc320a",
+    "source-commit.txt": "b8b87ac12fa245f5a6fee16d3f4c35f9dccd2bf16919ccdbaa5b8e90e30df628",
+    "profile.log": "93389a07ea7b6026d946767699267fba7ff5746ba2034d5dba9f66bd411f3e21"
+  }
+}

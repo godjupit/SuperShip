@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "split": "val",
+  "runs": 1,
+  "timing": "worker ready -> request sent -> worker exits; scoring excluded",
+  "error_summary": "    chunk = read(handle, remaining)\n            ^^^^^^^^^^^^^^^^^^^^^^^\nConnectionResetError: [Errno 104] Connection reset by peer\nbenchmark failed: worker failed with exit code -11"
+}

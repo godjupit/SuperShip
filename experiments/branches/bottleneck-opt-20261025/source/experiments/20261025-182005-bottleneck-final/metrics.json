@@ -1,0 +1,8 @@
+{
+  "status": "abandoned",
+  "error": "ModuleNotFoundError: supership; harness sys.path missing ROOT",
+  "timing_started": false,
+  "source_commit": "9972253",
+  "hidden_ap50": null,
+  "finished": "2026-10-25T18:20:26.156409"
+}

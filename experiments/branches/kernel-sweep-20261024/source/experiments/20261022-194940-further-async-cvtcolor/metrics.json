@@ -1,0 +1,61 @@
+{
+  "name": "async-cvtcolor",
+  "status": "success",
+  "source_commit": "585d759e3e2563733ef6dc18d2ff638333ee41be",
+  "source_dirty": true,
+  "weight_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+  "metadata_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443",
+  "hardware": "NVIDIA RTX 4090, single GPU",
+  "torch": "2.6.0+cu124",
+  "opencv": "4.11.0",
+  "python": "Python 3.12.8",
+  "started": "2026-10-22T19:50:54.721567",
+  "timing_scope": "official worker protocol, READY to process group exit, includes fsync; initialization excluded",
+  "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-194940-further-async-cvtcolor",
+  "validation_ap50": null,
+  "hidden_ap50": null,
+  "command": [
+    "/home/ubuntu/.cache/supership-venv/bin/python",
+    "supership/benchmark_submission.py",
+    "--image-dir",
+    "data/SuperShip/reference/images",
+    "--meta-file",
+    "data/SuperShip/reference/reference_images_meta.json",
+    "--output-file",
+    "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-194940-further-async-cvtcolor/reference_submission.json",
+    "--runs",
+    "3",
+    "--",
+    "bash",
+    "run.sh",
+    "--worker"
+  ],
+  "runs_seconds": [
+    0.452636293,
+    0.456020483,
+    0.487781921
+  ],
+  "median_seconds": 0.456020483,
+  "raw_log_sha256": "e03e07698e37ed0ca9a69ac8d8e346aacc13817a37fb94da04f09293dbd51b35",
+  "reference_ap50_per_run": [
+    0.7808,
+    0.7808,
+    0.7808
+  ],
+  "prediction_sha256_per_run": [
+    "e49dc5277b011de95d21fcae6fb84685c4b9ce7a49620ff29b7b291958c22f27",
+    "e49dc5277b011de95d21fcae6fb84685c4b9ce7a49620ff29b7b291958c22f27",
+    "e49dc5277b011de95d21fcae6fb84685c4b9ce7a49620ff29b7b291958c22f27"
+  ],
+  "reference_precision_pass": true,
+  "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:51:12\nServer Message: \u001b[1;32mSubmission Accepted; Performance: 0.456020483 s; OK: median runtime = 0.456020483 s (timing JSON); timing parsed only.\u001b[0m\n",
+  "submitted": true,
+  "finished": "2026-10-22T19:51:13.104184",
+  "source_patch_sha256": "c2cf54af434d0a8c60ac32eb5f311b8ec3e8e51b9f43c3273b02a9d0c6565825",
+  "reference_image_count": 200,
+  "split_manifest_sha256": "911e966a23ddadad2464723b2a3c3b992084ca62fe7fdefab51a8ffcf5db4a53",
+  "official_timer_sha256": "0befe3aadd1860460d53e5ea2b141d3310edcf5391f9ab4c3a7727244e7d7c02",
+  "official_validator_sha256": "79f47d58cd11ae9ba5b2ac1d9613d053c41bda3d1fb457ede78453d3c15a4e7f",
+  "official_source_commit": "42460fba744a1c8741252177723530976101f305",
+  "eligible_for_recommendation": false
+}

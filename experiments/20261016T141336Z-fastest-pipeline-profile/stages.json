@@ -1,0 +1,63 @@
+{
+  "scope": "run_inference entry through output flush/fsync; excludes initialization, report writing, process exit and scoring",
+  "method": "perf_counter with CUDA synchronization at each stage boundary; serialized diagnosis changes pipeline overlap; loader workers still prefetch concurrently",
+  "total_seconds": 8.809239953756332,
+  "detections": 308879,
+  "stages": [
+    {
+      "name": "loader_setup",
+      "seconds": 0.01499081403017044,
+      "percent": 0.17017148027371232
+    },
+    {
+      "name": "loader_wait",
+      "seconds": 1.9785832539200783,
+      "percent": 22.460317397488918
+    },
+    {
+      "name": "host_to_device",
+      "seconds": 0.22424902766942978,
+      "percent": 2.545611526608583
+    },
+    {
+      "name": "model_forward",
+      "seconds": 3.458826206624508,
+      "percent": 39.26361666592628
+    },
+    {
+      "name": "gpu_postprocess",
+      "seconds": 0.1469404324889183,
+      "percent": 1.6680262231506329
+    },
+    {
+      "name": "device_to_host_and_lists",
+      "seconds": 0.16277850419282913,
+      "percent": 1.8478155328646602
+    },
+    {
+      "name": "cpu_result_assembly",
+      "seconds": 1.9409561306238174,
+      "percent": 22.03318493777863
+    },
+    {
+      "name": "loader_finish",
+      "seconds": 0.08373430371284485,
+      "percent": 0.9505281290145792
+    },
+    {
+      "name": "final_sync_and_output_setup",
+      "seconds": 0.0001572743058204651,
+      "percent": 0.0017853334299674972
+    },
+    {
+      "name": "json_serialize",
+      "seconds": 0.7456889823079109,
+      "percent": 8.464850386893401
+    },
+    {
+      "name": "output_write_fsync",
+      "seconds": 0.05233502388000488,
+      "percent": 0.5940923865706349
+    }
+  ]
+}

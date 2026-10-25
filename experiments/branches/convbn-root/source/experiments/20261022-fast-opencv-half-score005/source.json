@@ -1,0 +1,6 @@
+{
+  "commit": "05cb42251126a2bcf298ae0557c80db708fb4e90",
+  "branch": "exp/rtx4090-e2e",
+  "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md                          | 20 ++++++++++++++++++++\n .../20261022-fast-opencv-score001/metrics.json       |  2 +-\n .../submission-restored.txt                          |  2 +-\n 3 files changed, 22 insertions(+), 2 deletions(-)",
+  "note": "Documentation records and local data symlink do not change inference source."
+}

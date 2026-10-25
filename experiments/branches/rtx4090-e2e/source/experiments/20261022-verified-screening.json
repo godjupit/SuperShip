@@ -1,0 +1,1891 @@
+{
+  "20261022-fast-cuda-fp16": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "cuda",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=cuda VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.867930736,
+        1.918163591,
+        1.967777019
+      ],
+      "median_seconds": 1.918163591,
+      "reference_ap50_per_run": [
+        0.7935,
+        0.7935,
+        0.7935
+      ],
+      "detections_per_run": [
+        59978,
+        59978,
+        59978
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-cuda-fp16/supership.out",
+      "raw_log_sha256": "9b3e615449d6202786221365669bf06a672d514f673aa7fe27306f490900ac25",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-cuda-fp16",
+      "reduction_vs_previous_submission_percent": 39.5200648920717,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:23:39\nServer Message: Submission Accepted; Performance: 1.918163591 s; OK: median runtime = 1.918163591 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "6e37ca3cf25f996840a3f2c112816d1fd44469d8",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "AGENTS.md                   |  7 +++++++\n OPTIMIZATION_EXPERIMENTS.md | 48 +++++++++++++++++++++++++++++++++++++++++++++\n 2 files changed, 55 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-cuda-fp16-b16": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "16",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "cuda",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=16 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=cuda VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.918214319,
+        1.968451797,
+        1.867474605
+      ],
+      "median_seconds": 1.918214319,
+      "reference_ap50_per_run": [
+        0.7933,
+        0.7933,
+        0.7933
+      ],
+      "detections_per_run": [
+        59978,
+        59978,
+        59978
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-cuda-fp16-b16/supership.out",
+      "raw_log_sha256": "487fc513366863c61724667f86ecdd70b16b3405caeb81b4f0076263b2d85bfd",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-cuda-fp16-b16",
+      "reduction_vs_previous_submission_percent": 39.51846543196176,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:24:07\nServer Message: Submission Accepted; Performance: 1.918214319 s; OK: median runtime = 1.918214319 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "6e37ca3cf25f996840a3f2c112816d1fd44469d8",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "AGENTS.md                   |  7 ++++++\n OPTIMIZATION_EXPERIMENTS.md | 52 +++++++++++++++++++++++++++++++++++++++++++++\n 2 files changed, 59 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-cuda-fp32": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp32",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "cuda",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp32 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=cuda VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.968371382,
+        2.018703976,
+        1.967773344
+      ],
+      "median_seconds": 1.968371382,
+      "reference_ap50_per_run": [
+        0.7933,
+        0.7933,
+        0.7933
+      ],
+      "detections_per_run": [
+        59979,
+        59979,
+        59979
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-cuda-fp32/supership.out",
+      "raw_log_sha256": "5a03798ce967aa70569dbace689dc527d3c8fde7724582cdd39602c62459b793",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-cuda-fp32",
+      "reduction_vs_previous_submission_percent": 37.93700703619333,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:23:12\nServer Message: Submission Accepted; Performance: 1.968371382 s; OK: median runtime = 1.968371382 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "6e37ca3cf25f996840a3f2c112816d1fd44469d8",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md | 44 ++++++++++++++++++++++++++++++++++++++++++++\n 1 file changed, 44 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-cuda-grouped-fp16": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "cuda",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "1",
+        "RESIZE_ANTIALIAS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=cuda VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 JPEG_REDUCTION=1 RESIZE_ANTIALIAS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.867983835,
+        1.968426698,
+        1.86754831
+      ],
+      "median_seconds": 1.867983835,
+      "reference_ap50_per_run": [
+        0.7935,
+        0.7935,
+        0.7935
+      ],
+      "detections_per_run": [
+        59978,
+        59978,
+        59978
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-cuda-grouped-fp16/supership.out",
+      "raw_log_sha256": "7208b4cf8a33b34e97da98a831e93c5e44ceb8ca5d3e8e9424414fd2ec6712eb",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-cuda-grouped-fp16",
+      "reduction_vs_previous_submission_percent": 41.10223880093498,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:27:15\nServer Message: Submission Accepted; Performance: 1.867983835 s; OK: median runtime = 1.867983835 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "05cb42251126a2bcf298ae0557c80db708fb4e90",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-cuda-no-antialias": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "cuda",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "1",
+        "RESIZE_ANTIALIAS": "0"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=cuda VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 JPEG_REDUCTION=1 RESIZE_ANTIALIAS=0 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.867321036,
+        1.867476396,
+        1.91779523
+      ],
+      "median_seconds": 1.867476396,
+      "reference_ap50_per_run": [
+        0.8024,
+        0.8024,
+        0.8024
+      ],
+      "detections_per_run": [
+        59981,
+        59981,
+        59981
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-cuda-no-antialias/supership.out",
+      "raw_log_sha256": "4ee5edf7525a45ee215598f582732c2e7904c4ff465c3b058d457b00797ac24a",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-cuda-no-antialias",
+      "reduction_vs_previous_submission_percent": 41.11823841532408,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:28:02\nServer Message: Submission Accepted; Performance: 1.867476396 s; OK: median runtime = 1.867476396 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "05cb42251126a2bcf298ae0557c80db708fb4e90",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md                                       | 4 ++++\n experiments/20261022-fast-opencv-score001/metrics.json            | 2 +-\n experiments/20261022-fast-opencv-score001/submission-restored.txt | 2 +-\n 3 files changed, 6 insertions(+), 2 deletions(-)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-fp16-b16": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "16",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "pil",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=16 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=pil VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.467153164,
+        1.366620594,
+        1.416531604
+      ],
+      "median_seconds": 1.416531604,
+      "reference_ap50_per_run": [
+        0.7926,
+        0.7926,
+        0.7926
+      ],
+      "detections_per_run": [
+        59976,
+        59976,
+        59976
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-b16/supership.out",
+      "raw_log_sha256": "eb1c3a20aa6d77eb313014cb322bcba630cf24fea9d91b8f4245f1691f789e03",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-b16",
+      "reduction_vs_previous_submission_percent": 55.33658344354969,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:22:03\nServer Message: Submission Accepted; Performance: 1.416531604 s; OK: median runtime = 1.416531604 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "038904fbbf31763907706b64dc1f98bc2e39e896",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md | 12 ++++++++++++\n 1 file changed, 12 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-fp16-b32": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "32",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "pil",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=32 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=pil VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.416859668,
+        1.416994914,
+        1.366757849
+      ],
+      "median_seconds": 1.416859668,
+      "reference_ap50_per_run": [
+        0.7926,
+        0.7926,
+        0.7926
+      ],
+      "detections_per_run": [
+        59977,
+        59977,
+        59977
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-b32/supership.out",
+      "raw_log_sha256": "cff151966cf10d9f76ff1a62615d98c7bc98e3b1861662d1c6679d043f5338f3",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-b32",
+      "reduction_vs_previous_submission_percent": 55.3262395450812,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:22:03\nServer Message: Submission Accepted; Performance: 1.416859668 s; OK: median runtime = 1.416859668 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "038904fbbf31763907706b64dc1f98bc2e39e896",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md | 16 ++++++++++++++++\n 1 file changed, 16 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-fp16-deploy": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "pil",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "1",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=pil VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=1 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.31661968,
+        1.316616446,
+        1.366688448
+      ],
+      "median_seconds": 1.31661968,
+      "reference_ap50_per_run": [
+        0.7926,
+        0.7926,
+        0.7926
+      ],
+      "detections_per_run": [
+        59978,
+        59978,
+        59978
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-deploy/supership.out",
+      "raw_log_sha256": "2eab79163aef1878e2e08f3d177398a1137f366715b502d4770bcc15a1375f96",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-deploy",
+      "reduction_vs_previous_submission_percent": 58.48681875631465,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:22:05\nServer Message: Submission Accepted; Performance: 1.31661968 s; OK: median runtime = 1.316619680 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "038904fbbf31763907706b64dc1f98bc2e39e896",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md | 28 ++++++++++++++++++++++++++++\n 1 file changed, 28 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-fp16-normal-exit": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "pil",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "0",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=pil VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=0 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        2.118621853,
+        2.168282889,
+        2.068550244
+      ],
+      "median_seconds": 2.118621853,
+      "reference_ap50_per_run": [
+        0.7926,
+        0.7926,
+        0.7926
+      ],
+      "detections_per_run": [
+        59977,
+        59977,
+        59977
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-normal-exit/supership.out",
+      "raw_log_sha256": "7f7e7e177de758ded273dc14a5e1ad3816cfaa514273c011a9f1803689e29316",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-normal-exit",
+      "reduction_vs_previous_submission_percent": 33.199591114708625,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:22:31\nServer Message: Submission Accepted; Performance: 2.118621853 s; OK: median runtime = 2.118621853 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "038904fbbf31763907706b64dc1f98bc2e39e896",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md | 40 ++++++++++++++++++++++++++++++++++++++++\n 1 file changed, 40 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-fp16-opencv": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=opencv VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        0.865494149,
+        0.865402859,
+        0.865478555
+      ],
+      "median_seconds": 0.865478555,
+      "reference_ap50_per_run": [
+        0.8025,
+        0.8025,
+        0.8025
+      ],
+      "detections_per_run": [
+        59984,
+        59984,
+        59984
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-opencv/supership.out",
+      "raw_log_sha256": "359354be19c8107a8d8615771a191b2265b6017e416d2d8ef52d9fe56920cefd",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-opencv",
+      "reduction_vs_previous_submission_percent": 72.71135418829688,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:24:30\nServer Message: Submission Accepted; Performance: 0.865478555 s; OK: median runtime = 0.865478555 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "038904fbbf31763907706b64dc1f98bc2e39e896",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md | 24 ++++++++++++++++++++++++\n 1 file changed, 24 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-fp16-score001": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.001",
+        "IMAGE_DECODER": "pil",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0.001 IMAGE_DECODER=pil VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.366587599,
+        1.366599145,
+        1.266127631
+      ],
+      "median_seconds": 1.366587599,
+      "reference_ap50_per_run": [
+        0.7926,
+        0.7926,
+        0.7926
+      ],
+      "detections_per_run": [
+        59977,
+        59977,
+        59977
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-score001/supership.out",
+      "raw_log_sha256": "8b38c0a1b18f0346b3346bed4fa5fa586a71dda7c7f3651eded5049b0813797f",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-score001",
+      "reduction_vs_previous_submission_percent": 56.9113240942443,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:22:04\nServer Message: Submission Accepted; Performance: 1.366587599 s; OK: median runtime = 1.366587599 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "038904fbbf31763907706b64dc1f98bc2e39e896",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md | 32 ++++++++++++++++++++++++++++++++\n 1 file changed, 32 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-fp16-vector": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "pil",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=pil VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.367428864,
+        1.366563646,
+        1.416575475
+      ],
+      "median_seconds": 1.367428864,
+      "reference_ap50_per_run": [
+        0.7926,
+        0.7926,
+        0.7926
+      ],
+      "detections_per_run": [
+        59977,
+        59977,
+        59977
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-vector/supership.out",
+      "raw_log_sha256": "9567d943f51feea5be07f93f2046766150e4ec9d5ffa7181fb608c902cca16a3",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-vector",
+      "reduction_vs_previous_submission_percent": 56.884798904814524,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:22:04\nServer Message: Submission Accepted; Performance: 1.367428864 s; OK: median runtime = 1.367428864 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "038904fbbf31763907706b64dc1f98bc2e39e896",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md | 8 ++++++++\n 1 file changed, 8 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-fp16-w4": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "4",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "pil",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=4 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=pil VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.667299688,
+        1.817976602,
+        1.517352695
+      ],
+      "median_seconds": 1.667299688,
+      "reference_ap50_per_run": [
+        0.7926,
+        0.7926,
+        0.7926
+      ],
+      "detections_per_run": [
+        59977,
+        59977,
+        59977
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-w4/supership.out",
+      "raw_log_sha256": "1a6beb11283a0f73355fe43b1116aa029cc8f254e376186f10258409bf77f86b",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-w4",
+      "reduction_vs_previous_submission_percent": 47.42983476026728,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:22:02\nServer Message: Submission Accepted; Performance: 1.667299688 s; OK: median runtime = 1.667299688 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "038904fbbf31763907706b64dc1f98bc2e39e896",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md | 20 ++++++++++++++++++++\n 1 file changed, 20 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-fp32": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp32",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "pil",
+        "VECTORIZED_RESULTS": "0",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp32 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=pil VECTORIZED_RESULTS=0 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.767741919,
+        1.66722786,
+        1.667770326
+      ],
+      "median_seconds": 1.667770326,
+      "reference_ap50_per_run": [
+        0.7935,
+        0.7935,
+        0.7935
+      ],
+      "detections_per_run": [
+        59979,
+        59979,
+        59979
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp32/supership.out",
+      "raw_log_sha256": "bb79935ca6f0db34c917291d01ce7fa5663cab81411cc4ba80616880069851e5",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp32",
+      "reduction_vs_previous_submission_percent": 47.414995485956744,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:22:02\nServer Message: Submission Accepted; Performance: 1.667770326 s; OK: median runtime = 1.667770326 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "038904fbbf31763907706b64dc1f98bc2e39e896",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-fp32-contiguous": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp32",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "pil",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "0",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp32 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=pil VECTORIZED_RESULTS=1 CHANNELS_LAST=0 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.417083007,
+        1.2664223,
+        1.416726365
+      ],
+      "median_seconds": 1.416726365,
+      "reference_ap50_per_run": [
+        0.7931,
+        0.7931,
+        0.7931
+      ],
+      "detections_per_run": [
+        59974,
+        59974,
+        59974
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp32-contiguous/supership.out",
+      "raw_log_sha256": "c9eff6ff7662504f58fe0bdd315c0a10d53bd68225f3630c54964c4a2a7fb095",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp32-contiguous",
+      "reduction_vs_previous_submission_percent": 55.33044260514737,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:22:03\nServer Message: Submission Accepted; Performance: 1.416726365 s; OK: median runtime = 1.416726365 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "038904fbbf31763907706b64dc1f98bc2e39e896",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md | 36 ++++++++++++++++++++++++++++++++++++\n 1 file changed, 36 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-fp32-vector": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp32",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "pil",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp32 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=pil VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        1.366764299,
+        1.366625667,
+        1.366414218
+      ],
+      "median_seconds": 1.366625667,
+      "reference_ap50_per_run": [
+        0.7935,
+        0.7935,
+        0.7935
+      ],
+      "detections_per_run": [
+        59979,
+        59979,
+        59979
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp32-vector/supership.out",
+      "raw_log_sha256": "02fdc57995d6a969ad58e8f6e12c6b0527076057efd6d9e1c0b8775e7f0118bd",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp32-vector",
+      "reduction_vs_previous_submission_percent": 56.91012380549911,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:22:04\nServer Message: Submission Accepted; Performance: 1.366625667 s; OK: median runtime = 1.366625667 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "038904fbbf31763907706b64dc1f98bc2e39e896",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md | 4 ++++\n 1 file changed, 4 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-opencv-deploy": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "1",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=opencv VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=1 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        0.81545275,
+        0.865501785,
+        0.865431769
+      ],
+      "median_seconds": 0.865431769,
+      "reference_ap50_per_run": [
+        0.8027,
+        0.8027,
+        0.8027
+      ],
+      "detections_per_run": [
+        59985,
+        59985,
+        59985
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-deploy/supership.out",
+      "raw_log_sha256": "c472a0165387d4a4181b9da219659e4e5057d8bc1c9de8fa887941aae7a3d4f2",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-deploy",
+      "reduction_vs_previous_submission_percent": 72.71282935665961,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:25:14\nServer Message: Submission Accepted; Performance: 0.865431769 s; OK: median runtime = 0.865431769 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "6e37ca3cf25f996840a3f2c112816d1fd44469d8",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "AGENTS.md                   |  7 +++++\n OPTIMIZATION_EXPERIMENTS.md | 64 +++++++++++++++++++++++++++++++++++++++++++++\n 2 files changed, 71 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-opencv-fp32": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp32",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp32 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=opencv VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        0.915845028,
+        0.915696873,
+        0.868581058
+      ],
+      "median_seconds": 0.915696873,
+      "reference_ap50_per_run": [
+        0.8026,
+        0.8026,
+        0.8026
+      ],
+      "detections_per_run": [
+        59983,
+        59983,
+        59983
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-fp32/supership.out",
+      "raw_log_sha256": "56768ea2c47adaef00574a64a680aa36e428aebdbef418f952a75aa768e754b1",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-fp32",
+      "reduction_vs_previous_submission_percent": 71.12796441480738,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:24:29\nServer Message: Submission Accepted; Performance: 0.915696873 s; OK: median runtime = 0.915696873 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "6e37ca3cf25f996840a3f2c112816d1fd44469d8",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "AGENTS.md                   |  7 ++++++\n OPTIMIZATION_EXPERIMENTS.md | 56 +++++++++++++++++++++++++++++++++++++++++++++\n 2 files changed, 63 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-opencv-half": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=opencv VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 JPEG_REDUCTION=2 RESIZE_ANTIALIAS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        0.765282355,
+        0.86540207,
+        0.815272324
+      ],
+      "median_seconds": 0.815272324,
+      "reference_ap50_per_run": [
+        0.7858,
+        0.7858,
+        0.7858
+      ],
+      "detections_per_run": [
+        59982,
+        59982,
+        59982
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-half/supership.out",
+      "raw_log_sha256": "9b0a60e206f306c88b9fa8482cf839e12d275535409ccd47a9ae7e153c095d70",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-half",
+      "reduction_vs_previous_submission_percent": 74.29436285718245,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:29:17\nServer Message: Submission Accepted; Performance: 0.815272324 s; OK: median runtime = 0.815272324 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "05cb42251126a2bcf298ae0557c80db708fb4e90",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md                              | 16 ++++++++++++++++\n experiments/20261022-fast-opencv-score001/metrics.json   |  2 +-\n .../submission-restored.txt                              |  2 +-\n 3 files changed, 18 insertions(+), 2 deletions(-)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-opencv-half-score005": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0.05 IMAGE_DECODER=opencv VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 JPEG_REDUCTION=2 RESIZE_ANTIALIAS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        0.514560429,
+        0.514572551,
+        0.514668438
+      ],
+      "median_seconds": 0.514572551,
+      "reference_ap50_per_run": [
+        0.7808,
+        0.7808,
+        0.7808
+      ],
+      "detections_per_run": [
+        5425,
+        5425,
+        5425
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-half-score005/supership.out",
+      "raw_log_sha256": "dd95e1aa65a7cb3a516d77019feb336f67427b8b71c447a28c4230bc8837cbef",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-half-score005",
+      "reduction_vs_previous_submission_percent": 83.77546386615722,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:31:26\nServer Message: Submission Accepted; Performance: 0.514572551 s; OK: median runtime = 0.514572551 s (timing JSON); timing parsed only.",
+      "validation_ap50": 0.9101,
+      "validation_baseline_ap50": 0.917,
+      "validation_passed": true
+    },
+    "source": {
+      "commit": "05cb42251126a2bcf298ae0557c80db708fb4e90",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md                          | 20 ++++++++++++++++++++\n .../20261022-fast-opencv-score001/metrics.json       |  2 +-\n .../submission-restored.txt                          |  2 +-\n 3 files changed, 22 insertions(+), 2 deletions(-)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-opencv-score001": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.001",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0.001 IMAGE_DECODER=opencv VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        0.815510469,
+        0.866208117,
+        0.815195528
+      ],
+      "median_seconds": 0.815510469,
+      "reference_ap50_per_run": [
+        0.8025,
+        0.8025,
+        0.8025
+      ],
+      "detections_per_run": [
+        59984,
+        59984,
+        59984
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-score001/supership.out",
+      "raw_log_sha256": "10030afedeb3c2d783a4d1b9008aa6bab1b5b7379d9805fb608d6444a6c6aa71",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-score001",
+      "reduction_vs_previous_submission_percent": 74.2868541158979,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:28:14\nServer Message: Submission Accepted; Performance: 0.815510469 s; OK: median runtime = 0.815510469 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "6e37ca3cf25f996840a3f2c112816d1fd44469d8",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "AGENTS.md                   |  7 ++++++\n OPTIMIZATION_EXPERIMENTS.md | 60 +++++++++++++++++++++++++++++++++++++++++++++\n 2 files changed, 67 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-opencv-score005": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "1",
+        "RESIZE_ANTIALIAS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0.05 IMAGE_DECODER=opencv VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 JPEG_REDUCTION=1 RESIZE_ANTIALIAS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        0.564819749,
+        0.614953601,
+        0.57094526
+      ],
+      "median_seconds": 0.57094526,
+      "reference_ap50_per_run": [
+        0.7962,
+        0.7962,
+        0.7962
+      ],
+      "detections_per_run": [
+        6014,
+        6014,
+        6014
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-score005/supership.out",
+      "raw_log_sha256": "a81ea82b417f24322c206330e7477193c0b98d8918eef719369d6baa246b1a04",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-score005",
+      "reduction_vs_previous_submission_percent": 81.99802538375923,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:31:25\nServer Message: Submission Accepted; Performance: 0.57094526 s; OK: median runtime = 0.570945260 s (timing JSON); timing parsed only.",
+      "validation_ap50": 0.9167,
+      "validation_baseline_ap50": 0.917,
+      "validation_passed": true
+    },
+    "source": {
+      "commit": "05cb42251126a2bcf298ae0557c80db708fb4e90",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md                                       | 8 ++++++++\n experiments/20261022-fast-opencv-score001/metrics.json            | 2 +-\n experiments/20261022-fast-opencv-score001/submission-restored.txt | 2 +-\n 3 files changed, 10 insertions(+), 2 deletions(-)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-opencv-score010": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "8",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.1",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "1",
+        "RESIZE_ANTIALIAS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0.1 IMAGE_DECODER=opencv VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 JPEG_REDUCTION=1 RESIZE_ANTIALIAS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        0.56496846,
+        0.564682546,
+        0.564567353
+      ],
+      "median_seconds": 0.564682546,
+      "reference_ap50_per_run": [
+        0.7753,
+        0.7753,
+        0.7753
+      ],
+      "detections_per_run": [
+        2595,
+        2595,
+        2595
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-score010/supership.out",
+      "raw_log_sha256": "f8d2ce2316e4c31b26efe31a6c0e2ae7206b17a2437211ca73e77bf6ac6f8d47",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-score010",
+      "reduction_vs_previous_submission_percent": 82.19548953024636,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": false
+    },
+    "source": {
+      "commit": "05cb42251126a2bcf298ae0557c80db708fb4e90",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md                                  | 12 ++++++++++++\n experiments/20261022-fast-opencv-score001/metrics.json       |  2 +-\n .../20261022-fast-opencv-score001/submission-restored.txt    |  2 +-\n 3 files changed, 14 insertions(+), 2 deletions(-)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  },
+  "20261022-fast-opencv-w12": {
+    "config": {
+      "environment_overrides": {
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "12",
+        "RUNS": "3",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1"
+      },
+      "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=12 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=opencv VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=0 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+      "dataset": "public v2 reference 200 images",
+      "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+      "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+      "input_size": [
+        640,
+        640
+      ],
+      "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+    },
+    "metrics": {
+      "status": "success",
+      "runs_seconds": [
+        0.865521199,
+        0.865332395,
+        0.865532749
+      ],
+      "median_seconds": 0.865521199,
+      "reference_ap50_per_run": [
+        0.8025,
+        0.8025,
+        0.8025
+      ],
+      "detections_per_run": [
+        59984,
+        59984,
+        59984
+      ],
+      "images_with_detections_per_run": [
+        200,
+        200,
+        200
+      ],
+      "hidden_ap50": null,
+      "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+      "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-w12/supership.out",
+      "raw_log_sha256": "af80711d6ad5ae7685533ec137d7c7df9f71401279c7183cb21022bffc11c104",
+      "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-w12",
+      "reduction_vs_previous_submission_percent": 72.71000961770612,
+      "ap50_reference_baseline": 0.7935,
+      "submitted": true,
+      "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:25:37\nServer Message: Submission Accepted; Performance: 0.865521199 s; OK: median runtime = 0.865521199 s (timing JSON); timing parsed only."
+    },
+    "source": {
+      "commit": "6e37ca3cf25f996840a3f2c112816d1fd44469d8",
+      "branch": "exp/rtx4090-e2e",
+      "tracked_diff": "AGENTS.md                   |  7 +++++\n OPTIMIZATION_EXPERIMENTS.md | 68 +++++++++++++++++++++++++++++++++++++++++++++\n 2 files changed, 75 insertions(+)",
+      "note": "Documentation records and local data symlink do not change inference source."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "orjson": "3.10.15",
+      "opencv_python": "4.11.0.86"
+    }
+  }
+}

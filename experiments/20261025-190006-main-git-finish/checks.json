@@ -1,0 +1,12 @@
+{
+  "status": "completed",
+  "upstream_merge": "4f410d6",
+  "upstream_source": "42460fba744a1c8741252177723530976101f305",
+  "archive_source": "7156ff2ce497bd846c40e685e2925c04d56154b0",
+  "tests": "93 passed, 1 skipped",
+  "batch_copy_tail_and_nonpositive_serialization_equivalence": true,
+  "performance_rebenchmarked": false,
+  "competition_submitted": false,
+  "hidden_ap50": null,
+  "finished": "2026-10-25T19:05:07.903414"
+}

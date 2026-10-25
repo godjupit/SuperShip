@@ -1,208 +1,26 @@
-# SuperShip: GPU End-to-End Inference Optimization
+# SuperShip
 
-This repository is the public code package for the SuperShip competition task. It contains the fixed RT-DETRv4 source, the official baseline inference weight, and the reference timing/scoring tools. The public dataset is distributed separately through Tsinghua Cloud.
+遥感舰船检测推理优化项目。主目录保留运行入口和源码，优化资料统一归档在[experiments/](experiments/README.md)。
 
-The full competition rules are available in [COMPETITION.md](COMPETITION.md).
-
-The upstream RT-DETRv4 source is pinned to commit:
-
-```text
-55fefaaed7efe2a5f72d0a18fd4e05965e35c292
-```
-
-See [UPSTREAM_README.md](experiments/guides/upstream.md) for the original RT-DETRv4 documentation and [LICENSE](LICENSE) for the upstream license.
-Machine-readable release metadata and checksums are stored in [RELEASE_INFO.json](RELEASE_INFO.json).
-
-## Public Data
-
-| Split | Images | Instances | Released content |
-| --- | ---: | ---: | --- |
-| Train | 2,405 | 11,904 | Images and COCO annotations |
-| Validation | 1,030 | 4,576 | Images and COCO annotations |
-| Public reference | 200 | 519 | Images, inference metadata, and COCO ground truth |
-
-The public reference split is selected deterministically by sorting the private test-pool images by integer `image_id` and taking the first 200. After installing the data package, its manifest is available at `data/SuperShip/reference/split_manifest.json`.
-
-The remaining 4,300 hidden-test images, metadata, and annotations are not included in this repository.
-
-### Download and install
-
-Download `SuperShip-public-data-v2.tar.zst` from the [Tsinghua Cloud link](https://cloud.tsinghua.edu.cn/d/da024b91e33a46cb8200/). Its expected SHA-256 is:
+- [精简优化日志](OPTIMIZATION_EXPERIMENTS.md)：时间、方案、关键结果和候选状态。
+- [全部过程与结果](experiments/README.md)：实验原记录、JSON/CSV索引、历史报告。
+- [分支源码与原台账](experiments/branches/README.md)：按提交SHA保存，原worktree继续独立使用。
+- [运行与评测命令](experiments/guides/commands.md)：评测脚本集中在tools/benchmark/。
+- [数据与产物](experiments/data/README.md)：公开数据、权重、每个分支的本机原始输出。
+- [环境配置](experiments/guides/development.md)：脚本集中在tools/dev/。
+- [赛题说明](COMPETITION.md)、[数据说明](DATA_NOTICE.md)、[上游文档](experiments/guides/upstream.md)。
 
 ```text
-4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71
+run.sh                   官方worker入口
+engine/、supership/      主线运行源码
+configs/、tests/         模型配置与检查
+tools/benchmark/         参考计时、优化计时、评分、验证
+tools/dev/               本机环境工具
+data/、weights/          统一公开数据与权重
+experiments/             全部优化资料；artifacts为本机大产物
+OPTIMIZATION_EXPERIMENTS.md 精简时间日志
 ```
 
-Install an archive already downloaded to the local machine:
+主线代码保持原版本，各方向的代码按分支保留。公开数据/权重入口和run.sh接口继续使用；基准计时仍覆盖READY后的全部输入处理、写盘与进程结束。
 
-```bash
-bash download_data.sh /path/to/SuperShip-public-data.tar.zst
-```
-
-Alternatively, use a direct-download URL:
-
-```bash
-SUPERSHIP_DATA_URL='<THU_CLOUD_DIRECT_DOWNLOAD_URL>' bash download_data.sh
-```
-
-The script verifies the archive checksum, extracts it under `data/SuperShip/`, and runs the release integrity check. It requires `curl` for URL downloads and `zstd` for extraction.
-
-## Categories
-
-| ID | Name | Description |
-| ---: | --- | --- |
-| 0 | `aircraft_carrier` | Aircraft carrier |
-| 1 | `warship` | Warship |
-| 2 | `other_ship` | Other ship |
-
-## Repository Layout
-
-```text
-SuperShip/
-├── configs/                         # RT-DETRv4 and SuperShip configs
-├── engine/                          # RT-DETRv4 source
-├── tools/                           # Upstream RT-DETRv4 tools
-├── data/SuperShip/                  # Created after cloud data installation
-│   ├── train/
-│   │   ├── images/
-│   │   └── annotations/instances_train.json
-│   ├── val/
-│   │   ├── images/
-│   │   └── annotations/instances_val.json
-│   └── reference/
-│       ├── images/
-│       ├── annotations/instances_reference.json
-│       ├── reference_images_meta.json
-│       └── split_manifest.json
-├── supership/                       # Inference, timing, scoring, validation
-├── weights/baseline.pth            # Official compact inference checkpoint
-├── run.sh                           # Competition worker entry point
-├── benchmark_reference.sh          # End-to-end timing on public reference data
-└── score_reference.sh              # AP evaluation on public reference data
-```
-
-## Environment
-
-For proxy tunnels, Codex CLI installation, and GitHub authentication, run `bash tools/dev/setup_dev.sh`. See [开发机一键配置](experiments/guides/development.md) for first-time setup and later reuse.
-
-The official evaluation device is one NVIDIA GeForce RTX 3090. Python 3.11 is recommended.
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python3 -m pip install --upgrade pip
-python3 -m pip install -r requirements.txt
-```
-
-Install a PyTorch build compatible with the CUDA driver on the target system if the generic requirement does not select the desired build.
-
-## Baseline Inference
-
-Run one-shot inference on the public reference split:
-
-```bash
-python3 supership/generate_submission.py \
-  --config configs/dfine/dfine_hgnetv2_s_supership.yml \
-  --weights weights/baseline.pth \
-  --img-folder data/SuperShip/reference/images \
-  --ann-file data/SuperShip/reference/reference_images_meta.json \
-  --output output/reference_submission.json \
-  --device cuda:0 \
-  --batch-size 8
-```
-
-Score the result:
-
-```bash
-bash tools/benchmark/score_reference.sh output/reference_submission.json
-```
-
-The validation baseline reported by the organizer is `AP50 = 0.916`.
-
-## End-to-End Timing
-
-The competition protocol separates untimed initialization from timed inference:
-
-1. The organizer starts `bash run.sh --worker` without exposing evaluation paths.
-2. The worker loads the model, initializes CUDA, then prints `THU_RS_READY`.
-3. The timer starts immediately before the organizer sends input/output paths over stdin.
-4. Timing stops after all images are processed, the output is flushed with `fsync`, and the worker exits.
-
-Run the same protocol locally on the 200-image public reference split:
-
-```bash
-bash tools/benchmark/benchmark_reference.sh
-```
-
-The default is three independent runs. Results are written to:
-
-```text
-output/reference_submission.run1.json
-output/reference_submission.run2.json
-output/reference_submission.run3.json
-```
-
-Score all generated runs:
-
-```bash
-bash tools/benchmark/score_reference.sh
-```
-
-Environment overrides are supported:
-
-```bash
-BATCH_SIZE=16 RUNS=3 DEVICE=cuda:0 bash tools/benchmark/benchmark_reference.sh
-```
-
-## Training
-
-The released training and validation data use COCO Detection format. Train or fine-tune with:
-
-```bash
-python3 train.py \
-  --config configs/dfine/dfine_hgnetv2_s_supership.yml \
-  --tuning weights/baseline.pth \
-  --device cuda:0
-```
-
-Use representative training samples for post-training quantization calibration. The validation split should remain reserved for model selection and accuracy evaluation.
-
-## Accuracy Scoring
-
-The scoring tool can evaluate any COCO result array against a released split:
-
-```bash
-python3 supership/score_submission.py \
-  --gt data/SuperShip/val/annotations/instances_val.json \
-  --submission output/val_submission.json
-```
-
-Official ranking is performed by the organizer on the unreleased 4,300-image hidden test set.
-
-## RTX 4090 optimized pipeline
-
-The optimized worker is opt-in and retains the official READY/timing protocol. Install the extra dependencies with `python -m pip install -r requirements-fast.txt`, then run `bash tools/benchmark/benchmark_optimized.sh`. The wrapper delegates timing and output validation to the unchanged official `benchmark_reference.sh`. Set `PYTHON_BIN` to your Python environment as usual.
-
-The optimized wrapper now defaults to 544-pixel inputs and evaluation Conv-BN fusion (`FUSE_CONV_BN=1`, 99 pairs). Use `FUSE_CONV_BN=0` to reproduce the unfused control. The accepted fused three-run median was 0.340258450 seconds on RTX 4090; complete validation AP50 was 0.9057. See [the optimization log](OPTIMIZATION_EXPERIMENTS.md) for the paired comparisons and receipt.
-
-The measured fastest configuration uses 8 image threads, bounded prefetch, reduced JPEG decoding, OpenCV resizing, FP16 CUDA Graph inference and postprocessing, vectorized result assembly, `orjson`, and score threshold 0.05. Every input image is decoded and inferred after READY. The output is flushed, fsynced, closed, and GPU work synchronized before process exit. Initialization uses synthetic images only.
-
-For the higher accuracy alternative, use `JPEG_REDUCTION=1 bash tools/benchmark/benchmark_optimized.sh`. For the original inference route, continue using `bash tools/benchmark/benchmark_reference.sh` without `PIPELINE=fast`. Full measurements, accuracy checks and accepted submission receipts are linked in [OPTIMIZATION_RESULTS_20261022.md](experiments/reports/OPTIMIZATION_RESULTS_20261022.md). Public validation cannot guarantee the organizer's hidden-set accuracy.
-
-Predictions with non-positive width or height are accepted but cannot match any
-ground-truth object. They remain in confidence ranking and COCO `maxDets`
-selection as unmatched detections; they are not silently removed. Malformed
-JSON, invalid IDs, non-finite numbers, and scores outside `[0, 1]` are rejected.
-The reported `0.916` baseline is for validation, not the public reference split.
-
-Worker processes must finish their child tasks and close the output before
-completion. The Linux timing tool waits for remaining processes in the worker
-process group within the run timeout, including that time in the measurement.
-Failure or timeout terminates the process group. Workers must not detach tasks
-into a separate session or process group.
-
-## Tests
-
-```bash
-python3 -m unittest discover -s tests -v
-```
+主线已合并官方`42460fba`规范与评分修复，并保留原优化开关；[合并后的完整说明](experiments/guides/main-upstream-sync.md)。历史性能记录按原SHA保存，当前主线后续计时需重新建立基线。

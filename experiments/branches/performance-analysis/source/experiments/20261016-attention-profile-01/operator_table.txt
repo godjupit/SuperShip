@@ -1,0 +1,46 @@
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                        module::encoder         0.00%       0.000us         0.00%       0.000us       0.000us      50.993ms        37.42%      50.993ms      10.199ms             5  
+                                       module::backbone         0.00%       0.000us         0.00%       0.000us       0.000us      50.960ms        37.39%      50.960ms      10.192ms             5  
+                                        module::decoder         0.00%       0.000us         0.00%       0.000us       0.000us      47.637ms        34.96%      47.637ms       9.527ms             5  
+                                aten::cudnn_convolution         8.57%      13.121ms        11.73%      17.945ms      42.224us      38.603ms        28.33%      38.603ms      90.830us           425  
+void cutlass::Kernel2<cutlass_80_tensorop_s1688gemm_...         0.00%       0.000us         0.00%       0.000us       0.000us      21.310ms        15.64%      21.310ms     163.923us           130  
+                                 aten::cudnn_batch_norm         5.34%       8.169ms        15.01%      22.975ms      46.415us      15.116ms        11.09%      15.116ms      30.537us           495  
+void cudnn::bn_fw_inf_1C11_kernel_NCHW<float, float,...         0.00%       0.000us         0.00%       0.000us       0.000us      15.116ms        11.09%      15.116ms      30.537us           495  
+                                            aten::addmm         3.36%       5.135ms         4.71%       7.206ms      30.026us      13.970ms        10.25%      13.970ms      58.207us           240  
+                                              aten::cat         1.42%       2.178ms         2.20%       3.372ms      20.434us      11.415ms         8.38%      11.415ms      69.183us           165  
+                                              aten::add         3.15%       4.820ms         5.25%       8.041ms      13.745us       9.218ms         6.76%       9.218ms      15.756us           585  
+                                              aten::mul         2.41%       3.694ms         3.84%       5.878ms      14.164us       8.882ms         6.52%       8.882ms      21.403us           415  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us       8.483ms         6.22%       8.483ms      36.881us           230  
+                                 ampere_sgemm_128x64_tn         0.00%       0.000us         0.00%       0.000us       0.000us       7.603ms         5.58%       7.603ms     126.721us            60  
+                                            aten::copy_         1.19%       1.822ms         2.17%       3.321ms      13.555us       7.593ms         5.57%       7.593ms      30.993us           245  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us       7.537ms         5.53%       7.537ms      33.499us           225  
+                                 ampere_sgemm_32x128_tn         0.00%       0.000us         0.00%       0.000us       0.000us       7.420ms         5.45%       7.420ms      37.102us           200  
+void at::native::(anonymous namespace)::CatArrayBatc...         0.00%       0.000us         0.00%       0.000us       0.000us       7.325ms         5.37%       7.325ms     104.638us            70  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us       7.255ms         5.32%       7.255ms      16.679us           435  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       6.831ms         5.01%       6.831ms      24.396us           280  
+                                        aten::clamp_min         0.98%       1.502ms         1.53%       2.335ms      15.567us       5.867ms         4.30%       5.867ms      39.111us           150  
+                                            aten::silu_         0.85%       1.305ms         1.55%       2.378ms      11.889us       4.611ms         3.38%       4.611ms      23.053us           200  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       4.611ms         3.38%       4.611ms      23.053us           200  
+            module::decoder.decoder.layers.0.cross_attn         0.00%       0.000us         0.00%       0.000us       0.000us       4.208ms         3.09%       4.208ms     841.629us             5  
+            module::decoder.decoder.layers.1.cross_attn         0.00%       0.000us         0.00%       0.000us       0.000us       4.183ms         3.07%       4.183ms     836.617us             5  
+            module::decoder.decoder.layers.2.cross_attn         0.00%       0.000us         0.00%       0.000us       0.000us       4.170ms         3.06%       4.170ms     834.057us             5  
+                                              aten::bmm         0.39%     596.484us         0.54%     822.666us      20.567us       3.865ms         2.84%       3.865ms      96.629us            40  
+void cutlass::Kernel2<cutlass_80_tensorop_s1688gemm_...         0.00%       0.000us         0.00%       0.000us       0.000us       3.488ms         2.56%       3.488ms      21.803us           160  
+           module::encoder.encoder.0.layers.0.self_attn         0.00%       0.000us         0.00%       0.000us       0.000us       3.410ms         2.50%       3.410ms     681.913us             5  
+                                aten::_conv_depthwise2d         0.41%     627.196us         1.02%       1.558ms      22.264us       2.913ms         2.14%       2.913ms      41.615us            70  
+void at::native::(anonymous namespace)::CatArrayBatc...         0.00%       0.000us         0.00%       0.000us       0.000us       2.687ms         1.97%       2.687ms     134.337us            20  
+                                ampere_sgemm_128x128_nn         0.00%       0.000us         0.00%       0.000us       0.000us       2.557ms         1.88%       2.557ms     127.845us            20  
+        _5x_cudnn_ampere_scudnn_128x32_relu_small_nn_v1         0.00%       0.000us         0.00%       0.000us       0.000us       2.550ms         1.87%       2.550ms     127.500us            20  
+             module::decoder.decoder.layers.2.self_attn         0.00%       0.000us         0.00%       0.000us       0.000us       2.532ms         1.86%       2.532ms     506.388us             5  
+             module::decoder.decoder.layers.0.self_attn         0.00%       0.000us         0.00%       0.000us       0.000us       2.504ms         1.84%       2.504ms     500.832us             5  
+_5x_cudnn_ampere_scudnn_winograd_128x128_ldg1_ldg4_r...         0.00%       0.000us         0.00%       0.000us       0.000us       2.481ms         1.82%       2.481ms      45.112us            55  
+             module::decoder.decoder.layers.1.self_attn         0.00%       0.000us         0.00%       0.000us       0.000us       2.477ms         1.82%       2.477ms     495.353us             5  
+sm86_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nh...         0.00%       0.000us         0.00%       0.000us       0.000us       2.419ms         1.78%       2.419ms     120.956us            20  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       2.409ms         1.77%       2.409ms      13.384us           180  
+void cudnn::engines_precompiled::nchwToNhwcKernel<fl...         0.00%       0.000us         0.00%       0.000us       0.000us       1.983ms         1.45%       1.983ms      39.654us            50  
+     _5x_cudnn_ampere_scudnn_128x32_relu_interior_nn_v1         0.00%       0.000us         0.00%       0.000us       0.000us       1.856ms         1.36%       1.856ms     185.562us            10  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 153.031ms
+Self CUDA time total: 136.280ms

@@ -1,0 +1,9284 @@
+{
+  "scope": "Eager diagnostic for attribution only; hooks/profiler overhead; GPU graph formal ranking comes from Nsight",
+  "warning": "Nested operators include child time; do not sum clone/_to_copy/copy_ times or treat eager timing as graph score",
+  "operators": [
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.2.cross_attn",
+      "calls": 8,
+      "cuda_us": 210.39599999999336,
+      "cpu_us": 105.37799999996787,
+      "shapes": [
+        [
+          [
+            8,
+            8,
+            300,
+            12,
+            2
+          ],
+          [
+            8,
+            8,
+            300,
+            12,
+            2
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            4624
+          ],
+          [
+            8,
+            8,
+            32,
+            4624
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            68,
+            68
+          ],
+          [
+            64,
+            32,
+            68,
+            68
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            1156
+          ],
+          [
+            8,
+            8,
+            32,
+            1156
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            34,
+            34
+          ],
+          [
+            64,
+            32,
+            34,
+            34
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            289
+          ],
+          [
+            8,
+            8,
+            32,
+            289
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            17,
+            17
+          ],
+          [
+            64,
+            32,
+            17,
+            17
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            300,
+            12
+          ],
+          [
+            8,
+            8,
+            300,
+            12
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.1.cross_attn",
+      "calls": 8,
+      "cuda_us": 210.39500000000407,
+      "cpu_us": 109.73799999999756,
+      "shapes": [
+        [
+          [
+            8,
+            8,
+            300,
+            12,
+            2
+          ],
+          [
+            8,
+            8,
+            300,
+            12,
+            2
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            4624
+          ],
+          [
+            8,
+            8,
+            32,
+            4624
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            68,
+            68
+          ],
+          [
+            64,
+            32,
+            68,
+            68
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            1156
+          ],
+          [
+            8,
+            8,
+            32,
+            1156
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            34,
+            34
+          ],
+          [
+            64,
+            32,
+            34,
+            34
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            289
+          ],
+          [
+            8,
+            8,
+            32,
+            289
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            17,
+            17
+          ],
+          [
+            64,
+            32,
+            17,
+            17
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            300,
+            12
+          ],
+          [
+            8,
+            8,
+            300,
+            12
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.0.cross_attn",
+      "calls": 8,
+      "cuda_us": 210.13899999996647,
+      "cpu_us": 106.21800000003714,
+      "shapes": [
+        [
+          [
+            8,
+            8,
+            300,
+            12,
+            2
+          ],
+          [
+            8,
+            8,
+            300,
+            12,
+            2
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            4624
+          ],
+          [
+            8,
+            8,
+            32,
+            4624
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            68,
+            68
+          ],
+          [
+            64,
+            32,
+            68,
+            68
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            1156
+          ],
+          [
+            8,
+            8,
+            32,
+            1156
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            34,
+            34
+          ],
+          [
+            64,
+            32,
+            34,
+            34
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            289
+          ],
+          [
+            8,
+            8,
+            32,
+            289
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            17,
+            17
+          ],
+          [
+            64,
+            32,
+            17,
+            17
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            300,
+            12
+          ],
+          [
+            8,
+            8,
+            300,
+            12
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::clone",
+      "module": "decoder.decoder.layers.1.cross_attn",
+      "calls": 5,
+      "cuda_us": 177.4360000000015,
+      "cpu_us": 128.35599999998522,
+      "shapes": [
+        [
+          [
+            8,
+            8,
+            300,
+            12,
+            2
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            4624
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            1156
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            289
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            300,
+            12
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::clone",
+      "module": "decoder.decoder.layers.0.cross_attn",
+      "calls": 5,
+      "cuda_us": 177.30799999997544,
+      "cpu_us": 121.2270000000135,
+      "shapes": [
+        [
+          [
+            8,
+            8,
+            300,
+            12,
+            2
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            4624
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            1156
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            289
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            300,
+            12
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::clone",
+      "module": "decoder.decoder.layers.2.cross_attn",
+      "calls": 5,
+      "cuda_us": 177.05199999999604,
+      "cpu_us": 121.83799999998882,
+      "shapes": [
+        [
+          [
+            8,
+            8,
+            300,
+            12,
+            2
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            4624
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            1156
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            32,
+            289
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            300,
+            12
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.1.cv1.conv",
+      "calls": 1,
+      "cuda_us": 149.43699999999808,
+      "cpu_us": 76.49899999999616,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            512
+          ],
+          [
+            512,
+            512
+          ],
+          [
+            512
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.input_proj.0.conv",
+      "calls": 2,
+      "cuda_us": 130.55700000000797,
+      "cpu_us": 168.83899999999994,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.0.self_attn",
+      "calls": 7,
+      "cuda_us": 124.21800000000803,
+      "cpu_us": 758.0110000000132,
+      "shapes": [
+        [
+          [
+            300,
+            8,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ],
+        [
+          [
+            2400,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.1.self_attn",
+      "calls": 7,
+      "cuda_us": 123.2000000000262,
+      "cpu_us": 738.7829999999958,
+      "shapes": [
+        [
+          [
+            300,
+            8,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ],
+        [
+          [
+            2400,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.2.self_attn",
+      "calls": 7,
+      "cuda_us": 122.97299999996903,
+      "cpu_us": 752.2409999999945,
+      "shapes": [
+        [
+          [
+            300,
+            8,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ],
+        [
+          [
+            2400,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.encoder.0.layers.0.self_attn",
+      "calls": 7,
+      "cuda_us": 120.28100000000995,
+      "cpu_us": 3551.8079999999827,
+      "shapes": [
+        [
+          [
+            289,
+            8,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ],
+        [
+          [
+            2312,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::cat",
+      "module": "decoder.decoder.layers.1.cross_attn",
+      "calls": 1,
+      "cuda_us": 103.7100000000064,
+      "cpu_us": 24.769000000000233,
+      "shapes": [
+        [
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::cat",
+      "module": "decoder.decoder.layers.2.cross_attn",
+      "calls": 1,
+      "cuda_us": 103.1979999999894,
+      "cpu_us": 20.460000000006403,
+      "shapes": [
+        [
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::cat",
+      "module": "decoder.decoder.layers.0.cross_attn",
+      "calls": 1,
+      "cuda_us": 102.846000000005,
+      "cpu_us": 21.589999999996508,
+      "shapes": [
+        [
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.1.cv4.conv",
+      "calls": 1,
+      "cuda_us": 98.07800000000134,
+      "cpu_us": 76.05899999999383,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            640
+          ],
+          [
+            256,
+            640
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "decoder.decoder",
+      "calls": 47,
+      "cuda_us": 88.4460000000181,
+      "cpu_us": 746.0150000000358,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [],
+          []
+        ],
+        [
+          [
+            8,
+            300,
+            4
+          ],
+          [
+            8,
+            300,
+            4
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          []
+        ],
+        [
+          [
+            8,
+            300,
+            132
+          ],
+          [],
+          []
+        ],
+        [
+          [
+            1
+          ],
+          [
+            8,
+            300
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            300
+          ],
+          [
+            8,
+            300
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            300,
+            132
+          ],
+          [
+            8,
+            300,
+            132
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.enc_score_head",
+      "calls": 2,
+      "cuda_us": 86.3969999999972,
+      "cpu_us": 169.90800000000309,
+      "shapes": [
+        [
+          [
+            8,
+            6069,
+            256
+          ],
+          [
+            3,
+            256
+          ],
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.input_proj.1.conv",
+      "calls": 2,
+      "cuda_us": 76.63900000001013,
+      "cpu_us": 163.458000000006,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            512
+          ],
+          [
+            256,
+            512
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.enc_output.norm",
+      "calls": 1,
+      "cuda_us": 66.87900000000081,
+      "cpu_us": 31.219999999993888,
+      "shapes": [
+        [
+          [
+            8,
+            6069,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.enc_output.norm",
+      "calls": 1,
+      "cuda_us": 66.87900000000081,
+      "cpu_us": 18.889999999999418,
+      "shapes": [
+        [
+          [
+            8,
+            6069,
+            256
+          ],
+          [
+            8,
+            6069,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stem",
+      "calls": 2,
+      "cuda_us": 59.710000000000946,
+      "cpu_us": 39.159999999999854,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            272,
+            272
+          ],
+          [
+            8,
+            16,
+            272,
+            272
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            8,
+            272,
+            272
+          ],
+          [
+            8,
+            8,
+            272,
+            272
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.1.blocks.0.aggregation.1.conv",
+      "calls": 2,
+      "cuda_us": 58.74999999999636,
+      "cpu_us": 162.78900000000067,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            128
+          ],
+          [
+            256,
+            128
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.2.blocks.0.aggregation.1.conv",
+      "calls": 2,
+      "cuda_us": 54.55999999999767,
+      "cpu_us": 167.82800000000134,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [
+            512,
+            256
+          ],
+          [
+            512
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.2.blocks.1.aggregation.1.conv",
+      "calls": 2,
+      "cuda_us": 53.728000000002794,
+      "cpu_us": 161.1790000000001,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [
+            512,
+            256
+          ],
+          [
+            512
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.0.blocks.0.aggregation.1.conv",
+      "calls": 2,
+      "cuda_us": 53.408000000003085,
+      "cpu_us": 164.20900000000256,
+      "shapes": [
+        [
+          [
+            8,
+            136,
+            136,
+            32
+          ],
+          [
+            64,
+            32
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::cat",
+      "module": "decoder",
+      "calls": 1,
+      "cuda_us": 49.72600000000239,
+      "cpu_us": 37.0399999999936,
+      "shapes": [
+        [
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.enc_output.proj",
+      "calls": 1,
+      "cuda_us": 49.5989999999947,
+      "cpu_us": 72.04900000000634,
+      "shapes": [
+        [
+          [
+            8,
+            6069,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "encoder.input_proj.0.conv",
+      "calls": 1,
+      "cuda_us": 48.63900000000285,
+      "cpu_us": 32.879000000000815,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "encoder.input_proj.0.conv",
+      "calls": 1,
+      "cuda_us": 48.63900000000285,
+      "cpu_us": 18.65899999999965,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            256
+          ],
+          [
+            8,
+            68,
+            68,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.3.blocks.0.aggregation.1.conv",
+      "calls": 2,
+      "cuda_us": 47.80599999999686,
+      "cpu_us": 166.46700000000055,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            512
+          ],
+          [
+            1024,
+            512
+          ],
+          [
+            1024
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stem.stem4.conv",
+      "calls": 2,
+      "cuda_us": 46.17399999999907,
+      "cpu_us": 275.4060000000027,
+      "shapes": [
+        [
+          [
+            8,
+            136,
+            136,
+            16
+          ],
+          [
+            16,
+            16
+          ],
+          [
+            16
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.enc_score_head",
+      "calls": 1,
+      "cuda_us": 45.375,
+      "cpu_us": 29.660000000003492,
+      "shapes": [
+        [
+          [
+            8,
+            6069,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.enc_score_head",
+      "calls": 1,
+      "cuda_us": 45.375,
+      "cpu_us": 17.090000000003783,
+      "shapes": [
+        [
+          [
+            8,
+            6069,
+            256
+          ],
+          [
+            8,
+            6069,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.input_proj.2.conv",
+      "calls": 2,
+      "cuda_us": 44.189999999987776,
+      "cpu_us": 194.208000000006,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            1024
+          ],
+          [
+            256,
+            1024
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stem.stem1.lab",
+      "calls": 1,
+      "cuda_us": 42.207000000000335,
+      "cpu_us": 21.019999999998618,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            272,
+            272
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.1.blocks.0.aggregation.1.lab",
+      "calls": 1,
+      "cuda_us": 42.07999999999811,
+      "cpu_us": 15.40899999999965,
+      "shapes": [
+        [
+          [
+            8,
+            256,
+            68,
+            68
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.0.blocks.0.aggregation.1.lab",
+      "calls": 1,
+      "cuda_us": 42.04699999999866,
+      "cpu_us": 15.969999999997526,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            136,
+            136
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stem.stem2b.lab",
+      "calls": 1,
+      "cuda_us": 41.69599999999991,
+      "cpu_us": 16.0099999999984,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            272,
+            272
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.0.cv1.conv",
+      "calls": 1,
+      "cuda_us": 41.24700000000303,
+      "cpu_us": 75.65899999999965,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            512
+          ],
+          [
+            512,
+            512
+          ],
+          [
+            512
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.downsample_convs.0.0.cv1.conv",
+      "calls": 1,
+      "cuda_us": 41.119000000006054,
+      "cpu_us": 95.23899999999412,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.0.cv1.conv",
+      "calls": 1,
+      "cuda_us": 41.119000000006054,
+      "cpu_us": 79.79000000000087,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            512
+          ],
+          [
+            512,
+            512
+          ],
+          [
+            512
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.query_pos_head.layers.0",
+      "calls": 6,
+      "cuda_us": 40.161000000007334,
+      "cpu_us": 516.1949999999924,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            4
+          ],
+          [
+            512,
+            4
+          ],
+          [
+            512
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "<preprocess/postprocess>",
+      "calls": 4,
+      "cuda_us": 39.45500000001266,
+      "cpu_us": 125.61800000000494,
+      "shapes": [
+        [
+          [
+            8,
+            3,
+            544,
+            544
+          ],
+          [
+            8,
+            3,
+            544,
+            544
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            300,
+            3
+          ],
+          [
+            8,
+            300,
+            3
+          ],
+          []
+        ],
+        [
+          [
+            1,
+            2,
+            8,
+            2
+          ],
+          [
+            1,
+            2,
+            8,
+            2
+          ],
+          []
+        ],
+        [
+          [
+            1,
+            1,
+            4,
+            8,
+            300,
+            1
+          ],
+          [
+            1,
+            1,
+            4,
+            8,
+            300,
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.2.blocks.1",
+      "calls": 1,
+      "cuda_us": 39.199000000000524,
+      "cpu_us": 23.200000000000728,
+      "shapes": [
+        [
+          [
+            8,
+            512,
+            34,
+            34
+          ],
+          [
+            8,
+            512,
+            34,
+            34
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "<preprocess/postprocess>",
+      "calls": 2,
+      "cuda_us": 36.575000000008004,
+      "cpu_us": 2673.29800000001,
+      "shapes": [
+        [
+          [
+            8,
+            3,
+            544,
+            544
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            8,
+            300,
+            3
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.2.blocks.1.layers.0.conv1.conv",
+      "calls": 2,
+      "cuda_us": 35.13699999999517,
+      "cpu_us": 170.49899999999616,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            512
+          ],
+          [
+            64,
+            512
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.lateral_convs.0.conv",
+      "calls": 2,
+      "cuda_us": 34.84799999999814,
+      "cpu_us": 284.8159999999989,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.2.cross_attn",
+      "calls": 3,
+      "cuda_us": 33.34399999999732,
+      "cpu_us": 66.06900000000314,
+      "shapes": [
+        [
+          [
+            64,
+            32,
+            68,
+            68
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            34,
+            34
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            17,
+            17
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "decoder.decoder.layers.2.cross_attn",
+      "calls": 5,
+      "cuda_us": 33.24799999999232,
+      "cpu_us": 83.86999999999534,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            8,
+            12,
+            2
+          ],
+          [
+            12,
+            1
+          ]
+        ],
+        [
+          [
+            8,
+            300,
+            8,
+            12,
+            2
+          ],
+          [
+            8,
+            300,
+            1,
+            1,
+            2
+          ]
+        ],
+        [
+          [
+            8,
+            300,
+            8,
+            12,
+            2
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            300,
+            12
+          ],
+          [
+            64,
+            1,
+            300,
+            12
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.1.blocks.0.aggregation.1.lab",
+      "calls": 1,
+      "cuda_us": 32.99099999999817,
+      "cpu_us": 22.639999999999418,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            256,
+            68,
+            68
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.1.cross_attn",
+      "calls": 3,
+      "cuda_us": 32.95900000000256,
+      "cpu_us": 66.07000000000698,
+      "shapes": [
+        [
+          [
+            64,
+            32,
+            68,
+            68
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            34,
+            34
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            17,
+            17
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.0.cross_attn",
+      "calls": 3,
+      "cuda_us": 32.830999999991036,
+      "cpu_us": 67.52000000000407,
+      "shapes": [
+        [
+          [
+            64,
+            32,
+            68,
+            68
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            34,
+            34
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            17,
+            17
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "decoder.decoder.layers.1.cross_attn",
+      "calls": 5,
+      "cuda_us": 32.030999999988126,
+      "cpu_us": 85.72999999999593,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            8,
+            12,
+            2
+          ],
+          [
+            12,
+            1
+          ]
+        ],
+        [
+          [
+            8,
+            300,
+            8,
+            12,
+            2
+          ],
+          [
+            8,
+            300,
+            1,
+            1,
+            2
+          ]
+        ],
+        [
+          [
+            8,
+            300,
+            8,
+            12,
+            2
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            300,
+            12
+          ],
+          [
+            64,
+            1,
+            300,
+            12
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "decoder.decoder.layers.0.cross_attn",
+      "calls": 5,
+      "cuda_us": 31.42399999999907,
+      "cpu_us": 87.93000000002212,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            8,
+            12,
+            2
+          ],
+          [
+            12,
+            1
+          ]
+        ],
+        [
+          [
+            8,
+            300,
+            8,
+            12,
+            2
+          ],
+          [
+            8,
+            300,
+            1,
+            1,
+            2
+          ]
+        ],
+        [
+          [
+            8,
+            300,
+            8,
+            12,
+            2
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            32,
+            300,
+            12
+          ],
+          [
+            64,
+            1,
+            300,
+            12
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "decoder.decoder",
+      "calls": 27,
+      "cuda_us": 30.87999999999738,
+      "cpu_us": 427.35499999995227,
+      "shapes": [
+        [
+          [],
+          [
+            1
+          ]
+        ],
+        [
+          [
+            1
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            300
+          ],
+          [
+            8,
+            300
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "encoder.input_proj.1.conv",
+      "calls": 1,
+      "cuda_us": 30.81500000000233,
+      "cpu_us": 31.790000000000873,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            512
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "encoder.input_proj.1.conv",
+      "calls": 1,
+      "cuda_us": 30.81500000000233,
+      "cpu_us": 18.37000000000262,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            512
+          ],
+          [
+            8,
+            34,
+            34,
+            512
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.1.gateway.gate",
+      "calls": 2,
+      "cuda_us": 30.20800000001327,
+      "cpu_us": 173.7280000000028,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            512
+          ],
+          [
+            512,
+            512
+          ],
+          [
+            512
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.0.gateway.gate",
+      "calls": 2,
+      "cuda_us": 30.047999999995227,
+      "cpu_us": 172.58899999999267,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            512
+          ],
+          [
+            512,
+            512
+          ],
+          [
+            512
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.2.blocks.1.aggregation.0.conv",
+      "calls": 1,
+      "cuda_us": 29.982999999996537,
+      "cpu_us": 76.84900000000198,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            704
+          ],
+          [
+            256,
+            704
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.2.gateway.gate",
+      "calls": 2,
+      "cuda_us": 29.72599999999511,
+      "cpu_us": 166.91800000000512,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            512
+          ],
+          [
+            512,
+            512
+          ],
+          [
+            512
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.0.blocks.0.aggregation.1.lab",
+      "calls": 1,
+      "cuda_us": 29.183999999997468,
+      "cpu_us": 22.869000000002416,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            64,
+            136,
+            136
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stem.stem1.lab",
+      "calls": 1,
+      "cuda_us": 29.15099999999984,
+      "cpu_us": 29.369000000000597,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            16,
+            272,
+            272
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.0.linear1",
+      "calls": 2,
+      "cuda_us": 28.926000000021304,
+      "cpu_us": 166.67900000000373,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            1024,
+            256
+          ],
+          [
+            1024
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.encoder.0.layers.0.linear1",
+      "calls": 2,
+      "cuda_us": 28.67199999999866,
+      "cpu_us": 175.26899999999296,
+      "shapes": [
+        [
+          [
+            8,
+            289,
+            256
+          ],
+          [
+            1024,
+            256
+          ],
+          [
+            1024
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.1.linear1",
+      "calls": 2,
+      "cuda_us": 28.479999999995925,
+      "cpu_us": 167.35800000000745,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            1024,
+            256
+          ],
+          [
+            1024
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.2.linear1",
+      "calls": 2,
+      "cuda_us": 28.477999999988242,
+      "cpu_us": 164.85800000000745,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            1024,
+            256
+          ],
+          [
+            1024
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stem.stem2b.lab",
+      "calls": 1,
+      "cuda_us": 27.87199999999939,
+      "cpu_us": 22.760000000002037,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            16,
+            272,
+            272
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.0.cv4.conv",
+      "calls": 1,
+      "cuda_us": 27.58400000000256,
+      "cpu_us": 77.5989999999947,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            640
+          ],
+          [
+            256,
+            640
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.0.cv4.conv",
+      "calls": 1,
+      "cuda_us": 27.45499999999447,
+      "cpu_us": 74.49900000000343,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            640
+          ],
+          [
+            256,
+            640
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "decoder",
+      "calls": 1,
+      "cuda_us": 26.976000000002387,
+      "cpu_us": 22.599999999998545,
+      "shapes": [
+        [
+          [
+            1,
+            6069,
+            1
+          ],
+          [
+            8,
+            6069,
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.query_pos_head.layers.1",
+      "calls": 3,
+      "cuda_us": 25.760000000023865,
+      "cpu_us": 208.64700000001176,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            512
+          ],
+          [
+            256,
+            512
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.1.cv2.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 23.80800000000454,
+      "cpu_us": 86.67900000000373,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            256
+          ],
+          [
+            64,
+            256
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.0.self_attn",
+      "calls": 11,
+      "cuda_us": 23.58100000003469,
+      "cpu_us": 128.9090000000142,
+      "shapes": [
+        [
+          [
+            256
+          ],
+          [
+            256
+          ],
+          []
+        ],
+        [
+          [
+            256,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          []
+        ],
+        [
+          [
+            300,
+            8,
+            256
+          ],
+          [
+            300,
+            8,
+            256
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            300,
+            300
+          ],
+          [
+            64,
+            300,
+            300
+          ],
+          []
+        ],
+        [
+          [
+            300,
+            64,
+            32
+          ],
+          [
+            300,
+            64,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.2.self_attn",
+      "calls": 11,
+      "cuda_us": 23.489000000001397,
+      "cpu_us": 127.05799999996088,
+      "shapes": [
+        [
+          [
+            256
+          ],
+          [
+            256
+          ],
+          []
+        ],
+        [
+          [
+            256,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          []
+        ],
+        [
+          [
+            300,
+            8,
+            256
+          ],
+          [
+            300,
+            8,
+            256
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            300,
+            300
+          ],
+          [
+            64,
+            300,
+            300
+          ],
+          []
+        ],
+        [
+          [
+            300,
+            64,
+            32
+          ],
+          [
+            300,
+            64,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.1.self_attn",
+      "calls": 11,
+      "cuda_us": 23.2329999999929,
+      "cpu_us": 128.0889999999781,
+      "shapes": [
+        [
+          [
+            256
+          ],
+          [
+            256
+          ],
+          []
+        ],
+        [
+          [
+            256,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          []
+        ],
+        [
+          [
+            300,
+            8,
+            256
+          ],
+          [
+            300,
+            8,
+            256
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            300,
+            300
+          ],
+          [
+            64,
+            300,
+            300
+          ],
+          []
+        ],
+        [
+          [
+            300,
+            64,
+            32
+          ],
+          [
+            300,
+            64,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.0.blocks.0.aggregation.0.conv",
+      "calls": 1,
+      "cuda_us": 22.84700000000157,
+      "cpu_us": 77.02900000000227,
+      "shapes": [
+        [
+          [
+            8,
+            136,
+            136,
+            64
+          ],
+          [
+            32,
+            64
+          ],
+          [
+            32
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.1.cv2.0.conv1.conv",
+      "calls": 1,
+      "cuda_us": 22.07999999999447,
+      "cpu_us": 81.90899999999965,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            256
+          ],
+          [
+            64,
+            256
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.3.blocks.0.aggregation.0.conv",
+      "calls": 1,
+      "cuda_us": 22.015999999995984,
+      "cpu_us": 85.11899999999878,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            896
+          ],
+          [
+            512,
+            896
+          ],
+          [
+            512
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.1.downsample.conv",
+      "calls": 1,
+      "cuda_us": 21.086999999999534,
+      "cpu_us": 33.4900000000016,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            136,
+            136
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.1.downsample.conv",
+      "calls": 1,
+      "cuda_us": 21.086999999999534,
+      "cpu_us": 19.049999999999272,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            136,
+            136
+          ],
+          [
+            8,
+            64,
+            136,
+            136
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.0.self_attn",
+      "calls": 10,
+      "cuda_us": 21.086000000024796,
+      "cpu_us": 206.91599999999744,
+      "shapes": [
+        [
+          [
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            256,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            300,
+            8,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            64,
+            300,
+            300
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "encoder.encoder.0.layers.0.self_attn",
+      "calls": 10,
+      "cuda_us": 21.05499999998574,
+      "cpu_us": 126.61899999999878,
+      "shapes": [
+        [
+          [
+            256
+          ],
+          [
+            256
+          ],
+          []
+        ],
+        [
+          [
+            256,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          []
+        ],
+        [
+          [
+            289,
+            8,
+            256
+          ],
+          [
+            289,
+            8,
+            256
+          ],
+          []
+        ],
+        [
+          [
+            64,
+            289,
+            289
+          ],
+          [
+            64,
+            289,
+            289
+          ],
+          []
+        ],
+        [
+          [
+            289,
+            64,
+            32
+          ],
+          [
+            289,
+            64,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.2.self_attn",
+      "calls": 10,
+      "cuda_us": 20.929000000003725,
+      "cpu_us": 205.76799999998184,
+      "shapes": [
+        [
+          [
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            256,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            300,
+            8,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            64,
+            300,
+            300
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.1.self_attn",
+      "calls": 10,
+      "cuda_us": 20.736999999993714,
+      "cpu_us": 206.37800000001153,
+      "shapes": [
+        [
+          [
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            256,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            300,
+            8,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            64,
+            300,
+            300
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.2.blocks.0.aggregation.0.conv",
+      "calls": 1,
+      "cuda_us": 20.736000000000786,
+      "cpu_us": 83.37900000000081,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            448
+          ],
+          [
+            256,
+            448
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.integral",
+      "calls": 6,
+      "cuda_us": 20.577000000033877,
+      "cpu_us": 455.56599999997707,
+      "shapes": [
+        [
+          [
+            9600,
+            33
+          ],
+          [
+            33
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.2.downsample.conv",
+      "calls": 1,
+      "cuda_us": 20.318999999999505,
+      "cpu_us": 38.248999999999796,
+      "shapes": [
+        [
+          [
+            8,
+            256,
+            68,
+            68
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.2.downsample.conv",
+      "calls": 1,
+      "cuda_us": 20.318999999999505,
+      "cpu_us": 21.79899999999907,
+      "shapes": [
+        [
+          [
+            8,
+            256,
+            68,
+            68
+          ],
+          [
+            8,
+            256,
+            68,
+            68
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "encoder.encoder.0.layers.0.self_attn",
+      "calls": 9,
+      "cuda_us": 18.52699999998731,
+      "cpu_us": 196.3570000000036,
+      "shapes": [
+        [
+          [
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            256,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            289,
+            8,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            64,
+            289,
+            289
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.1.blocks.0.aggregation.0.conv",
+      "calls": 1,
+      "cuda_us": 18.174999999999272,
+      "cpu_us": 77.4890000000014,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            160
+          ],
+          [
+            128,
+            160
+          ],
+          [
+            128
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "encoder",
+      "calls": 3,
+      "cuda_us": 16.447000000000116,
+      "cpu_us": 65.10899999999674,
+      "shapes": [
+        [
+          [
+            8,
+            256,
+            17,
+            17
+          ],
+          [
+            8,
+            256,
+            17,
+            17
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            256,
+            34,
+            34
+          ],
+          [
+            8,
+            256,
+            34,
+            34
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::cat",
+      "module": "decoder.decoder",
+      "calls": 11,
+      "cuda_us": 16.319000000032247,
+      "cpu_us": 293.33400000000256,
+      "shapes": [
+        [
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.1.blocks.0.aggregation.0.lab",
+      "calls": 1,
+      "cuda_us": 15.231999999999971,
+      "cpu_us": 15.56000000000131,
+      "shapes": [
+        [
+          [
+            8,
+            128,
+            68,
+            68
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.encoder.0.layers.0.linear2",
+      "calls": 1,
+      "cuda_us": 15.009000000005472,
+      "cpu_us": 75.91900000000169,
+      "shapes": [
+        [
+          [
+            8,
+            289,
+            1024
+          ],
+          [
+            256,
+            1024
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.0.linear2",
+      "calls": 1,
+      "cuda_us": 14.815999999991618,
+      "cpu_us": 78.03900000000431,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            1024
+          ],
+          [
+            256,
+            1024
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.1.linear2",
+      "calls": 1,
+      "cuda_us": 14.720000000001164,
+      "cpu_us": 76.61900000000605,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            1024
+          ],
+          [
+            256,
+            1024
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.2.linear2",
+      "calls": 1,
+      "cuda_us": 14.720000000001164,
+      "cpu_us": 76.39999999999418,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            1024
+          ],
+          [
+            256,
+            1024
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "encoder.input_proj.2.conv",
+      "calls": 1,
+      "cuda_us": 14.432000000000698,
+      "cpu_us": 32.150000000001455,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            1024
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "encoder.input_proj.2.conv",
+      "calls": 1,
+      "cuda_us": 14.432000000000698,
+      "cpu_us": 18.64999999999418,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            1024
+          ],
+          [
+            8,
+            17,
+            17,
+            1024
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.enc_bbox_head.layers.0",
+      "calls": 2,
+      "cuda_us": 14.336000000010245,
+      "cpu_us": 166.07800000000134,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "decoder.decoder.layers.1",
+      "calls": 4,
+      "cuda_us": 14.240000000005239,
+      "cpu_us": 89.37900000001537,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "decoder.decoder.layers.0",
+      "calls": 4,
+      "cuda_us": 14.208000000013271,
+      "cpu_us": 92.48800000001211,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stem.stem2a.conv",
+      "calls": 1,
+      "cuda_us": 14.079999999998108,
+      "cpu_us": 29.68000000000029,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            273,
+            273
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stem.stem2a.conv",
+      "calls": 1,
+      "cuda_us": 14.079999999998108,
+      "cpu_us": 15.849999999998545,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            273,
+            273
+          ],
+          [
+            8,
+            16,
+            273,
+            273
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "decoder.decoder.layers.2",
+      "calls": 4,
+      "cuda_us": 13.952000000004773,
+      "cpu_us": 90.09900000000198,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stem.stem2a.lab",
+      "calls": 1,
+      "cuda_us": 13.824000000000524,
+      "cpu_us": 22.889999999999418,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            8,
+            272,
+            272
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.downsample_convs.1.0.cv1.conv",
+      "calls": 1,
+      "cuda_us": 13.824000000000524,
+      "cpu_us": 71.2390000000014,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.1.blocks.0.aggregation.0.lab",
+      "calls": 1,
+      "cuda_us": 13.760000000002037,
+      "cpu_us": 23.280000000002474,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            128,
+            68,
+            68
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.1.cv1.conv",
+      "calls": 1,
+      "cuda_us": 13.760000000002037,
+      "cpu_us": 74.65000000000146,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            512
+          ],
+          [
+            512,
+            512
+          ],
+          [
+            512
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.0.blocks.0.aggregation.0.lab",
+      "calls": 1,
+      "cuda_us": 13.72700000000259,
+      "cpu_us": 23.290000000000873,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            32,
+            136,
+            136
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.2.blocks.0.aggregation.1.lab",
+      "calls": 1,
+      "cuda_us": 13.695999999999913,
+      "cpu_us": 22.899999999997817,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            512,
+            34,
+            34
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.2.blocks.1.aggregation.1.lab",
+      "calls": 1,
+      "cuda_us": 13.631999999997788,
+      "cpu_us": 22.530000000002474,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            512,
+            34,
+            34
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.lateral_convs.1.conv",
+      "calls": 1,
+      "cuda_us": 13.056000000004133,
+      "cpu_us": 82.15899999999965,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.dec_bbox_head.1.layers.0",
+      "calls": 2,
+      "cuda_us": 12.831999999994878,
+      "cpu_us": 160.5689999999886,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.dec_bbox_head.0.layers.0",
+      "calls": 2,
+      "cuda_us": 12.735999999989872,
+      "cpu_us": 154.6980000000185,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.2.cross_attn.sampling_offsets",
+      "calls": 2,
+      "cuda_us": 12.703000000008615,
+      "cpu_us": 167.39800000000105,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            192,
+            256
+          ],
+          [
+            192
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.dec_score_head.2",
+      "calls": 2,
+      "cuda_us": 12.608000000022002,
+      "cpu_us": 192.3570000000036,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            3,
+            256
+          ],
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.dec_score_head.0",
+      "calls": 2,
+      "cuda_us": 12.606999999989057,
+      "cpu_us": 187.9269999999815,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            3,
+            256
+          ],
+          [
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.0.blocks.0.aggregation.0.lab",
+      "calls": 1,
+      "cuda_us": 12.576000000000931,
+      "cpu_us": 15.869999999998981,
+      "shapes": [
+        [
+          [
+            8,
+            32,
+            136,
+            136
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.dec_bbox_head.2.layers.0",
+      "calls": 2,
+      "cuda_us": 12.57599999998638,
+      "cpu_us": 162.8990000000049,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.pre_bbox_head.layers.0",
+      "calls": 2,
+      "cuda_us": 12.544000000008964,
+      "cpu_us": 163.56799999998475,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.1.cross_attn.sampling_offsets",
+      "calls": 2,
+      "cuda_us": 12.415999999982887,
+      "cpu_us": 184.99799999999232,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            192,
+            256
+          ],
+          [
+            192
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.0.cross_attn.sampling_offsets",
+      "calls": 2,
+      "cuda_us": 12.159999999974389,
+      "cpu_us": 167.54799999999523,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            192,
+            256
+          ],
+          [
+            192
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.1.cv4.conv",
+      "calls": 1,
+      "cuda_us": 11.58299999999872,
+      "cpu_us": 74.25,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            640
+          ],
+          [
+            256,
+            640
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.2.blocks.1.aggregation.1.lab",
+      "calls": 1,
+      "cuda_us": 11.520000000000437,
+      "cpu_us": 15.720000000001164,
+      "shapes": [
+        [
+          [
+            8,
+            512,
+            34,
+            34
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.2.blocks.0.aggregation.1.lab",
+      "calls": 1,
+      "cuda_us": 11.487999999997555,
+      "cpu_us": 15.27900000000227,
+      "shapes": [
+        [
+          [
+            8,
+            512,
+            34,
+            34
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stem.stem2a.lab",
+      "calls": 1,
+      "cuda_us": 11.294999999998254,
+      "cpu_us": 15.68999999999869,
+      "shapes": [
+        [
+          [
+            8,
+            8,
+            272,
+            272
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "decoder.decoder.layers.2.gateway",
+      "calls": 2,
+      "cuda_us": 10.78399999999965,
+      "cpu_us": 33.770000000004075,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "decoder.decoder.layers.0.gateway",
+      "calls": 2,
+      "cuda_us": 10.782999999995809,
+      "cpu_us": 33.61000000000058,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "decoder.decoder.layers.1.gateway",
+      "calls": 2,
+      "cuda_us": 10.590999999985797,
+      "cpu_us": 32.93900000001304,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.encoder.0.layers.0",
+      "calls": 3,
+      "cuda_us": 10.304000000003725,
+      "cpu_us": 101.32800000000134,
+      "shapes": [
+        [
+          [
+            8,
+            289,
+            256
+          ],
+          [
+            1,
+            289,
+            256
+          ],
+          []
+        ],
+        [
+          [
+            8,
+            289,
+            256
+          ],
+          [
+            8,
+            289,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.1.cross_attn.attention_weights",
+      "calls": 2,
+      "cuda_us": 10.047999999995227,
+      "cpu_us": 153.7679999999964,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            96,
+            256
+          ],
+          [
+            96
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.0.cross_attn.attention_weights",
+      "calls": 2,
+      "cuda_us": 10.012999999991735,
+      "cpu_us": 154.32799999999406,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            96,
+            256
+          ],
+          [
+            96
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.layers.2.cross_attn.attention_weights",
+      "calls": 2,
+      "cuda_us": 9.919999999998254,
+      "cpu_us": 156.80800000000454,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            96,
+            256
+          ],
+          [
+            96
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "encoder",
+      "calls": 2,
+      "cuda_us": 9.824000000000524,
+      "cpu_us": 75.31900000000314,
+      "shapes": [
+        [
+          [
+            8,
+            256,
+            17,
+            17
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            8,
+            256,
+            34,
+            34
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.0.cv2.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 9.79200000000128,
+      "cpu_us": 89.0089999999982,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [
+            64,
+            256
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stem.stem1.conv",
+      "calls": 1,
+      "cuda_us": 9.759000000000015,
+      "cpu_us": 47.69999999999891,
+      "shapes": [
+        [
+          [
+            8,
+            3,
+            544,
+            544
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stem.stem1.conv",
+      "calls": 1,
+      "cuda_us": 9.759000000000015,
+      "cpu_us": 26.43000000000029,
+      "shapes": [
+        [
+          [
+            8,
+            3,
+            544,
+            544
+          ],
+          [
+            8,
+            3,
+            544,
+            544
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder",
+      "calls": 4,
+      "cuda_us": 9.503999999993539,
+      "cpu_us": 89.61900000000605,
+      "shapes": [
+        [
+          [
+            8,
+            1,
+            1,
+            1,
+            6069,
+            4
+          ],
+          [
+            8,
+            1,
+            1,
+            1,
+            6069,
+            4
+          ],
+          []
+        ],
+        [
+          [
+            1,
+            6069,
+            1
+          ],
+          [
+            1,
+            6069,
+            1
+          ],
+          []
+        ],
+        [
+          [
+            1,
+            1,
+            4,
+            8,
+            300,
+            1
+          ],
+          [
+            1,
+            1,
+            4,
+            8,
+            300,
+            1
+          ],
+          []
+        ],
+        [
+          [
+            1,
+            1,
+            256,
+            8,
+            300,
+            1
+          ],
+          [
+            1,
+            1,
+            256,
+            8,
+            300,
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.0.cv2.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 9.279999999998836,
+      "cpu_us": 90.42899999999645,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [
+            64,
+            256
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.3.downsample.conv",
+      "calls": 1,
+      "cuda_us": 9.21600000000035,
+      "cpu_us": 31.318999999999505,
+      "shapes": [
+        [
+          [
+            8,
+            512,
+            34,
+            34
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.3.downsample.conv",
+      "calls": 1,
+      "cuda_us": 9.21600000000035,
+      "cpu_us": 17.618999999998778,
+      "shapes": [
+        [
+          [
+            8,
+            512,
+            34,
+            34
+          ],
+          [
+            8,
+            512,
+            34,
+            34
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.0.cv2.0.conv1.conv",
+      "calls": 1,
+      "cuda_us": 9.182999999997264,
+      "cpu_us": 80.97899999999936,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [
+            64,
+            256
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.1.blocks.0.aggregation.1.conv",
+      "calls": 1,
+      "cuda_us": 8.768000000000029,
+      "cpu_us": 31.699000000000524,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            128
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.1.blocks.0.aggregation.1.conv",
+      "calls": 1,
+      "cuda_us": 8.768000000000029,
+      "cpu_us": 18.239000000001397,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            128
+          ],
+          [
+            8,
+            68,
+            68,
+            128
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.0.cv2.0.conv1.conv",
+      "calls": 1,
+      "cuda_us": 8.767999999996391,
+      "cpu_us": 80.53899999999703,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [
+            64,
+            256
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.0.blocks.0.aggregation.1.conv",
+      "calls": 1,
+      "cuda_us": 8.608000000000175,
+      "cpu_us": 31.04899999999907,
+      "shapes": [
+        [
+          [
+            8,
+            136,
+            136,
+            32
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.0.blocks.0.aggregation.1.conv",
+      "calls": 1,
+      "cuda_us": 8.608000000000175,
+      "cpu_us": 17.958999999998923,
+      "shapes": [
+        [
+          [
+            8,
+            136,
+            136,
+            32
+          ],
+          [
+            8,
+            136,
+            136,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.2.blocks.0.layers.1.conv1.conv",
+      "calls": 2,
+      "cuda_us": 8.320000000003347,
+      "cpu_us": 174.0679999999993,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.3.blocks.0.layers.2.conv1.conv",
+      "calls": 2,
+      "cuda_us": 7.970000000004802,
+      "cpu_us": 166.75900000000183,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            128
+          ],
+          [
+            128,
+            128
+          ],
+          [
+            128
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::cat",
+      "module": "decoder.decoder.layers.1.gateway",
+      "calls": 1,
+      "cuda_us": 7.968000000008033,
+      "cpu_us": 50.03900000000431,
+      "shapes": [
+        [
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::cat",
+      "module": "decoder.decoder.layers.2.gateway",
+      "calls": 1,
+      "cuda_us": 7.936000000001513,
+      "cpu_us": 28.169999999998254,
+      "shapes": [
+        [
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.2.blocks.1.layers.2.conv1.conv",
+      "calls": 2,
+      "cuda_us": 7.904000000005908,
+      "cpu_us": 163.98899999999776,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.2.blocks.1.layers.0.conv1.conv",
+      "calls": 1,
+      "cuda_us": 7.8729999999995925,
+      "cpu_us": 32.059000000001106,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            512
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.2.blocks.1.layers.0.conv1.conv",
+      "calls": 1,
+      "cuda_us": 7.8729999999995925,
+      "cpu_us": 18.35899999999674,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            512
+          ],
+          [
+            8,
+            34,
+            34,
+            512
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.3.blocks.0.layers.1.conv1.conv",
+      "calls": 2,
+      "cuda_us": 7.872999999995955,
+      "cpu_us": 167.64700000000084,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            128
+          ],
+          [
+            128,
+            128
+          ],
+          [
+            128
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.2.blocks.0.layers.2.conv1.conv",
+      "calls": 2,
+      "cuda_us": 7.871999999999389,
+      "cpu_us": 216.20799999999872,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.2.blocks.0.aggregation.0.lab",
+      "calls": 1,
+      "cuda_us": 7.808000000000902,
+      "cpu_us": 23.47899999999936,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            256,
+            34,
+            34
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.3.blocks.0.aggregation.1.lab",
+      "calls": 1,
+      "cuda_us": 7.807999999997264,
+      "cpu_us": 37.03900000000067,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            1024,
+            17,
+            17
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::cat",
+      "module": "decoder.decoder.layers.0.gateway",
+      "calls": 1,
+      "cuda_us": 7.775999999998021,
+      "cpu_us": 30.1990000000078,
+      "shapes": [
+        [
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.0.blocks.0.layers.0.lab",
+      "calls": 1,
+      "cuda_us": 7.744000000002416,
+      "cpu_us": 22.218999999997322,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            16,
+            136,
+            136
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.0.blocks.0.layers.1.lab",
+      "calls": 1,
+      "cuda_us": 7.743999999998778,
+      "cpu_us": 22.549000000002707,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            16,
+            136,
+            136
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.2.blocks.1.aggregation.0.lab",
+      "calls": 1,
+      "cuda_us": 7.743999999998778,
+      "cpu_us": 23.580000000001746,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            256,
+            34,
+            34
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.2.blocks.1.layers.1.conv1.conv",
+      "calls": 2,
+      "cuda_us": 7.742000000002008,
+      "cpu_us": 165.86899999999878,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stem.stem4.lab",
+      "calls": 1,
+      "cuda_us": 7.679000000000087,
+      "cpu_us": 23.10900000000038,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            16,
+            136,
+            136
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.0.blocks.0.layers.2.lab",
+      "calls": 1,
+      "cuda_us": 7.647000000000844,
+      "cpu_us": 22.388999999999214,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            16,
+            136,
+            136
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.2.blocks.0.layers.0.conv1.conv",
+      "calls": 1,
+      "cuda_us": 7.583999999998923,
+      "cpu_us": 85.9989999999998,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [
+            64,
+            256
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stem.stem3.lab",
+      "calls": 1,
+      "cuda_us": 7.552000000003318,
+      "cpu_us": 23.020000000000437,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            16,
+            136,
+            136
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.integral",
+      "calls": 6,
+      "cuda_us": 7.45700000000943,
+      "cpu_us": 127.83800000000338,
+      "shapes": [
+        [
+          [
+            33
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        [
+          [
+            9600,
+            33
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.integral",
+      "calls": 6,
+      "cuda_us": 7.45700000000943,
+      "cpu_us": 69.73999999999069,
+      "shapes": [
+        [
+          [
+            33
+          ],
+          [
+            33
+          ],
+          []
+        ],
+        [
+          [
+            9600,
+            33
+          ],
+          [
+            9600,
+            33
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "encoder.lateral_convs.0.conv",
+      "calls": 2,
+      "cuda_us": 7.2960000000020955,
+      "cpu_us": 30.19000000000233,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            256
+          ],
+          [
+            8,
+            17,
+            17,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::cat",
+      "module": "<preprocess/postprocess>",
+      "calls": 2,
+      "cuda_us": 7.103999999992084,
+      "cpu_us": 87.6880000000092,
+      "shapes": [
+        [
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stem.stem2b.conv",
+      "calls": 1,
+      "cuda_us": 6.847999999998137,
+      "cpu_us": 28.07999999999811,
+      "shapes": [
+        [
+          [
+            8,
+            8,
+            273,
+            273
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stem.stem2b.conv",
+      "calls": 1,
+      "cuda_us": 6.847999999998137,
+      "cpu_us": 15.329999999998108,
+      "shapes": [
+        [
+          [
+            8,
+            8,
+            273,
+            273
+          ],
+          [
+            8,
+            8,
+            273,
+            273
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "backbone.stages.3.blocks.0.layers.0.conv1.conv",
+      "calls": 1,
+      "cuda_us": 6.687999999998283,
+      "cpu_us": 74.15899999999965,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            512
+          ],
+          [
+            128,
+            512
+          ],
+          [
+            128
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::contiguous",
+      "module": "encoder",
+      "calls": 1,
+      "cuda_us": 6.6229999999995925,
+      "cpu_us": 36.0199999999968,
+      "shapes": [
+        [
+          [
+            8,
+            256,
+            17,
+            17
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::clone",
+      "module": "encoder",
+      "calls": 1,
+      "cuda_us": 6.6229999999995925,
+      "cpu_us": 34.19999999999709,
+      "shapes": [
+        [
+          [
+            8,
+            256,
+            17,
+            17
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "<preprocess/postprocess>",
+      "calls": 5,
+      "cuda_us": 6.560000000012224,
+      "cpu_us": 82.77700000001641,
+      "shapes": [
+        [
+          [
+            8,
+            300
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.1.cv3.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 6.495999999999185,
+      "cpu_us": 99.42900000000373,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.1.cv3.0.bottlenecks.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 6.399999999994179,
+      "cpu_us": 72.29899999999907,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.2.blocks.0.aggregation.0.lab",
+      "calls": 1,
+      "cuda_us": 6.336000000002969,
+      "cpu_us": 15.670000000001892,
+      "shapes": [
+        [
+          [
+            8,
+            256,
+            34,
+            34
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.1.cv3.0.conv1.conv",
+      "calls": 1,
+      "cuda_us": 6.336000000002969,
+      "cpu_us": 70.59900000000198,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.0.blocks.0.layers.0.lab",
+      "calls": 1,
+      "cuda_us": 6.335999999999331,
+      "cpu_us": 15.119999999998981,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.3.blocks.0.aggregation.1.lab",
+      "calls": 1,
+      "cuda_us": 6.304000000003725,
+      "cpu_us": 16.159999999996217,
+      "shapes": [
+        [
+          [
+            8,
+            1024,
+            17,
+            17
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.0.blocks.0.layers.1.lab",
+      "calls": 1,
+      "cuda_us": 6.304000000000087,
+      "cpu_us": 15.93999999999869,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.2.blocks.1.aggregation.0.lab",
+      "calls": 1,
+      "cuda_us": 6.304000000000087,
+      "cpu_us": 15.7599999999984,
+      "shapes": [
+        [
+          [
+            8,
+            256,
+            34,
+            34
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stem.stem4.lab",
+      "calls": 1,
+      "cuda_us": 6.302999999999884,
+      "cpu_us": 15.440000000002328,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.0.blocks.0.layers.2.lab",
+      "calls": 1,
+      "cuda_us": 6.272000000000844,
+      "cpu_us": 14.979999999999563,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stem.stem3.lab",
+      "calls": 1,
+      "cuda_us": 6.27100000000064,
+      "cpu_us": 16.888999999999214,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.1.cv2.0.bottlenecks.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 6.239999999997963,
+      "cpu_us": 73.3090000000011,
+      "shapes": [
+        [
+          [
+            8,
+            68,
+            68,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.dec_bbox_head.0.layers.1",
+      "calls": 1,
+      "cuda_us": 5.823999999993248,
+      "cpu_us": 65.91899999999441,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.dec_bbox_head.0.layers.2",
+      "calls": 1,
+      "cuda_us": 5.695999999996275,
+      "cpu_us": 68.68899999999849,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            132,
+            256
+          ],
+          [
+            132
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::clone",
+      "module": "encoder.lateral_convs.0.conv",
+      "calls": 1,
+      "cuda_us": 5.664000000004307,
+      "cpu_us": 25.639999999999418,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.dec_bbox_head.1.layers.2",
+      "calls": 1,
+      "cuda_us": 5.664000000004307,
+      "cpu_us": 66.16900000000896,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            132,
+            256
+          ],
+          [
+            132
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.dec_bbox_head.2.layers.2",
+      "calls": 1,
+      "cuda_us": 5.631999999997788,
+      "cpu_us": 66.43899999999849,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            132,
+            256
+          ],
+          [
+            132
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.enc_bbox_head.layers.1",
+      "calls": 1,
+      "cuda_us": 5.599000000001979,
+      "cpu_us": 69.8289999999979,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.1.cv2.0.conv1.conv",
+      "calls": 1,
+      "cuda_us": 5.567000000010012,
+      "cpu_us": 82.55000000000291,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            256
+          ],
+          [
+            64,
+            256
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.dec_bbox_head.2.layers.1",
+      "calls": 1,
+      "cuda_us": 5.536000000007334,
+      "cpu_us": 67.4890000000014,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.1.cv2.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 5.536000000000058,
+      "cpu_us": 88.89899999999761,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            256
+          ],
+          [
+            64,
+            256
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.dec_bbox_head.1.layers.1",
+      "calls": 1,
+      "cuda_us": 5.408999999999651,
+      "cpu_us": 65.92900000000373,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.pre_bbox_head.layers.1",
+      "calls": 1,
+      "cuda_us": 5.375,
+      "cpu_us": 65.65899999999965,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            256,
+            256
+          ],
+          [
+            256
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.1.blocks.0.layers.0.lab",
+      "calls": 1,
+      "cuda_us": 5.279999999998836,
+      "cpu_us": 22.769000000000233,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            32,
+            68,
+            68
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.lqe_layers.2.reg_conf.layers.0",
+      "calls": 2,
+      "cuda_us": 5.119999999995343,
+      "cpu_us": 166.34799999999814,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            20
+          ],
+          [
+            64,
+            20
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.1.blocks.0.layers.1.lab",
+      "calls": 1,
+      "cuda_us": 4.99199999999837,
+      "cpu_us": 22.040000000000873,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            32,
+            68,
+            68
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.1.blocks.0.layers.2.lab",
+      "calls": 1,
+      "cuda_us": 4.959999999999127,
+      "cpu_us": 22.239000000001397,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            32,
+            68,
+            68
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.3.blocks.0.aggregation.0.lab",
+      "calls": 1,
+      "cuda_us": 4.959999999999127,
+      "cpu_us": 23.599999999998545,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            512,
+            17,
+            17
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.1.blocks.0.layers.0.lab",
+      "calls": 1,
+      "cuda_us": 4.06499999999869,
+      "cpu_us": 15.319999999999709,
+      "shapes": [
+        [
+          [
+            8,
+            32,
+            68,
+            68
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.1.blocks.0.layers.1.lab",
+      "calls": 1,
+      "cuda_us": 4.031999999999243,
+      "cpu_us": 14.950000000000728,
+      "shapes": [
+        [
+          [
+            8,
+            32,
+            68,
+            68
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.0.blocks.0.layers.1.conv",
+      "calls": 1,
+      "cuda_us": 4.0,
+      "cpu_us": 30.790000000000873,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.0.blocks.0.layers.1.conv",
+      "calls": 1,
+      "cuda_us": 4.0,
+      "cpu_us": 17.200000000000728,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.2.blocks.0.aggregation.1.conv",
+      "calls": 1,
+      "cuda_us": 4.0,
+      "cpu_us": 31.739999999997963,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.2.blocks.0.aggregation.1.conv",
+      "calls": 1,
+      "cuda_us": 4.0,
+      "cpu_us": 18.040000000000873,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.3.blocks.0.aggregation.0.lab",
+      "calls": 1,
+      "cuda_us": 4.0,
+      "cpu_us": 15.409999999999854,
+      "shapes": [
+        [
+          [
+            8,
+            512,
+            17,
+            17
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.0.blocks.0.layers.0.conv",
+      "calls": 1,
+      "cuda_us": 3.9680000000007567,
+      "cpu_us": 34.06999999999971,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.0.blocks.0.layers.0.conv",
+      "calls": 1,
+      "cuda_us": 3.9680000000007567,
+      "cpu_us": 18.950000000000728,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.0.blocks.0.layers.2.conv",
+      "calls": 1,
+      "cuda_us": 3.9680000000007567,
+      "cpu_us": 41.93999999999869,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.0.blocks.0.layers.2.conv",
+      "calls": 1,
+      "cuda_us": 3.9680000000007567,
+      "cpu_us": 23.38000000000102,
+      "shapes": [
+        [
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          [
+            8,
+            16,
+            136,
+            136
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.1.blocks.0.layers.2.lab",
+      "calls": 1,
+      "cuda_us": 3.9680000000007567,
+      "cpu_us": 15.400000000001455,
+      "shapes": [
+        [
+          [
+            8,
+            32,
+            68,
+            68
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stem.stem4.conv",
+      "calls": 1,
+      "cuda_us": 3.9360000000015134,
+      "cpu_us": 31.530000000002474,
+      "shapes": [
+        [
+          [
+            8,
+            136,
+            136,
+            16
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stem.stem4.conv",
+      "calls": 1,
+      "cuda_us": 3.9360000000015134,
+      "cpu_us": 18.169999999998254,
+      "shapes": [
+        [
+          [
+            8,
+            136,
+            136,
+            16
+          ],
+          [
+            8,
+            136,
+            136,
+            16
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.2.blocks.1.aggregation.1.conv",
+      "calls": 1,
+      "cuda_us": 3.9360000000015134,
+      "cpu_us": 31.189000000002125,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.2.blocks.1.aggregation.1.conv",
+      "calls": 1,
+      "cuda_us": 3.9360000000015134,
+      "cpu_us": 17.759000000001834,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          [
+            8,
+            34,
+            34,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.fpn_blocks.1.cv2.0.bottlenecks.0",
+      "calls": 1,
+      "cuda_us": 3.872000000003027,
+      "cpu_us": 25.07900000000518,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            68,
+            68
+          ],
+          [
+            8,
+            64,
+            68,
+            68
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.fpn_blocks.1.cv3.0.bottlenecks.0",
+      "calls": 1,
+      "cuda_us": 3.8070000000006985,
+      "cpu_us": 27.34900000000198,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            68,
+            68
+          ],
+          [
+            8,
+            64,
+            68,
+            68
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.fpn_blocks.1.cv2.0",
+      "calls": 1,
+      "cuda_us": 3.680000000000291,
+      "cpu_us": 19.05999999999767,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            68,
+            68
+          ],
+          [
+            8,
+            64,
+            68,
+            68
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.fpn_blocks.1.cv3.0",
+      "calls": 1,
+      "cuda_us": 3.680000000000291,
+      "cpu_us": 20.520000000004075,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            68,
+            68
+          ],
+          [
+            8,
+            64,
+            68,
+            68
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.2.blocks.0.layers.1.conv2.lab",
+      "calls": 1,
+      "cuda_us": 3.583999999998923,
+      "cpu_us": 23.279999999998836,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.2.blocks.1.layers.0.conv2.lab",
+      "calls": 1,
+      "cuda_us": 3.5529999999998836,
+      "cpu_us": 43.91900000000169,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.decoder.lqe_layers.2.reg_conf.layers.1",
+      "calls": 1,
+      "cuda_us": 3.552000000010594,
+      "cpu_us": 84.67900000000373,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            64
+          ],
+          [
+            1,
+            64
+          ],
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.2.blocks.1.layers.2.conv2.lab",
+      "calls": 1,
+      "cuda_us": 3.5200000000004366,
+      "cpu_us": 22.470000000001164,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.2.blocks.1.layers.1.conv2.lab",
+      "calls": 1,
+      "cuda_us": 3.455999999998312,
+      "cpu_us": 22.85900000000038,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.2.blocks.0.layers.0.conv2.lab",
+      "calls": 1,
+      "cuda_us": 3.423000000002503,
+      "cpu_us": 22.82999999999811,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.2.blocks.0.layers.2.conv2.lab",
+      "calls": 1,
+      "cuda_us": 3.423000000002503,
+      "cpu_us": 22.340000000000146,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.0.cv3.0.bottlenecks.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 3.2960000000020955,
+      "cpu_us": 73.16900000000169,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.0.cv3.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 3.2330000000001746,
+      "cpu_us": 73.89899999999761,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.0.cv2.0.bottlenecks.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 3.231999999996333,
+      "cpu_us": 72.9890000000014,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.3.blocks.0.layers.0.conv2.lab",
+      "calls": 1,
+      "cuda_us": 3.1670000000012806,
+      "cpu_us": 23.06999999999971,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            128,
+            17,
+            17
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.0.cv3.0.conv1.conv",
+      "calls": 1,
+      "cuda_us": 3.135999999998603,
+      "cpu_us": 68.44900000000052,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.3.blocks.0.layers.2.conv2.lab",
+      "calls": 1,
+      "cuda_us": 3.1039999999993597,
+      "cpu_us": 22.878999999997177,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            128,
+            17,
+            17
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.0.cv2.0.bottlenecks.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 3.040000000000873,
+      "cpu_us": 74.06900000000314,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.fpn_blocks.0.cv3.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 3.040000000000873,
+      "cpu_us": 72.36900000000605,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.0.cv3.0.bottlenecks.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 3.007999999994354,
+      "cpu_us": 71.46899999999732,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "backbone.stages.3.blocks.0.layers.1.conv2.lab",
+      "calls": 1,
+      "cuda_us": 3.006999999997788,
+      "cpu_us": 22.989999999997963,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            8,
+            128,
+            17,
+            17
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.0.cv3.0.conv1.conv",
+      "calls": 1,
+      "cuda_us": 3.006999999997788,
+      "cpu_us": 67.5089999999982,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.query_pos_head.layers.0",
+      "calls": 3,
+      "cuda_us": 2.9769999999989523,
+      "cpu_us": 92.16900000000896,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            4
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.query_pos_head.layers.0",
+      "calls": 3,
+      "cuda_us": 2.9769999999989523,
+      "cpu_us": 51.078999999997905,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            4
+          ],
+          [
+            8,
+            300,
+            4
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.pre_bbox_head.layers.2",
+      "calls": 1,
+      "cuda_us": 2.944000000003143,
+      "cpu_us": 66.22900000000664,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            4,
+            256
+          ],
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "decoder.enc_bbox_head.layers.2",
+      "calls": 1,
+      "cuda_us": 2.911999999996624,
+      "cpu_us": 70.54899999999907,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            4,
+            256
+          ],
+          [
+            4
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.2.blocks.0.layers.0.conv2.lab",
+      "calls": 1,
+      "cuda_us": 2.8800000000010186,
+      "cpu_us": 15.119999999998981,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.2.blocks.1.layers.0.conv2.lab",
+      "calls": 1,
+      "cuda_us": 2.8800000000010186,
+      "cpu_us": 17.5,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.2.blocks.0.layers.1.conv2.lab",
+      "calls": 1,
+      "cuda_us": 2.8479999999981374,
+      "cpu_us": 15.290000000000873,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.2.blocks.0.layers.2.conv2.lab",
+      "calls": 1,
+      "cuda_us": 2.8479999999981374,
+      "cpu_us": 15.470000000001164,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "encoder.encoder.0.layers.0.norm1",
+      "calls": 1,
+      "cuda_us": 2.8479999999981374,
+      "cpu_us": 31.688999999998487,
+      "shapes": [
+        [
+          [
+            8,
+            289,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "encoder.encoder.0.layers.0.norm1",
+      "calls": 1,
+      "cuda_us": 2.8479999999981374,
+      "cpu_us": 18.758999999998196,
+      "shapes": [
+        [
+          [
+            8,
+            289,
+            256
+          ],
+          [
+            8,
+            289,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder",
+      "calls": 1,
+      "cuda_us": 2.8479999999981374,
+      "cpu_us": 30.43000000000029,
+      "shapes": [
+        [
+          [
+            1,
+            6069,
+            1
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.2.blocks.1.layers.1.conv2.lab",
+      "calls": 1,
+      "cuda_us": 2.8469999999979336,
+      "cpu_us": 15.510000000002037,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.2.blocks.1.layers.2.conv2.lab",
+      "calls": 1,
+      "cuda_us": 2.815999999998894,
+      "cpu_us": 15.22899999999936,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "<preprocess/postprocess>",
+      "calls": 2,
+      "cuda_us": 2.720000000001164,
+      "cpu_us": 26.279999999998836,
+      "shapes": [
+        [
+          [
+            8,
+            300
+          ],
+          [
+            8,
+            300
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "decoder.decoder.layers.2.cross_attn",
+      "calls": 1,
+      "cuda_us": 2.654999999998836,
+      "cpu_us": 17.278999999994994,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            1,
+            1,
+            2
+          ],
+          [
+            8,
+            300,
+            8,
+            12,
+            2
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "decoder.decoder.layers.1.gateway",
+      "calls": 1,
+      "cuda_us": 2.592000000004191,
+      "cpu_us": 14.989999999990687,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "decoder.decoder.layers.2.gateway",
+      "calls": 1,
+      "cuda_us": 2.592000000004191,
+      "cpu_us": 13.679000000003725,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "decoder.decoder.layers.0.cross_attn",
+      "calls": 1,
+      "cuda_us": 2.591999999989639,
+      "cpu_us": 18.489000000001397,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            1,
+            1,
+            2
+          ],
+          [
+            8,
+            300,
+            8,
+            12,
+            2
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.3.blocks.0.aggregation.1.conv",
+      "calls": 1,
+      "cuda_us": 2.5599999999976717,
+      "cpu_us": 31.169000000001688,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            512
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.3.blocks.0.aggregation.1.conv",
+      "calls": 1,
+      "cuda_us": 2.5599999999976717,
+      "cpu_us": 17.889999999999418,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            512
+          ],
+          [
+            8,
+            17,
+            17,
+            512
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "decoder.decoder.layers.1.cross_attn",
+      "calls": 1,
+      "cuda_us": 2.5599999999976717,
+      "cpu_us": 16.99899999999616,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            1,
+            1,
+            2
+          ],
+          [
+            8,
+            300,
+            8,
+            12,
+            2
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.1.gateway.gate",
+      "calls": 1,
+      "cuda_us": 2.5599999999976717,
+      "cpu_us": 31.160000000003492,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            512
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.1.gateway.gate",
+      "calls": 1,
+      "cuda_us": 2.5599999999976717,
+      "cpu_us": 17.479999999995925,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            512
+          ],
+          [
+            8,
+            300,
+            512
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::contiguous",
+      "module": "decoder.decoder.layers.2.self_attn",
+      "calls": 1,
+      "cuda_us": 2.5599999999976717,
+      "cpu_us": 27.029999999998836,
+      "shapes": [
+        [
+          [
+            300,
+            64,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::clone",
+      "module": "decoder.decoder.layers.2.self_attn",
+      "calls": 1,
+      "cuda_us": 2.5599999999976717,
+      "cpu_us": 25.55000000000291,
+      "shapes": [
+        [
+          [
+            300,
+            64,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.0.gateway.gate",
+      "calls": 1,
+      "cuda_us": 2.5280000000057044,
+      "cpu_us": 29.168999999994412,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            512
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.0.gateway.gate",
+      "calls": 1,
+      "cuda_us": 2.5280000000057044,
+      "cpu_us": 16.35899999999674,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            512
+          ],
+          [
+            8,
+            300,
+            512
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::contiguous",
+      "module": "encoder.encoder.0.layers.0.self_attn",
+      "calls": 1,
+      "cuda_us": 2.5279999999984284,
+      "cpu_us": 38.90899999999965,
+      "shapes": [
+        [
+          [
+            289,
+            64,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::clone",
+      "module": "encoder.encoder.0.layers.0.self_attn",
+      "calls": 1,
+      "cuda_us": 2.5279999999984284,
+      "cpu_us": 36.08899999999994,
+      "shapes": [
+        [
+          [
+            289,
+            64,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "decoder.decoder.layers.0.gateway",
+      "calls": 1,
+      "cuda_us": 2.5279999999911524,
+      "cpu_us": 15.360000000000582,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.2.gateway.gate",
+      "calls": 1,
+      "cuda_us": 2.5279999999911524,
+      "cpu_us": 28.24000000000524,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            512
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.2.gateway.gate",
+      "calls": 1,
+      "cuda_us": 2.5279999999911524,
+      "cpu_us": 15.60000000000582,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            512
+          ],
+          [
+            8,
+            300,
+            512
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.1.blocks.0.layers.2.conv",
+      "calls": 1,
+      "cuda_us": 2.496999999999389,
+      "cpu_us": 30.729000000002998,
+      "shapes": [
+        [
+          [
+            8,
+            32,
+            68,
+            68
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.1.blocks.0.layers.2.conv",
+      "calls": 1,
+      "cuda_us": 2.496999999999389,
+      "cpu_us": 17.21900000000096,
+      "shapes": [
+        [
+          [
+            8,
+            32,
+            68,
+            68
+          ],
+          [
+            8,
+            32,
+            68,
+            68
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::contiguous",
+      "module": "decoder.decoder.layers.1.self_attn",
+      "calls": 1,
+      "cuda_us": 2.495999999999185,
+      "cpu_us": 27.520000000004075,
+      "shapes": [
+        [
+          [
+            300,
+            64,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::clone",
+      "module": "decoder.decoder.layers.1.self_attn",
+      "calls": 1,
+      "cuda_us": 2.495999999999185,
+      "cpu_us": 25.94999999999709,
+      "shapes": [
+        [
+          [
+            300,
+            64,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::contiguous",
+      "module": "decoder.decoder.layers.0.self_attn",
+      "calls": 1,
+      "cuda_us": 2.4950000000098953,
+      "cpu_us": 28.969000000011874,
+      "shapes": [
+        [
+          [
+            300,
+            64,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::clone",
+      "module": "decoder.decoder.layers.0.self_attn",
+      "calls": 1,
+      "cuda_us": 2.4950000000098953,
+      "cpu_us": 26.948999999993248,
+      "shapes": [
+        [
+          [
+            300,
+            64,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "decoder",
+      "calls": 1,
+      "cuda_us": 2.463999999999942,
+      "cpu_us": 24.118999999998778,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            4
+          ],
+          [
+            8,
+            300,
+            4
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.1.blocks.0.layers.1.conv",
+      "calls": 1,
+      "cuda_us": 2.4320000000006985,
+      "cpu_us": 30.81000000000131,
+      "shapes": [
+        [
+          [
+            8,
+            32,
+            68,
+            68
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.1.blocks.0.layers.1.conv",
+      "calls": 1,
+      "cuda_us": 2.4320000000006985,
+      "cpu_us": 17.159999999999854,
+      "shapes": [
+        [
+          [
+            8,
+            32,
+            68,
+            68
+          ],
+          [
+            8,
+            32,
+            68,
+            68
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.1.cv2.0.bottlenecks.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 2.3039999999964493,
+      "cpu_us": 74.19900000000052,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.1.cv3.0.bottlenecks.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 2.3039999999964493,
+      "cpu_us": 74.34900000000198,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.1.cv3.0.conv1.conv",
+      "calls": 1,
+      "cuda_us": 2.2399999999979627,
+      "cpu_us": 68.11900000000605,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::linear",
+      "module": "encoder.pan_blocks.1.cv3.0.conv2.conv",
+      "calls": 1,
+      "cuda_us": 2.2070000000021537,
+      "cpu_us": 72.33899999999994,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            64
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            64
+          ]
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.3.blocks.0.layers.1.conv2.lab",
+      "calls": 1,
+      "cuda_us": 2.175999999999476,
+      "cpu_us": 32.43999999999869,
+      "shapes": [
+        [
+          [
+            8,
+            128,
+            17,
+            17
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.3.blocks.0.layers.0.conv2.lab",
+      "calls": 1,
+      "cuda_us": 2.1120000000009895,
+      "cpu_us": 15.31000000000131,
+      "shapes": [
+        [
+          [
+            8,
+            128,
+            17,
+            17
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "backbone.stages.3.blocks.0.layers.2.conv2.lab",
+      "calls": 1,
+      "cuda_us": 2.1120000000009895,
+      "cpu_us": 15.80000000000291,
+      "shapes": [
+        [
+          [
+            8,
+            128,
+            17,
+            17
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "decoder.decoder.lqe_layers.2",
+      "calls": 1,
+      "cuda_us": 1.9200000000128057,
+      "cpu_us": 22.94000000000233,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            3
+          ],
+          [
+            8,
+            300,
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder",
+      "calls": 2,
+      "cuda_us": 1.9199999999982538,
+      "cpu_us": 39.499999999992724,
+      "shapes": [
+        [
+          [
+            1
+          ],
+          [
+            1
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::cat",
+      "module": "decoder.decoder.lqe_layers.2",
+      "calls": 1,
+      "cuda_us": 1.8879999999917345,
+      "cpu_us": 18.59999999999127,
+      "shapes": [
+        [
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.dec_bbox_head.2.layers.0",
+      "calls": 1,
+      "cuda_us": 1.7599999999947613,
+      "cpu_us": 28.468999999997322,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.dec_bbox_head.2.layers.0",
+      "calls": 1,
+      "cuda_us": 1.7599999999947613,
+      "cpu_us": 15.798999999999069,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.enc_bbox_head.layers.0",
+      "calls": 1,
+      "cuda_us": 1.728000000002794,
+      "cpu_us": 28.580000000001746,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.enc_bbox_head.layers.0",
+      "calls": 1,
+      "cuda_us": 1.728000000002794,
+      "cpu_us": 15.440000000002328,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.2.blocks.0.layers.1.conv1.conv",
+      "calls": 1,
+      "cuda_us": 1.727999999999156,
+      "cpu_us": 31.479999999999563,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.2.blocks.0.layers.1.conv1.conv",
+      "calls": 1,
+      "cuda_us": 1.727999999999156,
+      "cpu_us": 18.139999999999418,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.2.blocks.1.layers.1.conv1.conv",
+      "calls": 1,
+      "cuda_us": 1.727999999999156,
+      "cpu_us": 30.949000000000524,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.2.blocks.1.layers.1.conv1.conv",
+      "calls": 1,
+      "cuda_us": 1.727999999999156,
+      "cpu_us": 17.98899999999776,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.pan_blocks.0.cv2.0.bottlenecks.0",
+      "calls": 1,
+      "cuda_us": 1.6960000000035507,
+      "cpu_us": 24.93000000000029,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.fpn_blocks.0.cv2.0.bottlenecks.0",
+      "calls": 1,
+      "cuda_us": 1.6959999999962747,
+      "cpu_us": 26.368999999998778,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.fpn_blocks.0.cv3.0",
+      "calls": 1,
+      "cuda_us": 1.6959999999962747,
+      "cpu_us": 18.539000000004307,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.dec_bbox_head.1.layers.0",
+      "calls": 1,
+      "cuda_us": 1.6959999999962747,
+      "cpu_us": 28.129000000000815,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.dec_bbox_head.1.layers.0",
+      "calls": 1,
+      "cuda_us": 1.6959999999962747,
+      "cpu_us": 15.639999999999418,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.2.cross_attn.sampling_offsets",
+      "calls": 1,
+      "cuda_us": 1.695000000006985,
+      "cpu_us": 29.05000000000291,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.2.cross_attn.sampling_offsets",
+      "calls": 1,
+      "cuda_us": 1.695000000006985,
+      "cpu_us": 16.15000000000873,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.fpn_blocks.0.cv3.0.bottlenecks.0",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 25.2699999999968,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.0.linear1",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 30.829000000012456,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.0.linear1",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 17.489000000001397,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.pre_bbox_head.layers.0",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 31.220000000001164,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.pre_bbox_head.layers.0",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 17.85000000000582,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.dec_bbox_head.0.layers.0",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 28.25,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.dec_bbox_head.0.layers.0",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 15.25,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.1.cross_attn.sampling_offsets",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 28.569999999992433,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.1.cross_attn.sampling_offsets",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 15.919999999998254,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.1.cross_attn.attention_weights",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 29.80999999999767,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.1.cross_attn.attention_weights",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 16.989999999990687,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.1.linear1",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 30.720000000001164,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.1.linear1",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 17.55999999999767,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.2.cross_attn.attention_weights",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 30.19999999999709,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.2.cross_attn.attention_weights",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 17.580000000001746,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.2.linear1",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 30.619999999995343,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.2.linear1",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 17.69000000000233,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.dec_score_head.2",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 28.929000000003725,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.dec_score_head.2",
+      "calls": 1,
+      "cuda_us": 1.6640000000043074,
+      "cpu_us": 16.070000000006985,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.2.blocks.0.layers.2.conv1.conv",
+      "calls": 1,
+      "cuda_us": 1.6640000000006694,
+      "cpu_us": 33.73999999999796,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.2.blocks.0.layers.2.conv1.conv",
+      "calls": 1,
+      "cuda_us": 1.6640000000006694,
+      "cpu_us": 19.93000000000029,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "encoder.encoder.0.layers.0.linear1",
+      "calls": 1,
+      "cuda_us": 1.6639999999970314,
+      "cpu_us": 31.528999999994994,
+      "shapes": [
+        [
+          [
+            8,
+            289,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "encoder.encoder.0.layers.0.linear1",
+      "calls": 1,
+      "cuda_us": 1.6639999999970314,
+      "cpu_us": 18.438999999998487,
+      "shapes": [
+        [
+          [
+            8,
+            289,
+            256
+          ],
+          [
+            8,
+            289,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.fpn_blocks.0.cv2.0",
+      "calls": 1,
+      "cuda_us": 1.6639999999970314,
+      "cpu_us": 19.099999999998545,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.pan_blocks.0.cv2.0",
+      "calls": 1,
+      "cuda_us": 1.6639999999970314,
+      "cpu_us": 19.368999999998778,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.pan_blocks.0.cv3.0.bottlenecks.0",
+      "calls": 1,
+      "cuda_us": 1.6639999999970314,
+      "cpu_us": 24.609999999993306,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.pan_blocks.0.cv3.0",
+      "calls": 1,
+      "cuda_us": 1.6639999999970314,
+      "cpu_us": 18.949000000000524,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          [
+            8,
+            64,
+            34,
+            34
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.0.cross_attn.sampling_offsets",
+      "calls": 1,
+      "cuda_us": 1.6639999999897555,
+      "cpu_us": 29.069999999992433,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.0.cross_attn.sampling_offsets",
+      "calls": 1,
+      "cuda_us": 1.6639999999897555,
+      "cpu_us": 16.14000000001397,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.dec_score_head.0",
+      "calls": 1,
+      "cuda_us": 1.6630000000004657,
+      "cpu_us": 28.279000000009546,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.dec_score_head.0",
+      "calls": 1,
+      "cuda_us": 1.6630000000004657,
+      "cpu_us": 15.138999999995576,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.2.blocks.1.layers.2.conv1.conv",
+      "calls": 1,
+      "cuda_us": 1.632000000001426,
+      "cpu_us": 31.338999999999942,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.2.blocks.1.layers.2.conv1.conv",
+      "calls": 1,
+      "cuda_us": 1.632000000001426,
+      "cpu_us": 18.02900000000227,
+      "shapes": [
+        [
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          [
+            8,
+            34,
+            34,
+            64
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "encoder.lateral_convs.0.conv",
+      "calls": 1,
+      "cuda_us": 1.631999999997788,
+      "cpu_us": 28.689999999995052,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.layers.0.cross_attn.attention_weights",
+      "calls": 1,
+      "cuda_us": 1.6310000000084983,
+      "cpu_us": 30.080000000001746,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.layers.0.cross_attn.attention_weights",
+      "calls": 1,
+      "cuda_us": 1.6310000000084983,
+      "cpu_us": 17.319999999992433,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            256
+          ],
+          [
+            8,
+            300,
+            256
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "decoder.decoder.layers.2.self_attn",
+      "calls": 1,
+      "cuda_us": 1.6000000000058208,
+      "cpu_us": 19.79000000000815,
+      "shapes": [
+        [
+          [
+            64,
+            300,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "encoder.encoder.0.layers.0.self_attn",
+      "calls": 1,
+      "cuda_us": 1.5679999999993015,
+      "cpu_us": 22.910000000003492,
+      "shapes": [
+        [
+          [
+            64,
+            289,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "decoder.decoder.layers.0.self_attn",
+      "calls": 1,
+      "cuda_us": 1.5679999999993015,
+      "cpu_us": 21.729999999995925,
+      "shapes": [
+        [
+          [
+            64,
+            300,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::mul",
+      "module": "decoder.decoder.layers.1.self_attn",
+      "calls": 1,
+      "cuda_us": 1.5679999999993015,
+      "cpu_us": 21.979999999995925,
+      "shapes": [
+        [
+          [
+            64,
+            300,
+            32
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.3.blocks.0.layers.1.conv1.conv",
+      "calls": 1,
+      "cuda_us": 1.3449999999975262,
+      "cpu_us": 31.588999999999942,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            128
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.3.blocks.0.layers.1.conv1.conv",
+      "calls": 1,
+      "cuda_us": 1.3449999999975262,
+      "cpu_us": 18.100000000002183,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            128
+          ],
+          [
+            8,
+            17,
+            17,
+            128
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "backbone.stages.3.blocks.0.layers.2.conv1.conv",
+      "calls": 1,
+      "cuda_us": 1.3120000000017171,
+      "cpu_us": 31.84899999999834,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            128
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "backbone.stages.3.blocks.0.layers.2.conv1.conv",
+      "calls": 1,
+      "cuda_us": 1.3120000000017171,
+      "cpu_us": 18.429000000000087,
+      "shapes": [
+        [
+          [
+            8,
+            17,
+            17,
+            128
+          ],
+          [
+            8,
+            17,
+            17,
+            128
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.pan_blocks.1.cv2.0",
+      "calls": 1,
+      "cuda_us": 1.1520000000018626,
+      "cpu_us": 19.709999999999127,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            17,
+            17
+          ],
+          [
+            8,
+            64,
+            17,
+            17
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.pan_blocks.1.cv2.0.bottlenecks.0",
+      "calls": 1,
+      "cuda_us": 1.1519999999945867,
+      "cpu_us": 25.25,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            17,
+            17
+          ],
+          [
+            8,
+            64,
+            17,
+            17
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.pan_blocks.1.cv3.0.bottlenecks.0",
+      "calls": 1,
+      "cuda_us": 1.1200000000026193,
+      "cpu_us": 25.309000000001106,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            17,
+            17
+          ],
+          [
+            8,
+            64,
+            17,
+            17
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::add",
+      "module": "encoder.pan_blocks.1.cv3.0",
+      "calls": 1,
+      "cuda_us": 1.1200000000026193,
+      "cpu_us": 19.57999999999447,
+      "shapes": [
+        [
+          [
+            8,
+            64,
+            17,
+            17
+          ],
+          [
+            8,
+            64,
+            17,
+            17
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::_to_copy",
+      "module": "decoder.decoder.lqe_layers.2.reg_conf.layers.0",
+      "calls": 1,
+      "cuda_us": 1.0240000000048894,
+      "cpu_us": 29.870000000009895,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            20
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      ]
+    },
+    {
+      "operator": "aten::copy_",
+      "module": "decoder.decoder.lqe_layers.2.reg_conf.layers.0",
+      "calls": 1,
+      "cuda_us": 1.0240000000048894,
+      "cpu_us": 16.80000000000291,
+      "shapes": [
+        [
+          [
+            8,
+            300,
+            20
+          ],
+          [
+            8,
+            300,
+            20
+          ],
+          []
+        ]
+      ]
+    }
+  ]
+}

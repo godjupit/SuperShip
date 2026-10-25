@@ -1,0 +1,29 @@
+phase,experiment,scheme,run1_seconds,run2_seconds,run3_seconds,median_seconds,reference_ap50,validation_ap50,reference_check_passed,submitted,record
+official,20261022-official-fast-opencv-half-score005,JPEG 缩小解码 + FP16 + 阈值 0.05（最快）,0.477736369,0.476629654,0.476559366,0.476629654,0.7808,0.9101,True,True,experiments/20261022-official-fast-opencv-half-score005/notes.md
+official,20261022-official-fast-opencv-score001,OpenCV + FP16，阈值 0.001,0.845095336,0.910322299,0.895794447,0.895794447,0.8025,0.9172,True,True,experiments/20261022-official-fast-opencv-score001/notes.md
+official,20261022-official-fast-opencv-score005,OpenCV + FP16 + 阈值 0.05（精度余量更大）,0.56236317,0.558237467,0.567732983,0.56236317,0.7962,0.9167,True,True,experiments/20261022-official-fast-opencv-score005/notes.md
+official,20261022-official-main-baseline,未优化主分支,4.853070409,4.827949241,5.618700098,4.853070409,0.7935,,True,True,experiments/20261022-official-main-baseline/notes.md
+exploration,20261022-fast-cuda-fp16,nvJPEG GPU 解码，FP16,1.867930736,1.918163591,1.967777019,1.918163591,0.7935,,True,True,experiments/20261022-fast-cuda-fp16/notes.md
+exploration,20261022-fast-cuda-fp16-b16,nvJPEG GPU 解码，batch=16,1.918214319,1.968451797,1.867474605,1.918214319,0.7933,,True,True,experiments/20261022-fast-cuda-fp16-b16/notes.md
+exploration,20261022-fast-cuda-fp32,nvJPEG GPU 解码，FP32,1.968371382,2.018703976,1.967773344,1.968371382,0.7933,,True,True,experiments/20261022-fast-cuda-fp32/notes.md
+exploration,20261022-fast-cuda-grouped-fp16,nvJPEG，按实际尺寸分组缩放,1.867983835,1.968426698,1.86754831,1.867983835,0.7935,,True,True,experiments/20261022-fast-cuda-grouped-fp16/notes.md
+exploration,20261022-fast-cuda-no-antialias,分组 GPU 缩放，关闭抗锯齿,1.867321036,1.867476396,1.91779523,1.867476396,0.8024,,True,True,experiments/20261022-fast-cuda-no-antialias/notes.md
+exploration,20261022-fast-fp16-b16,FP16，batch=16,1.467153164,1.366620594,1.416531604,1.416531604,0.7926,,True,True,experiments/20261022-fast-fp16-b16/notes.md
+exploration,20261022-fast-fp16-b32,FP16，batch=32,1.416859668,1.416994914,1.366757849,1.416859668,0.7926,,True,True,experiments/20261022-fast-fp16-b32/notes.md
+exploration,20261022-fast-fp16-deploy,PIL 路线 + 模型 deploy 转换,1.31661968,1.316616446,1.366688448,1.31661968,0.7926,,True,True,experiments/20261022-fast-fp16-deploy/notes.md
+exploration,20261022-fast-fp16-normal-exit,FP16，恢复 Python/CUDA 析构退出（对照）,2.118621853,2.168282889,2.068550244,2.118621853,0.7926,,True,True,experiments/20261022-fast-fp16-normal-exit/notes.md
+exploration,20261022-fast-fp16-opencv,OpenCV 解码/缩放 + FP16,0.865494149,0.865402859,0.865478555,0.865478555,0.8025,,True,True,experiments/20261022-fast-fp16-opencv/notes.md
+exploration,20261022-fast-fp16-score001,PIL 路线 + 置信度阈值 0.001,1.366587599,1.366599145,1.266127631,1.366587599,0.7926,,True,True,experiments/20261022-fast-fp16-score001/notes.md
+exploration,20261022-fast-fp16-vector,向量化流水线 + FP16,1.367428864,1.366563646,1.416575475,1.367428864,0.7926,,True,True,experiments/20261022-fast-fp16-vector/notes.md
+exploration,20261022-fast-fp16-w4,FP16，读取线程=4,1.667299688,1.817976602,1.517352695,1.667299688,0.7926,,True,True,experiments/20261022-fast-fp16-w4/notes.md
+exploration,20261022-fast-fp32,线程流水线 + CUDA Graph + 快速写盘/退出,1.767741919,1.66722786,1.667770326,1.667770326,0.7935,,True,True,experiments/20261022-fast-fp32/notes.md
+exploration,20261022-fast-fp32-contiguous,FP32，关闭 channels-last,1.417083007,1.2664223,1.416726365,1.416726365,0.7931,,True,True,experiments/20261022-fast-fp32-contiguous/notes.md
+exploration,20261022-fast-fp32-vector,上一方案 + 向量化结果处理,1.366764299,1.366625667,1.366414218,1.366625667,0.7935,,True,True,experiments/20261022-fast-fp32-vector/notes.md
+exploration,20261022-fast-opencv-deploy,OpenCV + FP16 + 模型 deploy,0.81545275,0.865501785,0.865431769,0.865431769,0.8027,,True,True,experiments/20261022-fast-opencv-deploy/notes.md
+exploration,20261022-fast-opencv-fp32,OpenCV，FP32,0.915845028,0.915696873,0.868581058,0.915696873,0.8026,,True,True,experiments/20261022-fast-opencv-fp32/notes.md
+exploration,20261022-fast-opencv-half,JPEG 缩小解码，保留完整检测结果,0.765282355,0.86540207,0.815272324,0.815272324,0.7858,,True,True,experiments/20261022-fast-opencv-half/notes.md
+exploration,20261022-fast-opencv-half-score005,JPEG 缩小解码 + FP16 + 阈值 0.05（最快）,0.514560429,0.514572551,0.514668438,0.514572551,0.7808,0.9101,True,True,experiments/20261022-fast-opencv-half-score005/notes.md
+exploration,20261022-fast-opencv-score001,OpenCV + FP16，阈值 0.001,0.815510469,0.866208117,0.815195528,0.815510469,0.8025,,True,True,experiments/20261022-fast-opencv-score001/notes.md
+exploration,20261022-fast-opencv-score005,OpenCV + FP16 + 阈值 0.05（精度余量更大）,0.564819749,0.614953601,0.57094526,0.57094526,0.7962,0.9167,True,True,experiments/20261022-fast-opencv-score005/notes.md
+exploration,20261022-fast-opencv-score010,OpenCV + FP16 + 阈值 0.1（精度不合格）,0.56496846,0.564682546,0.564567353,0.564682546,0.7753,,False,False,experiments/20261022-fast-opencv-score010/notes.md
+exploration,20261022-fast-opencv-w12,OpenCV + FP16，读取线程=12,0.865521199,0.865332395,0.865532749,0.865521199,0.8025,,True,True,experiments/20261022-fast-opencv-w12/notes.md

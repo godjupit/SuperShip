@@ -1,0 +1,62 @@
+{
+  "case": "combined-c1",
+  "experiment": "20261025-181507-bottleneck-combined-c1",
+  "status": "completed",
+  "source_commit": "94d2c89d893492ab8c337789528a86604d971c44",
+  "parent_experiment": "20261025-180401-bottleneck-sweep",
+  "started": "2026-10-25T18:15:07.754878",
+  "gpu": "RTX4090 single GPU0",
+  "timing_scope": "Original READY to process-group exit, including inputs and fsync",
+  "hidden_ap50": null,
+  "competition_submitted": false,
+  "artifact_directory": "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-181507-bottleneck-combined-c1",
+  "reference_images": 200,
+  "validation_images": 1030,
+  "runs_seconds": [
+    0.311277775,
+    0.323396487,
+    0.320160422
+  ],
+  "median_seconds": 0.320160422,
+  "reference_ap50": [
+    0.7817,
+    0.7816,
+    0.7812
+  ],
+  "reference_precision_pass": true,
+  "reference_detection_counts": [
+    6325,
+    6319,
+    6323
+  ],
+  "validation_timing": {
+    "runs_seconds": [
+      1.046501732
+    ],
+    "median_seconds": 1.046501732
+  },
+  "validation_ap50": 0.9058,
+  "validation_detection_count": 40345,
+  "validation_precision_pass": true,
+  "precision_qualified": true,
+  "finished": "2026-10-25T18:15:35.787829",
+  "sha256": {
+    "weights/baseline.pth": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+    "supership/benchmark_submission.py": "0befe3aadd1860460d53e5ea2b141d3310edcf5391f9ab4c3a7727244e7d7c02",
+    "supership/submission.py": "79f47d58cd11ae9ba5b2ac1d9613d053c41bda3d1fb457ede78453d3c15a4e7f",
+    "data/SuperShip/reference/reference_images_meta.json": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443",
+    "data/SuperShip/val/annotations/instances_val.json": "fcf0bcbca918ac2e380b92ddc284046d8bd4a9d61579b71465ef04e45bf1bde1"
+  },
+  "artifacts_sha256": {
+    "output/20261025-181507-bottleneck-combined-c1/val.json": "0f5a0edfa87a942ca1114b3af2082d96be15c8bf19f465ee8ee2ac9ef5408362",
+    "output/20261025-181507-bottleneck-combined-c1/reference-score1.log": "c26577a40445201471eba6427ac106fd450b7b8f93d2f44f43936e64df592bc8",
+    "output/20261025-181507-bottleneck-combined-c1/reference.run2.json": "8c25631198de15e168ebe03989ef62922159c997d11a9d03f0cd2ed0537833f7",
+    "output/20261025-181507-bottleneck-combined-c1/reference-score3.log": "b98c9ee53b56d7cb7732d5a5d5c734cf4abe3b2f81bbd608dbc63394b9669627",
+    "output/20261025-181507-bottleneck-combined-c1/reference-benchmark.log": "abb0cbd2f95085e5cd4304347464b1d690d57fe13f76436f5940863d4fa979ae",
+    "output/20261025-181507-bottleneck-combined-c1/reference.run1.json": "72e164c7736ab8a21a664c2f4d9e662d5af360b6d6d6aeb81fa2b9117d9f6245",
+    "output/20261025-181507-bottleneck-combined-c1/reference-score2.log": "d071a43ca81334a9058b523e893b97108a7643e1953d01b6f7752b8324fc5d9e",
+    "output/20261025-181507-bottleneck-combined-c1/validation-score.log": "0aa78e839a215b45ca41b3641bbf528abda7736f3eb92238f2fafe9f0e1319ee",
+    "output/20261025-181507-bottleneck-combined-c1/validation-benchmark.log": "6c13854148a0153d98a47266c5a6a05075d5db4ee770bc143fc9b40762e77d1a",
+    "output/20261025-181507-bottleneck-combined-c1/reference.run3.json": "a100ba0df5f3e44d9061b0d6bbe3e6364bfe7576188d8bc2e7e40d91eb693dc6"
+  }
+}

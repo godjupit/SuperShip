@@ -1,0 +1,8 @@
+{
+  "source_files_still_match_snapshot": true,
+  "changed_files_since_capture": [],
+  "gpu_percent_sum": 100.0,
+  "operator_percent_sum": 100.0,
+  "captured_self_attention_modules": 4,
+  "captured_cross_attention_modules": 3
+}

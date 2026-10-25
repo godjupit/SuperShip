@@ -1,0 +1,163 @@
+#!/usr/bin/env bash
+# Ubuntu/Debian: proxy tunnel -> Codex CLI -> GitHub.
+set -euo pipefail
+
+ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
+LOCAL_DIR="$ROOT/.local"
+CONFIG="$LOCAL_DIR/dev-setup.conf"
+ENV_FILE="$LOCAL_DIR/dev-env.sh"
+
+die() { printf '错误：%s\n' "$*" >&2; exit 1; }
+ask() {
+    local name=$1 prompt=$2 default=${3:-} answer
+    [[ -t 0 ]] || die "需要交互配置；请在终端运行，或先准备 $CONFIG（参考 tools/dev/dev-setup.example.conf）。"
+    read -r -p "$prompt${default:+ [$default]}: " answer
+    printf -v "$name" '%s' "${answer:-$default}"
+}
+usage() {
+    cat <<'EOF'
+用法：bash tools/dev/setup_dev.sh [--configure | --env | --help]
+  无参数       连接代理、安装缺少的工具和 Codex、配置 GitHub 并检查
+  --configure  重新填写本机配置，然后执行完整流程
+  --env        仅恢复代理/隧道并生成环境文件，不安装、不登录
+配置：.local/dev-setup.conf（仅本机，不提交）
+完成后在当前终端执行：source .local/dev-env.sh
+EOF
+}
+MODE=${1:-setup}
+[[ $# -le 1 ]] || die '参数过多；使用 --help 查看用法。'
+case "$MODE" in
+    --help|-h) usage; exit 0 ;;
+    setup|--configure|--env) ;;
+    *) die "未知参数：$MODE" ;;
+esac
+
+mkdir -p "$LOCAL_DIR"
+chmod 700 "$LOCAL_DIR"
+umask 077
+if [[ ! -f "$CONFIG" || "$MODE" == --configure ]]; then
+    TUNNEL_MODE=existing
+    SSH_TARGET=''
+    SSH_PORT=22
+    LOCAL_PORT=17890
+    REMOTE_PROXY_PORT=7890
+    PROXY_URL=http://127.0.0.1:17890
+    GIT_NAME=$(git -C "$ROOT" config user.name 2>/dev/null || true)
+    GIT_EMAIL=$(git -C "$ROOT" config user.email 2>/dev/null || true)
+    ask TUNNEL_MODE '隧道方式：existing 已有代理/电脑反向转发，ssh 本机主动连接 SSH 服务器' existing
+    if [[ "$TUNNEL_MODE" == ssh ]]; then
+        ask SSH_TARGET 'SSH 地址（user@host 或 ~/.ssh/config 中的别名）'
+        ask SSH_PORT 'SSH 端口' 22
+        ask LOCAL_PORT '本机代理监听端口' 17890
+        ask REMOTE_PROXY_PORT 'SSH 对端 HTTP/混合代理端口' 7890
+        PROXY_URL="http://127.0.0.1:$LOCAL_PORT"
+    else
+        ask PROXY_URL 'HTTP/混合代理地址（不要填写密码或令牌）' "$PROXY_URL"
+    fi
+    ask GIT_NAME 'Git 提交用户名' "$GIT_NAME"
+    ask GIT_EMAIL 'Git 提交邮箱（可用 GitHub noreply 邮箱）' "$GIT_EMAIL"
+    # %q preserves spaces and shell characters without evaluating user input.
+    for key in TUNNEL_MODE SSH_TARGET SSH_PORT LOCAL_PORT REMOTE_PROXY_PORT PROXY_URL GIT_NAME GIT_EMAIL; do
+        printf '%s=%q\n' "$key" "${!key}"
+    done > "$CONFIG"
+fi
+# This is a trusted, user-owned local shell config; never source a downloaded file.
+source "$CONFIG"
+case "${TUNNEL_MODE:-}" in existing|ssh) ;; *) die 'TUNNEL_MODE 只能是 existing 或 ssh。' ;; esac
+[[ "${PROXY_URL:-}" =~ ^https?://[^/@[:space:]]+:[0-9]+/?$ ]] || die 'PROXY_URL 应为 http(s)://主机:端口，不包含账号密码。'
+[[ -n "${GIT_NAME:-}" && -n "${GIT_EMAIL:-}" ]] || die '请在本机配置中填写 GIT_NAME 和 GIT_EMAIL。'
+
+APT_UPDATED=0
+install_packages() {
+    command -v apt-get >/dev/null || die "请手动安装依赖：$*（自动安装仅支持 Ubuntu/Debian）。"
+    local admin=()
+    if (( EUID != 0 )); then
+        command -v sudo >/dev/null || die "需要管理员安装依赖：$*"
+        admin=(sudo)
+    fi
+    # sudo normally drops proxy variables; explicitly pass the current proxy.
+    if (( APT_UPDATED == 0 )); then
+        "${admin[@]}" env http_proxy="$http_proxy" https_proxy="$https_proxy" apt-get update
+        APT_UPDATED=1
+    fi
+    "${admin[@]}" env http_proxy="$http_proxy" https_proxy="$https_proxy" apt-get install -y "$@"
+}
+
+# Export for every child process; do not persist proxy settings globally.
+export http_proxy="$PROXY_URL" https_proxy="$PROXY_URL"
+export HTTP_PROXY="$PROXY_URL" HTTPS_PROXY="$PROXY_URL"
+export all_proxy="$PROXY_URL" ALL_PROXY="$PROXY_URL"
+export no_proxy=localhost,127.0.0.1,::1 NO_PROXY=localhost,127.0.0.1,::1
+
+if [[ "$TUNNEL_MODE" == ssh ]]; then
+    [[ -n "${SSH_TARGET:-}" && "$SSH_TARGET" != -* && "$SSH_TARGET" != *[[:space:]]* ]] || die 'SSH_TARGET 无效。'
+    for key in SSH_PORT LOCAL_PORT REMOTE_PROXY_PORT; do
+        value=${!key:-}
+        [[ "$value" =~ ^[0-9]{1,5}$ ]] && (( 10#$value >= 1 && 10#$value <= 65535 )) || die "$key 必须是 1–65535 的端口。"
+    done
+    [[ "$PROXY_URL" == "http://127.0.0.1:$LOCAL_PORT" ]] || die 'ssh 模式的 PROXY_URL 必须对应 LOCAL_PORT。'
+    command -v ssh >/dev/null || die '请先安装 openssh-client，再重新运行（建立隧道需要 SSH）。'
+    SOCKET="$LOCAL_DIR/dev-tunnel.sock"
+    if ! ssh -S "$SOCKET" -O check "$SSH_TARGET" >/dev/null 2>&1; then
+        printf '正在建立 SSH 代理隧道；密码/密钥口令由 SSH 直接读取。\n'
+        ssh -M -S "$SOCKET" -fNT -p "$SSH_PORT" \
+            -o ExitOnForwardFailure=yes -o ConnectTimeout=15 \
+            -o ServerAliveInterval=30 -o ServerAliveCountMax=3 \
+            -L "127.0.0.1:$LOCAL_PORT:127.0.0.1:$REMOTE_PROXY_PORT" "$SSH_TARGET"
+    fi
+fi
+
+command -v curl >/dev/null || install_packages curl ca-certificates
+printf '检查代理是否能访问 GitHub 和 npm…\n'
+for url in https://github.com https://registry.npmjs.org/@openai%2fcodex; do
+    curl --proxy "$PROXY_URL" --noproxy '' --fail --silent --show-error \
+        --connect-timeout 10 --max-time 30 --output /dev/null "$url" || \
+        die '代理连接失败，请检查代理客户端和 SSH 隧道；尚未进行 Codex/GitHub 登录。'
+done
+
+PREFIX="$HOME/.local/share/supership/npm"
+export PATH="$PREFIX/bin:$PATH"
+{
+    printf '# Generated by setup_dev.sh; source this file in your shell.\n'
+    printf 'export PATH=%q:"$PATH"\n' "$PREFIX/bin"
+    for key in http_proxy https_proxy HTTP_PROXY HTTPS_PROXY all_proxy ALL_PROXY no_proxy NO_PROXY; do
+        printf 'export %s=%q\n' "$key" "${!key}"
+    done
+} > "$ENV_FILE"
+
+if [[ "$MODE" != --env ]]; then
+    missing=()
+    command -v git >/dev/null || missing+=(git)
+    command -v node >/dev/null || missing+=(nodejs)
+    command -v npm >/dev/null || missing+=(npm)
+    command -v gh >/dev/null || missing+=(gh)
+    if (( ${#missing[@]} )); then install_packages "${missing[@]}"; fi
+    if ! command -v codex >/dev/null; then
+        # A private user prefix avoids sudo npm and respects existing npm settings.
+        npm_config_engine_strict=true npm install --global --prefix "$PREFIX" --registry https://registry.npmjs.org @openai/codex
+    fi
+    codex --version
+    if ! codex login status >/dev/null 2>&1; then
+        printf '请在浏览器中完成 Codex 设备码授权。\n'
+        codex login --device-auth
+    fi
+    if ! gh auth status --hostname github.com >/dev/null 2>&1; then
+        printf '请按 GitHub CLI 提示完成网页授权。\n'
+        gh auth login --hostname github.com --git-protocol https --web
+    fi
+    gh auth setup-git --hostname github.com
+    git -C "$ROOT" config --local user.name "$GIT_NAME"
+    git -C "$ROOT" config --local user.email "$GIT_EMAIL"
+    EXPECTED_ORIGIN=https://github.com/godjupit/SuperShip.git
+    ORIGIN=$(git -C "$ROOT" remote get-url origin 2>/dev/null || true)
+    if [[ -z "$ORIGIN" ]]; then
+        git -C "$ROOT" remote add origin "$EXPECTED_ORIGIN"
+    elif [[ "$ORIGIN" != "$EXPECTED_ORIGIN" ]]; then
+        die 'origin 与项目预期地址不同；请检查后手动设置，脚本已保留现有远程配置。'
+    fi
+    git -C "$ROOT" ls-remote origin HEAD >/dev/null
+    gh api repos/godjupit/SuperShip --jq '.permissions.push' | \
+        { read -r can_push; [[ "$can_push" == true ]] || die '当前 GitHub 账号没有该仓库的推送权限。'; }
+    printf 'Codex、GitHub 登录及仓库读写权限检查完成。\n'
+fi
+printf '在当前终端加载环境：\n  source %q\n然后运行：codex\n' "$ENV_FILE"

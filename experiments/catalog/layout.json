@@ -1,0 +1,11 @@
+{
+  "branches": 9,
+  "experiment_records": 129,
+  "canonical_files": 816,
+  "organization_experiment": "20261025-183836-archive-layout",
+  "main_merge_preserved": true,
+  "large_artifacts": "local-only experiments/artifacts/<branch>/",
+  "original_ids_preserved": true,
+  "main_merge_status": "resolved-and-committed",
+  "main_cleanup_experiment": "20261025-190006-main-git-finish"
+}

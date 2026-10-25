@@ -1,0 +1,7 @@
+{
+  "commit": "5adf03b8652bc1eaa7b201f45cf97a9cad1c6f5f",
+  "branch": "main",
+  "tracked_changes": ".gitignore             | 4 ++++\n AGENTS.md              | 6 ++++++\n benchmark_reference.sh | 0\n download_data.sh       | 0\n run.sh                 | 0\n score_reference.sh     | 0\n 6 files changed, 10 insertions(+)",
+  "status": "M .gitignore\n M AGENTS.md\n M benchmark_reference.sh\n M download_data.sh\n M run.sh\n M score_reference.sh",
+  "note": "Data symlink and experiment records are not inference source changes."
+}

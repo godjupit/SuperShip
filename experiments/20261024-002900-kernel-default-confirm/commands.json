@@ -1,0 +1,29 @@
+{
+  "reference": [
+    "bash",
+    "benchmark_optimized.sh"
+  ],
+  "validation": [
+    "/home/ubuntu/.cache/supership-venv/bin/python",
+    "supership/benchmark_submission.py",
+    "--image-dir",
+    "data/SuperShip/val/images",
+    "--meta-file",
+    "data/SuperShip/val/annotations/instances_val.json",
+    "--output-file",
+    "/home/ubuntu/SuperShip-kernels-20261024/output/20261024-002900-kernel-default-confirm/validation.json",
+    "--runs",
+    "1",
+    "--",
+    "env",
+    "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python",
+    "bash",
+    "run.sh",
+    "--worker"
+  ],
+  "reference_explicit_environment": {
+    "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+    "OUTPUT_FILE": "/home/ubuntu/SuperShip-kernels-20261024/output/20261024-002900-kernel-default-confirm/reference.json",
+    "TRITON_CACHE_DIR": "/home/ubuntu/SuperShip-kernels-20261024/output/20261024-002900-kernel-default-confirm/triton-cache"
+  }
+}

@@ -1,0 +1,23 @@
+experiment_id,name,median_seconds,reference_ap50_per_run,validation_ap50,reference_precision_pass,validation_precision_pass,submitted,eligible_for_recommendation
+20261022-194940-further-async,async,0.458977147,"[0.7808, 0.7808, 0.7808]",,True,,True,False
+20261022-194940-further-async-cvtcolor,async-cvtcolor,0.456020483,"[0.7808, 0.7808, 0.7808]",,True,,True,False
+20261022-194940-further-control,control,0.477079557,"[0.7808, 0.7808, 0.7808]",,True,,True,False
+20261022-194940-further-cvtcolor,cvtcolor,0.459317472,"[0.7808, 0.7808, 0.7808]",,True,,True,False
+20261022-194940-further-direct,direct,0.465033972,"[0.7808, 0.7808, 0.7808]",,True,,True,False
+20261022-195126-further-async-cvtcolor-b16,async-cvtcolor-b16,0.515991054,"[0.781, 0.781, 0.781]",,True,,True,False
+20261022-195126-further-async-cvtcolor-cudnn,async-cvtcolor-cudnn,0.447681871,"[0.781, 0.7809, 0.781]",0.91,True,True,True,True
+20261022-195126-further-async-cvtcolor-w4,async-cvtcolor-w4,0.47816218,"[0.7808, 0.7808, 0.7808]",,True,,True,False
+20261022-195126-further-decoder1,decoder1,0.403493509,"[0.7764, 0.7764, 0.7764]",,False,,False,False
+20261022-195126-further-decoder2,decoder2,0.426459931,"[0.7763, 0.7763, 0.7763]",,False,,False,False
+20261022-195339-further-decoder1-score003,decoder1-score003,0.435693499,"[0.779, 0.779, 0.779]",,True,,True,False
+20261022-195339-further-decoder1-score004,decoder1-score004,0.405175354,"[0.7789, 0.7789, 0.7789]",0.8926,True,False,True,False
+20261022-195339-further-decoder2-score004,decoder2-score004,0.417805221,"[0.7786, 0.7784, 0.7782]",0.9039,True,True,True,True
+20261022-195339-further-size512-full,size512-full,0.44611323,"[0.7873, 0.7873, 0.7874]",,True,,True,False
+20261022-195339-further-size576-full,size576-full,0.462455832,"[0.7931, 0.7931, 0.793]",,True,,True,False
+20261022-195339-further-size576-half,size576-half,0.390968942,"[0.7887, 0.7888, 0.7887]",0.9067,True,True,True,True
+20261022-195623-further-size512-half,size512-half,0.362355174,"[0.7873, 0.787, 0.7873]",0.896,True,False,True,False
+20261022-195623-further-size544-half,size544-half,0.380510271,"[0.7816, 0.7819, 0.7819]",0.9054,True,True,True,True
+20261022-195623-further-size576-decoder1,size576-decoder1,0.392777066,"[0.7635, 0.7631, 0.7631]",,False,,False,False
+20261022-195623-further-size576-decoder2,size576-decoder2,0.390023948,"[0.7735, 0.7736, 0.7735]",,False,,False,False
+20261022-195852-further-confirm-control,confirm-control,0.475669439,"[0.7808, 0.7808, 0.7808]",,True,,True,False
+20261022-195852-further-confirm-size544,confirm-size544,0.37981862,"[0.7819, 0.7817, 0.7814]",0.9054,True,True,True,True

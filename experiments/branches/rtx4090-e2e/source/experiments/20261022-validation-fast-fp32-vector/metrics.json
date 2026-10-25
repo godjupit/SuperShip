@@ -1,0 +1,43 @@
+{
+  "source_experiment": "20261022-fast-fp32-vector",
+  "source_commit": "05cb42251126a2bcf298ae0557c80db708fb4e90",
+  "start": "2026-10-22T19:29:43.055798+08:00",
+  "end": "2026-10-22T19:29:58.510292+08:00",
+  "status": "success",
+  "output_directory": "/home/ubuntu/SuperShip-optimize/output/validation/20261022-validation-fast-fp32-vector",
+  "environment_overrides": {
+    "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+    "PIPELINE": "fast",
+    "PRECISION": "fp32",
+    "BACKEND": "cuda_graph",
+    "BATCH_SIZE": "8",
+    "NUM_WORKERS": "8",
+    "RUNS": "1",
+    "PIPELINE_DEPTH": "3",
+    "SCORE_THRESHOLD": "0",
+    "IMAGE_DECODER": "pil",
+    "VECTORIZED_RESULTS": "1",
+    "CHANNELS_LAST": "1",
+    "MODEL_DEPLOY": "0",
+    "FAST_EXIT": "1",
+    "TORCH_THREADS": "1"
+  },
+  "command": [
+    "/home/ubuntu/.cache/supership-venv/bin/python",
+    "supership/evaluate.py",
+    "val",
+    "--runs",
+    "1",
+    "--output-dir",
+    "/home/ubuntu/SuperShip-optimize/output/validation/20261022-validation-fast-fp32-vector"
+  ],
+  "split": "val 1030 images",
+  "hidden_ap50": null,
+  "runs_seconds": [
+    5.475333217
+  ],
+  "median_seconds": 5.475333217,
+  "ap50": 0.9171,
+  "detections": 308887,
+  "output_sha256": "fb7a15b876aa8a19d94f8bb5ddf3ff2a7eef46da522206de43d250ee1dc06cfa"
+}

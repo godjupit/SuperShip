@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "tests": "83 passed, 1 skipped (optional TensorRT engine absent)",
+  "test_log_sha256": "f57ce8b0828e07b02fd7b721637df28a677b844bfcdce531818d0a856a264559",
+  "python_compile": "passed",
+  "shell_syntax": "passed",
+  "git_diff_check": "passed",
+  "official_timer_validator_scorer_unchanged": true,
+  "dataset_image_manifests_match_previous": true,
+  "all_20_paired_reference_precision_checks_pass": true,
+  "final_reference_precision_checks_pass": true,
+  "final_validation_1030_including_tail6_pass": true,
+  "hidden_ap50": null,
+  "competition_submitted": false,
+  "finished": "2026-10-25T18:27:02.026618"
+}

@@ -1,0 +1,6 @@
+{
+  "commit": "6e37ca3cf25f996840a3f2c112816d1fd44469d8",
+  "branch": "exp/rtx4090-e2e",
+  "tracked_diff": "AGENTS.md                   |  7 ++++++\n OPTIMIZATION_EXPERIMENTS.md | 52 +++++++++++++++++++++++++++++++++++++++++++++\n 2 files changed, 59 insertions(+)",
+  "note": "Documentation records and local data symlink do not change inference source."
+}

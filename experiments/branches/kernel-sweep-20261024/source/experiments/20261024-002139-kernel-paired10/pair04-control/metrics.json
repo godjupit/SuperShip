@@ -1,0 +1,15 @@
+{
+  "pair": 4,
+  "name": "control",
+  "seconds": 0.32922085,
+  "reference_ap50": 0.7818,
+  "source_commit": "7cfaaa39ebd988c60f75fb94ac06092d797e2e3f",
+  "source_dirty": false,
+  "artifact_directory": "/home/ubuntu/SuperShip-kernels-20261024/output/20261024-002139-kernel-paired10/pair04-control",
+  "status": "success",
+  "artifacts_sha256": {
+    "score.log": "5552bd7780f47aae03bb77a37dbe9178e9108881e8cf7b7a67b50d356ffe1bfb",
+    "benchmark.log": "0c82ababbac3521f95f279d8eb169ee0d6ac232101d86be951bc5fb37a7110b0",
+    "prediction.json": "190d05dc4bafcbff78fb80307a66d72d565f7d2b4cb0e1d99d7d12b853e9ca99"
+  }
+}

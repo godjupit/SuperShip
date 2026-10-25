@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "runs_seconds": [
+    3.121606763
+  ],
+  "median_seconds": 3.121606763,
+  "run_inference_seconds": 2.0919458240000495,
+  "approximate_process_exit_overhead_seconds": 1.0296609389999505,
+  "ap50": null,
+  "note": "Diagnostic single run with synchronization at each stage; not a formal 3-run submission."
+}

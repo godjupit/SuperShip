@@ -1,0 +1,19 @@
+{
+  "status": "completed",
+  "source_commit": "140bb868e79f5b570194893e736913045f6a7ab2",
+  "reference_ap50": 0.7816,
+  "detections": 6323,
+  "hidden_ap50": null,
+  "validation_ap50": null,
+  "competition_submitted": false,
+  "artifact_directory": "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-182239-bottleneck-profile-control",
+  "artifacts_sha256": {
+    "inference.sqlite": "f02ef743561b0385246fe9d43bfd3c104d31001d870deb2212b07bb2460f5d19",
+    "score.log": "6a268c723eebe670af6b9c1298026524a39fcd10ef245fd8aa4cced791586e6b",
+    "inference.nsys-rep": "e7cb5f972290f04588f3e56a285ffb6d6497a75e44d83b9ee87ebf59ae4c3465",
+    "export.log": "a12e87a8821a995a2e127f5611305940dc076557e1199a6df354aa76ea8a0447",
+    "predictions.json": "8ff972aa4e1864271e40409db1a29163e257728625002102804fbe4ff4fc320a",
+    "profile.log": "631770430b18f4b2df97a8da0eb5978d34cc3324de7b79a118d30d6a936b9196",
+    "summary.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

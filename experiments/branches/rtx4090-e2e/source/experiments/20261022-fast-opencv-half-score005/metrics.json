@@ -1,0 +1,37 @@
+{
+  "status": "success",
+  "runs_seconds": [
+    0.514560429,
+    0.514572551,
+    0.514668438
+  ],
+  "median_seconds": 0.514572551,
+  "reference_ap50_per_run": [
+    0.7808,
+    0.7808,
+    0.7808
+  ],
+  "detections_per_run": [
+    5425,
+    5425,
+    5425
+  ],
+  "images_with_detections_per_run": [
+    200,
+    200,
+    200
+  ],
+  "hidden_ap50": null,
+  "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+  "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-half-score005/supership.out",
+  "raw_log_sha256": "dd95e1aa65a7cb3a516d77019feb336f67427b8b71c447a28c4230bc8837cbef",
+  "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-opencv-half-score005",
+  "reduction_vs_previous_submission_percent": 83.77546386615722,
+  "ap50_reference_baseline": 0.7935,
+  "submitted": true,
+  "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:31:26\nServer Message: Submission Accepted; Performance: 0.514572551 s; OK: median runtime = 0.514572551 s (timing JSON); timing parsed only.",
+  "validation_ap50": 0.9101,
+  "validation_baseline_ap50": 0.917,
+  "validation_passed": true,
+  "reference_check_passed": true
+}

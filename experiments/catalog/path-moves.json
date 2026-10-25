@@ -1,0 +1,17 @@
+{
+  "COMMON_COMMANDS.md": "experiments/guides/commands.md",
+  "DEV_SETUP.md": "experiments/guides/development.md",
+  "UPSTREAM_README.md": "experiments/guides/upstream.md",
+  "OPTIMIZATION_RESULTS_20261022.md": "experiments/reports/OPTIMIZATION_RESULTS_20261022.md",
+  "OPTIMIZATION_RESULTS_20261022.csv": "experiments/reports/OPTIMIZATION_RESULTS_20261022.csv",
+  "OPTIMIZATION_FOLLOWUP_20261022.md": "experiments/reports/OPTIMIZATION_FOLLOWUP_20261022.md",
+  "OPTIMIZATION_FOLLOWUP_20261022.csv": "experiments/reports/OPTIMIZATION_FOLLOWUP_20261022.csv",
+  "OPTIMIZATION_VERIFIED_20261022.md": "experiments/reports/OPTIMIZATION_VERIFIED_20261022.md",
+  "优化过程.md": "experiments/reports/优化过程_20261024.md",
+  "benchmark_optimized.sh": "tools/benchmark/benchmark_optimized.sh",
+  "benchmark_reference.sh": "tools/benchmark/benchmark_reference.sh",
+  "score_reference.sh": "tools/benchmark/score_reference.sh",
+  "evaluate.sh": "tools/benchmark/evaluate.sh",
+  "setup_dev.sh": "tools/dev/setup_dev.sh",
+  "dev-setup.example.conf": "tools/dev/dev-setup.example.conf"
+}

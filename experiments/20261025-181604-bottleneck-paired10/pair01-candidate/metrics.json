@@ -1,0 +1,15 @@
+{
+  "pair": 1,
+  "name": "candidate",
+  "seconds": 0.345356162,
+  "reference_ap50": 0.7809,
+  "source_commit": "30aef67dbba06befd2ddf6f8cfb8854d0c1912cd",
+  "source_dirty": false,
+  "artifact_directory": "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-181604-bottleneck-paired10/pair01-candidate",
+  "status": "success",
+  "artifacts_sha256": {
+    "score.log": "60676ff09486e3498f05ef37cb1d8bdf4da5855ad7f59ed5956d5ef7fad2d730",
+    "benchmark.log": "03c4bc7060ff96b186c8d80dea584ee677d2fc6041ddea26687be315768f3bae",
+    "prediction.json": "5248b569f40295fd88e15c7c2661c63851858bd755f8c7f8497b93cd95653327"
+  }
+}

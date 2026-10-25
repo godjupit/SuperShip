@@ -1,0 +1,43 @@
+{
+  "profile": [
+    "/home/ubuntu/.local/opt/nsight-systems-2024.2.3/bin/nsys",
+    "profile",
+    "--trace=cuda,nvtx,osrt",
+    "--sample=none",
+    "--cpuctxsw=none",
+    "--cuda-graph-trace=node",
+    "--capture-range=cudaProfilerApi",
+    "--capture-range-end=stop",
+    "-o",
+    "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-182239-bottleneck-profile-control/inference",
+    "/home/ubuntu/.cache/supership-venv/bin/python",
+    "tools/reference/profile_fastest_range.py",
+    "--config",
+    "/home/ubuntu/SuperShip-bottleneck-opt-20261025/experiments/20261025-182239-bottleneck-profile-control/config.json",
+    "--output",
+    "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-182239-bottleneck-profile-control/predictions.json"
+  ],
+  "export": [
+    "/home/ubuntu/.local/opt/nsight-systems-2024.2.3/bin/nsys",
+    "export",
+    "--type",
+    "sqlite",
+    "--output",
+    "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-182239-bottleneck-profile-control/inference.sqlite",
+    "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-182239-bottleneck-profile-control/inference.nsys-rep"
+  ],
+  "summary": [
+    "/home/ubuntu/.cache/supership-venv/bin/python",
+    "tools/reference/summarize_nsys.py",
+    "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-182239-bottleneck-profile-control/inference.sqlite",
+    "/home/ubuntu/SuperShip-bottleneck-opt-20261025/experiments/20261025-182239-bottleneck-profile-control/nsys-summary.json"
+  ],
+  "score": [
+    "/home/ubuntu/.cache/supership-venv/bin/python",
+    "supership/score_submission.py",
+    "--gt",
+    "data/SuperShip/reference/annotations/instances_reference.json",
+    "--submission",
+    "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-182239-bottleneck-profile-control/predictions.json"
+  ]
+}

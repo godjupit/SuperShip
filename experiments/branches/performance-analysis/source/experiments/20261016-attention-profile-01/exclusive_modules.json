@@ -1,0 +1,52 @@
+[
+  {
+    "name": "backbone",
+    "gpu_ms_per_batch": 10.088904399999988,
+    "gpu_percent": 35.950236504839566
+  },
+  {
+    "name": "encoder",
+    "gpu_ms_per_batch": 9.625657866666657,
+    "gpu_percent": 34.299529770679186
+  },
+  {
+    "name": "decoder",
+    "gpu_ms_per_batch": 4.065614800000043,
+    "gpu_percent": 14.487183920344982
+  },
+  {
+    "name": "decoder.decoder.layers.2.cross_attn",
+    "gpu_ms_per_batch": 0.7427725333333504,
+    "gpu_percent": 2.6467540164849623
+  },
+  {
+    "name": "decoder.decoder.layers.0.cross_attn",
+    "gpu_ms_per_batch": 0.7425013999999974,
+    "gpu_percent": 2.6457878751605994
+  },
+  {
+    "name": "decoder.decoder.layers.1.cross_attn",
+    "gpu_ms_per_batch": 0.7405708666666593,
+    "gpu_percent": 2.638908720877605
+  },
+  {
+    "name": "encoder.encoder.0.layers.0.self_attn",
+    "gpu_ms_per_batch": 0.6991291999999936,
+    "gpu_percent": 2.4912378084818685
+  },
+  {
+    "name": "decoder.decoder.layers.2.self_attn",
+    "gpu_ms_per_batch": 0.45521153333332065,
+    "gpu_percent": 1.622075265483094
+  },
+  {
+    "name": "decoder.decoder.layers.0.self_attn",
+    "gpu_ms_per_batch": 0.45197486666667436,
+    "gpu_percent": 1.6105419088826227
+  },
+  {
+    "name": "decoder.decoder.layers.1.self_attn",
+    "gpu_ms_per_batch": 0.4511897333333361,
+    "gpu_percent": 1.6077442087655176
+  }
+]

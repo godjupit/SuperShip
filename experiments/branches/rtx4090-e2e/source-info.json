@@ -1,0 +1,16 @@
+{
+  "branch": "exp/rtx4090-e2e",
+  "slug": "rtx4090-e2e",
+  "commit": "1c73be3b749dad59a1ec9cc083b115d09cac5ff9",
+  "worktree": "/home/ubuntu/SuperShip-optimize",
+  "time": 1792770756,
+  "snapshot": "experiments/branches/rtx4090-e2e/source",
+  "source_files": 593,
+  "source_manifest_sha256": "5a633aac7f3907a672e7dd90b00e2b7540be05e394333d8dfe428df537bec1a0",
+  "original_worktree_has_changes": false,
+  "exclusions": [
+    "AGENTS.md (keep repository-wide single rules entry)",
+    "data/ and weights/ (shared canonical links)",
+    ".github/ (no duplicated automation)"
+  ]
+}

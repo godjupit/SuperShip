@@ -1,0 +1,46 @@
+{
+  "status": "success",
+  "runs_seconds": [
+    0.477736369,
+    0.476629654,
+    0.476559366
+  ],
+  "median_seconds": 0.476629654,
+  "reference_ap50_per_run": [
+    0.7808,
+    0.7808,
+    0.7808
+  ],
+  "detections_per_run": [
+    5425,
+    5425,
+    5425
+  ],
+  "start": "2026-10-22T19:32:05.144895+08:00",
+  "end": "2026-10-22T19:32:22.990079+08:00",
+  "source_commit": "6925b4e817ea819f1efd600889f36c17ee9a189a",
+  "official_source_commit": "42460fba744a1c8741252177723530976101f305",
+  "validation_ap50": 0.9101,
+  "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-official-fast-opencv-half-score005",
+  "raw_log_sha256": "85b2d2bec2b18cc7e7d5bc55a72fb30d2c3d79748b8dfa95640cc94490b8b718",
+  "submitted": true,
+  "hidden_ap50": null,
+  "command": [
+    "/home/ubuntu/.cache/supership-venv/bin/python",
+    "supership/benchmark_submission.py",
+    "--image-dir",
+    "data/SuperShip/reference/images",
+    "--meta-file",
+    "data/SuperShip/reference/reference_images_meta.json",
+    "--output-file",
+    "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-official-fast-opencv-half-score005/reference_submission.json",
+    "--runs",
+    "3",
+    "--",
+    "bash",
+    "run.sh",
+    "--worker"
+  ],
+  "timing_scope": "current official worker protocol, including process group completion; init excluded",
+  "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:32:23\nServer Message: Submission Accepted; Performance: 0.476629654 s; OK: median runtime = 0.476629654 s (timing JSON); timing parsed only."
+}

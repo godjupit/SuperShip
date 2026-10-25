@@ -1,0 +1,181 @@
+[
+  {
+    "argv": [
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "supership/benchmark_submission.py",
+      "--image-dir",
+      "data/SuperShip/reference/images",
+      "--meta-file",
+      "data/SuperShip/reference/reference_images_meta.json",
+      "--output-file",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/repeat.json",
+      "--runs",
+      "3",
+      "--",
+      "env",
+      "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python",
+      "bash",
+      "run.sh",
+      "--worker"
+    ],
+    "label": "repeat-benchmark"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "supership/score_submission.py",
+      "--gt",
+      "data/SuperShip/reference/annotations/instances_reference.json",
+      "--submission",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/repeat.run1.json"
+    ],
+    "label": "repeat-score1"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "supership/score_submission.py",
+      "--gt",
+      "data/SuperShip/reference/annotations/instances_reference.json",
+      "--submission",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/repeat.run2.json"
+    ],
+    "label": "repeat-score2"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "supership/score_submission.py",
+      "--gt",
+      "data/SuperShip/reference/annotations/instances_reference.json",
+      "--submission",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/repeat.run3.json"
+    ],
+    "label": "repeat-score3"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "/home/ubuntu/SuperShip-profile-current-20261025/experiments/20261025-174717-profile-current/stages_line.py",
+      "--config",
+      "/home/ubuntu/SuperShip-profile-current-20261025/experiments/20261025-174717-profile-current/config.json",
+      "--output",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/line1-predictions.json",
+      "--stats",
+      "/home/ubuntu/SuperShip-profile-current-20261025/experiments/20261025-174717-profile-current/line1.json"
+    ],
+    "label": "line1"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "supership/score_submission.py",
+      "--gt",
+      "data/SuperShip/reference/annotations/instances_reference.json",
+      "--submission",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/line1-predictions.json"
+    ],
+    "label": "line1-score"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "/home/ubuntu/SuperShip-profile-current-20261025/experiments/20261025-174717-profile-current/stages_line.py",
+      "--config",
+      "/home/ubuntu/SuperShip-profile-current-20261025/experiments/20261025-174717-profile-current/config.json",
+      "--output",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/line2-predictions.json",
+      "--stats",
+      "/home/ubuntu/SuperShip-profile-current-20261025/experiments/20261025-174717-profile-current/line2.json"
+    ],
+    "label": "line2"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "supership/score_submission.py",
+      "--gt",
+      "data/SuperShip/reference/annotations/instances_reference.json",
+      "--submission",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/line2-predictions.json"
+    ],
+    "label": "line2-score"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "/home/ubuntu/SuperShip-profile-current-20261025/experiments/20261025-174717-profile-current/stages_line.py",
+      "--config",
+      "/home/ubuntu/SuperShip-profile-current-20261025/experiments/20261025-174717-profile-current/config.json",
+      "--output",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/line3-predictions.json",
+      "--stats",
+      "/home/ubuntu/SuperShip-profile-current-20261025/experiments/20261025-174717-profile-current/line3.json"
+    ],
+    "label": "line3"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "supership/score_submission.py",
+      "--gt",
+      "data/SuperShip/reference/annotations/instances_reference.json",
+      "--submission",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/line3-predictions.json"
+    ],
+    "label": "line3-score"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.local/opt/nsight-systems-2024.2.3/bin/nsys",
+      "profile",
+      "--trace=cuda,nvtx,osrt",
+      "--sample=none",
+      "--cpuctxsw=none",
+      "--cuda-graph-trace=node",
+      "--capture-range=cudaProfilerApi",
+      "--capture-range-end=stop",
+      "-o",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/inference-repeat",
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "tools/reference/profile_fastest_range.py",
+      "--config",
+      "/home/ubuntu/SuperShip-profile-current-20261025/experiments/20261025-174717-profile-current/config.json",
+      "--output",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/nsys-repeat-predictions.json"
+    ],
+    "label": "nsys-repeat-profile"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.local/opt/nsight-systems-2024.2.3/bin/nsys",
+      "export",
+      "--type",
+      "sqlite",
+      "--output",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/inference-repeat.sqlite",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/inference-repeat.nsys-rep"
+    ],
+    "label": "nsys-repeat-export"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "tools/reference/summarize_nsys.py",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/inference-repeat.sqlite",
+      "/home/ubuntu/SuperShip-profile-current-20261025/experiments/20261025-174717-profile-current/nsys-repeat-summary.json"
+    ],
+    "label": "nsys-repeat-summary"
+  },
+  {
+    "argv": [
+      "/home/ubuntu/.cache/supership-venv/bin/python",
+      "supership/score_submission.py",
+      "--gt",
+      "data/SuperShip/reference/annotations/instances_reference.json",
+      "--submission",
+      "/home/ubuntu/SuperShip-profile-current-20261025/output/20261025-174717-profile-current/nsys-repeat-predictions.json"
+    ],
+    "label": "nsys-repeat-score"
+  }
+]

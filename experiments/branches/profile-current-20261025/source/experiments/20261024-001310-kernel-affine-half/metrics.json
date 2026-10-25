@@ -1,0 +1,62 @@
+{
+  "name": "affine-half",
+  "status": "success",
+  "source_commit": "8a7ddef2bf1fcbb0e6bf13cce970257e494d20ff",
+  "source_dirty": false,
+  "parent_experiment": "20261023-235500-main-fastest-merge",
+  "artifact_directory": "/home/ubuntu/SuperShip-kernels-20261024/output/20261024-001310-kernel-affine-half",
+  "started": "2026-10-24T00:13:10.961637",
+  "gpu": "RTX4090 single GPU0",
+  "driver": "550.142",
+  "python": "3.12.8",
+  "torch": "2.6.0+cu124",
+  "cuda": "12.4",
+  "cudnn": 90100,
+  "triton": "3.2.0",
+  "opencv": "4.11.0",
+  "reference_images": 200,
+  "validation_images": 1030,
+  "hidden_ap50": null,
+  "timing_scope": "Official READY to process-group exit including input, fsync; init excluded",
+  "weight_file": "weights/baseline.pth",
+  "weight_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+  "reference_metadata_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443",
+  "validation_metadata_sha256": "fcf0bcbca918ac2e380b92ddc284046d8bd4a9d61579b71465ef04e45bf1bde1",
+  "official_timer_sha256": "0befe3aadd1860460d53e5ea2b141d3310edcf5391f9ab4c3a7727244e7d7c02",
+  "official_validator_sha256": "79f47d58cd11ae9ba5b2ac1d9613d053c41bda3d1fb457ede78453d3c15a4e7f",
+  "reference_precision_pass": true,
+  "validation_precision_pass": true,
+  "validation_ap50": 0.9055,
+  "submitted": true,
+  "runs_seconds": [
+    0.35012063,
+    0.310748555,
+    0.341132634
+  ],
+  "median_seconds": 0.341132634,
+  "reference_ap50_per_run": [
+    0.7813,
+    0.7811,
+    0.7815
+  ],
+  "restored_best": {
+    "median_seconds": 0.319338027,
+    "log": "/home/ubuntu/SuperShip-kernels-20261024/output/20261024-001241-kernel-weight-half/supership.out",
+    "origin": "20261024-001241-kernel-weight-half"
+  },
+  "finished": "2026-10-24T00:13:38.172744",
+  "artifacts_sha256": {
+    "score2.log": "0d26af54de63249d4bb832e084f91bb5e8fe659828a3aeb248f7f67ee44f9d2f",
+    "reference.run2.json": "3a5129b0b0f31ba93fd9ec25143a88353a56dba1af6202156fb36553efe8cce5",
+    "score3.log": "6ba90139cc7b6a31e15cce8b95c545b7aee5dedab2ec6556ec3f9798b09d303a",
+    "supership.out": "c7d73ad3ebf4662aad1a03fb92828d5efdd304b84fee31859d286639b0c93062",
+    "reference.run1.json": "477be31a3e59e9df8ddb5de4ba280d8c500f32bf1c7b5f9c697ccbd16782efad",
+    "validation.json": "6aebea57dabfd06c5a9c64fa2278945c42ee23585a17cc990a2c986645ea31b3",
+    "validation-score.log": "b03f465aba63ced6f3317910313cef21697a61039f1655bc58a144d21c02d8e6",
+    "score1.log": "a8bfe51f920698143e55279f9b347e7687ab4f50ce0a9f69a93e3ce109c2c4b4",
+    "reference.run3.json": "684b5df91fd7ddc4943d9286b7c03b044a4360de27c11c6329f08a5582106b56",
+    "validation.out": "187c5fbc63bf8fbf55c4b88f9726ba29bed0d26a7788daa9f5bd10c0ae0a64f8",
+    "submission-response.txt": "43782571342231abc7e133744d4eede064084a91acce6df2d1e6706acff4a1d9",
+    "restore-best-response.txt": "08c0425a0f7dd066439190561fa2127d2d097190fa99fc601bf2aabeb15f246d"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "branch": "exp/performance-analysis",
+  "slug": "performance-analysis",
+  "commit": "9ebd7e25fe921f64a7da19b969d91e5320332f46",
+  "worktree": "/home/ubuntu/SuperShip-analysis",
+  "time": 1792670605,
+  "snapshot": "experiments/branches/performance-analysis/source",
+  "source_files": 278,
+  "source_manifest_sha256": "c949dfee791c6d37f20e90a0990c2999b1e913e3a28ba77e0a6fd19fc41fc082",
+  "original_worktree_has_changes": false,
+  "exclusions": [
+    "AGENTS.md (keep repository-wide single rules entry)",
+    "data/ and weights/ (shared canonical links)",
+    ".github/ (no duplicated automation)"
+  ]
+}

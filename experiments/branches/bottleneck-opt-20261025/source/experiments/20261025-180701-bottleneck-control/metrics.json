@@ -1,0 +1,62 @@
+{
+  "case": "control",
+  "experiment": "20261025-180701-bottleneck-control",
+  "status": "completed",
+  "source_commit": "3486c21d52cc3a427c6ec17ef349f62b26716bd2",
+  "parent_experiment": "20261025-180401-bottleneck-sweep",
+  "started": "2026-10-25T18:07:01.217713",
+  "gpu": "RTX4090 single GPU0",
+  "timing_scope": "Original READY to process-group exit, including inputs and fsync",
+  "hidden_ap50": null,
+  "competition_submitted": false,
+  "artifact_directory": "/home/ubuntu/SuperShip-bottleneck-opt-20261025/output/20261025-180701-bottleneck-control",
+  "reference_images": 200,
+  "validation_images": 1030,
+  "runs_seconds": [
+    0.398593305,
+    0.409308714,
+    0.37206449
+  ],
+  "median_seconds": 0.398593305,
+  "reference_ap50": [
+    0.7816,
+    0.7817,
+    0.7816
+  ],
+  "reference_precision_pass": true,
+  "reference_detection_counts": [
+    6323,
+    6314,
+    6323
+  ],
+  "validation_timing": {
+    "runs_seconds": [
+      1.169859471
+    ],
+    "median_seconds": 1.169859471
+  },
+  "validation_ap50": 0.9057,
+  "validation_detection_count": 40352,
+  "validation_precision_pass": true,
+  "precision_qualified": true,
+  "finished": "2026-10-25T18:07:31.962556",
+  "sha256": {
+    "weights/baseline.pth": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+    "supership/benchmark_submission.py": "0befe3aadd1860460d53e5ea2b141d3310edcf5391f9ab4c3a7727244e7d7c02",
+    "supership/submission.py": "79f47d58cd11ae9ba5b2ac1d9613d053c41bda3d1fb457ede78453d3c15a4e7f",
+    "data/SuperShip/reference/reference_images_meta.json": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443",
+    "data/SuperShip/val/annotations/instances_val.json": "fcf0bcbca918ac2e380b92ddc284046d8bd4a9d61579b71465ef04e45bf1bde1"
+  },
+  "artifacts_sha256": {
+    "output/20261025-180701-bottleneck-control/val.json": "8f4af2fe9fd3da7606906c236bafde0854c38ece27acad273e736d6815cc3a0b",
+    "output/20261025-180701-bottleneck-control/reference-score1.log": "6a268c723eebe670af6b9c1298026524a39fcd10ef245fd8aa4cced791586e6b",
+    "output/20261025-180701-bottleneck-control/reference.run2.json": "2442d25c1c9abf050d51f17b36e2a81676c7c098cca5ed23843132e15a8b0aca",
+    "output/20261025-180701-bottleneck-control/reference-score3.log": "6a268c723eebe670af6b9c1298026524a39fcd10ef245fd8aa4cced791586e6b",
+    "output/20261025-180701-bottleneck-control/reference-benchmark.log": "e67435ecf90ce9c698519a8e990f66b599ef1378d89fbf2b40325b7f69932f98",
+    "output/20261025-180701-bottleneck-control/reference.run1.json": "8ff972aa4e1864271e40409db1a29163e257728625002102804fbe4ff4fc320a",
+    "output/20261025-180701-bottleneck-control/reference-score2.log": "873cde21e2addb0ae28292b16324c60672bb467d215fa9e6ccab2dfd03d9835b",
+    "output/20261025-180701-bottleneck-control/validation-score.log": "0b2ff41eebfffde1e2f219ac1410cf0e011f3ce1e36c44445b974952f9dd0aea",
+    "output/20261025-180701-bottleneck-control/validation-benchmark.log": "6557f38c33e6be43686c536f610b5ac6d69baf8c2db7ed4614c7f9f334041d2a",
+    "output/20261025-180701-bottleneck-control/reference.run3.json": "8ff972aa4e1864271e40409db1a29163e257728625002102804fbe4ff4fc320a"
+  }
+}

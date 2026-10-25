@@ -1,0 +1,347 @@
+{
+  "scope": "Line-traced main Runtime.run; inclusive calls, mutually exclusive line intervals; background load durations overlap",
+  "runtime_seconds": 0.25069125000004533,
+  "images": 200,
+  "detections": 6324,
+  "load_tasks": 200,
+  "load_sum_seconds": 1.709454106998919,
+  "load_wall_span_seconds": 0.2289465520000249,
+  "lines": [
+    {
+      "line": 224,
+      "source": "loaded = [job.result() for job in jobs.pop(index)]",
+      "seconds": 0.16663586400068198,
+      "calls": 225
+    },
+    {
+      "line": 276,
+      "source": "collect(previous_batch, self.host_outputs[previous_slot][:len(previous_batch)].numpy())",
+      "seconds": 0.02668386899995312,
+      "calls": 24
+    },
+    {
+      "line": 271,
+      "source": "event.synchronize()",
+      "seconds": 0.01978803700012577,
+      "calls": 24
+    },
+    {
+      "line": 283,
+      "source": "event.synchronize()",
+      "seconds": 0.006415460999960487,
+      "calls": 1
+    },
+    {
+      "line": 294,
+      "source": "os.fsync(f.fileno())",
+      "seconds": 0.006337291999898298,
+      "calls": 1
+    },
+    {
+      "line": 275,
+      "source": "schedule(previous + self.prefetch)",
+      "seconds": 0.0043614499998057,
+      "calls": 22
+    },
+    {
+      "line": 254,
+      "source": "self.graph.replay()",
+      "seconds": 0.0032368340005177743,
+      "calls": 25
+    },
+    {
+      "line": 288,
+      "source": "payload = orjson.dumps(results)",
+      "seconds": 0.0028691300001355557,
+      "calls": 1
+    },
+    {
+      "line": 263,
+      "source": "with torch.cuda.stream(self.output_stream):",
+      "seconds": 0.0022546150005382515,
+      "calls": 50
+    },
+    {
+      "line": 250,
+      "source": "self.sizes[:n].copy_(torch.tensor(sizes, dtype=torch.float32), non_blocking=True)",
+      "seconds": 0.0022002759997121757,
+      "calls": 25
+    },
+    {
+      "line": 249,
+      "source": "self.images.copy_(self.host[slot], non_blocking=True)",
+      "seconds": 0.001511175999439729,
+      "calls": 25
+    },
+    {
+      "line": 261,
+      "source": "current = torch.cuda.current_stream(self.device)",
+      "seconds": 0.0013111870000557246,
+      "calls": 25
+    },
+    {
+      "line": 262,
+      "source": "self.output_stream.wait_stream(current)",
+      "seconds": 0.0008238090001668752,
+      "calls": 25
+    },
+    {
+      "line": 264,
+      "source": "self.host_outputs[slot].copy_(device_output, non_blocking=True)",
+      "seconds": 0.0006553439995968802,
+      "calls": 25
+    },
+    {
+      "line": 284,
+      "source": "collect(previous_batch, self.host_outputs[previous % self.prefetch][:len(previous_batch)].numpy())",
+      "seconds": 0.0006140640000467101,
+      "calls": 1
+    },
+    {
+      "line": 285,
+      "source": "self.pool.shutdown(wait=True)",
+      "seconds": 0.0005611740000404097,
+      "calls": 1
+    },
+    {
+      "line": 196,
+      "source": "schedule(index)",
+      "seconds": 0.00040191499965658295,
+      "calls": 3
+    },
+    {
+      "line": 292,
+      "source": "f.write(payload)",
+      "seconds": 0.00037838599996575795,
+      "calls": 1
+    },
+    {
+      "line": 180,
+      "source": "metadata = json.loads(Path(request[\"meta_file\"]).read_text())",
+      "seconds": 0.0003431359998558037,
+      "calls": 1
+    },
+    {
+      "line": 182,
+      "source": "ids = [item[\"id\"] for item in items]",
+      "seconds": 0.00018595799997456197,
+      "calls": 201
+    },
+    {
+      "line": 267,
+      "source": "current.wait_event(ready)",
+      "seconds": 0.00017887799981508579,
+      "calls": 25
+    },
+    {
+      "line": 266,
+      "source": "ready.record(self.output_stream)",
+      "seconds": 0.00017839899896898714,
+      "calls": 25
+    },
+    {
+      "line": 265,
+      "source": "ready = torch.cuda.Event()",
+      "seconds": 0.00015268000083779043,
+      "calls": 25
+    },
+    {
+      "line": 221,
+      "source": "for index in range(count):",
+      "seconds": 0.00012105899986636359,
+      "calls": 26
+    },
+    {
+      "line": 270,
+      "source": "previous, previous_batch, event = pending.popleft()",
+      "seconds": 0.00011350900058459956,
+      "calls": 24
+    },
+    {
+      "line": 291,
+      "source": "with path.open(\"wb\") as f:",
+      "seconds": 9.513899999546993e-05,
+      "calls": 2
+    },
+    {
+      "line": 290,
+      "source": "path.parent.mkdir(parents=True, exist_ok=True)",
+      "seconds": 9.3558999878951e-05,
+      "calls": 1
+    },
+    {
+      "line": 269,
+      "source": "if len(pending) >= min(2, self.prefetch):",
+      "seconds": 8.352999930139049e-05,
+      "calls": 25
+    },
+    {
+      "line": 255,
+      "source": "device_output = self.captured",
+      "seconds": 7.90189997132984e-05,
+      "calls": 25
+    },
+    {
+      "line": 251,
+      "source": "if n < self.batch:",
+      "seconds": 7.851000032133015e-05,
+      "calls": 25
+    },
+    {
+      "line": 272,
+      "source": "previous_slot = previous % self.prefetch",
+      "seconds": 7.444000016221253e-05,
+      "calls": 24
+    },
+    {
+      "line": 258,
+      "source": "if self.async_output:",
+      "seconds": 6.766899991816899e-05,
+      "calls": 25
+    },
+    {
+      "line": 246,
+      "source": "sizes = loaded",
+      "seconds": 6.449000011343742e-05,
+      "calls": 25
+    },
+    {
+      "line": 286,
+      "source": "torch.cuda.synchronize(self.device)",
+      "seconds": 6.119899990153499e-05,
+      "calls": 1
+    },
+    {
+      "line": 223,
+      "source": "batch = items[index * self.batch:(index + 1) * self.batch]",
+      "seconds": 5.701899976884306e-05,
+      "calls": 25
+    },
+    {
+      "line": 225,
+      "source": "n = len(batch)",
+      "seconds": 5.4047999810791225e-05,
+      "calls": 25
+    },
+    {
+      "line": 226,
+      "source": "if self.decoder == \"cuda\":",
+      "seconds": 5.347000001165725e-05,
+      "calls": 25
+    },
+    {
+      "line": 268,
+      "source": "pending.append((index, batch, ready))",
+      "seconds": 5.2910000249539735e-05,
+      "calls": 25
+    },
+    {
+      "line": 222,
+      "source": "slot = index % self.prefetch",
+      "seconds": 5.144900023879018e-05,
+      "calls": 25
+    },
+    {
+      "line": 274,
+      "source": "if previous + self.prefetch < count:",
+      "seconds": 4.6169999905032455e-05,
+      "calls": 24
+    },
+    {
+      "line": 253,
+      "source": "if self.graph is not None:",
+      "seconds": 4.575999969347322e-05,
+      "calls": 25
+    },
+    {
+      "line": 247,
+      "source": "if n < self.batch:",
+      "seconds": 4.4680000200969516e-05,
+      "calls": 25
+    },
+    {
+      "line": 220,
+      "source": "with torch.inference_mode():",
+      "seconds": 2.5880000066536013e-05,
+      "calls": 2
+    },
+    {
+      "line": 289,
+      "source": "path = Path(request[\"output_file\"])",
+      "seconds": 1.5869999970163917e-05,
+      "calls": 1
+    },
+    {
+      "line": 282,
+      "source": "for previous, previous_batch, event in pending:",
+      "seconds": 1.1729999869203311e-05,
+      "calls": 2
+    },
+    {
+      "line": 195,
+      "source": "for index in range(min(self.prefetch, count)):",
+      "seconds": 8.560000424040481e-06,
+      "calls": 4
+    },
+    {
+      "line": 183,
+      "source": "if len(ids) != len(set(ids)):",
+      "seconds": 7.119999963833834e-06,
+      "calls": 1
+    },
+    {
+      "line": 181,
+      "source": "items = metadata[\"images\"]",
+      "seconds": 6.960000064282212e-06,
+      "calls": 1
+    },
+    {
+      "line": 295,
+      "source": "return len(results), len(items)",
+      "seconds": 5.86999999541149e-06,
+      "calls": 1
+    },
+    {
+      "line": 293,
+      "source": "f.flush()",
+      "seconds": 4.220000164423254e-06,
+      "calls": 1
+    },
+    {
+      "line": 198,
+      "source": "pending = deque()",
+      "seconds": 2.5900001219270052e-06,
+      "calls": 1
+    },
+    {
+      "line": 186,
+      "source": "count = (len(items) + self.batch - 1) // self.batch",
+      "seconds": 2.3499999315390596e-06,
+      "calls": 1
+    },
+    {
+      "line": 200,
+      "source": "def collect(batch, output):",
+      "seconds": 2.1299999843904516e-06,
+      "calls": 1
+    },
+    {
+      "line": 188,
+      "source": "def schedule(index):",
+      "seconds": 2.0400000266818097e-06,
+      "calls": 1
+    },
+    {
+      "line": 197,
+      "source": "results = []",
+      "seconds": 1.4099998679739656e-06,
+      "calls": 1
+    },
+    {
+      "line": 185,
+      "source": "jobs = {}",
+      "seconds": 1.390000079481979e-06,
+      "calls": 1
+    }
+  ]
+}

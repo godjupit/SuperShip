@@ -1,0 +1,27 @@
+{
+  "status": "success",
+  "timing_scope": "official end-to-end worker protocol; init excluded; input access through fsync and worker exit included",
+  "runs_seconds": [
+    3.071232824,
+    3.22106285,
+    3.274563741
+  ],
+  "median_seconds": 3.22106285,
+  "reference_ap50_per_run": [
+    0.7935,
+    0.7935,
+    0.7935
+  ],
+  "hidden_ap50": null,
+  "raw_log_path": "/home/ubuntu/SuperShip-analysis/output/submissions/20261022-analysis-cuda-graph/supership.out",
+  "raw_log_sha256": "26a58a28e5ce7b97827e5d1b4104f3a9b15e6251673994c69ab679a292d1ba44",
+  "score_log_path": "/home/ubuntu/SuperShip-analysis/output/submissions/20261022-analysis-cuda-graph/score.log",
+  "detections": [
+    59974,
+    59974,
+    59974
+  ],
+  "baseline_median_seconds": 5.128391426,
+  "reduction_vs_baseline_percent": 37.19155613454534,
+  "submitted": false
+}

@@ -1,0 +1,28 @@
+{
+  "environment_overrides": {
+    "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+    "PIPELINE": "fast",
+    "PRECISION": "fp16",
+    "BACKEND": "cuda_graph",
+    "BATCH_SIZE": "8",
+    "NUM_WORKERS": "8",
+    "RUNS": "3",
+    "PIPELINE_DEPTH": "3",
+    "SCORE_THRESHOLD": "0",
+    "IMAGE_DECODER": "pil",
+    "VECTORIZED_RESULTS": "1",
+    "CHANNELS_LAST": "1",
+    "MODEL_DEPLOY": "1",
+    "FAST_EXIT": "1",
+    "TORCH_THREADS": "1"
+  },
+  "command": "PYTHON_BIN=/home/ubuntu/.cache/supership-venv/bin/python PIPELINE=fast PRECISION=fp16 BACKEND=cuda_graph BATCH_SIZE=8 NUM_WORKERS=8 RUNS=3 PIPELINE_DEPTH=3 SCORE_THRESHOLD=0 IMAGE_DECODER=pil VECTORIZED_RESULTS=1 CHANNELS_LAST=1 MODEL_DEPLOY=1 FAST_EXIT=1 TORCH_THREADS=1 bash benchmark_reference.sh",
+  "dataset": "public v2 reference 200 images",
+  "archive_sha256": "4f70f1167ee51090e30f5f3c4915f821b2c960d307610902ad666ae92ea69b71",
+  "weights_sha256": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+  "input_size": [
+    640,
+    640
+  ],
+  "reference_meta_sha256": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443"
+}

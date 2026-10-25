@@ -1,0 +1,74 @@
+[
+  {
+    "branch": "exp/performance-analysis",
+    "directory": "experiments/artifacts/performance-analysis",
+    "files": 13,
+    "bytes": 34980854,
+    "local_only": true,
+    "legacy_output_compatible": true
+  },
+  {
+    "branch": "exp/inference-backends",
+    "directory": "experiments/artifacts/inference-backends",
+    "files": 18,
+    "bytes": 44978425,
+    "local_only": true,
+    "legacy_output_compatible": true
+  },
+  {
+    "branch": "exp/profile-fast544",
+    "directory": "experiments/artifacts/profile-fast544",
+    "files": 50,
+    "bytes": 77689311,
+    "local_only": true,
+    "legacy_output_compatible": true
+  },
+  {
+    "branch": "exp/convbn-root",
+    "directory": "experiments/artifacts/convbn-root",
+    "files": 179,
+    "bytes": 21971685,
+    "local_only": true,
+    "legacy_output_compatible": true
+  },
+  {
+    "branch": "exp/rtx4090-e2e",
+    "directory": "experiments/artifacts/rtx4090-e2e",
+    "files": 511,
+    "bytes": 565594376,
+    "local_only": true,
+    "legacy_output_compatible": true
+  },
+  {
+    "branch": "exp/kernel-sweep-20261024",
+    "directory": "experiments/artifacts/kernel-sweep-20261024",
+    "files": 1511,
+    "bytes": 88043039,
+    "local_only": true,
+    "legacy_output_compatible": true
+  },
+  {
+    "branch": "main",
+    "directory": "experiments/artifacts/main",
+    "files": 23,
+    "bytes": 35833463,
+    "local_only": true,
+    "legacy_output_compatible": true
+  },
+  {
+    "branch": "exp/profile-current-20261025",
+    "directory": "experiments/artifacts/profile-current-20261025",
+    "files": 161,
+    "bytes": 28618753,
+    "local_only": true,
+    "legacy_output_compatible": true
+  },
+  {
+    "branch": "exp/bottleneck-opt-20261025",
+    "directory": "experiments/artifacts/bottleneck-opt-20261025",
+    "files": 307,
+    "bytes": 82103029,
+    "local_only": true,
+    "legacy_output_compatible": true
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "branch": "exp/profile-current-20261025",
+  "slug": "profile-current-20261025",
+  "commit": "f2c4d275295a40b0845f82373a3f9f48178cf0fa",
+  "worktree": "/home/ubuntu/SuperShip-profile-current-20261025",
+  "time": 1792922361,
+  "snapshot": "experiments/branches/profile-current-20261025/source",
+  "source_files": 816,
+  "source_manifest_sha256": "fa1513353f5db1625cb03bf5f86c80ef44e908a51d620e8d247f4f386e25e5cc",
+  "original_worktree_has_changes": false,
+  "exclusions": [
+    "AGENTS.md (keep repository-wide single rules entry)",
+    "data/ and weights/ (shared canonical links)",
+    ".github/ (no duplicated automation)"
+  ]
+}

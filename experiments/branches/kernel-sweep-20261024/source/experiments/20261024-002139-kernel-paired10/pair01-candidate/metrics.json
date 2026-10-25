@@ -1,0 +1,15 @@
+{
+  "pair": 1,
+  "name": "candidate",
+  "seconds": 0.309509149,
+  "reference_ap50": 0.7814,
+  "source_commit": "7cfaaa39ebd988c60f75fb94ac06092d797e2e3f",
+  "source_dirty": false,
+  "artifact_directory": "/home/ubuntu/SuperShip-kernels-20261024/output/20261024-002139-kernel-paired10/pair01-candidate",
+  "status": "success",
+  "artifacts_sha256": {
+    "score.log": "9e7c82c6ec2a722931b0a24a3c2e7dc3bd63c5c646fc2c70ee02f066b906db7c",
+    "benchmark.log": "c58a3de8fb028697e68451c0866cff71eea7e5e809c6f9bb437a3cc26633692b",
+    "prediction.json": "56e1c14202b9bc2773f7a22de351356e2d8cab0182b084c2a9ad5bf418715bd2"
+  }
+}

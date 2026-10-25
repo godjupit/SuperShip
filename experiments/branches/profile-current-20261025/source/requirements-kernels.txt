@@ -1,0 +1,3 @@
+# Optional FEATURE_CAT=triton_half experiment, matched to PyTorch 2.6.0.
+-r requirements-fast.txt
+triton==3.2.0

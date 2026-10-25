@@ -1,0 +1,45 @@
+{
+  "source_experiment": "20261022-fast-opencv-half-score005",
+  "source_commit": "05cb42251126a2bcf298ae0557c80db708fb4e90",
+  "start": "2026-10-22T19:30:40.235522+08:00",
+  "end": "2026-10-22T19:30:48.221970+08:00",
+  "status": "success",
+  "output_directory": "/home/ubuntu/SuperShip-optimize/output/validation/20261022-validation-fast-opencv-half-score005",
+  "environment_overrides": {
+    "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+    "PIPELINE": "fast",
+    "PRECISION": "fp16",
+    "BACKEND": "cuda_graph",
+    "BATCH_SIZE": "8",
+    "NUM_WORKERS": "8",
+    "RUNS": "1",
+    "PIPELINE_DEPTH": "3",
+    "SCORE_THRESHOLD": "0.05",
+    "IMAGE_DECODER": "opencv",
+    "VECTORIZED_RESULTS": "1",
+    "CHANNELS_LAST": "1",
+    "MODEL_DEPLOY": "0",
+    "FAST_EXIT": "1",
+    "TORCH_THREADS": "1",
+    "JPEG_REDUCTION": "2",
+    "RESIZE_ANTIALIAS": "1"
+  },
+  "command": [
+    "/home/ubuntu/.cache/supership-venv/bin/python",
+    "supership/evaluate.py",
+    "val",
+    "--runs",
+    "1",
+    "--output-dir",
+    "/home/ubuntu/SuperShip-optimize/output/validation/20261022-validation-fast-opencv-half-score005"
+  ],
+  "split": "val 1030 images",
+  "hidden_ap50": null,
+  "runs_seconds": [
+    1.87166225
+  ],
+  "median_seconds": 1.87166225,
+  "ap50": 0.9101,
+  "detections": 36101,
+  "output_sha256": "c401bea1f01bad94bff98f8ce2856f48da08d18c6cf5729f917790a546d69bad"
+}

@@ -1,0 +1,34 @@
+{
+  "status": "success",
+  "runs_seconds": [
+    1.31661968,
+    1.316616446,
+    1.366688448
+  ],
+  "median_seconds": 1.31661968,
+  "reference_ap50_per_run": [
+    0.7926,
+    0.7926,
+    0.7926
+  ],
+  "detections_per_run": [
+    59978,
+    59978,
+    59978
+  ],
+  "images_with_detections_per_run": [
+    200,
+    200,
+    200
+  ],
+  "hidden_ap50": null,
+  "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+  "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-deploy/supership.out",
+  "raw_log_sha256": "2eab79163aef1878e2e08f3d177398a1137f366715b502d4770bcc15a1375f96",
+  "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-fp16-deploy",
+  "reduction_vs_previous_submission_percent": 58.48681875631465,
+  "ap50_reference_baseline": 0.7935,
+  "submitted": true,
+  "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:22:05\nServer Message: Submission Accepted; Performance: 1.31661968 s; OK: median runtime = 1.316619680 s (timing JSON); timing parsed only.",
+  "reference_check_passed": true
+}

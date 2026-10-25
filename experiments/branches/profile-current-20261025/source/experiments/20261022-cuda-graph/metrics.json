@@ -1,0 +1,28 @@
+{
+  "status": "success",
+  "timing_scope": "official end-to-end worker protocol; init excluded; input access through fsync and worker exit included",
+  "runs_seconds": [
+    3.171570187,
+    3.071756931,
+    3.224105999
+  ],
+  "median_seconds": 3.171570187,
+  "reference_ap50_per_run": [
+    0.7935,
+    0.7935,
+    0.7935
+  ],
+  "hidden_ap50": null,
+  "raw_log_path": "/home/ubuntu/SuperShip-inference/output/submissions/20261022-cuda-graph/supership.out",
+  "raw_log_sha256": "08cff08f80be9ff220ec29b90014bd8ae8436be483e7f3834f45e22c39979610",
+  "score_log_path": "/home/ubuntu/SuperShip-inference/output/submissions/20261022-cuda-graph/score.log",
+  "detections": [
+    59974,
+    59974,
+    59974
+  ],
+  "baseline_median_seconds": 5.128391426,
+  "reduction_vs_baseline_percent": 38.15662800384692,
+  "submitted": true,
+  "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:12:36\nServer Message: Submission Accepted; Performance: 3.171570187 s; OK: median runtime = 3.171570187 s (timing JSON); timing parsed only."
+}

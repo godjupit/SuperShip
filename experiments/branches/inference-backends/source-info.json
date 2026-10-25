@@ -1,0 +1,16 @@
+{
+  "branch": "exp/inference-backends",
+  "slug": "inference-backends",
+  "commit": "43f44ed6561999c187aaab384169d0148da2f4fc",
+  "worktree": "/home/ubuntu/SuperShip-inference",
+  "time": 1792670605,
+  "snapshot": "experiments/branches/inference-backends/source",
+  "source_files": 258,
+  "source_manifest_sha256": "28d320b1341447a23c9ca308e61981ec5000558d153d1e01f1aab1733437056b",
+  "original_worktree_has_changes": false,
+  "exclusions": [
+    "AGENTS.md (keep repository-wide single rules entry)",
+    "data/ and weights/ (shared canonical links)",
+    ".github/ (no duplicated automation)"
+  ]
+}

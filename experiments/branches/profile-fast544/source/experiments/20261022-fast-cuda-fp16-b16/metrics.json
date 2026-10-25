@@ -1,0 +1,34 @@
+{
+  "status": "success",
+  "runs_seconds": [
+    1.918214319,
+    1.968451797,
+    1.867474605
+  ],
+  "median_seconds": 1.918214319,
+  "reference_ap50_per_run": [
+    0.7933,
+    0.7933,
+    0.7933
+  ],
+  "detections_per_run": [
+    59978,
+    59978,
+    59978
+  ],
+  "images_with_detections_per_run": [
+    200,
+    200,
+    200
+  ],
+  "hidden_ap50": null,
+  "timing_scope": "official complete worker protocol: input access to output fsync and process exit; excludes initialization",
+  "raw_log_path": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-cuda-fp16-b16/supership.out",
+  "raw_log_sha256": "487fc513366863c61724667f86ecdd70b16b3405caeb81b4f0076263b2d85bfd",
+  "artifact_directory": "/home/ubuntu/SuperShip-optimize/output/submissions/20261022-fast-cuda-fp16-b16",
+  "reduction_vs_previous_submission_percent": 39.51846543196176,
+  "ap50_reference_baseline": 0.7935,
+  "submitted": true,
+  "submission_response": "Submission Time (Asia/Shanghai): 2026-10-22 19:24:07\nServer Message: Submission Accepted; Performance: 1.918214319 s; OK: median runtime = 1.918214319 s (timing JSON); timing parsed only.",
+  "reference_check_passed": true
+}
