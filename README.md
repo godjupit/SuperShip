@@ -24,3 +24,5 @@ OPTIMIZATION_EXPERIMENTS.md 精简时间日志
 主线代码保持原版本，各方向的代码按分支保留。公开数据/权重入口和run.sh接口继续使用；基准计时仍覆盖READY后的全部输入处理、写盘与进程结束。
 
 主线已合并官方`42460fba`规范与评分修复，并保留原优化开关；[合并后的完整说明](experiments/guides/main-upstream-sync.md)。历史性能记录按原SHA保存，当前主线后续计时需重新建立基线。
+
+`run.sh` 在 Linux 上默认请求 glibc 透明大页，以减少进程退出时主机内存页回收开销；`HOST_THP=0` 可关闭，显式 `GLIBC_TUNABLES` 设置优先。该开关不改变默认推理路径。[退出诊断与32GiB内存验证](experiments/20261026-000619-exit-rootcause/notes.md)。
