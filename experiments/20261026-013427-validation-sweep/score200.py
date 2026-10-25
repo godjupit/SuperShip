@@ -3,7 +3,9 @@ import hashlib,json,os,re,subprocess,sys
 from datetime import datetime
 from pathlib import Path
 root=Path(__file__).resolve().parents[2];exp=Path(__file__).resolve().parent;out=root/'output'/exp.name
-best=.280231356;records=[]
+best=.275737156;records=[]
+if (out/'fast-score-results.json').exists():
+ previous=json.loads((out/'fast-score-results.json').read_text());best=min(best,previous['best_seconds']);records=previous['cases']
 credentials=Path('/home/ubuntu/SuperShip-main 2/.local/.thuscc_credentials');script=Path('/home/ubuntu/SuperShip-main 2/.local/submit.sh')
 values={}
 for line in credentials.read_text().splitlines():

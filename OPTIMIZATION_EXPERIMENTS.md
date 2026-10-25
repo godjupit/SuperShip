@@ -23,11 +23,11 @@
 | 当前状态 | 定位 |
 | --- | --- |
 | 历史最短有效完整参考日志 | 20261024-001935-kernel-weights-linear-concat，0.302713346秒；[记录](experiments/20261024-001935-kernel-weights-linear-concat/notes.md) |
-| 当前比较组推荐候选 | 20261026-000619-exit-rootcause：主机透明大页；6对交错356.262→289.449ms，5/6更快；独立完整三轮285.962649ms；[记录](experiments/20261026-000619-exit-rootcause/notes.md) |
+| 当前比较组推荐候选 | 20261026-013427-validation-sweep half-w10：batch8、10解码线程、depth3、融合半精度输出；完整三轮中位275.737156ms已Accepted；小幅收益有波动重叠；[记录](experiments/20261026-013427-validation-sweep/notes.md) |
 | 保守高精度候选 | 640完整JPEG解码，validation AP50=0.9167；[记录](experiments/20261022-official-fast-opencv-score005/notes.md) |
-| 最近Accepted信息 | 2026-10-26 00:24:37，账号ruc2602，SUPERSHIP 0.285962649秒；[脱敏回执](experiments/20261026-000619-exit-rootcause/submission-receipt.txt)；仅计时解析，hidden AP50未测 |
+| 最近Accepted信息 | 2026-10-26 01:39:08，账号ruc2602，SUPERSHIP **0.275737156秒**；[脱敏回执](experiments/20261026-013427-validation-sweep/submission-receipt.txt)；仅计时解析，hidden AP50未测 |
 | 官方隐藏集最优 | 未知 |
-| 任务状态 | 20261026-002932-profile-thp：completed；14份参考输出校验/评分通过，时间构成与热点证据已保存；GPU0于00:37释放；Accepted成绩保持285.962649ms |
+| 任务状态 | 20261026-013427-validation-sweep：completed；200张三配置九轮通过，Accepted275.737156ms；GPU0已释放；优化源码保留实验分支 |
 
 **常用入口**：运行`bash run.sh --worker`；基准/评分脚本在[tools/benchmark/](tools/benchmark/)；开发环境在[tools/dev/](tools/dev/)；主目录源码保持main原版本，其他优化代码见[分支快照](experiments/branches/README.md)。
 
@@ -58,3 +58,6 @@
 - GPU0 RTX4090 reserved01:34 after process/idle checks; no previous experiment GPU processes remain. Parent fast-score-results.json and sanitized receipt confirm Accepted **0.280231356s** at2026-10-26 01:28:59 for half-output (log SHA256 `757f6037b42e223f850dffe227a906d812a9f48adcd164f39c1774596d5ddd7c`); main's older285.962649ms entry is stale. Acceptance is timing parsed only; hidden AP50=null. No old log resubmission.
 
 2026-10-26 01:38 clarification for20261026-013427-validation-sweep: user means skip larger validation, run200-image reference and score. Stop all larger-set runs (already completed). Now screen three registered complete3-round logs for half-w10, half-w10-b16, half-w10-depth5; submit only valid improvements overAccepted280.231356ms. GPU0 remains reserved; official timer and scorer unchanged.
+
+
+Completion 2026-10-26 01:40 CST —20261026-013427-validation-sweep: **completed**, GPU0 released. User clarified200-image reference allowed, larger validation skipped thereafter. Three candidate logs /9reference outputs passed. half-w10 median275.737156ms (268.183722/275.737156/304.649908), half-w10-b16 median276.850853ms, half-w10-depth5 median291.720128ms. Only half-w10 uploaded;Accepted2026-10-26 01:39:08,275.737156ms, timing parsed only. Reference AP50>=0.7809; prior validation0.9055–0.9056 for half-w10, hidden=null. Slight score improvement1.60% vs prior280.231356ms overlaps observed variance. [Results](experiments/20261026-013427-validation-sweep/notes.md); source/commands/hashes preserved; no timer/model source changes.
