@@ -23,7 +23,7 @@ def relu_affine(x,scale,bias):
         raise ValueError('fused ReLU affine preserves float32 scalar parameters')
     if scale.device!=x.device or bias.device!=x.device:
         raise ValueError('input and scalars must use the same CUDA device')
-    if not (x.is_contiguous() or x.is_contiguous(memory_format=torch.channels_last)):
+    if not (x.is_contiguous() or (x.ndim==4 and x.is_contiguous(memory_format=torch.channels_last))):
         return torch.relu(x)*scale+bias
     output=torch.empty_like(x,dtype=torch.float32,memory_format=torch.preserve_format)
     n=x.numel()
