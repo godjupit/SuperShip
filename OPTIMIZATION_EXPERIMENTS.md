@@ -50,3 +50,9 @@
 - GPU0 RTX4090 reserved00:29–00:37 after idle checks, released; worktree `/tmp/SuperShip-time-20261026`. Scope: three unchanged-protocol baseline runs, main-thread stage and boundary probes, inference-only Nsight kernel/transfer timeline, prioritized bottleneck analysis. No inference changes or new competition submission; preserve current Accepted log. Host32GB constraint retained.
 
 诊断结论（20261026-002932-profile-thp）：主线程输入Future等待164–183ms与GPU执行重叠，不能作为纯GPU空闲；Nsight独立测得GPU空档38–46ms。三轮物理读取0bytes，核心约1.6 CPU秒/7.2核；主要方向是解码/预处理供给、退出尾延迟、GPU转换/特征pack。完整三轮参考AP50=0.7809/0.7812/0.7809；validation AP50沿用未改动父版本0.9058，本轮未重测；hidden未测。无推理改动、无新竞赛提交，候选与最近Accepted不变。
+
+## 20261026-004444-supply-exit
+
+- Owner Codex /root; branch `exp/supply-exit-20261026`; status **running**; updated2026-10-26 00:44 CST. Parent accepted runtime/diagnostics `67f2d7f` (full SHA in experiment).
+- GPU0 RTX4090 reserved from00:44 after idle check. Worktree `/tmp/SuperShip-supply-20261026`. Separate hypotheses: faster CPU JPEG decoder and supply scheduling; reduce unnecessary inference imports to lower host-memory exit cost. Register each variant before running, preserve failures and compare against unchanged accepted runtime.
+- Required: exact public200 reference/1030 validation coverage, tail handling, >=3 independent complete timings and paired confirmation;32GB host cap; user authorization for Git push and competition submission persists. No altered timer/scorer or pre-READY evaluation access; only a faster validated complete log may replace currentAccepted285.962649ms.
