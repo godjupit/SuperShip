@@ -1,0 +1,44 @@
+{
+  "control": {},
+  "normalize": {
+    "FUSED_NORMALIZE": "1"
+  },
+  "postprocess": {
+    "FUSED_POSTPROCESS": "1"
+  },
+  "pack-segment": {
+    "FEATURE_PACK_IMPL": "segmented"
+  },
+  "pack-block1024": {
+    "FEATURE_PACK_BLOCK": "1024"
+  },
+  "pack-segment1024": {
+    "FEATURE_PACK_IMPL": "segmented",
+    "FEATURE_PACK_BLOCK": "1024"
+  },
+  "affine-block1024": {
+    "RELU_AFFINE_BLOCK": "1024"
+  },
+  "light-imports": {
+    "INFERENCE_IMPORTS": "1"
+  },
+  "queries200": {
+    "NUM_QUERIES": "200"
+  },
+  "queries150": {
+    "NUM_QUERIES": "150"
+  },
+  "queries100": {
+    "NUM_QUERIES": "100"
+  },
+  "top200": {
+    "POST_TOP_QUERIES": "200"
+  },
+  "top100": {
+    "POST_TOP_QUERIES": "100"
+  },
+  "fused-io": {
+    "FUSED_NORMALIZE": "1",
+    "FUSED_POSTPROCESS": "1"
+  }
+}

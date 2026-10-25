@@ -1,4 +1,5 @@
 """Inference-only ReLU + learned float32 scalar affine, with separate rounding."""
+import os
 import torch
 import triton
 import triton.language as tl
@@ -29,7 +30,10 @@ def relu_affine(x,scale,bias,output_half=False):
     output=torch.empty_like(x,dtype=torch.float16 if output_half else torch.float32,memory_format=torch.preserve_format)
     n=x.numel()
     if n:
-        _relu_affine[(triton.cdiv(n,512),)](x,scale,bias,output,n,512,enable_fp_fusion=False)
+        block=int(os.environ.get("RELU_AFFINE_BLOCK", "512"))
+        if block not in (256,512,1024,2048):
+            raise ValueError("unsupported affine block size")
+        _relu_affine[(triton.cdiv(n,block),)](x,scale,bias,output,n,block,enable_fp_fusion=False)
     return output
 
 

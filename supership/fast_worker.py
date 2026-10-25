@@ -58,6 +58,10 @@ class Runtime:
         self.vectorized = os.environ.get("VECTORIZED_RESULTS", "0") == "1"
         self.early_recycle = os.environ.get("EARLY_INPUT_RECYCLE", "0") == "1"
         self.bulk_results = os.environ.get("BULK_RESULTS", "0") == "1"
+        self.fused_normalize = os.environ.get("FUSED_NORMALIZE", "0") == "1"
+        self.fused_postprocess = os.environ.get("FUSED_POSTPROCESS", "0") == "1"
+        if self.fused_normalize and (self.precision != "fp16" or os.environ.get("CHANNELS_LAST", "1") != "1"):
+            raise ValueError("fused normalization requires channels-last FP16 inference")
         if self.early_recycle and self.decoder == "cuda":
             raise ValueError("early input recycling requires CPU image decoding")
         if self.bulk_results and not self.vectorized:
@@ -115,6 +119,18 @@ class Runtime:
                 raise ValueError("DECODER_LAYERS exceeds the checkpoint architecture")
             self.model.decoder.eval_idx = self.eval_layers - 1
             self.model.decoder.decoder.eval_idx = self.eval_layers - 1
+        queries = int(os.environ.get("NUM_QUERIES", "0"))
+        if queries:
+            if not 1 <= queries <= self.model.decoder.num_queries or self.model.decoder.learn_query_content:
+                raise ValueError("query reduction requires unlearned query content and a valid count")
+            self.model.decoder.num_queries = queries
+        top_queries = int(os.environ.get("POST_TOP_QUERIES", "0"))
+        if top_queries:
+            if not 1 <= top_queries <= self.model.decoder.num_queries * self.post.num_classes:
+                raise ValueError("invalid output query count")
+            self.post.num_top_queries = top_queries
+        if self.fused_postprocess and (not self.post.use_focal_loss or self.post.remap_mscoco_category):
+            raise ValueError("fused postprocessing requires focal scores without category remapping")
         if os.environ.get("MODEL_DEPLOY", "0") == "1":
             self.model.deploy()
         if os.environ.get("FUSE_CONV_BN", "0") == "1":
@@ -162,10 +178,17 @@ class Runtime:
                 torch.cuda.synchronize(self.device)
 
     def forward(self):
-        images = self.images.permute(0, 3, 1, 2).float().mul_(1 / 255)
+        if self.fused_normalize:
+            from supership.fused_io import normalized_half
+            images = normalized_half(self.images)
+        else:
+            images = self.images.permute(0, 3, 1, 2).float().mul_(1 / 255)
         if os.environ.get("CHANNELS_LAST", "1") != "1":
             images = images.contiguous()
         outputs = model_forward(self.model, images, self.precision)
+        if self.fused_postprocess:
+            from supership.fused_io import packed_detections
+            return packed_detections(outputs, self.sizes, self.post.num_top_queries)
         labels, boxes, scores = self.post(outputs, self.sizes)
         return torch.cat((boxes, scores.unsqueeze(-1), labels.unsqueeze(-1)), dim=-1)
 
