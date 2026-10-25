@@ -18,6 +18,27 @@ import torch
 from supership.generate_submission import build_runtime, model_forward, read_worker_request
 
 
+def bulk_results(items, chunks, threshold):
+    """Round and format all snapshots in input/query order, including short tails."""
+    if not chunks:
+        return []
+    output = np.concatenate(chunks, axis=0)
+    if output.shape[0] != len(items) or not np.isfinite(output).all():
+        raise ValueError("incomplete or nonfinite bulk detection output")
+    ids = np.repeat(np.asarray([item["id"] for item in items]), output.shape[1])
+    flat = output.reshape(-1, 6)
+    mask = flat[:, 4] >= threshold
+    selected = flat[mask].astype(np.float64)
+    ids = ids[mask]
+    selected[:, 2:4] -= selected[:, :2]
+    boxes = np.round(selected[:, :4], 2)
+    scores = np.round(selected[:, 4], 5)
+    return [dict(image_id=int(image_id), category_id=int(label), bbox=box, score=score)
+            for image_id, label, box, score in
+            zip(ids, selected[:, 5], boxes.tolist(), scores.tolist())
+            if box[2] > 0 and box[3] > 0]
+
+
 class Runtime:
     def __init__(self):
         self.side = int(os.environ.get("INPUT_SIZE", "640"))
@@ -35,6 +56,12 @@ class Runtime:
         self.eval_layers = int(os.environ.get("DECODER_LAYERS", "0"))
         self.antialias = os.environ.get("RESIZE_ANTIALIAS", "1") == "1"
         self.vectorized = os.environ.get("VECTORIZED_RESULTS", "0") == "1"
+        self.early_recycle = os.environ.get("EARLY_INPUT_RECYCLE", "0") == "1"
+        self.bulk_results = os.environ.get("BULK_RESULTS", "0") == "1"
+        if self.early_recycle and self.decoder == "cuda":
+            raise ValueError("early input recycling requires CPU image decoding")
+        if self.bulk_results and not self.vectorized:
+            raise ValueError("bulk results requires VECTORIZED_RESULTS=1")
         if self.side < 320 or self.side > 1280 or self.side % 32:
             raise ValueError("INPUT_SIZE must be a multiple of 32 between 320 and 1280")
         if min(self.batch, self.workers, self.prefetch) < 1:
@@ -94,6 +121,10 @@ class Runtime:
             from supership.conv_bn_fusion import fuse_model_conv_bn
             fused = fuse_model_conv_bn(self.model)
             print(f"Conv-BN fused pairs: {len(fused)}", file=sys.stderr, flush=True)
+        from supership.kernel_optimizations import apply_kernel_options
+        changes = apply_kernel_options(self.model, self.precision)
+        if changes:
+            print(f"Kernel options: {changes}", file=sys.stderr, flush=True)
         if os.environ.get("CHANNELS_LAST", "1") == "1":
             self.model.to(memory_format=torch.channels_last)
         self.post.deploy()
@@ -172,6 +203,11 @@ class Runtime:
             raise ValueError(f"metadata dimensions disagree with decoded image: {path}")
         return item["width"], item["height"]
 
+    def load_after_copy(self, event, item, image_dir, destination):
+        # Reuse pinned input only after its H2D transfer, independently of D2H.
+        event.synchronize()
+        return self.load_image(item, image_dir, destination)
+
     def run(self, request):
         metadata = json.loads(Path(request["meta_file"]).read_text())
         items = metadata["images"]
@@ -181,21 +217,27 @@ class Runtime:
         jobs = {}
         count = (len(items) + self.batch - 1) // self.batch
 
-        def schedule(index):
+        def schedule(index, dependency=None):
             slot = index % self.prefetch
             batch = items[index * self.batch:(index + 1) * self.batch]
-            jobs[index] = [self.pool.submit(self.load_image, item, request["image_dir"],
+            loader = self.load_image if dependency is None else self.load_after_copy
+            prefix = () if dependency is None else (dependency,)
+            jobs[index] = [self.pool.submit(loader, *prefix, item, request["image_dir"],
                                            self.host_arrays[slot][row])
                            for row, item in enumerate(batch)]
 
         for index in range(min(self.prefetch, count)):
             schedule(index)
         results = []
+        snapshots = []
         pending = deque()
 
         def collect(batch, output):
             if not np.isfinite(output).all():
                 raise ValueError("nonfinite detection")
+            if self.bulk_results:
+                snapshots.append(output.copy())
+                return
             for item, detections in zip(batch, output):
                 selected = detections[detections[:, 4] >= self.threshold].astype(np.float64)
                 if self.vectorized:
@@ -243,6 +285,10 @@ class Runtime:
                     if n < self.batch:
                         self.host[slot][n:].zero_()
                     self.images.copy_(self.host[slot], non_blocking=True)
+                    if self.early_recycle and index + self.prefetch < count:
+                        copied = torch.cuda.Event()
+                        copied.record(torch.cuda.current_stream(self.device))
+                        schedule(index + self.prefetch, dependency=copied)
                 self.sizes[:n].copy_(torch.tensor(sizes, dtype=torch.float32), non_blocking=True)
                 if n < self.batch:
                     self.sizes[n:].fill_(1)
@@ -267,12 +313,12 @@ class Runtime:
                         event.synchronize()
                         previous_slot = previous % self.prefetch
                         # This completion also fences the pinned input's H2D copy.
-                        if previous + self.prefetch < count:
+                        if not self.early_recycle and previous + self.prefetch < count:
                             schedule(previous + self.prefetch)
                         collect(previous_batch, self.host_outputs[previous_slot][:len(previous_batch)].numpy())
                 else:
                     output = device_output[:n].cpu().numpy()
-                    if index + self.prefetch < count:
+                    if not self.early_recycle and index + self.prefetch < count:
                         schedule(index + self.prefetch)
                     collect(batch, output)
             for previous, previous_batch, event in pending:
@@ -280,6 +326,8 @@ class Runtime:
                 collect(previous_batch, self.host_outputs[previous % self.prefetch][:len(previous_batch)].numpy())
         self.pool.shutdown(wait=True)
         torch.cuda.synchronize(self.device)
+        if self.bulk_results:
+            results = bulk_results(items, snapshots, self.threshold)
         # Nonfinite model outputs were rejected before orjson serialization.
         payload = orjson.dumps(results)
         path = Path(request["output_file"])
