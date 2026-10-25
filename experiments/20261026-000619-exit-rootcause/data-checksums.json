@@ -1,0 +1,18 @@
+{
+  "weights/baseline.pth": "42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e",
+  "data/SuperShip/reference/reference_images_meta.json": "7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443",
+  "data/SuperShip/reference/annotations/instances_reference.json": "376d0ba04ba4bbfa71f34ebc901f5bdcaaf7e829b01dafdc7b653e7307c2caed",
+  "data/SuperShip/val/annotations/instances_val.json": "fcf0bcbca918ac2e380b92ddc284046d8bd4a9d61579b71465ef04e45bf1bde1",
+  "supership/benchmark_submission.py": "0befe3aadd1860460d53e5ea2b141d3310edcf5391f9ab4c3a7727244e7d7c02",
+  "supership/submission.py": "79f47d58cd11ae9ba5b2ac1d9613d053c41bda3d1fb457ede78453d3c15a4e7f",
+  "supership/score_submission.py": "90f9bb822858bf7eb573a61ce9180d114889f9fcea4607ae347b1281e2931d36",
+  "COMPETITION.md": "6812647ce17c9c9de2e361d94dceae74d40f7468d5dc41cc0eceb1c7eb8e11b4",
+  "reference_images": {
+    "count": 200,
+    "sorted_manifest_sha256": "43f2adfa05b414226eb78c29a5ed86d3f3d63d0b8506a78aa3910e21c2120b55"
+  },
+  "val_images": {
+    "count": 1030,
+    "sorted_manifest_sha256": "37748578ad39de9ef5ba3fd5e42b78e1d6a5e787ed8db86fae936a385c4ef0f3"
+  }
+}

@@ -14,7 +14,7 @@ def sample():
     while not stop.is_set():
         sampled_peak[0]=max(sampled_peak[0],int((cgroup/'memory.current').read_text()))
         stop.wait(.01)
-thread=threading.Thread(target=sample);thread.start()
+thread=threading.Thread(target=sample,daemon=True);thread.start()
 r=subprocess.run(cmd,cwd=root,env=env,capture_output=True,text=True);(out/'stdout.log').write_text(r.stdout);(out/'stderr.log').write_text(r.stderr)
 if r.returncode:raise RuntimeError(r.stderr)
 score=[python,'supership/score_submission.py','--gt',meta,'--submission',str(out/'predictions.json')]
