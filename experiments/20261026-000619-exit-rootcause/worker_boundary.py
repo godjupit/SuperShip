@@ -10,6 +10,14 @@ mode=os.environ.get('EXIT_PROBE_MODE','boundary')
 print(json.dumps(dict(diagnostic='ready-memory',allocated=torch.cuda.memory_allocated(),reserved=torch.cuda.memory_reserved(),host_maps=len(Path('/proc/self/maps').read_text().splitlines()))),file=sys.stderr,flush=True)
 smaps=Path('/proc/self/smaps').read_text()
 if os.environ.get('EXIT_SMAPS_PATH'):Path(os.environ['EXIT_SMAPS_PATH']).write_text(smaps)
+if mode=='malloc-trim':
+    import ctypes
+    libc=ctypes.CDLL(None,use_errno=True)
+    libc.malloc_trim.argtypes=[ctypes.c_size_t]
+    before=Path('/proc/self/status').read_text()
+    code=libc.malloc_trim(0)
+    after=Path('/proc/self/status').read_text()
+    print(json.dumps(dict(diagnostic='malloc-trim',code=code,before=[s for s in before.splitlines() if s.startswith(('VmRSS:','RssAnon:'))],after=[s for s in after.splitlines() if s.startswith(('VmRSS:','RssAnon:'))])),file=sys.stderr,flush=True)
 if mode=='trim-readonly':
     import ctypes,re
     libc=ctypes.CDLL(None,use_errno=True)
