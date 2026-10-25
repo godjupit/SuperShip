@@ -1,0 +1,21 @@
+{
+  "source_commit": "86b503bc6829a3fdf862a9b5e1aa87db41a81160",
+  "runs": [
+    {
+      "name": "io",
+      "timings": {
+        "runs_seconds": [
+          0.284831733,
+          0.314447506,
+          0.288976109
+        ],
+        "median_seconds": 0.288976109
+      },
+      "reference_ap50": [
+        0.7816,
+        0.7812,
+        0.7812
+      ]
+    }
+  ]
+}
