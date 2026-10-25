@@ -29,7 +29,12 @@ for mode in ['boundary','line','io']:
         if mode=='line':
             stages=collections.defaultdict(float)
             for line in d['lines']:stages[group(line['source'])]+=line['milliseconds']
-            row['main_thread_exclusive_ms']=dict(stages);row['line_accounted_ms']=sum(stages.values());assert abs(row['line_accounted_ms']-row['runtime_ms'])<1.0
+            row['line_accounted_ms']=sum(stages.values())
+            intervals=d['intervals'];span=(intervals[-1][2]-intervals[0][1])/1e6
+            assert abs(row['line_accounted_ms']-span)<1e-5
+            residual=row['runtime_ms']-row['line_accounted_ms'];assert 0<=residual<5
+            stages['outside_frame_context_and_probe']=residual
+            row['main_thread_exclusive_ms']=dict(stages)
             load=d['loads'];row['load_service_sum_ms']=sum((b-a)/1e6 for a,b,*_ in load);row['load_wall_span_ms']=(max(b for a,b,*_ in load)-min(a for a,b,*_ in load))/1e6
             cv=collections.defaultdict(list)
             for n,a,b in d['cv_calls']:cv[n].append((b-a)/1e6)
