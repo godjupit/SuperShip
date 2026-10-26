@@ -1,0 +1,57 @@
+{
+  "pairs": [
+    {
+      "pair": 1,
+      "baseline": 0.25544118,
+      "candidate": 0.256099238,
+      "difference": -0.0006580580000000169
+    },
+    {
+      "pair": 2,
+      "baseline": 0.26146002,
+      "candidate": 0.254126058,
+      "difference": 0.007333962000000027
+    },
+    {
+      "pair": 3,
+      "baseline": 0.259988331,
+      "candidate": 0.25753303,
+      "difference": 0.002455301000000021
+    },
+    {
+      "pair": 4,
+      "baseline": 0.261041862,
+      "candidate": 0.262834962,
+      "difference": -0.001793099999999992
+    },
+    {
+      "pair": 5,
+      "baseline": 0.251634817,
+      "candidate": 0.256842824,
+      "difference": -0.0052080070000000145
+    },
+    {
+      "pair": 6,
+      "baseline": 0.295830573,
+      "candidate": 0.253764728,
+      "difference": 0.04206584499999999
+    },
+    {
+      "pair": 7,
+      "baseline": 0.254891395,
+      "candidate": 0.254462531,
+      "difference": 0.0004288640000000288
+    },
+    {
+      "pair": 8,
+      "baseline": 0.254869517,
+      "candidate": 0.265597555,
+      "difference": -0.010728037999999995
+    }
+  ],
+  "baseline_median": 0.2577147555,
+  "candidate_median": 0.256471031,
+  "wins": 4,
+  "exact_two_sided_sign_flip_p": 0.6875,
+  "reduction_percent": 0.48259731872434264
+}
