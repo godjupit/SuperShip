@@ -1,0 +1,184 @@
+{
+  "control": {},
+  "pinned-sizes": {
+    "PINNED_SIZES": "1"
+  },
+  "reuse-events": {
+    "REUSE_EVENTS": "1"
+  },
+  "pinned-events": {
+    "PINNED_SIZES": "1",
+    "REUSE_EVENTS": "1"
+  },
+  "batch7": {
+    "BATCH_SIZE": "7"
+  },
+  "batch9": {
+    "BATCH_SIZE": "9"
+  },
+  "batch14": {
+    "BATCH_SIZE": "14"
+  },
+  "queries175": {
+    "NUM_QUERIES": "175"
+  },
+  "queries225": {
+    "NUM_QUERIES": "225"
+  },
+  "queries250": {
+    "NUM_QUERIES": "250"
+  },
+  "top100": {
+    "POST_TOP_QUERIES": "100"
+  },
+  "top150": {
+    "POST_TOP_QUERIES": "150"
+  },
+  "fused-io": {
+    "FUSED_NORMALIZE": "1",
+    "FUSED_POSTPROCESS": "1"
+  },
+  "gpu-resize512": {
+    "UPLOAD_SIZE": "512"
+  },
+  "model-deploy": {
+    "MODEL_DEPLOY": "1"
+  },
+  "torch2": {
+    "TORCH_THREADS": "2"
+  },
+  "torch2-passive": {
+    "TORCH_THREADS": "2",
+    "OMP_WAIT_POLICY": "PASSIVE",
+    "KMP_BLOCKTIME": "0"
+  },
+  "arena1": {
+    "MALLOC_ARENA_MAX": "1"
+  },
+  "arena4": {
+    "MALLOC_ARENA_MAX": "4"
+  },
+  "mmap64k": {
+    "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1:glibc.malloc.mmap_threshold=65536"
+  },
+  "mmap16m": {
+    "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1:glibc.malloc.mmap_threshold=16777216"
+  },
+  "tcache0": {
+    "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1:glibc.malloc.tcache_count=0"
+  },
+  "trim16m": {
+    "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1:glibc.malloc.trim_threshold=16777216"
+  },
+  "direct-copy": {
+    "OPENCV_COPY_MODE": "direct"
+  },
+  "control-end": {},
+  "jpeg-quarter": {
+    "JPEG_REDUCTION": "4"
+  },
+  "jpeg-eighth": {
+    "JPEG_REDUCTION": "8"
+  },
+  "order-small": {
+    "INPUT_ORDER": "small-first"
+  },
+  "order-large": {
+    "INPUT_ORDER": "large-first"
+  },
+  "order-balanced": {
+    "INPUT_ORDER": "balanced"
+  },
+  "top100-pinned": {
+    "POST_TOP_QUERIES": "100",
+    "PINNED_SIZES": "1"
+  },
+  "top100-events": {
+    "POST_TOP_QUERIES": "100",
+    "REUSE_EVENTS": "1"
+  },
+  "top100-balanced": {
+    "POST_TOP_QUERIES": "100",
+    "INPUT_ORDER": "balanced"
+  },
+  "threaded": {
+    "THREADED_JSON": "1"
+  },
+  "threaded-top100": {
+    "THREADED_JSON": "1",
+    "POST_TOP_QUERIES": "100"
+  },
+  "threaded-balanced": {
+    "THREADED_JSON": "1",
+    "INPUT_ORDER": "balanced"
+  },
+  "threaded-pinned": {
+    "THREADED_JSON": "1",
+    "PINNED_SIZES": "1"
+  },
+  "threaded-w9": {
+    "THREADED_JSON": "1",
+    "NUM_WORKERS": "9"
+  },
+  "threaded-fusedio": {
+    "THREADED_JSON": "1",
+    "FUSED_NORMALIZE": "1",
+    "FUSED_POSTPROCESS": "1"
+  },
+  "gpu-bgr": {
+    "FUSED_NORMALIZE": "1",
+    "GPU_BGR": "1"
+  },
+  "gpu-bgr-top100": {
+    "FUSED_NORMALIZE": "1",
+    "GPU_BGR": "1",
+    "POST_TOP_QUERIES": "100"
+  },
+  "threaded-bgr": {
+    "THREADED_JSON": "1",
+    "FUSED_NORMALIZE": "1",
+    "GPU_BGR": "1",
+    "POST_TOP_QUERIES": "100"
+  },
+  "thread100-w8": {
+    "THREADED_JSON": "1",
+    "POST_TOP_QUERIES": "100",
+    "NUM_WORKERS": "8"
+  },
+  "thread100-w9": {
+    "THREADED_JSON": "1",
+    "POST_TOP_QUERIES": "100",
+    "NUM_WORKERS": "9"
+  },
+  "thread100-depth4": {
+    "THREADED_JSON": "1",
+    "POST_TOP_QUERIES": "100",
+    "PIPELINE_DEPTH": "4"
+  },
+  "thread100-light": {
+    "THREADED_JSON": "1",
+    "POST_TOP_QUERIES": "100",
+    "INFERENCE_IMPORTS": "1"
+  },
+  "thread100-resize512": {
+    "THREADED_JSON": "1",
+    "POST_TOP_QUERIES": "100",
+    "UPLOAD_SIZE": "512"
+  },
+  "thread100-fusedio": {
+    "THREADED_JSON": "1",
+    "POST_TOP_QUERIES": "100",
+    "FUSED_NORMALIZE": "1",
+    "FUSED_POSTPROCESS": "1"
+  },
+  "thread100-arena1": {
+    "THREADED_JSON": "1",
+    "POST_TOP_QUERIES": "100",
+    "MALLOC_ARENA_MAX": "1"
+  },
+  "thread100-arena2": {
+    "THREADED_JSON": "1",
+    "POST_TOP_QUERIES": "100",
+    "MALLOC_ARENA_MAX": "2"
+  }
+}

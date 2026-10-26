@@ -20,3 +20,5 @@ experiments/
 - 原始实验ID目录保持原位置，避免破坏脚本ROOT和历史路径。源码快照保留原文件字节；根AGENTS.md仍是唯一协作规则入口。
 - artifacts只在本机存在，不随Git复制。公开数据和基线权重保留根data/、weights/统一位置，本目录通过相对链接访问，不重复占空间。
 - 各worktree/output继续访问各自独立产物区；原分支已提交代码不变。目录整理与官方规范同步现已落到main；原有分支与固定SHA快照继续保留。
+
+- [20261026-075543-continued-sweep](20261026-075543-continued-sweep/notes.md)：50配置、150轮参考集计时、8对复测；最新Accepted258.409792ms，完整源码和全部配置保留在`exp/continued-sweep-20261026`，固定运行源码SHA见记录。
