@@ -20,8 +20,9 @@ READY_MARKER = "THU_RS_READY"
 
 def build_runtime(config_path, weights_path, device):
     from engine.core import YAMLConfig
-    from engine.data.dataset.coco_dataset import CocoDetection  # noqa: F401
-    from engine.solver.det_engine import evaluate  # noqa: F401
+    if os.environ.get("INFERENCE_IMPORTS", "0") != "1":
+        from engine.data.dataset.coco_dataset import CocoDetection  # noqa: F401
+        from engine.solver.det_engine import evaluate  # noqa: F401
 
     cfg = YAMLConfig(config_path)
     if "HGNetv2" in cfg.yaml_cfg:
@@ -47,6 +48,7 @@ def build_runtime(config_path, weights_path, device):
 
 
 def create_loader(cfg, image_dir, meta_file, batch_size, options=None):
+    from engine.data.dataset.coco_dataset import CocoDetection  # noqa: F401
     from engine.core.workspace import create
 
     dataset_cfg = cfg.yaml_cfg["val_dataloader"]["dataset"]

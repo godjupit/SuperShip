@@ -4,6 +4,10 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT"
 PYTHON_BIN="${PYTHON_BIN:-python3}"
+export PIPELINE="${PIPELINE:-fast}"
+if [[ "$PIPELINE" == "fast" ]]; then
+  source "$ROOT/configs/fastest.env"
+fi
 
 # Large host allocations otherwise leave hundreds of thousands of 4 KiB pages
 # for exit_mmap to release. Ask glibc for transparent huge pages before Python

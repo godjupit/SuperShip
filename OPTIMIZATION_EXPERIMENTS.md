@@ -31,7 +31,7 @@
 | 官方隐藏集最优 | 未知 |
 | 任务状态 | continued-sweep completed；旧会话已中断，output-overlap实现由本实验接管；GPU0已释放 |
 
-**常用入口**：运行`bash run.sh --worker`；基准/评分脚本在[tools/benchmark/](tools/benchmark/)；开发环境在[tools/dev/](tools/dev/)；主目录源码保持main原版本，其他优化代码见[分支快照](experiments/branches/README.md)。
+**常用入口**：运行`bash run.sh --worker`；基准/评分脚本在[tools/benchmark/](tools/benchmark/)；开发环境在[tools/dev/](tools/dev/)；主目录源码将按用户要求同步最快已验证候选，其他优化代码见[分支快照](experiments/branches/README.md)。
 
 [完整结果表](experiments/results/README.md) · [全部历史报告](experiments/reports/) · [各分支台账与SHA](experiments/branches/README.md) · [数据/原始产物](experiments/data/README.md)
 
@@ -140,3 +140,8 @@ Completion2026-10-26 08:28 CST —20261026-075543-continued-sweep **completed**.
 - GPU0 RTX4090 reserved from08:34 after idle/process audit. Scope: latest thread100-light public200 reference baseline (3 full official-protocol runs), separate boundary/CPU-service/IO probes and Nsight timeline (2 runs). No inference changes, larger validation or competition submission. Record complete commands, exact source/config/assets and all outcomes; inherited Accepted258.409792ms stays unchanged.
 
 Completion2026-10-26 08:37 CST —20261026-083341-profile-thread100 **completed**. Latest thread100-light official three rounds259.257667/251.140982/266.716015ms, median259.257667ms; all14formal/diagnostic outputs byte-identical, referenceAP50=0.7809. Normal core208–212ms,exit50–56ms; Nsight GPUactivity~128ms,64.5–83.5ms gaps, CPU8.4–8.7cores/10,physical read0bytes. CPUJPEG supply first,exit second,feature pack/small kernels third. One boundary core267ms outlier retained, cause unresolved. Validation/hidden=null, no model changes or competition upload; candidates/Accepted258.409792ms unchanged. GPU0 released08:35. [Full report](experiments/20261026-083341-profile-thread100/notes.md).
+
+
+## 20261026-083914-main-fastest
+
+- Owner Codex/root; branchmain; status **running**; updated2026-10-26 08:40CST. Promote verified thread100-light source1da325e5a7cf4fe3ff485855622dc22100fd848a and its exact preset to defaultmain launcher before further optimization, per user instruction. Keep all historical versions and standard path. GPU0RTX4090 reserved08:40; no other GPU processes. Required preprocessing/ring/tail/import/launcher checks and three official full reference runs; no larger validation or competition upload.
