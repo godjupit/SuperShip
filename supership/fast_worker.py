@@ -40,6 +40,11 @@ def bulk_results(items, chunks, threshold):
             if box[2] > 0 and box[3] > 0]
 
 
+def serialized_batch(items, output, threshold):
+    results = bulk_results(items, [output], threshold)
+    return len(results), orjson.dumps(results)[1:-1]
+
+
 def ordered_items(items, image_dir, batch, mode):
     """Schedule from file sizes obtained only after receiving the timed request."""
     if mode == "metadata" or not items:
@@ -84,10 +89,16 @@ class Runtime:
         self.vectorized = os.environ.get("VECTORIZED_RESULTS", "0") == "1"
         self.early_recycle = os.environ.get("EARLY_INPUT_RECYCLE", "0") == "1"
         self.bulk_results = os.environ.get("BULK_RESULTS", "0") == "1"
+        self.threaded_json = os.environ.get("THREADED_JSON", "0") == "1"
+        if self.threaded_json and not self.bulk_results:
+            raise ValueError("threaded JSON requires bulk results")
         self.pinned_sizes = os.environ.get("PINNED_SIZES", "0") == "1"
         self.reuse_events = os.environ.get("REUSE_EVENTS", "0") == "1"
         self.fused_normalize = os.environ.get("FUSED_NORMALIZE", "0") == "1"
         self.fused_postprocess = os.environ.get("FUSED_POSTPROCESS", "0") == "1"
+        self.gpu_bgr = os.environ.get("GPU_BGR", "0") == "1"
+        if self.gpu_bgr and (self.decoder != "opencv" or not self.fused_normalize):
+            raise ValueError("GPU BGR conversion requires OpenCV decoding and fused normalization")
         if self.fused_normalize and (self.precision != "fp16" or os.environ.get("CHANNELS_LAST", "1") != "1"):
             raise ValueError("fused normalization requires channels-last FP16 inference")
         if self.upload_side < 320 or self.upload_side > self.side or self.upload_side % 32:
@@ -197,6 +208,10 @@ class Runtime:
         jobs = [self.pool.submit(barrier.wait) for _ in range(self.workers)]
         for job in jobs:
             job.result()
+        self.result_pool = None
+        if self.threaded_json:
+            self.result_pool = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+            self.result_pool.submit(lambda: None).result()
         with torch.inference_mode():
             stream = torch.cuda.Stream(device=self.device)
             stream.wait_stream(torch.cuda.current_stream(self.device))
@@ -220,7 +235,7 @@ class Runtime:
     def forward(self):
         if self.fused_normalize:
             from supership.fused_io import normalized_half
-            images = normalized_half(self.images)
+            images = normalized_half(self.images, self.gpu_bgr)
         else:
             images = self.images.permute(0, 3, 1, 2).float()
             if self.upload_side != self.side:
@@ -251,10 +266,13 @@ class Runtime:
                 raise ValueError(f"cannot decode image: {path}")
             h, w = image.shape[:2]
             copy_mode = getattr(self, "copy_mode", "strided")
-            if copy_mode != "direct":
+            gpu_bgr = getattr(self, "gpu_bgr", False)
+            if copy_mode != "direct" and not gpu_bgr:
                 resized = (image if image.shape[:2] == destination.shape[:2] else
                            cv2.resize(image, (destination.shape[1], destination.shape[0]), interpolation=cv2.INTER_LINEAR))
-            if copy_mode == "direct":
+            if gpu_bgr:
+                cv2.resize(image, (destination.shape[1], destination.shape[0]), dst=destination, interpolation=cv2.INTER_LINEAR)
+            elif copy_mode == "direct":
                 # Reuse the pinned destination for both resize and channel swap.
                 cv2.resize(image, (destination.shape[1], destination.shape[0]), dst=destination, interpolation=cv2.INTER_LINEAR)
                 cv2.cvtColor(destination, cv2.COLOR_BGR2RGB, dst=destination)
@@ -302,11 +320,15 @@ class Runtime:
             schedule(index)
         results = []
         snapshots = []
+        output_jobs = []
         pending = deque()
 
         def collect(batch, output):
             if not np.isfinite(output).all():
                 raise ValueError("nonfinite detection")
+            if self.threaded_json:
+                output_jobs.append(self.result_pool.submit(serialized_batch, batch, output.copy(), self.threshold))
+                return
             if self.bulk_results:
                 snapshots.append(output.copy())
                 return
@@ -404,17 +426,26 @@ class Runtime:
                 collect(previous_batch, self.host_outputs[previous % self.prefetch][:len(previous_batch)].numpy())
         self.pool.shutdown(wait=True)
         torch.cuda.synchronize(self.device)
-        if self.bulk_results:
-            results = bulk_results(items, snapshots, self.threshold)
-        # Nonfinite model outputs were rejected before orjson serialization.
-        payload = orjson.dumps(results)
+        if self.threaded_json:
+            try:
+                chunks = [job.result() for job in output_jobs]
+            finally:
+                self.result_pool.shutdown(wait=True)
+            detections = sum(n for n, _ in chunks)
+            payload = b"[" + b",".join(part for _, part in chunks if part) + b"]"
+        else:
+            if self.bulk_results:
+                results = bulk_results(items, snapshots, self.threshold)
+            # Nonfinite model outputs were rejected before orjson serialization.
+            payload = orjson.dumps(results)
+            detections = len(results)
         path = Path(request["output_file"])
         path.parent.mkdir(parents=True, exist_ok=True)
         with path.open("wb") as f:
             f.write(payload)
             f.flush()
             os.fsync(f.fileno())
-        return len(results), len(items)
+        return detections, len(items)
 
 
 def main():

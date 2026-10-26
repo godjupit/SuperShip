@@ -17,3 +17,12 @@ Registered25 variants before execution; plan.json and variants/ contain all over
 Correction08:01: batch14 had already finished naturally before termination attempt (no process killed). Scheduler then terminated without starting another case. First7 cases/21rounds retained but all timing-invalid; correctness outputs valid. GPU fully released by continued-sweep.
 
 Stage2 registered before execution08:03: file-size scheduling small/large/balanced (all stat/access afterREADY, complete image coverage and deterministic ordering); quarter/eighth JPEG decode with original-coordinate dimension checks (new precision, cannot inherit validation); top100 combinations of independent pinned/event/scheduling parents. Apply model.eval() after deploy, matching the fix discovered by the other fusedio owner. No GPU tests during existing owner reservation.
+
+
+2026-10-26 08:04 CST user explicitly instructed terminating the other Codex. Current thread01a1757c-3ea5-7373-b308-bb76e262b969 maps to PID233847 (started07:53:55); old fusedio/output owner thread01a1741f-0cb0-7d61-85cb-7f09cd3c060a maps to PID168376 (started01:32:32). SIGTERM sent only to168376. No benchmark/worker/Nsight children active at audit; historical sources/results/worktrees retained. Continuation resumes exclusive GPU0 after verifying termination and idle.
+
+08:05 takeover: incorporate ordered threaded serialization from parent b6474af and correctness tests7b7ecf6 (other session stopped by explicit user instruction). Six independent/combination variants registered, parents listed by overrides. Full39-case plan now committed before exclusive retiming. No source mutation during suite. Reuse all old artifacts, never overwrite.
+
+Final stage before exclusive screen: integrate GPU BGR normalization parent58a08bb with three registered variants; total42variants. Existing earlier output-overlap handover text predates explicit user termination; this continuation now owns GPU0, other stopped worktrees remain untouched.
+
+2026-10-26 08:06 CST GPU0 exclusively reclaimed by continued-sweep after user-directed termination of PID168376 and zero remaining worker/benchmark/Nsight processes. Combined72correctness checks passed (ring/tails/different dimensions, exact fusedIO/BGR/serialization).42registered variants ready for fresh3-round reference timings; all earlier21contended rounds excluded. Other parent worktrees preserved.

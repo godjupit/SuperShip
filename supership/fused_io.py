@@ -5,13 +5,14 @@ import triton.language as tl
 
 
 @triton.jit
-def _normalize(X, Y, N: tl.constexpr, BLOCK: tl.constexpr):
+def _normalize(X, Y, N: tl.constexpr, BLOCK: tl.constexpr, BGR: tl.constexpr):
     i = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
-    x = tl.load(X + i, i < N, other=0).to(tl.float32)
+    source = (i // 3) * 3 + 2 - i % 3 if BGR else i
+    x = tl.load(X + source, i < N, other=0).to(tl.float32)
     tl.store(Y + i, x * (1.0 / 255.0), i < N)
 
 
-def normalized_half(images):
+def normalized_half(images, bgr=False):
     if not images.is_cuda or images.dtype != torch.uint8 or not images.is_contiguous():
         raise ValueError("normalization requires contiguous CUDA uint8 NHWC")
     if images.ndim != 4 or images.shape[-1] != 3:
@@ -19,7 +20,7 @@ def normalized_half(images):
     output = torch.empty_like(images, dtype=torch.float16)
     n = images.numel()
     if n:
-        _normalize[(triton.cdiv(n, 1024),)](images, output, n, 1024)
+        _normalize[(triton.cdiv(n, 1024),)](images, output, n, 1024, bgr)
     return output.permute(0, 3, 1, 2)
 
 

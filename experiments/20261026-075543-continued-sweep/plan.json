@@ -100,5 +100,44 @@
   "top100-balanced": {
     "POST_TOP_QUERIES": "100",
     "INPUT_ORDER": "balanced"
+  },
+  "threaded": {
+    "THREADED_JSON": "1"
+  },
+  "threaded-top100": {
+    "THREADED_JSON": "1",
+    "POST_TOP_QUERIES": "100"
+  },
+  "threaded-balanced": {
+    "THREADED_JSON": "1",
+    "INPUT_ORDER": "balanced"
+  },
+  "threaded-pinned": {
+    "THREADED_JSON": "1",
+    "PINNED_SIZES": "1"
+  },
+  "threaded-w9": {
+    "THREADED_JSON": "1",
+    "NUM_WORKERS": "9"
+  },
+  "threaded-fusedio": {
+    "THREADED_JSON": "1",
+    "FUSED_NORMALIZE": "1",
+    "FUSED_POSTPROCESS": "1"
+  },
+  "gpu-bgr": {
+    "FUSED_NORMALIZE": "1",
+    "GPU_BGR": "1"
+  },
+  "gpu-bgr-top100": {
+    "FUSED_NORMALIZE": "1",
+    "GPU_BGR": "1",
+    "POST_TOP_QUERIES": "100"
+  },
+  "threaded-bgr": {
+    "THREADED_JSON": "1",
+    "FUSED_NORMALIZE": "1",
+    "GPU_BGR": "1",
+    "POST_TOP_QUERIES": "100"
   }
 }

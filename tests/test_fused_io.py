@@ -32,6 +32,14 @@ def test_input_all_byte_values_and_graph_replay():
         assert output.is_contiguous(memory_format=torch.channels_last)
 
 
+def test_bgr_conversion_and_normalization_are_exact():
+    x = torch.randint(0, 256, (2, 37, 29, 3), device="cuda", dtype=torch.uint8)
+    with torch.inference_mode():
+        actual = normalized_half(x, bgr=True)
+    expected = x.flip(-1).permute(0, 3, 1, 2).float().mul_(1 / 255).half()
+    torch.testing.assert_close(actual, expected, rtol=0, atol=0)
+
+
 @pytest.mark.parametrize("b,q,k", [(1, 300, 300), (2, 150, 200), (3, 100, 100)])
 def test_detection_geometry_scores_labels_exact(b, q, k):
     torch.manual_seed(92)
