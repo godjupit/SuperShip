@@ -179,5 +179,7 @@ Stop/handoff2026-10-26 09:28CST —20261026-091334-nvjpeg-backends **abandoned p
 
 ## 20261026-122450-gpu-unlock-audit
 
-- Owner Codex /root; branch `exp/gpu-unlock-20261026`; status **planned**; updated2026-10-26 12:24CST. Base fastestmain `dbaca8889e89e1782fa10eef1e1d554c3b35505f`; isolated worktree `/home/ubuntu/SuperShip-gpu-unlock-20261026`.
+- Owner Codex /root; branch `exp/gpu-unlock-20261026`; status **completed**; updated2026-10-26 12:24CST. Base fastestmain `dbaca8889e89e1782fa10eef1e1d554c3b35505f`; isolated worktree `/home/ubuntu/SuperShip-gpu-unlock-20261026`.
 - Scope: clone Zagitta/gpu-unlock, audit mechanism and PCI support, run read-only local applicability checks and relevant upstream CPU tests before considering performance trials. Only GPU0 RTX4090 (PCI device2684) available, idle; no GPU reservation or inference experiments yet. Current main already contains verified thread100-light and exact preset; prior rejected directions do not supersede it. No competition submission or system/boot/driver changes.
+
+Completion2026-10-26 12:26CST —20261026-122450-gpu-unlock-audit **completed**: upstream cloned ataf28cbbfd3d922a659227ecfb7369adfd924cf03; actual PCI whitelist/sysfs check finds0supported devices (RTX4090 device2684 excluded, RTX3090 device2204 included). Upstream5CPU/mock/packaging tests passed; generated-firmware full simulation unavailable. Early-boot host module cannot be evaluated on this4090; no install/reboot/inference timing, no speedup claim. GPU stayedidle/unreserved;reference/validation/hidden=null. Main fastestthread100-light/Accepted258.409792ms unchanged,nocompetitionupload. [Audit, evidence and reproduction](experiments/20261026-122450-gpu-unlock-audit/notes.md).

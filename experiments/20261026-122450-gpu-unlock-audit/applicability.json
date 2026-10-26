@@ -1,0 +1,23 @@
+{
+  "upstream_sha": "af28cbbfd3d922a659227ecfb7369adfd924cf03",
+  "source_sha256": "d66339bbbcc0d4d1e68c0937e551f13a97bb94ebfa6281f5730663a803c6682e",
+  "rtx3090_2204_listed": true,
+  "rtx4090_2684_listed": false,
+  "devices": [
+    {
+      "bdf": "0000:29:00.0",
+      "device_id": "0x2684",
+      "class": "0x030000",
+      "supported": false,
+      "driver": "nvidia"
+    },
+    {
+      "bdf": "0000:29:00.1",
+      "device_id": "0x22ba",
+      "class": "0x040300",
+      "supported": false,
+      "driver": null
+    }
+  ],
+  "applicable_device_count": 0
+}

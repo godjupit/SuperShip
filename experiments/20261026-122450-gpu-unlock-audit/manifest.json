@@ -1,0 +1,17 @@
+{
+  "base_main_sha": "dbaca8889e89e1782fa10eef1e1d554c3b35505f",
+  "registration_sha": "1f098292b609869b05f07012d1ca4fac2fa14422",
+  "upstream_sha": "af28cbbfd3d922a659227ecfb7369adfd924cf03",
+  "upstream_main_c_sha256": "d66339bbbcc0d4d1e68c0937e551f13a97bb94ebfa6281f5730663a803c6682e",
+  "tests_log_sha256": "8de18b9d8b9b778495980857fe17b6b810fca1ef234a4ae08eeabcf52a6915bd",
+  "python": "3.10.12",
+  "kernel": "5.15.0-128-generic",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "driver": "550.142",
+  "reference_ap50": null,
+  "validation_ap50": null,
+  "hidden_ap50": null,
+  "before_ms": null,
+  "after_ms": null,
+  "upstream_generated_firmware_available": false
+}
