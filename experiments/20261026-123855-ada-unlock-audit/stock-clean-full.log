@@ -1,0 +1,13 @@
+Conv-BN fused pairs: 99
+Kernel options: {'weight_half': 149, 'linear_1x1': 59, 'relu_affine_fused': 30}
+processed 200 images; wrote 6102 detections
+run 1/3: 0.265256 s, 6102 detections, output/20261026-123855-ada-unlock-audit/stock-clean.run1.json
+Conv-BN fused pairs: 99
+Kernel options: {'weight_half': 149, 'linear_1x1': 59, 'relu_affine_fused': 30}
+processed 200 images; wrote 6102 detections
+run 2/3: 0.251751 s, 6102 detections, output/20261026-123855-ada-unlock-audit/stock-clean.run2.json
+Conv-BN fused pairs: 99
+Kernel options: {'weight_half': 149, 'linear_1x1': 59, 'relu_affine_fused': 30}
+processed 200 images; wrote 6102 detections
+run 3/3: 0.257131 s, 6102 detections, output/20261026-123855-ada-unlock-audit/stock-clean.run3.json
+{"runs_seconds":[0.265256365,0.251750705,0.257130582],"median_seconds":0.257130582}

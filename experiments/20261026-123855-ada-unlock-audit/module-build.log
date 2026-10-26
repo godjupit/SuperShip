@@ -1,0 +1,17 @@
+make: Entering directory '/home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock'
+make -C "/lib/modules/5.15.0-128-generic/build" M="/home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock" modules
+make[1]: Entering directory '/usr/src/linux-headers-5.15.0-128-generic'
+  CC [M]  /home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock/main.o
+  CC [M]  /home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock/gfw_eval.o
+  CC [M]  /home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock/prep_610.o
+  CC [M]  /home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock/layout_610.o
+  CC [M]  /home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock/vbios_610.o
+  CC [M]  /home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock/unlock_610.o
+  LD [M]  /home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock/gpu_unlock.o
+  MODPOST /home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock/Module.symvers
+  CC [M]  /home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock/gpu_unlock.mod.o
+  LD [M]  /home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock/gpu_unlock.ko
+  BTF [M] /home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock/gpu_unlock.ko
+Skipping BTF generation for /home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock/gpu_unlock.ko due to unavailability of vmlinux
+make[1]: Leaving directory '/usr/src/linux-headers-5.15.0-128-generic'
+make: Leaving directory '/home/ubuntu/gpu-unlock-ada-reviewed/kernel/gpu_unlock'
