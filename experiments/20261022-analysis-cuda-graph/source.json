@@ -1,7 +1,0 @@
-{
-  "commit": "7ffd352b35acd06b2742a40d4bf7b8923debdc4a",
-  "branch": "exp/performance-analysis",
-  "tracked_changes": "",
-  "status": "?? data/SuperShip",
-  "note": "Data symlink and experiment records are not inference source changes."
-}

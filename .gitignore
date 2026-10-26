@@ -229,3 +229,7 @@ __marimo__/
 /experiments/artifacts/
 /output
 /data/SuperShip
+
+# Generated experiment results stay local after repository cleanup.
+/experiments/
+/.cache/

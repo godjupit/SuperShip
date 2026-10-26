@@ -1,7 +1,0 @@
-{
-  "status": "failed",
-  "split": null,
-  "runs": null,
-  "timing": "build only; no inference time measured",
-  "error_summary": "    calibrator.collect_data(calibration_data_reader)\n  File \"/root/ship/SuperShip/.venv/lib/python3.12/site-packages/onnxruntime/quantization/calibrate.py\", line 428, in collect_data\n    raise ValueError(\"No data is collected.\")\nValueError: No data is collected."
-}
