@@ -1270,5 +1270,13 @@
       "formal_timing_valid": true
     }
   ],
-  "best_source": "other session fusedio/top100 Accepted07:56:54"
+  "best_source": "20261026-075543-continued-sweep/thread100-light Accepted2026-10-26 08:23:38",
+  "best_case": "20261026-082325-thread100-light",
+  "best_source_commit": "cda34913ed3cec8de577d151ee3a16984f46a5ed",
+  "best_log_sha256": "1d43c5c5c18874e823a2533f6702e48dbf5c98c274570b8d16d83f9b07ce65b1",
+  "status": "completed",
+  "reference_baseline_ap50": 0.7935,
+  "reference_precision_threshold": 0.77763,
+  "validation_ap50": null,
+  "hidden_ap50": null
 }
