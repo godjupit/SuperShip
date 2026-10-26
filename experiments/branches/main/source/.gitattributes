@@ -1,5 +1,0 @@
-# Preserve captured patch bytes and generated tables without whitespace linting.
-experiments/**/source.patch -text -whitespace
-experiments/**/operator_table.txt -text -whitespace
-experiments/**/*.csv -text -whitespace
-experiments/**/source-initial.patch -text -whitespace

@@ -1,43 +1,28 @@
-# 优化日志
+# 优化版本索引
 
-时间均为北京时间。完整过程与结果统一放在 **[experiments/](experiments/README.md)**；原分支继续保留自己的代码和记录。各轮原始时间和失败方案不在此重复展开。
+2026-10-26 按用户要求清理旧实验、结果、重复源码快照和无收益分支。以下仅保留选版依据与代码/参数定位；原始结果已删除，数值为历史记录摘要，本次未重新计时。
 
-| 时间 | 优化方案 | 结果与状态 |
+| 保留分支 | 依据 | 参数 |
 | --- | --- | --- |
-| 10-16 | 批量回传、锁页/异步传输、JSON批量写盘 | RTX3090验证集单次17.452→9.536秒，AP50=0.9170 |
-| 10-16 | CUDA Graph、TensorRT、INT8、剪枝/蒸馏 | Graph单次9.384秒；低精度/无收益方案完整保留 |
-| 10-22 | CUDA Graph组合 | RTX4090参考集三轮中位5.128→3.172秒，AP50=0.7935 |
-| 10-22 | OpenCV半尺寸解码、FP16、流水线/后处理 | 历史参考集0.4766秒，validation AP50=0.9101 |
-| 10-22 19:59 | 544输入、异步流水线 | 参考集0.3798秒，validation AP50=0.9054 |
-| 10-23 23:07–23:57 | 99对Conv-BN融合并验证主线 | 10对中位快4.76%；主线复测0.3308秒，validation AP50=0.9057 |
-| 10-24 00:04–00:29 | FP16权重、1×1转Linear、Triton特征拼接 | 历史完整三轮0.302713秒；10对快6.70%，validation AP50=0.9058 |
-| 10-25 17:47–17:56 | 最快三项组合性能诊断 | 定位CPU供给、约105ms退出区间、cross-attention搬运 |
-| 10-25 18:04–18:23 | 提前回收输入槽、批量结果、Triton注意力、单连接 | 10对371.4→329.0ms，快11.44%；新完整三轮316.5ms，validation AP50=0.9056；未覆盖历史约304ms |
-| 10-25 | 目录归档、全分支汇集 | 已完成：9分支源码/129份原始记录集中归档，非性能实验 |
-| 10-25 19:00 | Git收尾与官方规范同步 | 上游冲突已解决；批量回传兼容检查及93项测试通过；整理落到main |
-| 10-26 00:06–00:26 | 定位退出时主机小页回收，启用透明大页 | 6对中位356.262→289.449ms，快18.75%；独立三轮285.963ms已Accepted；validation AP50=0.9058，32GiB硬限制通过、峰值RSS2.025GiB |
+| main | 默认最快 thread100-light，完整三轮复测中位 261.305519ms | configs/fastest.env |
+| exp/continued-sweep-20261026 | 参考集三轮 258.409792 / 256.334286 / 263.016448ms，中位 258.409792ms；8 对快 4.8507%，8/8 胜；reference AP50=0.7809 | configs/presets/thread100-light.json |
+| exp/exit-rootcause-20261026 | THP 六对中位 356.261538→289.448907ms；独立三轮中位 285.962649ms；validation AP50=0.9058，32GiB 限制通过 | configs/presets/exit-thp544.json |
+| exp/kernel-sweep-20261024 | 历史完整三轮中位 302.713346ms；内核融合十对快 6.70%；validation AP50=0.9058 | configs/presets/kernel544.json |
+| exp/rtx4090-e2e | 保守 640 输入、完整 JPEG 解码；validation AP50=0.9167 | configs/presets/conservative640.json |
 
-以上GPU、数据划分和计时组不同，不能直接按一列排榜。RTX4090参考集不等于RTX3090或隐藏集成绩；所有hidden AP50均未测。
+这些指标来自不同日期/协议比较组，不能据此跨组排名。本地最快候选为 thread100-light；保守候选为 640 完整解码。最近 Accepted：2026-10-26 08:23:38，0.258409792 秒，仅 timing parsed。thread100-light 的 validation 未测；所有 hidden AP50 未测，官方隐藏集最优未知。原始回执已清理，此处不构成新提交或新精度验证。
 
-| 当前状态 | 定位 |
-| --- | --- |
-| 历史最短有效完整参考日志 | 20261024-001935-kernel-weights-linear-concat，0.302713346秒；[记录](experiments/20261024-001935-kernel-weights-linear-concat/notes.md) |
-| 当前比较组推荐候选 | 20261026-000619-exit-rootcause：主机透明大页；6对交错356.262→289.449ms，5/6更快；独立完整三轮285.962649ms；[记录](experiments/20261026-000619-exit-rootcause/notes.md) |
-| 保守高精度候选 | 640完整JPEG解码，validation AP50=0.9167；[记录](experiments/20261022-official-fast-opencv-score005/notes.md) |
-| 最近Accepted信息 | 2026-10-26 00:24:37，账号ruc2602，SUPERSHIP 0.285962649秒；[脱敏回执](experiments/20261026-000619-exit-rootcause/submission-receipt.txt)；仅计时解析，hidden AP50未测 |
-| 官方隐藏集最优 | 未知 |
-| 任务状态 | 20261026-000619-exit-rootcause：completed；退出根因定位、32GiB硬上限验证及系统提交完成；GPU0于00:26释放 |
+## 清理记录
 
-**常用入口**：运行`bash run.sh --worker`；基准/评分脚本在[tools/benchmark/](tools/benchmark/)；开发环境在[tools/dev/](tools/dev/)；主目录源码保持main原版本，其他优化代码见[分支快照](experiments/branches/README.md)。
+- ID: 20261026-135116-repository-cleanup；负责人 Codex /root；状态 completed；未使用 GPU，未进行竞赛提交。
+- 清理前 main: `fd7d8beae5486299195008bb9ac64cf7a03de51d`。
+- 删除旧实验目录、结果/报告/patch、重复源码快照、无收益/诊断分支、闲置 worktree、重复数据下载包、缓存与旧课程笔记本。
+- 保留运行源码、模型配置、精选运行参数、测试、公开数据、基线权重、本机凭证和必要文档。
+- 未重写历史、未强制推送。普通 Git 提交保留恢复路径；历史文件仍可能占用 Git 对象空间。
+- 保留分支的清理前源码 SHA 如下。较早版本的运行协议/依赖以对应源码为准。
 
-[完整结果表](experiments/results/README.md) · [全部历史报告](experiments/reports/) · [各分支台账与SHA](experiments/branches/README.md) · [数据/原始产物](experiments/data/README.md)
-
-
-主线已合并官方42460fba规范/评分更新；历史指标按固定SHA保留。10-26退出实验另建当前协议比较组，已按本次授权提交新日志。
-
-## 20261026-000619-exit-rootcause
-
-- Owner: Codex /root; branch `exp/exit-rootcause-20261026`; status **completed**; updated 2026-10-26 00:26 CST.
-- Base: main `90bcc6165f6d65b5f6a16bb1298af83465a54d04`; optimized runtime parent `9a195679dbea` (full SHA recorded in experiment). Current main official protocol/scorer retained; new comparison group, historical timings are context only.
-- Scope: reproduce and trace the ~105ms exit interval, implement a measured fix without changing timing boundaries, validate reference/validation accuracy and >=3 full runs.
-- GPU0 RTX4090 reserved 00:06–00:26 CST after idle checks; released after final tests/timing. Worktree `/tmp/SuperShip-exit-20261026`. Complete1030-image validation and 32GiB hard memory cap passed (peak worker RSS2.025GiB), 101 tests passed/1 optional skip. User authorized system submission; new intact three-round log accepted at00:24:37,0.285962649s. Hidden AP50 unmeasured; official hidden best unknown. Main receives launcher fix only; optimized runtime remains on experiment branch.
+- `main`: `fd7d8beae5486299195008bb9ac64cf7a03de51d`
+- `exp/continued-sweep-20261026`: `1da325e5a7cf4fe3ff485855622dc22100fd848a`
+- `exp/exit-rootcause-20261026`: `6a774ee970eef2fcb32c7a5f01086780700a1e7f`
+- `exp/kernel-sweep-20261024`: `d0db0d31148319923efe9eb05fb2ad3f19afa4fd`
+- `exp/rtx4090-e2e`: `1c73be3b749dad59a1ec9cc083b115d09cac5ff9`

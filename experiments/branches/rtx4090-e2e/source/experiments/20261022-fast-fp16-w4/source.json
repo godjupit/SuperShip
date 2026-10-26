@@ -1,6 +1,0 @@
-{
-  "commit": "038904fbbf31763907706b64dc1f98bc2e39e896",
-  "branch": "exp/rtx4090-e2e",
-  "tracked_diff": "OPTIMIZATION_EXPERIMENTS.md | 20 ++++++++++++++++++++\n 1 file changed, 20 insertions(+)",
-  "note": "Documentation records and local data symlink do not change inference source."
-}

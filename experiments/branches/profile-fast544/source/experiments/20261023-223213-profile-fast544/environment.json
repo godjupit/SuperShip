@@ -1,1 +1,0 @@
-{"python": "3.12.8 | packaged by conda-forge | (main, Dec  5 2024, 14:24:40) [GCC 13.3.0]", "torch": "2.6.0+cu124", "cuda": "12.4", "cudnn": 90100, "opencv": "4.11.0"}
