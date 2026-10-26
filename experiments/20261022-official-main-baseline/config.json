@@ -1,8 +1,0 @@
-{
-  "environment_overrides": {
-    "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
-    "BATCH_SIZE": "8"
-  },
-  "baseline_source": "d022b703f74af22cef9e56e09a65c6650b56c111",
-  "note": "existing script permission changes only"
-}

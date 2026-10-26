@@ -1,26 +1,18 @@
 # SuperShip
 
-遥感舰船检测推理优化项目。主目录保留运行入口和源码，优化资料统一归档在[experiments/](experiments/README.md)。
+遥感舰船检测推理优化项目。仓库保留运行源码、模型配置、精选版本和必要文档；旧实验结果、重复源码归档、日志和预测已清理。
 
-- [精简优化日志](OPTIMIZATION_EXPERIMENTS.md)：时间、方案、关键结果和候选状态。
-- [全部过程与结果](experiments/README.md)：实验原记录、JSON/CSV索引、历史报告。
-- [分支源码与原台账](experiments/branches/README.md)：按提交SHA保存，原worktree继续独立使用。
-- [运行与评测命令](experiments/guides/commands.md)：评测脚本集中在tools/benchmark/。
-- [数据与产物](experiments/data/README.md)：公开数据、权重、每个分支的本机原始输出。
-- [环境配置](experiments/guides/development.md)：脚本集中在tools/dev/。
-- [赛题说明](COMPETITION.md)、[数据说明](DATA_NOTICE.md)、[上游文档](experiments/guides/upstream.md)。
+- [版本与候选索引](OPTIMIZATION_EXPERIMENTS.md)
+- [运行参数](configs/presets/README.md)
+- [运行命令](docs/commands.md)
+- [赛题说明](COMPETITION.md)、[数据说明](DATA_NOTICE.md)
 
-```text
-run.sh                   官方worker入口
-engine/、supership/      主线运行源码
-configs/、tests/         模型配置与检查
-tools/benchmark/         参考计时、优化计时、评分、验证
-tools/dev/               本机环境工具
-data/、weights/          统一公开数据与权重
-experiments/             全部优化资料；artifacts为本机大产物
-OPTIMIZATION_EXPERIMENTS.md 精简时间日志
+`engine/`、`supership/` 是模型与推理代码，`configs/` 保存参数，`tests/` 保存检查，`tools/` 保存评测和开发工具。本机数据位于 `data/SuperShip/`，基线权重位于 `weights/baseline.pth`；新输出写入 Git 忽略的 `output/`。
+
+主线默认运行已验证的 `thread100-light`，配置在 `configs/fastest.env`；环境变量可覆盖默认值，`PIPELINE=standard` 选择标准推理。历史分支保留各自实现和默认行为，复现时显式加载匹配参数。
+
+```bash
+bash run.sh --worker
 ```
 
-主线代码保持原版本，各方向的代码按分支保留。公开数据/权重入口和run.sh接口继续使用；基准计时仍覆盖READY后的全部输入处理、写盘与进程结束。
-
-主线已合并官方`42460fba`规范与评分修复，并保留原优化开关；[合并后的完整说明](experiments/guides/main-upstream-sync.md)。历史性能记录按原SHA保存，当前主线后续计时需重新建立基线。
+清理使用普通提交与分支删除，未改写 Git 历史。历史提交仍可能包含旧实验文件；工作目录和保留分支的最新提交只保留精选参数及精简索引。

@@ -1,7 +1,0 @@
-{
-  "status": "failed",
-  "split": null,
-  "runs": null,
-  "timing": "build only; no inference time measured",
-  "error_summary": "    (export if args.command == \"export\" else build)(args)\n  File \"/root/ship/SuperShip/supership/deploy.py\", line 174, in build\n    raise RuntimeError(\"TensorRT engine build failed\")\nRuntimeError: TensorRT engine build failed"
-}

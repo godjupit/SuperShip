@@ -1,2 +1,0 @@
-Submission Time (Asia/Shanghai): 2026-10-22 19:54:59
-Server Message: [1;32mSubmission Accepted; Performance: 0.390968942 s; OK: median runtime = 0.390968942 s (timing JSON); timing parsed only.[0m
