@@ -73,5 +73,32 @@
   "direct-copy": {
     "OPENCV_COPY_MODE": "direct"
   },
-  "control-end": {}
+  "control-end": {},
+  "jpeg-quarter": {
+    "JPEG_REDUCTION": "4"
+  },
+  "jpeg-eighth": {
+    "JPEG_REDUCTION": "8"
+  },
+  "order-small": {
+    "INPUT_ORDER": "small-first"
+  },
+  "order-large": {
+    "INPUT_ORDER": "large-first"
+  },
+  "order-balanced": {
+    "INPUT_ORDER": "balanced"
+  },
+  "top100-pinned": {
+    "POST_TOP_QUERIES": "100",
+    "PINNED_SIZES": "1"
+  },
+  "top100-events": {
+    "POST_TOP_QUERIES": "100",
+    "REUSE_EVENTS": "1"
+  },
+  "top100-balanced": {
+    "POST_TOP_QUERIES": "100",
+    "INPUT_ORDER": "balanced"
+  }
 }

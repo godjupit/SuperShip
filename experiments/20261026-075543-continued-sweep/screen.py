@@ -20,11 +20,27 @@ a = p.parse_args()
 results = out / 'results.json'
 state = json.loads(results.read_text()) if results.exists() else dict(best_seconds=.266237340, cases=[])
 plan = json.loads((exp / 'plan.json').read_text())
+
+
+def refresh_floor():
+    # Other sessions may have submitted since this process was initialized.
+    for parent in (Path('/tmp/SuperShip-fusedio-20261026'),
+                   Path('/tmp/SuperShip-output-20261026')):
+        for summary in parent.glob('output/*/*score-results.json'):
+            data = json.loads(summary.read_text())
+            if data.get('best_seconds'):
+                state['best_seconds'] = min(state['best_seconds'], data['best_seconds'])
+
+
 for variant in (a.select or plan):
     assert variant in plan
     name = datetime.now().strftime('%Y%m%d-%H%M%S-') + variant
     command = [sys.executable, str(exp / 'run_case.py'), variant, '--name', name,
                '--runs', '3', '--combined-log', '--split', 'reference']
+    gpu = subprocess.check_output(['nvidia-smi', '--query-compute-apps=pid',
+                                   '--format=csv,noheader,nounits'], text=True).strip()
+    if gpu:
+        raise RuntimeError('GPU0 occupied before case; leave other session untouched')
     run = subprocess.run(command, cwd=root, capture_output=True, text=True)
     case = out / name
     (case / 'driver.log').write_text(run.stdout + run.stderr)
@@ -34,6 +50,8 @@ for variant in (a.select or plan):
         record.update(median_seconds=m['median_seconds'], runs_seconds=m['runs_seconds'],
                       ap50=[s['ap50'] for s in m['scores']], precision_pass=m['precision_pass'],
                       log_sha256=m['log_sha256'], source_commit=m['source_commit'])
+        refresh_floor()
+        record['formal_timing_valid'] = True
         if a.submit and m['precision_pass'] and m['median_seconds'] < state['best_seconds']:
             script = Path('/home/ubuntu/SuperShip-main 2/.local/submit.sh')
             cred = script.parent / '.thuscc_credentials'

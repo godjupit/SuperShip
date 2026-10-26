@@ -2,6 +2,7 @@
 
 import concurrent.futures
 from collections import deque
+import heapq
 import json
 import os
 from pathlib import Path
@@ -37,6 +38,30 @@ def bulk_results(items, chunks, threshold):
             for image_id, label, box, score in
             zip(ids, selected[:, 5], boxes.tolist(), scores.tolist())
             if box[2] > 0 and box[3] > 0]
+
+
+def ordered_items(items, image_dir, batch, mode):
+    """Schedule from file sizes obtained only after receiving the timed request."""
+    if mode == "metadata" or not items:
+        return items
+    if mode not in ("small-first", "large-first", "balanced"):
+        raise ValueError("unsupported INPUT_ORDER")
+    weighted = [(Path(image_dir, item["file_name"]).stat().st_size, index, item)
+                for index, item in enumerate(items)]
+    if mode != "balanced":
+        return [entry[2] for entry in sorted(weighted, key=lambda x: x[0],
+                                             reverse=mode == "large-first")]
+    count = (len(items) + batch - 1) // batch
+    bins = [[] for _ in range(count)]
+    heap = [(0, index) for index in range(count)]
+    heapq.heapify(heap)
+    for weight, _, item in sorted(weighted, key=lambda x: (-x[0], x[1])):
+        cost, index = heapq.heappop(heap)
+        bins[index].append(item)
+        capacity = min(batch, len(items) - index * batch)
+        if len(bins[index]) < capacity:
+            heapq.heappush(heap, (cost + weight, index))
+    return [item for group in bins for item in group]
 
 
 class Runtime:
@@ -83,8 +108,8 @@ class Runtime:
             raise ValueError("score threshold must be in [0, 1]")
         if self.decoder not in ("pil", "opencv", "cuda"):
             raise ValueError("unsupported image decoder")
-        if self.reduction not in (1, 2) or (self.reduction != 1 and self.decoder != "opencv"):
-            raise ValueError("JPEG_REDUCTION=2 is supported only by the OpenCV decoder")
+        if self.reduction not in (1, 2, 4, 8) or (self.reduction != 1 and self.decoder != "opencv"):
+            raise ValueError("JPEG_REDUCTION must be 1, 2, 4 or 8; reduction requires OpenCV")
         if self.copy_mode not in ("strided", "cvtcolor", "direct"):
             raise ValueError("unsupported OPENCV_COPY_MODE")
         if self.eval_layers not in (0, 1, 2, 3):
@@ -140,6 +165,7 @@ class Runtime:
             raise ValueError("fused postprocessing requires focal scores without category remapping")
         if os.environ.get("MODEL_DEPLOY", "0") == "1":
             self.model.deploy()
+            self.model.eval()
         if os.environ.get("FUSE_CONV_BN", "0") == "1":
             from supership.conv_bn_fusion import fuse_model_conv_bn
             fused = fuse_model_conv_bn(self.model)
@@ -218,7 +244,8 @@ class Runtime:
             return torch.frombuffer(bytearray(path.read_bytes()), dtype=torch.uint8)
         if self.decoder == "opencv":
             import cv2
-            flag = cv2.IMREAD_REDUCED_COLOR_2 if self.reduction == 2 else cv2.IMREAD_COLOR
+            flag = {1: cv2.IMREAD_COLOR, 2: cv2.IMREAD_REDUCED_COLOR_2,
+                    4: cv2.IMREAD_REDUCED_COLOR_4, 8: cv2.IMREAD_REDUCED_COLOR_8}[self.reduction]
             image = cv2.imread(str(path), flag)
             if image is None:
                 raise ValueError(f"cannot decode image: {path}")
@@ -257,6 +284,8 @@ class Runtime:
         ids = [item["id"] for item in items]
         if len(ids) != len(set(ids)):
             raise ValueError("duplicate image ids")
+        items = ordered_items(items, request["image_dir"], self.batch,
+                              os.environ.get("INPUT_ORDER", "metadata"))
         jobs = {}
         count = (len(items) + self.batch - 1) // self.batch
 
