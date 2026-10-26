@@ -1,0 +1,326 @@
+{
+  "baseline": "top100",
+  "candidate": "thread100-light",
+  "pairs": [
+    {
+      "pair": 1,
+      "order": [
+        "top100",
+        "thread100-light"
+      ],
+      "top100": {
+        "case": "pair-20261026-082522-1-top100",
+        "seconds": 0.308184205,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "top100",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082522-1-top100"
+        ]
+      },
+      "thread100-light": {
+        "case": "pair-20261026-082528-1-thread100-light",
+        "seconds": 0.292164682,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "thread100-light",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082528-1-thread100-light"
+        ]
+      }
+    },
+    {
+      "pair": 2,
+      "order": [
+        "thread100-light",
+        "top100"
+      ],
+      "thread100-light": {
+        "case": "pair-20261026-082533-2-thread100-light",
+        "seconds": 0.256014296,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "thread100-light",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082533-2-thread100-light"
+        ]
+      },
+      "top100": {
+        "case": "pair-20261026-082537-2-top100",
+        "seconds": 0.26206508,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "top100",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082537-2-top100"
+        ]
+      }
+    },
+    {
+      "pair": 3,
+      "order": [
+        "top100",
+        "thread100-light"
+      ],
+      "top100": {
+        "case": "pair-20261026-082544-3-top100",
+        "seconds": 0.272683956,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "top100",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082544-3-top100"
+        ]
+      },
+      "thread100-light": {
+        "case": "pair-20261026-082550-3-thread100-light",
+        "seconds": 0.262411367,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "thread100-light",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082550-3-thread100-light"
+        ]
+      }
+    },
+    {
+      "pair": 4,
+      "order": [
+        "thread100-light",
+        "top100"
+      ],
+      "thread100-light": {
+        "case": "pair-20261026-082555-4-thread100-light",
+        "seconds": 0.257480695,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "thread100-light",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082555-4-thread100-light"
+        ]
+      },
+      "top100": {
+        "case": "pair-20261026-082559-4-top100",
+        "seconds": 0.303421833,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "top100",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082559-4-top100"
+        ]
+      }
+    },
+    {
+      "pair": 5,
+      "order": [
+        "top100",
+        "thread100-light"
+      ],
+      "top100": {
+        "case": "pair-20261026-082605-5-top100",
+        "seconds": 0.282461068,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "top100",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082605-5-top100"
+        ]
+      },
+      "thread100-light": {
+        "case": "pair-20261026-082612-5-thread100-light",
+        "seconds": 0.270333699,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "thread100-light",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082612-5-thread100-light"
+        ]
+      }
+    },
+    {
+      "pair": 6,
+      "order": [
+        "thread100-light",
+        "top100"
+      ],
+      "thread100-light": {
+        "case": "pair-20261026-082616-6-thread100-light",
+        "seconds": 0.269487952,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "thread100-light",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082616-6-thread100-light"
+        ]
+      },
+      "top100": {
+        "case": "pair-20261026-082621-6-top100",
+        "seconds": 0.279755983,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "top100",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082621-6-top100"
+        ]
+      }
+    },
+    {
+      "pair": 7,
+      "order": [
+        "top100",
+        "thread100-light"
+      ],
+      "top100": {
+        "case": "pair-20261026-082627-7-top100",
+        "seconds": 0.266136874,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "top100",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082627-7-top100"
+        ]
+      },
+      "thread100-light": {
+        "case": "pair-20261026-082633-7-thread100-light",
+        "seconds": 0.263231128,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "thread100-light",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082633-7-thread100-light"
+        ]
+      }
+    },
+    {
+      "pair": 8,
+      "order": [
+        "thread100-light",
+        "top100"
+      ],
+      "thread100-light": {
+        "case": "pair-20261026-082638-8-thread100-light",
+        "seconds": 0.255244501,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "thread100-light",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082638-8-thread100-light"
+        ]
+      },
+      "top100": {
+        "case": "pair-20261026-082642-8-top100",
+        "seconds": 0.268769595,
+        "ap50": 0.7809,
+        "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+        "command": [
+          "/home/ubuntu/.cache/supership-venv/bin/python",
+          "/tmp/SuperShip-continued-20261026/experiments/20261026-075543-continued-sweep/run_case.py",
+          "top100",
+          "--runs",
+          "1",
+          "--combined-log",
+          "--name",
+          "pair-20261026-082642-8-top100"
+        ]
+      }
+    }
+  ],
+  "baseline_median_seconds": 0.2762199695,
+  "candidate_median_seconds": 0.2628212475,
+  "median_paired_difference_seconds": 0.011199978999999999,
+  "wins": 8,
+  "pair_count": 8,
+  "two_sided_sign_flip_p": 0.0078125,
+  "all_outputs_byte_identical": true,
+  "scope": "alternating complete one-run workers; no submissions; does not replace intact three-round Accepted log"
+}

@@ -18,16 +18,18 @@
 | 10-26 00:06–00:26 | 定位退出时主机小页回收，启用透明大页 | 6对中位356.262→289.449ms，快18.75%；独立三轮285.963ms已Accepted；validation AP50=0.9058，32GiB硬限制通过、峰值RSS2.025GiB |
 | 10-26 00:29–00:37 | 已接受THP版本的时间构成诊断 | 无插桩三轮中位293.056ms；核心约221–232ms、退出61–93ms；GPU活动147–153ms并有38–46ms空档；热缓存下CPU解码供给优先；[记录](experiments/20261026-002932-profile-thp/notes.md) |
 
+| 10-26 07:55–08:28 | 50方向筛选、输出重叠和精简推理导入 | Accepted265.317→258.410ms；8对中位276.220→262.821ms，快4.8507%，8/8胜；reference AP50=0.7809，82项检查通过；[记录](experiments/20261026-075543-continued-sweep/notes.md) |
+
 以上GPU、数据划分和计时组不同，不能直接按一列排榜。RTX4090参考集不等于RTX3090或隐藏集成绩；所有hidden AP50均未测。
 
 | 当前状态 | 定位 |
 | --- | --- |
-| 历史最短有效完整参考日志 | 20261024-001935-kernel-weights-linear-concat，0.302713346秒；[记录](experiments/20261024-001935-kernel-weights-linear-concat/notes.md) |
-| 当前比较组推荐候选 | 20261026-013427-validation-sweep half-w10：batch8、10解码线程、depth3、融合半精度输出；完整三轮中位275.737156ms已Accepted；小幅收益有波动重叠；[记录](experiments/20261026-013427-validation-sweep/notes.md) |
+| 历史比较组最短有效参考日志 | 20261024-001935-kernel-weights-linear-concat，0.302713346秒；[记录](experiments/20261024-001935-kernel-weights-linear-concat/notes.md) |
+| 本地最快候选 / 当前比较组推荐 | 20261026-075543-continued-sweep/thread100-light；完整三轮 **258.409792ms** 已Accepted，reference AP50=0.7809；8对中位快4.8507%；[记录](experiments/20261026-075543-continued-sweep/notes.md) |
 | 保守高精度候选 | 640完整JPEG解码，validation AP50=0.9167；[记录](experiments/20261022-official-fast-opencv-score005/notes.md) |
-| 最近Accepted信息 | 2026-10-26 01:39:08，账号ruc2602，SUPERSHIP **0.275737156秒**；[脱敏回执](experiments/20261026-013427-validation-sweep/submission-receipt.txt)；仅计时解析，hidden AP50未测 |
+| 最近Accepted信息 | 2026-10-26 08:23:38，ruc2602，**0.258409792秒**；[脱敏回执](experiments/20261026-075543-continued-sweep/submission-receipt.txt)；timing parsed only，hidden未测 |
 | 官方隐藏集最优 | 未知 |
-| 任务状态 | 20261026-013427-validation-sweep：completed；200张三配置九轮通过，Accepted275.737156ms；GPU0已释放；优化源码保留实验分支 |
+| 任务状态 | continued-sweep completed；旧会话已中断，output-overlap实现由本实验接管；GPU0已释放 |
 
 **常用入口**：运行`bash run.sh --worker`；基准/评分脚本在[tools/benchmark/](tools/benchmark/)；开发环境在[tools/dev/](tools/dev/)；主目录源码保持main原版本，其他优化代码见[分支快照](experiments/branches/README.md)。
 
@@ -73,7 +75,7 @@ Completion 2026-10-26 01:40 CST —20261026-013427-validation-sweep: **completed
 
 ## 20261026-075543-continued-sweep
 
-- Owner Codex current /root continuation; branch `exp/continued-sweep-20261026`; status **running**; updated 2026-10-26 07:58 CST. Parent `0cd93cb12821da085172ca470c0e71e836de7016`; isolated worktree `/tmp/SuperShip-continued-20261026`.
+- Owner Codex current /root continuation; branch `exp/continued-sweep-20261026`; status **completed**; updated 2026-10-26 08:28 CST. Parent `0cd93cb12821da085172ca470c0e71e836de7016`; isolated worktree `/tmp/SuperShip-continued-20261026`.
 - Fresh process audit found no benchmark/worker/scoring processes and idle GPU0; fusedio last raw result at01:55 (6 hours old). Reserve GPU0 from07:58 for this continuation; output-overlap has CPU-only reservation and must wait for handover. Other worktree modifications left untouched.
 - New hypotheses: pinned reusable image-size transfers, CUDA event reuse, batch7/9/14 tails, smaller/larger model geometry under reference accuracy gate, intermediate query counts, top-k output sizing, GLIBC mmap/arena and torch/OMP thread settings. Each variant registered in plan.json before running, unchanged official timer/scorer, all200 inputs afterREADY, complete3-round timing, no larger validation. Current floor266.237340ms; only fresh passing improvements eligible for competition upload.
 
@@ -92,3 +94,10 @@ Correction08:01: batch14 had already finished naturally before termination attem
 2026-10-26 08:12 CST continued-sweep new full3-round threaded-top100 log **Accepted262.472328ms**, referenceAP50=0.7809 each, vs prior265.316869ms improvement1.0721%. Sourceffd89b6257539c46ee6c16ee3af3a54ad185457d; logSHA2563e42427a94d2b1829d9e8e1aef75fc27d0dc2b01755a9c0ec1bbfe99a2a499ee. Raw/receipt in /tmp/SuperShip-continued-20261026/output/20261026-075543-continued-sweep/20261026-081102-threaded-top100. timing parsed only; validation/hidden not measured. GPU remains exclusively reserved for remaining42-case suite and later paired confirmation.
 
 2026-10-26 08:22 CST initial42-case screen completed:126complete reference worker runs;40variants passed all3AP gates, quarter/eighth rejected. End-control272.778741ms vs beginning290.072519ms shows temporal drift; require alternating confirmation. LatestAccepted threaded-balanced261.576759ms (log562640f9ac4d579a706468888c48319023241dc462877aa5ce0d34f5aca3872a); no hidden/large-validation claim. Proceed8previously registered combinations, production code remains exactlyffd89b6; then8pairs vs original accepted top100 baseline.
+
+Correction08:22: final42-case result includes later Accepted threaded-pinned **260.302942ms**, superseding261.576759ms. LogSHA256=a618c4f17424e42358e84261ca0915accc8d6893225c106f0720be7993cd59ac; source=ffd89b6257539c46ee6c16ee3af3a54ad185457d; all3AP50=[0.7809, 0.7809, 0.7809]. Shared latest score must use this entry.
+
+2026-10-26 08:25 CST 50-config screening complete:150complete workers;48passing variants,2precision failures. Best Accepted thread100-light258.409792ms,3rounds258.409792/256.334286/263.016448ms,AP50=0.7809all,logSHA2561d43c5c5c18874e823a2533f6702e48dbf5c98c274570b8d16d83f9b07ce65b1; sourcecda34913ed3cec8de577d151ee3a16984f46a5ed. Register8alternating pairs top100 vs thread100-light, AB/BA by pair, all rounds scored; no diagnostic one-round logs uploaded. Production source remains frozen, no GPU overlap.
+
+
+Completion2026-10-26 08:28 CST —20261026-075543-continued-sweep **completed**.50registered configurations/150complete3-round reference workers;48passed,quarter/eighth decode failed precision and not uploaded. Sourcecda34913ed3cec8de577d151ee3a16984f46a5ed; selected thread100-light (top100+ordered threaded JSON+inference imports). LatestAccepted258.409792ms at08:23:38,all3referenceAP50=0.7809; validation/hidden=null.8alternating pairs276.219970→262.821248ms,4.8507% faster,8/8wins,p=0.0078125;all16outputsbyte-identical.82tests passed,assets/tool/source hashes checked. Old competing daemon turn actually interrupted08:08:23;10earlier contended cases retained timing-invalid; no history/worktree deleted. GPU0 released08:27. Complete results/reproduction: experiments/20261026-075543-continued-sweep/notes.md. No further GPU work pending.

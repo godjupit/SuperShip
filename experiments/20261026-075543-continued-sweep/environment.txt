@@ -59,3 +59,19 @@ Mon Oct 26 07:58:08 2026
 +-----------------------------------------------------------------------------------------+
 
 CPU affinity=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Software versions (recorded after timing):
+{
+  "python": "3.12.8 | packaged by conda-forge | (main, Dec  5 2024, 14:24:40) [GCC 13.3.0]",
+  "platform": "Linux-5.15.0-128-generic-x86_64-with-glibc2.35",
+  "packages": {
+    "torch": "2.6.0",
+    "torchvision": "0.21.0",
+    "numpy": "1.26.4",
+    "opencv-python": "4.11.0.86",
+    "triton": "3.2.0",
+    "orjson": "3.10.15",
+    "Pillow": "11.1.0",
+    "pycocotools": null
+  }
+}
