@@ -55,10 +55,10 @@ RT-DETRv4 achieves new state-of-the-art results on the COCO dataset, outperformi
 
 | Model | AP | AP50 | AP75 | Latency (T4) | FPS (T4) | Config | Log | Checkpoint |
 | :--- | :---: | :---: | :---: | :---: | :---: |:---------------------------------------------:|:----------------------------:|:---:|
-| RT-DETRv4-S | 49.8 | 67.1 | 54.0 | 3.66 ms | 273 | [yml](../../configs/rtv4/rtv4_hgnetv2_s_coco.yml) | [log](https://github.com/RT-DETRs/RT-DETRv4/blob/55fefaaed7efe2a5f72d0a18fd4e05965e35c292/logs/RTv4-S-hgnet.log) | [ckpt](https://drive.google.com/file/d/1jDAVxblqRPEWed7Hxm6GwcEl7zn72U6z) |
-| RT-DETRv4-M | 53.7 | 71.0 | 58.4 | 5.91 ms | 169 | [yml](../../configs/rtv4/rtv4_hgnetv2_m_coco.yml) | [log](https://github.com/RT-DETRs/RT-DETRv4/blob/55fefaaed7efe2a5f72d0a18fd4e05965e35c292/logs/RTv4-M-hgnet.log) | [ckpt](https://drive.google.com/file/d/1O-YpP4X-quuOXbi96y2TKkztbjroP5mX) |
-| RT-DETRv4-L | 55.4 | 73.0 | 60.3 | 8.07 ms | 124 | [yml](../../configs/rtv4/rtv4_hgnetv2_l_coco.yml) | [log](https://github.com/RT-DETRs/RT-DETRv4/blob/55fefaaed7efe2a5f72d0a18fd4e05965e35c292/logs/RTv4-L-hgnet.log) | [ckpt](https://drive.google.com/file/d/1shO9EzZvXZyKedE2urLsN4dwEv8Jqa_8) |
-| RT-DETRv4-X | 57.0 | 74.6 | 62.1 | 12.90 ms | 78 | [yml](../../configs/rtv4/rtv4_hgnetv2_x_coco.yml) | [log](https://github.com/RT-DETRs/RT-DETRv4/blob/55fefaaed7efe2a5f72d0a18fd4e05965e35c292/logs/RTv4-X-hgnet.log) | [ckpt](https://drive.google.com/file/d/19gnkMTgFveJsrOvSmEPQXCTG6v9oQHN3) |
+| RT-DETRv4-S | 49.8 | 67.1 | 54.0 | 3.66 ms | 273 | [yml](../configs/rtv4/rtv4_hgnetv2_s_coco.yml) | [log](https://github.com/RT-DETRs/RT-DETRv4/blob/55fefaaed7efe2a5f72d0a18fd4e05965e35c292/logs/RTv4-S-hgnet.log) | [ckpt](https://drive.google.com/file/d/1jDAVxblqRPEWed7Hxm6GwcEl7zn72U6z) |
+| RT-DETRv4-M | 53.7 | 71.0 | 58.4 | 5.91 ms | 169 | [yml](../configs/rtv4/rtv4_hgnetv2_m_coco.yml) | [log](https://github.com/RT-DETRs/RT-DETRv4/blob/55fefaaed7efe2a5f72d0a18fd4e05965e35c292/logs/RTv4-M-hgnet.log) | [ckpt](https://drive.google.com/file/d/1O-YpP4X-quuOXbi96y2TKkztbjroP5mX) |
+| RT-DETRv4-L | 55.4 | 73.0 | 60.3 | 8.07 ms | 124 | [yml](../configs/rtv4/rtv4_hgnetv2_l_coco.yml) | [log](https://github.com/RT-DETRs/RT-DETRv4/blob/55fefaaed7efe2a5f72d0a18fd4e05965e35c292/logs/RTv4-L-hgnet.log) | [ckpt](https://drive.google.com/file/d/1shO9EzZvXZyKedE2urLsN4dwEv8Jqa_8) |
+| RT-DETRv4-X | 57.0 | 74.6 | 62.1 | 12.90 ms | 78 | [yml](../configs/rtv4/rtv4_hgnetv2_x_coco.yml) | [log](https://github.com/RT-DETRs/RT-DETRv4/blob/55fefaaed7efe2a5f72d0a18fd4e05965e35c292/logs/RTv4-X-hgnet.log) | [ckpt](https://drive.google.com/file/d/19gnkMTgFveJsrOvSmEPQXCTG6v9oQHN3) |
 ## 📣 News
 
   * **[2026.06.18]** 🎉 RT-DETRv4 has been accepted to **ECCV 2026**! We sincerely thank all contributors and the community for your support!
@@ -75,7 +75,7 @@ RT-DETRv4 achieves new state-of-the-art results on the COCO dataset, outperformi
 
 -----
 
-> This repository also supports the reproduction of [DEIM](../../configs/deim), [D-FINE](../../configs/dfine), and [RT-DETRv2](../../configs/rtv2). Simply run the corresponding configuration files.
+> This repository also supports the reproduction of [DEIM](../configs/deim), [D-FINE](../configs/dfine), and [RT-DETRv2](../configs/rtv2). Simply run the corresponding configuration files.
 
 ## 1\. Getting Started
 
@@ -93,7 +93,7 @@ pip install -r requirements.txt
 <summary> COCO2017 Dataset </summary>
 
 1.  Download COCO2017 from [OpenDataLab](https://opendatalab.com/OpenDataLab/COCO_2017) or [COCO](https://cocodataset.org/#download).
-2.  Modify paths in [coco\_detection.yml](../../configs/dataset/coco_detection.yml)
+2.  Modify paths in [coco\_detection.yml](../configs/dataset/coco_detection.yml)
 
 ```yaml
 train_dataloader:
@@ -161,7 +161,7 @@ To train on your custom dataset, you need to organize it in the COCO format. Fol
 
 4.  **Update Configuration Files:**
 
-    Modify your [custom\_detection.yml](../../configs/dataset/custom_detection.yml).
+    Modify your [custom\_detection.yml](../configs/dataset/custom_detection.yml).
 
     ```yaml
     task: detection
@@ -259,14 +259,14 @@ Update the `dinov3_repo_path` and `dinov3_weights_path` to match your local setu
 
 For example, if you want to double the total batch size when training RT-DETRv4-L on COCO2017, here are the steps you should follow:
 
-1.  **Modify your [dataloader.yml](../../configs/base/dataloader.yml)** to increase the `total_batch_size`:
+1.  **Modify your [dataloader.yml](../configs/base/dataloader.yml)** to increase the `total_batch_size`:
 
     ```yaml
     train_dataloader:
         total_batch_size: 64  # Previously it was 32, now doubled
     ```
 
-2.  **Modify your [rtv4\_hgnetv2\_l\_coco.yml](../../configs/rtv4/rtv4_hgnetv2_l_coco.yml)**. Here’s how the key parameters should be adjusted:
+2.  **Modify your [rtv4\_hgnetv2\_l\_coco.yml](../configs/rtv4/rtv4_hgnetv2_l_coco.yml)**. Here’s how the key parameters should be adjusted:
 
     ```yaml
     optimizer:
@@ -298,7 +298,7 @@ For example, if you want to double the total batch size when training RT-DETRv4-
 
 If you'd like to train **RT-DETRv4** on COCO2017 with an input size of 320x320, follow these steps:
 
-1.  **Modify your [dataloader.yml](../../configs/base/dataloader.yml)**:
+1.  **Modify your [dataloader.yml](../configs/base/dataloader.yml)**:
 
     ```yaml
     train_dataloader:
@@ -316,7 +316,7 @@ If you'd like to train **RT-DETRv4** on COCO2017 with an input size of 320x320, 
                   - {type: Resize, size: [320, 320], }
     ```
 
-2.  **Modify your [rtv4\_base.yml](../../base/rtv4_base.yml)** (or the relevant base config file):
+2.  **Modify your [rtv4\_base.yml](../configs/base/rtv4.yml)** (or the relevant base config file):
 
     ```yaml
     eval_spatial_size: [320, 320]
