@@ -1,0 +1,1314 @@
+{
+  "source_commit": "386a11a7a0156932f885faae3dcb5fafb775086a",
+  "records": [
+    {
+      "name": "formal-baseline",
+      "variant": "baseline",
+      "source_commit": "386a11a7a0156932f885faae3dcb5fafb775086a",
+      "command": [
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/benchmark_submission.py",
+        "--image-dir",
+        "data/SuperShip/reference/images",
+        "--meta-file",
+        "data/SuperShip/reference/reference_images_meta.json",
+        "--output-file",
+        "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-baseline/predictions.json",
+        "--runs",
+        "3",
+        "--",
+        "bash",
+        "run.sh",
+        "--worker"
+      ],
+      "env_overrides": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "10",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "0",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1",
+        "KERNEL_WEIGHT_HALF": "1",
+        "KERNEL_AFFINE_HALF": "0",
+        "KERNEL_ENCODER_LAYOUT": "0",
+        "KERNEL_LINEAR1X1": "1",
+        "FEATURE_CAT": "triton_half",
+        "EARLY_INPUT_RECYCLE": "1",
+        "BULK_RESULTS": "1",
+        "DEFORM_ATTN_IMPL": "triton",
+        "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+        "PYTORCH_CUDA_ALLOC_CONF": "backend:native",
+        "DEFORM_VALUE_CACHE": "0",
+        "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1",
+        "HOST_THP": "1",
+        "KERNEL_RELU_AFFINE_FUSE": "1",
+        "KERNEL_RELU_AFFINE_HALF_OUT": "1",
+        "THREADED_JSON": "1",
+        "POST_TOP_QUERIES": "100",
+        "INFERENCE_IMPORTS": "1"
+      },
+      "native_decode_scale": null,
+      "validation_ap50": null,
+      "hidden_ap50": null,
+      "return_code": 0,
+      "runs_seconds": [
+        0.262255924,
+        0.256347169,
+        0.254530984
+      ],
+      "median_seconds": 0.256347169,
+      "native_reports": [],
+      "scores": [
+        {
+          "ap50": 0.7809,
+          "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-baseline/predictions.run1.json"
+          ]
+        },
+        {
+          "ap50": 0.7809,
+          "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-baseline/predictions.run2.json"
+          ]
+        },
+        {
+          "ap50": 0.7809,
+          "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-baseline/predictions.run3.json"
+          ]
+        }
+      ],
+      "precision_pass": true,
+      "status": "completed"
+    },
+    {
+      "name": "formal-legacy",
+      "variant": "legacy",
+      "source_commit": "386a11a7a0156932f885faae3dcb5fafb775086a",
+      "command": [
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/benchmark_submission.py",
+        "--image-dir",
+        "data/SuperShip/reference/images",
+        "--meta-file",
+        "data/SuperShip/reference/reference_images_meta.json",
+        "--output-file",
+        "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-legacy/predictions.json",
+        "--runs",
+        "3",
+        "--",
+        "bash",
+        "run.sh",
+        "--worker"
+      ],
+      "env_overrides": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "10",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "cuda",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "1",
+        "RESIZE_ANTIALIAS": "0",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "0",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1",
+        "KERNEL_WEIGHT_HALF": "1",
+        "KERNEL_AFFINE_HALF": "0",
+        "KERNEL_ENCODER_LAYOUT": "0",
+        "KERNEL_LINEAR1X1": "1",
+        "FEATURE_CAT": "triton_half",
+        "EARLY_INPUT_RECYCLE": "0",
+        "BULK_RESULTS": "1",
+        "DEFORM_ATTN_IMPL": "triton",
+        "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+        "PYTORCH_CUDA_ALLOC_CONF": "backend:native",
+        "DEFORM_VALUE_CACHE": "0",
+        "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1",
+        "HOST_THP": "1",
+        "KERNEL_RELU_AFFINE_FUSE": "1",
+        "KERNEL_RELU_AFFINE_HALF_OUT": "1",
+        "THREADED_JSON": "1",
+        "POST_TOP_QUERIES": "100",
+        "INFERENCE_IMPORTS": "1"
+      },
+      "native_decode_scale": null,
+      "validation_ap50": null,
+      "hidden_ap50": null,
+      "return_code": 0,
+      "runs_seconds": [
+        1.203153741,
+        1.168384505,
+        1.205166292
+      ],
+      "median_seconds": 1.203153741,
+      "native_reports": [],
+      "scores": [
+        {
+          "ap50": 0.7795,
+          "sha256": "ff39e91cada33e1b0478d8011950cbbe935ab8d18787d36659f15758fa4e3911",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-legacy/predictions.run1.json"
+          ]
+        },
+        {
+          "ap50": 0.7795,
+          "sha256": "ff39e91cada33e1b0478d8011950cbbe935ab8d18787d36659f15758fa4e3911",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-legacy/predictions.run2.json"
+          ]
+        },
+        {
+          "ap50": 0.7795,
+          "sha256": "ff39e91cada33e1b0478d8011950cbbe935ab8d18787d36659f15758fa4e3911",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-legacy/predictions.run3.json"
+          ]
+        }
+      ],
+      "precision_pass": true,
+      "status": "completed"
+    },
+    {
+      "name": "formal-hybrid8",
+      "variant": "hybrid8",
+      "source_commit": "386a11a7a0156932f885faae3dcb5fafb775086a",
+      "command": [
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/benchmark_submission.py",
+        "--image-dir",
+        "data/SuperShip/reference/images",
+        "--meta-file",
+        "data/SuperShip/reference/reference_images_meta.json",
+        "--output-file",
+        "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-hybrid8/predictions.json",
+        "--runs",
+        "3",
+        "--",
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/nvjpeg_worker.py"
+      ],
+      "env_overrides": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "10",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "0",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1",
+        "KERNEL_WEIGHT_HALF": "1",
+        "KERNEL_AFFINE_HALF": "0",
+        "KERNEL_ENCODER_LAYOUT": "0",
+        "KERNEL_LINEAR1X1": "1",
+        "FEATURE_CAT": "triton_half",
+        "EARLY_INPUT_RECYCLE": "1",
+        "BULK_RESULTS": "1",
+        "DEFORM_ATTN_IMPL": "triton",
+        "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+        "PYTORCH_CUDA_ALLOC_CONF": "backend:native",
+        "DEFORM_VALUE_CACHE": "0",
+        "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1",
+        "HOST_THP": "1",
+        "KERNEL_RELU_AFFINE_FUSE": "1",
+        "KERNEL_RELU_AFFINE_HALF_OUT": "1",
+        "THREADED_JSON": "1",
+        "POST_TOP_QUERIES": "100",
+        "INFERENCE_IMPORTS": "1",
+        "NVJPEG_BACKEND": "hybrid",
+        "NVJPEG_BATCH": "8",
+        "NVJPEG_OVERLAP": "1"
+      },
+      "native_decode_scale": 1,
+      "validation_ap50": null,
+      "hidden_ap50": null,
+      "return_code": 0,
+      "runs_seconds": [
+        1.552098385,
+        1.619209342,
+        1.472072511
+      ],
+      "median_seconds": 1.552098385,
+      "native_reports": [
+        {
+          "nvjpeg_backend": "hybrid",
+          "decode_batch": 8,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "hybrid",
+          "decode_batch": 8,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "hybrid",
+          "decode_batch": 8,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        }
+      ],
+      "scores": [
+        {
+          "ap50": 0.7794,
+          "sha256": "cdff62fdc054b19b03531ffcb225e3c25c1f85857d3e729e153352ec37557667",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-hybrid8/predictions.run1.json"
+          ]
+        },
+        {
+          "ap50": 0.7794,
+          "sha256": "cdff62fdc054b19b03531ffcb225e3c25c1f85857d3e729e153352ec37557667",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-hybrid8/predictions.run2.json"
+          ]
+        },
+        {
+          "ap50": 0.7794,
+          "sha256": "cdff62fdc054b19b03531ffcb225e3c25c1f85857d3e729e153352ec37557667",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-hybrid8/predictions.run3.json"
+          ]
+        }
+      ],
+      "precision_pass": true,
+      "status": "completed"
+    },
+    {
+      "name": "formal-gpu8",
+      "variant": "gpu8",
+      "source_commit": "386a11a7a0156932f885faae3dcb5fafb775086a",
+      "command": [
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/benchmark_submission.py",
+        "--image-dir",
+        "data/SuperShip/reference/images",
+        "--meta-file",
+        "data/SuperShip/reference/reference_images_meta.json",
+        "--output-file",
+        "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu8/predictions.json",
+        "--runs",
+        "3",
+        "--",
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/nvjpeg_worker.py"
+      ],
+      "env_overrides": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "10",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "0",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1",
+        "KERNEL_WEIGHT_HALF": "1",
+        "KERNEL_AFFINE_HALF": "0",
+        "KERNEL_ENCODER_LAYOUT": "0",
+        "KERNEL_LINEAR1X1": "1",
+        "FEATURE_CAT": "triton_half",
+        "EARLY_INPUT_RECYCLE": "1",
+        "BULK_RESULTS": "1",
+        "DEFORM_ATTN_IMPL": "triton",
+        "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+        "PYTORCH_CUDA_ALLOC_CONF": "backend:native",
+        "DEFORM_VALUE_CACHE": "0",
+        "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1",
+        "HOST_THP": "1",
+        "KERNEL_RELU_AFFINE_FUSE": "1",
+        "KERNEL_RELU_AFFINE_HALF_OUT": "1",
+        "THREADED_JSON": "1",
+        "POST_TOP_QUERIES": "100",
+        "INFERENCE_IMPORTS": "1",
+        "NVJPEG_BACKEND": "gpu_hybrid",
+        "NVJPEG_BATCH": "8",
+        "NVJPEG_OVERLAP": "1"
+      },
+      "native_decode_scale": 1,
+      "validation_ap50": null,
+      "hidden_ap50": null,
+      "return_code": 0,
+      "runs_seconds": [
+        1.525347198,
+        1.645687038,
+        1.484872182
+      ],
+      "median_seconds": 1.525347198,
+      "native_reports": [
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 8,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 8,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 8,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        }
+      ],
+      "scores": [
+        {
+          "ap50": 0.7794,
+          "sha256": "cdff62fdc054b19b03531ffcb225e3c25c1f85857d3e729e153352ec37557667",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu8/predictions.run1.json"
+          ]
+        },
+        {
+          "ap50": 0.7794,
+          "sha256": "cdff62fdc054b19b03531ffcb225e3c25c1f85857d3e729e153352ec37557667",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu8/predictions.run2.json"
+          ]
+        },
+        {
+          "ap50": 0.7794,
+          "sha256": "cdff62fdc054b19b03531ffcb225e3c25c1f85857d3e729e153352ec37557667",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu8/predictions.run3.json"
+          ]
+        }
+      ],
+      "precision_pass": true,
+      "status": "completed"
+    },
+    {
+      "name": "formal-hybrid64",
+      "variant": "hybrid64",
+      "source_commit": "386a11a7a0156932f885faae3dcb5fafb775086a",
+      "command": [
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/benchmark_submission.py",
+        "--image-dir",
+        "data/SuperShip/reference/images",
+        "--meta-file",
+        "data/SuperShip/reference/reference_images_meta.json",
+        "--output-file",
+        "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-hybrid64/predictions.json",
+        "--runs",
+        "3",
+        "--",
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/nvjpeg_worker.py"
+      ],
+      "env_overrides": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "10",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "0",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1",
+        "KERNEL_WEIGHT_HALF": "1",
+        "KERNEL_AFFINE_HALF": "0",
+        "KERNEL_ENCODER_LAYOUT": "0",
+        "KERNEL_LINEAR1X1": "1",
+        "FEATURE_CAT": "triton_half",
+        "EARLY_INPUT_RECYCLE": "1",
+        "BULK_RESULTS": "1",
+        "DEFORM_ATTN_IMPL": "triton",
+        "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+        "PYTORCH_CUDA_ALLOC_CONF": "backend:native",
+        "DEFORM_VALUE_CACHE": "0",
+        "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1",
+        "HOST_THP": "1",
+        "KERNEL_RELU_AFFINE_FUSE": "1",
+        "KERNEL_RELU_AFFINE_HALF_OUT": "1",
+        "THREADED_JSON": "1",
+        "POST_TOP_QUERIES": "100",
+        "INFERENCE_IMPORTS": "1",
+        "NVJPEG_BACKEND": "hybrid",
+        "NVJPEG_BATCH": "64",
+        "NVJPEG_OVERLAP": "1"
+      },
+      "native_decode_scale": 1,
+      "validation_ap50": null,
+      "hidden_ap50": null,
+      "return_code": 0,
+      "runs_seconds": [
+        1.266490216,
+        1.322403842,
+        1.320891127
+      ],
+      "median_seconds": 1.320891127,
+      "native_reports": [
+        {
+          "nvjpeg_backend": "hybrid",
+          "decode_batch": 64,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "hybrid",
+          "decode_batch": 64,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "hybrid",
+          "decode_batch": 64,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        }
+      ],
+      "scores": [
+        {
+          "ap50": 0.7794,
+          "sha256": "cdff62fdc054b19b03531ffcb225e3c25c1f85857d3e729e153352ec37557667",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-hybrid64/predictions.run1.json"
+          ]
+        },
+        {
+          "ap50": 0.7794,
+          "sha256": "cdff62fdc054b19b03531ffcb225e3c25c1f85857d3e729e153352ec37557667",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-hybrid64/predictions.run2.json"
+          ]
+        },
+        {
+          "ap50": 0.7794,
+          "sha256": "cdff62fdc054b19b03531ffcb225e3c25c1f85857d3e729e153352ec37557667",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-hybrid64/predictions.run3.json"
+          ]
+        }
+      ],
+      "precision_pass": true,
+      "status": "completed"
+    },
+    {
+      "name": "formal-gpu64_serial",
+      "variant": "gpu64_serial",
+      "source_commit": "386a11a7a0156932f885faae3dcb5fafb775086a",
+      "command": [
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/benchmark_submission.py",
+        "--image-dir",
+        "data/SuperShip/reference/images",
+        "--meta-file",
+        "data/SuperShip/reference/reference_images_meta.json",
+        "--output-file",
+        "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu64_serial/predictions.json",
+        "--runs",
+        "3",
+        "--",
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/nvjpeg_worker.py"
+      ],
+      "env_overrides": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "10",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "0",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1",
+        "KERNEL_WEIGHT_HALF": "1",
+        "KERNEL_AFFINE_HALF": "0",
+        "KERNEL_ENCODER_LAYOUT": "0",
+        "KERNEL_LINEAR1X1": "1",
+        "FEATURE_CAT": "triton_half",
+        "EARLY_INPUT_RECYCLE": "1",
+        "BULK_RESULTS": "1",
+        "DEFORM_ATTN_IMPL": "triton",
+        "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+        "PYTORCH_CUDA_ALLOC_CONF": "backend:native",
+        "DEFORM_VALUE_CACHE": "0",
+        "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1",
+        "HOST_THP": "1",
+        "KERNEL_RELU_AFFINE_FUSE": "1",
+        "KERNEL_RELU_AFFINE_HALF_OUT": "1",
+        "THREADED_JSON": "1",
+        "POST_TOP_QUERIES": "100",
+        "INFERENCE_IMPORTS": "1",
+        "NVJPEG_BACKEND": "gpu_hybrid",
+        "NVJPEG_BATCH": "64",
+        "NVJPEG_OVERLAP": "0"
+      },
+      "native_decode_scale": 1,
+      "validation_ap50": null,
+      "hidden_ap50": null,
+      "return_code": 0,
+      "runs_seconds": [
+        0.64725689,
+        0.645817329,
+        0.649879197
+      ],
+      "median_seconds": 0.64725689,
+      "native_reports": [
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 64,
+          "overlap": false,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 64,
+          "overlap": false,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 64,
+          "overlap": false,
+          "native_images": 200,
+          "fallback_images": 0
+        }
+      ],
+      "scores": [
+        {
+          "ap50": 0.7796,
+          "sha256": "d7ed057db5fac38cf28e595d3dae99f51346d3a7c5261ef1fe699d468af388cc",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu64_serial/predictions.run1.json"
+          ]
+        },
+        {
+          "ap50": 0.7796,
+          "sha256": "d7ed057db5fac38cf28e595d3dae99f51346d3a7c5261ef1fe699d468af388cc",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu64_serial/predictions.run2.json"
+          ]
+        },
+        {
+          "ap50": 0.7796,
+          "sha256": "d7ed057db5fac38cf28e595d3dae99f51346d3a7c5261ef1fe699d468af388cc",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu64_serial/predictions.run3.json"
+          ]
+        }
+      ],
+      "precision_pass": true,
+      "status": "completed"
+    },
+    {
+      "name": "formal-gpu64",
+      "variant": "gpu64",
+      "source_commit": "386a11a7a0156932f885faae3dcb5fafb775086a",
+      "command": [
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/benchmark_submission.py",
+        "--image-dir",
+        "data/SuperShip/reference/images",
+        "--meta-file",
+        "data/SuperShip/reference/reference_images_meta.json",
+        "--output-file",
+        "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu64/predictions.json",
+        "--runs",
+        "3",
+        "--",
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/nvjpeg_worker.py"
+      ],
+      "env_overrides": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "10",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "0",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1",
+        "KERNEL_WEIGHT_HALF": "1",
+        "KERNEL_AFFINE_HALF": "0",
+        "KERNEL_ENCODER_LAYOUT": "0",
+        "KERNEL_LINEAR1X1": "1",
+        "FEATURE_CAT": "triton_half",
+        "EARLY_INPUT_RECYCLE": "1",
+        "BULK_RESULTS": "1",
+        "DEFORM_ATTN_IMPL": "triton",
+        "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+        "PYTORCH_CUDA_ALLOC_CONF": "backend:native",
+        "DEFORM_VALUE_CACHE": "0",
+        "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1",
+        "HOST_THP": "1",
+        "KERNEL_RELU_AFFINE_FUSE": "1",
+        "KERNEL_RELU_AFFINE_HALF_OUT": "1",
+        "THREADED_JSON": "1",
+        "POST_TOP_QUERIES": "100",
+        "INFERENCE_IMPORTS": "1",
+        "NVJPEG_BACKEND": "gpu_hybrid",
+        "NVJPEG_BATCH": "64",
+        "NVJPEG_OVERLAP": "1"
+      },
+      "native_decode_scale": 1,
+      "validation_ap50": null,
+      "hidden_ap50": null,
+      "return_code": 0,
+      "runs_seconds": [
+        0.609838382,
+        0.610316333,
+        0.613201183
+      ],
+      "median_seconds": 0.610316333,
+      "native_reports": [
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 64,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 64,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 64,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        }
+      ],
+      "scores": [
+        {
+          "ap50": 0.7796,
+          "sha256": "d7ed057db5fac38cf28e595d3dae99f51346d3a7c5261ef1fe699d468af388cc",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu64/predictions.run1.json"
+          ]
+        },
+        {
+          "ap50": 0.7796,
+          "sha256": "d7ed057db5fac38cf28e595d3dae99f51346d3a7c5261ef1fe699d468af388cc",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu64/predictions.run2.json"
+          ]
+        },
+        {
+          "ap50": 0.7796,
+          "sha256": "d7ed057db5fac38cf28e595d3dae99f51346d3a7c5261ef1fe699d468af388cc",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu64/predictions.run3.json"
+          ]
+        }
+      ],
+      "precision_pass": true,
+      "status": "completed"
+    },
+    {
+      "name": "formal-gpu128",
+      "variant": "gpu128",
+      "source_commit": "386a11a7a0156932f885faae3dcb5fafb775086a",
+      "command": [
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/benchmark_submission.py",
+        "--image-dir",
+        "data/SuperShip/reference/images",
+        "--meta-file",
+        "data/SuperShip/reference/reference_images_meta.json",
+        "--output-file",
+        "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu128/predictions.json",
+        "--runs",
+        "3",
+        "--",
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/nvjpeg_worker.py"
+      ],
+      "env_overrides": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "10",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "0",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1",
+        "KERNEL_WEIGHT_HALF": "1",
+        "KERNEL_AFFINE_HALF": "0",
+        "KERNEL_ENCODER_LAYOUT": "0",
+        "KERNEL_LINEAR1X1": "1",
+        "FEATURE_CAT": "triton_half",
+        "EARLY_INPUT_RECYCLE": "1",
+        "BULK_RESULTS": "1",
+        "DEFORM_ATTN_IMPL": "triton",
+        "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+        "PYTORCH_CUDA_ALLOC_CONF": "backend:native",
+        "DEFORM_VALUE_CACHE": "0",
+        "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1",
+        "HOST_THP": "1",
+        "KERNEL_RELU_AFFINE_FUSE": "1",
+        "KERNEL_RELU_AFFINE_HALF_OUT": "1",
+        "THREADED_JSON": "1",
+        "POST_TOP_QUERIES": "100",
+        "INFERENCE_IMPORTS": "1",
+        "NVJPEG_BACKEND": "gpu_hybrid",
+        "NVJPEG_BATCH": "128",
+        "NVJPEG_OVERLAP": "1"
+      },
+      "native_decode_scale": 1,
+      "validation_ap50": null,
+      "hidden_ap50": null,
+      "return_code": 0,
+      "runs_seconds": [
+        0.492951844,
+        0.507686787,
+        0.498190613
+      ],
+      "median_seconds": 0.498190613,
+      "native_reports": [
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 128,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 128,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 128,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        }
+      ],
+      "scores": [
+        {
+          "ap50": 0.7795,
+          "sha256": "b3d7124202056a86c55c03bd9a92e0bc16ea967cc7ade830b0e11db205b90457",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu128/predictions.run1.json"
+          ]
+        },
+        {
+          "ap50": 0.7795,
+          "sha256": "b3d7124202056a86c55c03bd9a92e0bc16ea967cc7ade830b0e11db205b90457",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu128/predictions.run2.json"
+          ]
+        },
+        {
+          "ap50": 0.7795,
+          "sha256": "b3d7124202056a86c55c03bd9a92e0bc16ea967cc7ade830b0e11db205b90457",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu128/predictions.run3.json"
+          ]
+        }
+      ],
+      "precision_pass": true,
+      "status": "completed"
+    },
+    {
+      "name": "formal-gpu64_lib11",
+      "variant": "gpu64_lib11",
+      "source_commit": "386a11a7a0156932f885faae3dcb5fafb775086a",
+      "command": [
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/benchmark_submission.py",
+        "--image-dir",
+        "data/SuperShip/reference/images",
+        "--meta-file",
+        "data/SuperShip/reference/reference_images_meta.json",
+        "--output-file",
+        "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu64_lib11/predictions.json",
+        "--runs",
+        "3",
+        "--",
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/nvjpeg_worker.py"
+      ],
+      "env_overrides": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "10",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "0",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1",
+        "KERNEL_WEIGHT_HALF": "1",
+        "KERNEL_AFFINE_HALF": "0",
+        "KERNEL_ENCODER_LAYOUT": "0",
+        "KERNEL_LINEAR1X1": "1",
+        "FEATURE_CAT": "triton_half",
+        "EARLY_INPUT_RECYCLE": "1",
+        "BULK_RESULTS": "1",
+        "DEFORM_ATTN_IMPL": "triton",
+        "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+        "PYTORCH_CUDA_ALLOC_CONF": "backend:native",
+        "DEFORM_VALUE_CACHE": "0",
+        "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1",
+        "HOST_THP": "1",
+        "KERNEL_RELU_AFFINE_FUSE": "1",
+        "KERNEL_RELU_AFFINE_HALF_OUT": "1",
+        "THREADED_JSON": "1",
+        "POST_TOP_QUERIES": "100",
+        "INFERENCE_IMPORTS": "1",
+        "NVJPEG_BACKEND": "gpu_hybrid",
+        "NVJPEG_BATCH": "64",
+        "NVJPEG_OVERLAP": "1",
+        "NVJPEG_LIBRARY": "/usr/local/cuda/lib64/libnvjpeg.so"
+      },
+      "native_decode_scale": 1,
+      "validation_ap50": null,
+      "hidden_ap50": null,
+      "return_code": 0,
+      "runs_seconds": [
+        0.637675625,
+        0.595707224,
+        0.610318534
+      ],
+      "median_seconds": 0.610318534,
+      "native_reports": [
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 64,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 64,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        },
+        {
+          "nvjpeg_backend": "gpu_hybrid",
+          "decode_batch": 64,
+          "overlap": true,
+          "native_images": 200,
+          "fallback_images": 0
+        }
+      ],
+      "scores": [
+        {
+          "ap50": 0.7796,
+          "sha256": "d7ed057db5fac38cf28e595d3dae99f51346d3a7c5261ef1fe699d468af388cc",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu64_lib11/predictions.run1.json"
+          ]
+        },
+        {
+          "ap50": 0.7796,
+          "sha256": "d7ed057db5fac38cf28e595d3dae99f51346d3a7c5261ef1fe699d468af388cc",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu64_lib11/predictions.run2.json"
+          ]
+        },
+        {
+          "ap50": 0.7796,
+          "sha256": "d7ed057db5fac38cf28e595d3dae99f51346d3a7c5261ef1fe699d468af388cc",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-gpu64_lib11/predictions.run3.json"
+          ]
+        }
+      ],
+      "precision_pass": true,
+      "status": "completed"
+    },
+    {
+      "name": "formal-baseline-end",
+      "variant": "baseline",
+      "source_commit": "386a11a7a0156932f885faae3dcb5fafb775086a",
+      "command": [
+        "/home/ubuntu/.cache/supership-venv/bin/python",
+        "supership/benchmark_submission.py",
+        "--image-dir",
+        "data/SuperShip/reference/images",
+        "--meta-file",
+        "data/SuperShip/reference/reference_images_meta.json",
+        "--output-file",
+        "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-baseline-end/predictions.json",
+        "--runs",
+        "3",
+        "--",
+        "bash",
+        "run.sh",
+        "--worker"
+      ],
+      "env_overrides": {
+        "INPUT_SIZE": "544",
+        "PIPELINE": "fast",
+        "PRECISION": "fp16",
+        "BACKEND": "cuda_graph",
+        "BATCH_SIZE": "8",
+        "NUM_WORKERS": "10",
+        "PIPELINE_DEPTH": "3",
+        "SCORE_THRESHOLD": "0.05",
+        "IMAGE_DECODER": "opencv",
+        "VECTORIZED_RESULTS": "1",
+        "CHANNELS_LAST": "1",
+        "MODEL_DEPLOY": "0",
+        "FAST_EXIT": "1",
+        "TORCH_THREADS": "1",
+        "JPEG_REDUCTION": "2",
+        "RESIZE_ANTIALIAS": "1",
+        "OPENCV_COPY_MODE": "cvtcolor",
+        "ASYNC_OUTPUT": "1",
+        "DECODER_LAYERS": "0",
+        "CUDNN_BENCHMARK": "0",
+        "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+        "FUSE_CONV_BN": "1",
+        "KERNEL_WEIGHT_HALF": "1",
+        "KERNEL_AFFINE_HALF": "0",
+        "KERNEL_ENCODER_LAYOUT": "0",
+        "KERNEL_LINEAR1X1": "1",
+        "FEATURE_CAT": "triton_half",
+        "EARLY_INPUT_RECYCLE": "1",
+        "BULK_RESULTS": "1",
+        "DEFORM_ATTN_IMPL": "triton",
+        "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+        "PYTORCH_CUDA_ALLOC_CONF": "backend:native",
+        "DEFORM_VALUE_CACHE": "0",
+        "GLIBC_TUNABLES": "glibc.malloc.hugetlb=1",
+        "HOST_THP": "1",
+        "KERNEL_RELU_AFFINE_FUSE": "1",
+        "KERNEL_RELU_AFFINE_HALF_OUT": "1",
+        "THREADED_JSON": "1",
+        "POST_TOP_QUERIES": "100",
+        "INFERENCE_IMPORTS": "1"
+      },
+      "native_decode_scale": null,
+      "validation_ap50": null,
+      "hidden_ap50": null,
+      "return_code": 0,
+      "runs_seconds": [
+        0.252665688,
+        0.253022944,
+        0.264093406
+      ],
+      "median_seconds": 0.253022944,
+      "native_reports": [],
+      "scores": [
+        {
+          "ap50": 0.7809,
+          "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-baseline-end/predictions.run1.json"
+          ]
+        },
+        {
+          "ap50": 0.7809,
+          "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-baseline-end/predictions.run2.json"
+          ]
+        },
+        {
+          "ap50": 0.7809,
+          "sha256": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+          "command": [
+            "/home/ubuntu/.cache/supership-venv/bin/python",
+            "supership/score_submission.py",
+            "--gt",
+            "data/SuperShip/reference/annotations/instances_reference.json",
+            "--submission",
+            "/tmp/SuperShip-nvjpeg-backends-20261026/output/20261026-091334-nvjpeg-backends/formal-baseline-end/predictions.run3.json"
+          ]
+        }
+      ],
+      "precision_pass": true,
+      "status": "completed"
+    }
+  ]
+}

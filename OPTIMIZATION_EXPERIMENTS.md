@@ -29,9 +29,9 @@
 | 保守高精度候选 | 640完整JPEG解码，validation AP50=0.9167；[记录](experiments/20261022-official-fast-opencv-score005/notes.md) |
 | 最近Accepted信息 | 2026-10-26 08:23:38，ruc2602，**0.258409792秒**；[脱敏回执](experiments/20261026-075543-continued-sweep/submission-receipt.txt)；timing parsed only，hidden未测 |
 | 官方隐藏集最优 | 未知 |
-| 任务状态 | continued-sweep completed；旧会话已中断，output-overlap实现由本实验接管；GPU0已释放 |
+| 任务状态 | 2026-10-26 09:28按用户要求停止优化；nvJPEG实验abandoned，已完成初筛与交接；GPU0空闲，未启动新实验 |
 
-**常用入口**：运行`bash run.sh --worker`；基准/评分脚本在[tools/benchmark/](tools/benchmark/)；开发环境在[tools/dev/](tools/dev/)；主目录源码将按用户要求同步最快已验证候选，其他优化代码见[分支快照](experiments/branches/README.md)。
+**常用入口**：运行`bash run.sh --worker`；基准/评分脚本在[tools/benchmark/](tools/benchmark/)；开发环境在[tools/dev/](tools/dev/)；主目录默认运行已验证最快thread100-light，配置见`configs/fastest.env`，其他优化代码见[分支快照](experiments/branches/README.md)。
 
 [完整结果表](experiments/results/README.md) · [全部历史报告](experiments/reports/) · [各分支台账与SHA](experiments/branches/README.md) · [数据/原始产物](experiments/data/README.md)
 
@@ -166,3 +166,12 @@ Main entrypoint consistency follow-up2026-10-26 08:45CST: tools/benchmark/benchm
 - Baseline+eachvariant complete3public200-reference runs; pixel/kernel/ring/tail/output durability checks first. Separate boundary/IO diagnostics for each major direction; promising gains require8alternatingpairs before mainpromotion. Referencegate0.77763;validation/hidden=null. No larger validation or competition submission. Preserve all regressions and exact source/config/asset hashes.
 
 Completion2026-10-26 09:03CST —20261026-085041-broad-directions completed, **no promotion**. Four independentCPU/exit/GPU/output variants screened3roundseach plus beginning/end controls,5boundary/IOprobes and16alternatingpairs:55complete200-reference outputs,allAP50=0.7809andbyte-identical. CPUreadsyscalls14559→404butpaired257.600508→260.544697ms,3/8wins,p=.640625;GPU257.714756→256.471031ms,4/8wins,p=.6875,randomfeaturemicro0.399525→0.405650ms/batch. HeapadviceacceptedbutAnonHugePagesonly0–4MiBincreaseafter12s;exit269.883890ms andfdatasync260.065426ms show noinitialgain.54uniquechecks passed after correcting2preexistingPNG-behaviorfixtureassumptions;failuresretained. Main/fastestthread100-light/Accepted258.409792ms unchanged,validation/hidden=null,nocompetitionupload. GPU0released09:01. [Allrounds/analysis](experiments/20261026-085041-broad-directions/notes.md).
+
+
+## 20261026-091334-nvjpeg-backends
+
+- OwnerCodex/root; branch `exp/nvjpeg-backends-20261026`; status **abandoned**; updated2026-10-26 09:28CST. Parent fastestmain `f7b03b8f9e153b409431d49f40390763e4c2312a`; worktree `/tmp/SuperShip-nvjpeg-backends-20261026`. GPU0RTX4090 reserved09:15 after idle/process audit.
+- User explicitly requests actualdifferentdecoder nvJPEG, backend/hardware/input-format/CUDA compatibility audit, batched decoding and GPU/inference contention, freshAP50. Read NVIDIA12.8docs; installedsystemCUDA11.8/nvJPEG11.9 andtorchvisionbundlednvJPEG12 are candidates, actualversions/status toprobe. HistoricaltorchvisionCUDAdecode~1.87s does not replace this new explicitbackend/batch>50/overlap experiment.
+- Plan: syntheticinit-only capability probe (DEFAULT/HYBRID/GPU_HYBRID/HARDWARE), separately timed request-only publicinput format audit and decode profiling, then fullREADY workerintegration with fixedmodel/batch8/544 and decoupled decodebatch8/64/128 where supported. Check all200images, freshreferenceAP50gate0.77763, tails/differentdimensions/fallback, at least3completeofficialruns per viableconfiguration and pairedconfirmation ofpromisingimprovements. No evaluationinputbeforeREADY, timer/scorerchanges, larger-validationjob or competitionupload. Unsupportedbackends retained asfailures, no silentbackend substitution. Preserve mainfastest until validgain.
+
+Stop/handoff2026-10-26 09:28CST —20261026-091334-nvjpeg-backends **abandoned per user instruction to stop optimization and organize commits**. Preset screen already finished naturally:30complete200-reference outputs,allAP50=0.7794–0.7809pass. ActualnvJPEG11.9.0/12.3.1softwarebackendssupported;hardwarecreateARCH_MISMATCH7,engines0. BestGPU_HYBRIDbatch128498.190613ms vs currentOpenCV253.022944–256.347169ms,notpromoted.9targetedtests passed after correcting2fixtureassumptions;initialfailures/summaryretained. No newexperimentafterstop;Nsight/resource-contention breakdown,pairedconfirmation/lifecycle tuning andlargervalidation remainunperformed. Mainfastest/Accepted258.409792ms unchanged,validation/hidden=null,nocompetitionupload. No benchmark/worker remains,GPU0idle/released09:28. [Results/handoff](experiments/20261026-091334-nvjpeg-backends/notes.md).

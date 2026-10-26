@@ -4,8 +4,8 @@
 
 ```text
 experiments/
-├── results/       全部129份实验记录的JSON/CSV索引
-├── branches/      9个分支：源码快照、提交SHA、各自原台账
+├── results/       2026-10-25归档的129份历史记录索引
+├── branches/      归档时9个分支：源码快照、SHA、原台账
 ├── reports/       原根目录的详细优化报告、CSV及旧热点分析
 ├── guides/        常用命令、环境配置和上游文档
 ├── data/          统一数据集/权重入口与数据说明
@@ -22,3 +22,15 @@ experiments/
 - 各worktree/output继续访问各自独立产物区；原分支已提交代码不变。目录整理与官方规范同步现已落到main；原有分支与固定SHA快照继续保留。
 
 - [20261026-075543-continued-sweep](20261026-075543-continued-sweep/notes.md)：50配置、150轮参考集计时、8对复测；最新Accepted258.409792ms，完整源码和全部配置保留在`exp/continued-sweep-20261026`，固定运行源码SHA见记录。
+
+当前main默认运行已验证最快的`thread100-light`，配置在[configs/fastest.env](../configs/fastest.env)。2026-10-26 09:28用户要求停止优化；GPU已释放，未证实更快的实验实现保留在各自分支。后续实验目录独立保存，不改写上方历史归档索引。
+
+| 近期记录 | 状态与结论 |
+| --- | --- |
+| [最新候选性能诊断](20261026-083341-profile-thread100/notes.md) | completed；259.258ms复测，定位CPU供给、退出、GPU搬运 |
+| [最快候选同步main](20261026-083914-main-fastest/notes.md) | completed；默认入口/计时脚本统一配置，三轮261.306ms |
+| [解码等待顺序](20261026-084102-decode-latewait/notes.md) | completed；8对未确认收益，未晋级 |
+| [CPU/退出/GPU/落盘四方向](20261026-085041-broad-directions/notes.md) | completed；55次完整运行，均未确认稳定收益 |
+| [nvJPEG后端与批量解码](20261026-091334-nvjpeg-backends/notes.md) | abandoned，按用户指令停止；30轮初筛已完成，最佳498.191ms慢于同期OpenCV253–256ms |
+
+以上均为本机RTX4090公开200张参考集结果；validation/hidden是否实测以各记录为准，不能作为官方隐藏成绩。历史原始产物、分支与worktree继续保留，main/output中的链接仅提供本机访问。
