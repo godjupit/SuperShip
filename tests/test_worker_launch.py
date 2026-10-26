@@ -39,8 +39,9 @@ def test_allocator_environment_at_worker_start(tmp_path, pipeline, host_thp, tun
                       else 'supership/generate_submission.py')
 
 
+@pytest.mark.parametrize('entrypoint', ['run.sh', 'tools/benchmark/benchmark_optimized.sh'])
 @pytest.mark.parametrize('overrides', [{}, {'INPUT_SIZE': '640', 'THREADED_JSON': '0', 'NUM_WORKERS': '3'}])
-def test_default_launcher_selects_verified_fastest_and_preserves_overrides(tmp_path, overrides):
+def test_default_launcher_selects_verified_fastest_and_preserves_overrides(tmp_path, overrides, entrypoint):
     executable = tmp_path / 'inspect-preset'
     executable.write_text('#!/usr/bin/env python3\nimport os,json,sys\n'
                           'keys=["PIPELINE","INPUT_SIZE","NUM_WORKERS","THREADED_JSON","POST_TOP_QUERIES","INFERENCE_IMPORTS"]\n'
@@ -51,9 +52,10 @@ def test_default_launcher_selects_verified_fastest_and_preserves_overrides(tmp_p
     for key in keys:
         env.pop(key, None)
     env.update(PYTHON_BIN=str(executable), **overrides)
-    result = subprocess.run(['bash', str(ROOT / 'run.sh'), '--worker'], env=env,
+    result = subprocess.run(['bash', str(ROOT / entrypoint), '--worker'], env=env,
                             capture_output=True, text=True, check=True)
     worker, config = json.loads(result.stdout)
-    assert worker == 'supership/fast_worker.py'
+    assert worker == ('supership/fast_worker.py' if entrypoint == 'run.sh'
+                      else 'supership/benchmark_submission.py')
     assert config == dict(PIPELINE='fast', INPUT_SIZE='544', NUM_WORKERS='10',
                           THREADED_JSON='1', POST_TOP_QUERIES='100', INFERENCE_IMPORTS='1') | overrides
