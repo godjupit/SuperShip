@@ -1,0 +1,224 @@
+{
+  "best_seconds": 0.265316869,
+  "cases": [
+    {
+      "case": "fast-score-015200-0",
+      "variant": "control",
+      "median_seconds": 0.269878162,
+      "runs_seconds": [
+        0.264634568,
+        0.269878162,
+        0.270232625
+      ],
+      "log_sha256": "7b724e487058f103512876b7945ce45d6f29b3ee97d22c472e823c6959f56757",
+      "submitted": false,
+      "precision_pass": true
+    },
+    {
+      "case": "fast-score-015223-1",
+      "variant": "normalize",
+      "median_seconds": 0.272700954,
+      "runs_seconds": [
+        0.27240914,
+        0.272700954,
+        0.28503238
+      ],
+      "log_sha256": "e9881ab034188f07e539839e19925cfb414126dcddcc0179f994bb2320afb490",
+      "submitted": false,
+      "precision_pass": true
+    },
+    {
+      "case": "fast-score-015242-2",
+      "variant": "postprocess",
+      "median_seconds": 0.274082383,
+      "runs_seconds": [
+        0.271664137,
+        0.274082383,
+        0.276053739
+      ],
+      "log_sha256": "2a336bb66b166ca89e5fa08dc4ed30935d082599ffd351a20916c86656a33768",
+      "submitted": false,
+      "precision_pass": true
+    },
+    {
+      "case": "fast-score-015300-3",
+      "variant": "pack-segment",
+      "median_seconds": 0.272526891,
+      "runs_seconds": [
+        0.273348593,
+        0.272526891,
+        0.271021453
+      ],
+      "log_sha256": "d8b79d7572d1d28676ad317381bc7b1ae3a009c05120bfa7eb1d58a7cbcaa150",
+      "submitted": false,
+      "precision_pass": true
+    },
+    {
+      "case": "fast-score-015321-4",
+      "variant": "pack-block1024",
+      "median_seconds": 0.278240047,
+      "runs_seconds": [
+        0.276257055,
+        0.278838819,
+        0.278240047
+      ],
+      "log_sha256": "e0744dcfb56233f60b49570430991a50c9b956b82e6510bdbef87dda073215a6",
+      "submitted": false,
+      "precision_pass": true
+    },
+    {
+      "case": "fast-score-015341-5",
+      "variant": "pack-segment1024",
+      "median_seconds": 0.272105356,
+      "runs_seconds": [
+        0.272105356,
+        0.283467334,
+        0.267872476
+      ],
+      "log_sha256": "0b93624fc228e92255d5d659ac28b212131d0857f8365993709b5761079375de",
+      "submitted": false,
+      "precision_pass": true
+    },
+    {
+      "case": "fast-score-015401-6",
+      "variant": "affine-block1024",
+      "median_seconds": 0.272469163,
+      "runs_seconds": [
+        0.284969538,
+        0.269959727,
+        0.272469163
+      ],
+      "log_sha256": "411635d33eda1a69794b9dce81368aa1c032e4388ef65a161cdff4de53834fbf",
+      "submitted": false,
+      "precision_pass": true
+    },
+    {
+      "case": "fast-score-015420-7",
+      "variant": "light-imports",
+      "median_seconds": 0.278971405,
+      "runs_seconds": [
+        0.268686385,
+        0.292004442,
+        0.278971405
+      ],
+      "log_sha256": "42fc1ee92191d16f2274a48c387879503068e3f5e93be3ae5357230129675bd7",
+      "submitted": false,
+      "precision_pass": true
+    },
+    {
+      "case": "fast-score-015433-8",
+      "variant": "queries200",
+      "median_seconds": 0.269422043,
+      "runs_seconds": [
+        0.268272586,
+        0.272377934,
+        0.269422043
+      ],
+      "log_sha256": "11fb3dcc731191e07297d37255a95d1a5c4760a36140ef9b4025b24df89f4e29",
+      "submitted": false,
+      "precision_pass": true
+    },
+    {
+      "case": "fast-score-015453-9",
+      "variant": "queries150",
+      "median_seconds": 0.269356968,
+      "runs_seconds": [
+        0.269356968,
+        0.297164761,
+        0.258734917
+      ],
+      "log_sha256": "c953dff0004c5972600801502c745c6fbee1467a2c313b52dd56169883240138",
+      "submitted": false,
+      "precision_pass": false
+    },
+    {
+      "case": "fast-score-015513-10",
+      "variant": "queries100",
+      "median_seconds": 0.262866534,
+      "runs_seconds": [
+        0.262866534,
+        0.272789906,
+        0.258347027
+      ],
+      "log_sha256": "91afab3d9674adf640999352cef4a676c88b02b32a20e00f75d41a99666f6921",
+      "submitted": false,
+      "precision_pass": false
+    },
+    {
+      "case": "fast-score-015532-11",
+      "variant": "top200",
+      "median_seconds": 0.27394379,
+      "runs_seconds": [
+        0.275772265,
+        0.27394379,
+        0.268106623
+      ],
+      "log_sha256": "9959cb187db0e460efd9d6dd789750de569018ac3c5941119a9532241ac3e89e",
+      "submitted": false,
+      "precision_pass": true
+    },
+    {
+      "case": "fast-score-015551-12",
+      "variant": "top100",
+      "median_seconds": 0.265316869,
+      "runs_seconds": [
+        0.259766766,
+        0.265316869,
+        0.275865837
+      ],
+      "log_sha256": "fadf01ea4fcba8da5ea8d28bbb7085a92888bb2e999947a53bca3ca186a5319a",
+      "submitted": true,
+      "precision_pass": true,
+      "account": "ruc2602",
+      "receipt": "Submission Time (Asia/Shanghai): 2026-10-26 07:56:54\nServer Message: Submission Accepted; Performance: 0.265316869 s; OK: median runtime = 0.265316869 s (timing JSON); timing parsed only.\n",
+      "initial_upload": "response_timeout_90s",
+      "retry": "accepted_2026-10-26_07:56:54"
+    },
+    {
+      "case": "fast-score-075839-0",
+      "variant": "fused-io",
+      "median_seconds": 0.313094453,
+      "runs_seconds": [
+        0.304255346,
+        0.327657726,
+        0.313094453
+      ],
+      "log_sha256": "5284d2a6364f823540f71bfc9358c538fbc44b281d306a447510d5add60f7c9a",
+      "submitted": false,
+      "precision_pass": true
+    },
+    {
+      "case": "fast-score-075858-1",
+      "variant": "gpu-resize512",
+      "median_seconds": 0.296951878,
+      "runs_seconds": [
+        0.296951878,
+        0.312481646,
+        0.269989498
+      ],
+      "log_sha256": "b14bbcd6b40a34733db99fd934a85375698157aeda1c4b355a93b8ea992aa412",
+      "submitted": false,
+      "precision_pass": true
+    },
+    {
+      "case": "fast-score-075917-2",
+      "variant": "model-deploy",
+      "status": "runtime_failed",
+      "submitted": false
+    },
+    {
+      "case": "fast-score-080019-0",
+      "variant": "model-deploy",
+      "median_seconds": 0.310753355,
+      "runs_seconds": [
+        0.288822218,
+        0.310753355,
+        0.340877644
+      ],
+      "log_sha256": "4dcbb6be7d29ed7c26ceb66ee63ac0bb684e0f5960b82775175e4824d5719769",
+      "submitted": false,
+      "precision_pass": true
+    }
+  ],
+  "scope": "intact complete three-round logs; no concatenated rounds; timing parsed only; hidden unmeasured"
+}

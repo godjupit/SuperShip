@@ -23,11 +23,11 @@
 | 当前状态 | 定位 |
 | --- | --- |
 | 历史最短有效完整参考日志 | 20261024-001935-kernel-weights-linear-concat，0.302713346秒；[记录](experiments/20261024-001935-kernel-weights-linear-concat/notes.md) |
-| 当前比较组推荐候选 | 20261026-014213-configwide/cudnn-fixed：batch8,w10,depth3,融合半精度输出,CUDNN_BENCHMARK=0；完整三轮266.237340ms已Accepted，波动重叠；[记录](experiments/20261026-014213-configwide/notes.md) |
+| 当前比较组推荐候选 | 20261026-014417-fusedio/top100：batch8,w10,depth3,full decoder,half-output affine,CUDNN_BENCHMARK=0,POST_TOP_QUERIES=100；三轮265.316869ms已Accepted；[记录](experiments/20261026-014417-fusedio/notes.md) |
 | 保守高精度候选 | 640完整JPEG解码，validation AP50=0.9167；[记录](experiments/20261022-official-fast-opencv-score005/notes.md) |
-| 最近Accepted信息 | 2026-10-26 01:49:15，ruc2602，**0.266237340秒**；[脱敏回执](experiments/20261026-014213-configwide/submission-receipt.txt)；timing parsed only，hidden未测 |
+| 最近Accepted信息 | 2026-10-26 07:56:54，ruc2602，**0.265316869秒**；[脱敏回执](experiments/20261026-014417-fusedio/submission-receipt.txt)；timing parsed only，hidden未测 |
 | 官方隐藏集最优 | 未知 |
-| 任务状态 | configwide completed；fusedio running，GPU0独占算子检查与200张刷分；不跑大验证集 |
+| 任务状态 | fusedio completed；output-overlap running，GPU0独占200张刷分；不跑大验证集 |
 
 **常用入口**：运行`bash run.sh --worker`；基准/评分脚本在[tools/benchmark/](tools/benchmark/)；开发环境在[tools/dev/](tools/dev/)；主目录源码保持main原版本，其他优化代码见[分支快照](experiments/branches/README.md)。
 
@@ -90,3 +90,30 @@ Completion 2026-10-26 01:40 CST —20261026-013427-validation-sweep: **completed
 2026-10-26 01:50 CST GPU handover: configwide17-case suite complete,51worker outputs,2reference precision-failed configurations (decoder2,score0.075) not uploaded; latestAccepted266.237340ms (cudnn-fixed), timing-only. GPU0 verified idle and reserved now for fusedio tests/screens. All16 fusedio configs inherit new CUDNN_BENCHMARK=0 parent from configwide/cudnn-fixed; baseline floor refreshed266.237340ms. No larger validation jobs.
 
 20261026-014213-configwide **completed** at01:50 CST;17configs/51rounds; latestAccepted266.237340ms,cudnn-fixed,01:49:15; decoder2/threshold0.075 failed referenceAP, no upload. GPU handed to fusedio. Full evidence experiments/20261026-014213-configwide/notes.md.
+
+
+## 20261026-015358-output-overlap
+
+- Codex /root; branch `exp/output-overlap-20261026`; status **running** (CPU implementation only); updated2026-10-26 01:54 CST. Parent `0cd93cb12821da085172ca470c0e71e836de7016`; worktree `/tmp/SuperShip-output-20261026`. GPU remains exclusively with fusedio until explicit handover.
+- Register threaded per-batch JSON formatting/serialization, byte-identical output order/rounding, prestarted thread and joined tasks, full final fsync/exit included. Synthetic correctness then complete200-image3-round accuracy/timing; no large validation.
+
+
+## 20261026-075543-continued-sweep
+
+- Owner Codex current /root continuation; branch `exp/continued-sweep-20261026`; status **running**; updated 2026-10-26 07:58 CST. Parent `0cd93cb12821da085172ca470c0e71e836de7016`; isolated worktree `/tmp/SuperShip-continued-20261026`.
+- Fresh process audit found no benchmark/worker/scoring processes and idle GPU0; fusedio last raw result at01:55 (6 hours old). Reserve GPU0 from07:58 for this continuation; output-overlap has CPU-only reservation and must wait for handover. Other worktree modifications left untouched.
+- New hypotheses: pinned reusable image-size transfers, CUDA event reuse, batch7/9/14 tails, smaller/larger model geometry under reference accuracy gate, intermediate query counts, top-k output sizing, GLIBC mmap/arena and torch/OMP thread settings. Each variant registered in plan.json before running, unchanged official timer/scorer, all200 inputs afterREADY, complete3-round timing, no larger validation. Current floor266.237340ms; only fresh passing improvements eligible for competition upload.
+
+
+2026-10-26 08:00 CST continuation resource conflict: another independent live Codex session resumed fusedio at07:56 and has a model-deploy benchmark active at08:00. Continued-sweep scheduler PID236262 STOPPED; its current batch14 worker terminated, no other session processes touched. Every screen from07:58 through08:00 must be treated as potentially contended/INVALID for formal comparison. No upload from continued-sweep. Defer GPU to existing fusedio/output-overlap owner; continuation does CPU implementation only until explicit shared-ledger handover. Latest externally verified Accepted is fusedio/top100265.316869ms at07:56:54, not266.237340.
+
+Correction08:01: batch14 had already finished naturally before termination attempt (no process killed). Scheduler then terminated without starting another case. First7 cases/21rounds retained but all timing-invalid; correctness outputs valid. GPU fully released by continued-sweep.
+
+
+2026-10-26 08:04 CST user explicitly instructed terminating the other Codex. Current thread01a1757c-3ea5-7373-b308-bb76e262b969 maps to PID233847 (started07:53:55); old fusedio/output owner thread01a1741f-0cb0-7d61-85cb-7f09cd3c060a maps to PID168376 (started01:32:32). SIGTERM sent only to168376. No benchmark/worker/Nsight children active at audit; historical sources/results/worktrees retained. Continuation resumes exclusive GPU0 after verifying termination and idle.
+
+GPU0 handover2026-10-26 08:04 CST: fusedio48complete worker outputs plus boundary3/Nsight1 diagnostics finished, currentAccepted265.316869ms. Output-overlap now owns GPU exclusively for new BGR checks and10three-round reference screens. No concurrent GPU jobs and no large validation.
+
+2026-10-26 08:06 CST GPU0 exclusively reclaimed by continued-sweep after user-directed termination of PID168376 and zero remaining worker/benchmark/Nsight processes. Combined72correctness checks passed (ring/tails/different dimensions, exact fusedIO/BGR/serialization).42registered variants ready for fresh3-round reference timings; all earlier21contended rounds excluded. Other parent worktrees preserved.
+
+20261026-014417-fusedio **completed**08:04 CST:17cases/48complete worker outputs,1deployment failure retained/fixed; query150/100 failed AP. top100 **Accepted265.316869ms** at07:56:54 after network-timeout retry. Full profiling shows core208–212ms,exit58–64ms,GPUactivity128.181ms,74ms gaps; CPU supply priority. GPU handed to output-overlap. See experiments/20261026-014417-fusedio/notes.md.
