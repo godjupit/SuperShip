@@ -1,0 +1,93 @@
+{
+  "source_commit": "7125ee3926520987a6a043dbace2d94f1a08e9c0",
+  "runs": [
+    {
+      "name": "baseline",
+      "timings": {
+        "runs_seconds": [
+          0.259257667,
+          0.251140982,
+          0.266716015
+        ],
+        "median_seconds": 0.259257667
+      },
+      "reference_ap50": [
+        0.7809,
+        0.7809,
+        0.7809
+      ]
+    },
+    {
+      "name": "boundary",
+      "timings": {
+        "runs_seconds": [
+          0.260299363,
+          0.265065568,
+          0.318672387
+        ],
+        "median_seconds": 0.265065568
+      },
+      "reference_ap50": [
+        0.7809,
+        0.7809,
+        0.7809
+      ]
+    },
+    {
+      "name": "line",
+      "timings": {
+        "runs_seconds": [
+          0.282288129,
+          0.270154028,
+          0.266250644
+        ],
+        "median_seconds": 0.270154028
+      },
+      "reference_ap50": [
+        0.7809,
+        0.7809,
+        0.7809
+      ]
+    },
+    {
+      "name": "io",
+      "timings": {
+        "runs_seconds": [
+          0.264476704,
+          0.268004834,
+          0.261230073
+        ],
+        "median_seconds": 0.264476704
+      },
+      "reference_ap50": [
+        0.7809,
+        0.7809,
+        0.7809
+      ]
+    },
+    {
+      "name": "nsys1",
+      "timings": {
+        "runs_seconds": [
+          7.441334906
+        ],
+        "median_seconds": 7.441334906
+      },
+      "reference_ap50": [
+        0.7809
+      ]
+    },
+    {
+      "name": "nsys2",
+      "timings": {
+        "runs_seconds": [
+          7.444352733
+        ],
+        "median_seconds": 7.444352733
+      },
+      "reference_ap50": [
+        0.7809
+      ]
+    }
+  ]
+}

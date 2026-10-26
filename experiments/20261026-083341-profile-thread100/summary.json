@@ -1,0 +1,1826 @@
+{
+  "formal": {
+    "name": "baseline",
+    "timings": {
+      "runs_seconds": [
+        0.259257667,
+        0.251140982,
+        0.266716015
+      ],
+      "median_seconds": 0.259257667
+    },
+    "reference_ap50": [
+      0.7809,
+      0.7809,
+      0.7809
+    ]
+  },
+  "source_commit": "7125ee3926520987a6a043dbace2d94f1a08e9c0",
+  "boundary": [
+    {
+      "round": 1,
+      "runtime_ms": 209.936574,
+      "exit_ms": 49.744251,
+      "diagnostic_dump_ms": 0.361299,
+      "total_ms": 260.299363,
+      "protocol_misc_ms": 0.25723900000002226
+    },
+    {
+      "round": 2,
+      "runtime_ms": 208.89503,
+      "exit_ms": 55.61532,
+      "diagnostic_dump_ms": 0.307349,
+      "total_ms": 265.065568,
+      "protocol_misc_ms": 0.24786899999999645
+    },
+    {
+      "round": 3,
+      "runtime_ms": 267.360711,
+      "exit_ms": 50.769368,
+      "diagnostic_dump_ms": 0.280529,
+      "total_ms": 318.672387,
+      "protocol_misc_ms": 0.261779000000034
+    }
+  ],
+  "line": [
+    {
+      "round": 1,
+      "runtime_ms": 225.349523,
+      "exit_ms": 50.071842,
+      "diagnostic_dump_ms": 6.492115,
+      "total_ms": 282.288129,
+      "protocol_misc_ms": 0.37464900000002466,
+      "line_accounted_ms": 225.147864,
+      "main_thread_exclusive_ms": {
+        "metadata": 0.23526,
+        "other_host": 13.973457,
+        "schedule_host": 5.985209,
+        "snapshot_collect": 4.246004000000001,
+        "input_future_wait": 156.492917,
+        "transfer_submit_host": 14.20516,
+        "graph_launch_host": 6.862283,
+        "gpu_output_event_wait": 13.786219,
+        "thread_shutdown": 1.264865,
+        "json_worker_final_wait": 0.11558,
+        "json_worker_shutdown": 0.06584,
+        "json_join": 0.306909,
+        "write_flush": 1.536064,
+        "fsync": 6.072097,
+        "outside_frame_context_and_probe": 0.20165900000000647
+      },
+      "load_service_sum_ms": 1970.628215,
+      "load_wall_span_ms": 207.59128,
+      "cv_thread_service": {
+        "imread": {
+          "calls": 200,
+          "sum_ms": 1592.606861,
+          "median_ms": 7.412862499999999,
+          "max_ms": 24.376189
+        },
+        "resize": {
+          "calls": 200,
+          "sum_ms": 308.576906,
+          "median_ms": 1.33497,
+          "max_ms": 10.378321
+        },
+        "cvtColor": {
+          "calls": 200,
+          "sum_ms": 48.000178,
+          "median_ms": 0.1200145,
+          "max_ms": 3.611866
+        }
+      }
+    },
+    {
+      "round": 2,
+      "runtime_ms": 212.983412,
+      "exit_ms": 50.406621,
+      "diagnostic_dump_ms": 6.390666,
+      "total_ms": 270.154028,
+      "protocol_misc_ms": 0.3733289999999938,
+      "line_accounted_ms": 212.793902,
+      "main_thread_exclusive_ms": {
+        "metadata": 0.240319,
+        "other_host": 16.592401,
+        "schedule_host": 7.306951,
+        "snapshot_collect": 5.486389,
+        "input_future_wait": 147.988914,
+        "transfer_submit_host": 9.523587,
+        "graph_launch_host": 4.347889,
+        "gpu_output_event_wait": 13.141212,
+        "thread_shutdown": 1.358495,
+        "json_worker_final_wait": 0.11498,
+        "json_worker_shutdown": 0.06278,
+        "json_join": 0.325089,
+        "write_flush": 0.39727799999999996,
+        "fsync": 5.907618,
+        "outside_frame_context_and_probe": 0.1895099999999843
+      },
+      "load_service_sum_ms": 1895.293025,
+      "load_wall_span_ms": 197.47237,
+      "cv_thread_service": {
+        "imread": {
+          "calls": 200,
+          "sum_ms": 1530.674049,
+          "median_ms": 6.922834,
+          "max_ms": 20.533423
+        },
+        "resize": {
+          "calls": 200,
+          "sum_ms": 303.304583,
+          "median_ms": 1.1991554999999998,
+          "max_ms": 7.249783
+        },
+        "cvtColor": {
+          "calls": 200,
+          "sum_ms": 39.899195,
+          "median_ms": 0.109925,
+          "max_ms": 2.256722
+        }
+      }
+    },
+    {
+      "round": 3,
+      "runtime_ms": 209.117828,
+      "exit_ms": 50.089182,
+      "diagnostic_dump_ms": 6.641566,
+      "total_ms": 266.25064399999997,
+      "protocol_misc_ms": 0.4020679999999617,
+      "line_accounted_ms": 208.924239,
+      "main_thread_exclusive_ms": {
+        "metadata": 0.249929,
+        "other_host": 11.249645,
+        "schedule_host": 6.591486000000001,
+        "snapshot_collect": 4.203238000000001,
+        "input_future_wait": 154.07531,
+        "transfer_submit_host": 7.896529999999999,
+        "graph_launch_host": 4.092757,
+        "gpu_output_event_wait": 12.949053,
+        "thread_shutdown": 1.191516,
+        "json_worker_final_wait": 0.131589,
+        "json_worker_shutdown": 0.06011,
+        "json_join": 0.144349,
+        "write_flush": 0.406518,
+        "fsync": 5.682209,
+        "outside_frame_context_and_probe": 0.1935890000000029
+      },
+      "load_service_sum_ms": 1864.343637,
+      "load_wall_span_ms": 192.33015,
+      "cv_thread_service": {
+        "imread": {
+          "calls": 200,
+          "sum_ms": 1516.848605,
+          "median_ms": 6.983904000000001,
+          "max_ms": 20.543883
+        },
+        "resize": {
+          "calls": 200,
+          "sum_ms": 292.35996,
+          "median_ms": 1.1355054999999998,
+          "max_ms": 9.868884
+        },
+        "cvtColor": {
+          "calls": 200,
+          "sum_ms": 33.961152,
+          "median_ms": 0.111819,
+          "max_ms": 1.434295
+        }
+      }
+    }
+  ],
+  "io": [
+    {
+      "round": 1,
+      "runtime_ms": 208.135484,
+      "exit_ms": 55.770202,
+      "diagnostic_dump_ms": 0.323429,
+      "total_ms": 264.476704,
+      "protocol_misc_ms": 0.24758899999999512,
+      "io_delta": {
+        "rchar": 58390962,
+        "wchar": 508452,
+        "syscr": 14559,
+        "syscw": 1,
+        "read_bytes": 0,
+        "write_bytes": 512000,
+        "cancelled_write_bytes": 0
+      },
+      "cpu_user_ms": 1719.5830000000005,
+      "cpu_system_ms": 95.8009999999998,
+      "major_faults": 0,
+      "mean_cpu_cores": 8.722126401089785
+    },
+    {
+      "round": 2,
+      "runtime_ms": 211.949972,
+      "exit_ms": 55.433455,
+      "diagnostic_dump_ms": 0.308298,
+      "total_ms": 268.004834,
+      "protocol_misc_ms": 0.313109000000012,
+      "io_delta": {
+        "rchar": 58390962,
+        "wchar": 508452,
+        "syscr": 14559,
+        "syscw": 1,
+        "read_bytes": 0,
+        "write_bytes": 512000,
+        "cancelled_write_bytes": 0
+      },
+      "cpu_user_ms": 1738.893,
+      "cpu_system_ms": 43.00199999999998,
+      "major_faults": 0,
+      "mean_cpu_cores": 8.40714902288357
+    },
+    {
+      "round": 3,
+      "runtime_ms": 208.771897,
+      "exit_ms": 51.925368,
+      "diagnostic_dump_ms": 0.259309,
+      "total_ms": 261.230073,
+      "protocol_misc_ms": 0.27349900000000993,
+      "io_delta": {
+        "rchar": 58390962,
+        "wchar": 508452,
+        "syscr": 14559,
+        "syscw": 1,
+        "read_bytes": 0,
+        "write_bytes": 512000,
+        "cancelled_write_bytes": 0
+      },
+      "cpu_user_ms": 1751.312,
+      "cpu_system_ms": 61.70300000000006,
+      "major_faults": 0,
+      "mean_cpu_cores": 8.684190861186647
+    }
+  ],
+  "gpu": [
+    {
+      "name": "nsys1",
+      "scope": "Inference-only cudaProfilerApi range; 200 reference images; not official E2E",
+      "kernel_count": 18900,
+      "kernel_sum_ms": 118.160588,
+      "kernels": [
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_tn_align8>(T1::Params)",
+          "calls": 550,
+          "milliseconds": 9.582018,
+          "mean_microseconds": 17.42185090909091,
+          "kernel_time_percent": 8.109318142526508
+        },
+        {
+          "name": "_pack",
+          "calls": 350,
+          "milliseconds": 7.889814,
+          "mean_microseconds": 22.542325714285713,
+          "kernel_time_percent": 6.677195953019462
+        },
+        {
+          "name": "ampere_fp16_s1688gemm_fp16_128x128_ldg8_relu_f2f_stages_32x1_tn",
+          "calls": 150,
+          "milliseconds": 6.919348,
+          "mean_microseconds": 46.12898666666666,
+          "kernel_time_percent": 5.8558848742357315
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 1575,
+          "milliseconds": 5.827021,
+          "mean_microseconds": 3.699695873015873,
+          "kernel_time_percent": 4.931442115030775
+        },
+        {
+          "name": "ampere_fp16_s1688gemm_fp16_64x128_sliced1x2_ldg8_relu_f2f_tn",
+          "calls": 175,
+          "milliseconds": 5.041221,
+          "mean_microseconds": 28.806977142857143,
+          "kernel_time_percent": 4.266414957244457
+        },
+        {
+          "name": "void cutlass__5x_cudnn::Kernel<cutlass_tensorop_f16_s16816fprop_optimized_f16_128x64_64x3_nhwc_align8>(T1::Params)",
+          "calls": 300,
+          "milliseconds": 4.939758,
+          "mean_microseconds": 16.46586,
+          "kernel_time_percent": 4.180546224092927
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x1_tn_align8>(T1::Params)",
+          "calls": 750,
+          "milliseconds": 4.763411,
+          "mean_microseconds": 6.3512146666666665,
+          "kernel_time_percent": 4.031302721682461
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::float16_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 1800,
+          "milliseconds": 4.742451,
+          "mean_microseconds": 2.6346950000000002,
+          "kernel_time_percent": 4.013564150510152
+        },
+        {
+          "name": "_relu_affine",
+          "calls": 750,
+          "milliseconds": 4.638678,
+          "mean_microseconds": 6.184904,
+          "kernel_time_percent": 3.925740450783809
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_32x2_tn_align8>(T1::Params)",
+          "calls": 300,
+          "milliseconds": 4.540817,
+          "mean_microseconds": 15.136056666666667,
+          "kernel_time_percent": 3.842920111399581
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::<unnamed>::silu_kernel(at::TensorIteratorBase &)::[lambda() (instance 1)]::operator ()() const::[lambda() (instance 5)]::operator ()() const::[lambda(c10::Half) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 1000,
+          "milliseconds": 4.044051,
+          "mean_microseconds": 4.044051,
+          "kernel_time_percent": 3.4225041263335614
+        },
+        {
+          "name": "void at::native::<unnamed>::max_pool_forward_nhwc<c10::Half>(const T1 *, int, long, long, long, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, T1 *, long *)",
+          "calls": 25,
+          "milliseconds": 3.956092,
+          "mean_microseconds": 158.24367999999998,
+          "kernel_time_percent": 3.348063907738848
+        },
+        {
+          "name": "void at::native::<unnamed>::vectorized_layer_norm_kernel<float, float>(int, T2, const T1 *, const T1 *, const T1 *, T2 *, T2 *, T1 *)",
+          "calls": 300,
+          "milliseconds": 3.739483,
+          "mean_microseconds": 12.464943333333332,
+          "kernel_time_percent": 3.164746438127068
+        },
+        {
+          "name": "ampere_fp16_s16816gemm_fp16_128x64_ldg8_relu_f2f_tn",
+          "calls": 25,
+          "milliseconds": 3.587328,
+          "mean_microseconds": 143.49312,
+          "kernel_time_percent": 3.0359767674818947
+        },
+        {
+          "name": "void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>, (int)4, TrivialOffsetCalculator<(int)1, unsigned int>, TrivialOffsetCalculator<(int)1, unsigned int>, at::native::memory::LoadWithCast<(int)1>, at::native::memory::StoreWithCast<(int)1>>(int, T1, T2, T4, T5, T6, T7)",
+          "calls": 150,
+          "milliseconds": 2.930399,
+          "mean_microseconds": 19.53599333333333,
+          "kernel_time_percent": 2.4800138943113588
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_32x1_tn_align8>(T1::Params)",
+          "calls": 575,
+          "milliseconds": 2.837148,
+          "mean_microseconds": 4.934170434782609,
+          "kernel_time_percent": 2.4010950250179866
+        },
+        {
+          "name": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16_f16f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x16_alignc4_execute_kernel__5x_cudnn",
+          "calls": 150,
+          "milliseconds": 2.27865,
+          "mean_microseconds": 15.191,
+          "kernel_time_percent": 1.9284348855813074
+        },
+        {
+          "name": "void at::native::<unnamed>::upsample_nearest2d_nhwc_out_frame<float, &at::native::nearest_neighbor_compute_source_index>(const T1 *, T1 *, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, float, float, unsigned long)",
+          "calls": 50,
+          "milliseconds": 2.066744,
+          "mean_microseconds": 41.33488,
+          "kernel_time_percent": 1.7490975925069023
+        },
+        {
+          "name": "void <unnamed>::softmax_warp_forward<c10::Half, float, float, (int)9, (bool)0, (bool)0>(T2 *, const T1 *, int, int, int, const bool *, int, bool)",
+          "calls": 100,
+          "milliseconds": 1.809973,
+          "mean_microseconds": 18.09973,
+          "kernel_time_percent": 1.5317907862814628
+        },
+        {
+          "name": "_attention",
+          "calls": 75,
+          "milliseconds": 1.786938,
+          "mean_microseconds": 23.82584,
+          "kernel_time_percent": 1.5122961304153293
+        },
+        {
+          "name": "void conv2d_c1_k1_nhwc_kernel_specialized<__half, __half, __half, float, float, (int)3, (int)2, (int)8, (int)2, (bool)1>(T5, cudnnTensorStruct, const T1 *, cudnnFilterStruct, const T3 *, cudnnConvolutionStruct, T5, cudnnTensorStruct, T2 *, C1K1NhwcParams, int)",
+          "calls": 125,
+          "milliseconds": 1.245533,
+          "mean_microseconds": 9.964264,
+          "kernel_time_percent": 1.054101897326374
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_32x1_tn_align2>(T1::Params)",
+          "calls": 100,
+          "milliseconds": 1.219872,
+          "mean_microseconds": 12.19872,
+          "kernel_time_percent": 1.0323848422284425
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 10)]::operator ()() const::[lambda(c10::Half) (instance 1)]>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 200,
+          "milliseconds": 1.142681,
+          "mean_microseconds": 5.713405,
+          "kernel_time_percent": 0.967057645312327
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<c10::Half>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          "calls": 475,
+          "milliseconds": 1.120318,
+          "mean_microseconds": 2.358564210526316,
+          "kernel_time_percent": 0.9481317069952292
+        },
+        {
+          "name": "void at::native::<unnamed>::CatArrayBatchedCopy_contig<at::native::<unnamed>::OpaqueType<(unsigned int)2>, unsigned int, (int)3, (int)128, (int)1>(T1 *, at::native::<unnamed>::CatArrInputTensorMetadata<T1, T2, T4, T5>, at::native::<unnamed>::TensorSizeStride<T2, (unsigned int)4>, int, T2)",
+          "calls": 25,
+          "milliseconds": 1.083068,
+          "mean_microseconds": 43.322720000000004,
+          "kernel_time_percent": 0.9166068130940579
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::CUDAFunctor_add<float>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 400,
+          "milliseconds": 1.076159,
+          "mean_microseconds": 2.6903975,
+          "kernel_time_percent": 0.9107596857930328
+        },
+        {
+          "name": "void conv2d_c1_k1_nhwc_kernel_specialized<__half, __half, __half, float, float, (int)5, (int)1, (int)8, (int)3, (bool)1>(T5, cudnnTensorStruct, const T1 *, cudnnFilterStruct, const T3 *, cudnnConvolutionStruct, T5, cudnnTensorStruct, T2 *, C1K1NhwcParams, int)",
+          "calls": 225,
+          "milliseconds": 1.063928,
+          "mean_microseconds": 4.728568888888889,
+          "kernel_time_percent": 0.9004085186170536
+        },
+        {
+          "name": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16_f16f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x16_alignc2_execute_kernel__5x_cudnn",
+          "calls": 50,
+          "milliseconds": 1.040068,
+          "mean_microseconds": 20.80136,
+          "kernel_time_percent": 0.8802156604027732
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<float>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 775,
+          "milliseconds": 1.029625,
+          "mean_microseconds": 1.3285483870967743,
+          "kernel_time_percent": 0.8713776881340501
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::<unnamed>::launch_clamp_scalar(at::TensorIteratorBase &, c10::Scalar, c10::Scalar, at::native::detail::ClampLimits)::[lambda() (instance 1)]::operator ()() const::[lambda() (instance 8)]::operator ()() const::[lambda(c10::Half) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 500,
+          "milliseconds": 1.018205,
+          "mean_microseconds": 2.03641,
+          "kernel_time_percent": 0.8617128750239462
+        },
+        {
+          "name": "void at::native::unrolled_elementwise_kernel<at::native::CUDAFunctor_add<float>, std::array<char *, (unsigned long)3>, (int)4, TrivialOffsetCalculator<(int)2, unsigned int>, TrivialOffsetCalculator<(int)1, unsigned int>, at::native::memory::LoadWithCast<(int)2>, at::native::memory::StoreWithCast<(int)1>>(int, T1, T2, T4, T5, T6, T7)",
+          "calls": 300,
+          "milliseconds": 0.996573,
+          "mean_microseconds": 3.32191,
+          "kernel_time_percent": 0.8434055863026002
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_75_tensorop_f16_s1688gemm_f16_64x64_tn_align1>(T1::Params)",
+          "calls": 50,
+          "milliseconds": 0.94733,
+          "mean_microseconds": 18.9466,
+          "kernel_time_percent": 0.8017309460240669
+        },
+        {
+          "name": "void at::native::sbtopk::gatherTopK<float, unsigned int, (int)2, (bool)0>(at::cuda::detail::TensorInfo<const T1, T2>, T2, T2, bool, T2, T2, at::cuda::detail::TensorInfo<T1, T2>, T2, at::cuda::detail::TensorInfo<long, T2>, T2, T1 *)",
+          "calls": 50,
+          "milliseconds": 0.867873,
+          "mean_microseconds": 17.35746,
+          "kernel_time_percent": 0.7344860199917082
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 225,
+          "milliseconds": 0.798238,
+          "mean_microseconds": 3.5477244444444445,
+          "kernel_time_percent": 0.6755535102787402
+        },
+        {
+          "name": "void at::native::reduce_kernel<(int)128, (int)4, at::native::ReduceOp<float, at::native::MeanOps<float, float, float, float>, unsigned int, float, (int)4>>(T3)",
+          "calls": 75,
+          "milliseconds": 0.788571,
+          "mean_microseconds": 10.514280000000001,
+          "kernel_time_percent": 0.6673722713702136
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctorOnSelf_add<float>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 800,
+          "milliseconds": 0.779519,
+          "mean_microseconds": 0.97439875,
+          "kernel_time_percent": 0.6597115105757598
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, void at::native::<unnamed>::pow_tensor_scalar_kernel_impl<float, float>(at::TensorIteratorBase &, T2)::[lambda(float) (instance 4)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 625,
+          "milliseconds": 0.717821,
+          "mean_microseconds": 1.1485136,
+          "kernel_time_percent": 0.6074961306049019
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::DivFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 300,
+          "milliseconds": 0.688927,
+          "mean_microseconds": 2.2964233333333333,
+          "kernel_time_percent": 0.5830429686081114
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 25,
+          "milliseconds": 0.648702,
+          "mean_microseconds": 25.94808,
+          "kernel_time_percent": 0.5490003147242293
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x1_nn_align2>(T1::Params)",
+          "calls": 75,
+          "milliseconds": 0.643937,
+          "mean_microseconds": 8.585826666666666,
+          "kernel_time_percent": 0.544967667222509
+        },
+        {
+          "name": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16_f16f32_f32_nhwckrsc_nhwc_tilesize128x16x32_stage1_warpsize4x1x1_g1_tensor16x8x16_aligna2_alignc8_execute_kernel__5x_cudnn",
+          "calls": 25,
+          "milliseconds": 0.573214,
+          "mean_microseconds": 22.92856,
+          "kernel_time_percent": 0.485114376715864
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 125,
+          "milliseconds": 0.568959,
+          "mean_microseconds": 4.551672,
+          "kernel_time_percent": 0.48151334521117983
+        },
+        {
+          "name": "void at::native::sbtopk::gatherTopK<c10::Half, unsigned int, (int)2, (bool)0>(at::cuda::detail::TensorInfo<const T1, T2>, T2, T2, bool, T2, T2, at::cuda::detail::TensorInfo<T1, T2>, T2, at::cuda::detail::TensorInfo<long, T2>, T2, T1 *)",
+          "calls": 25,
+          "milliseconds": 0.545181,
+          "mean_microseconds": 21.80724,
+          "kernel_time_percent": 0.4613898840787759
+        },
+        {
+          "name": "void at::native::<unnamed>::CatArrayBatchedCopy_aligned16_contig<at::native::<unnamed>::OpaqueType<(unsigned int)4>, unsigned int, (int)3, (int)128, (int)1>(T1 *, at::native::<unnamed>::CatArrInputTensorMetadata<T1, T2, T4, T5>, at::native::<unnamed>::TensorSizeStride<T2, (unsigned int)4>, int, T2)",
+          "calls": 250,
+          "milliseconds": 0.511901,
+          "mean_microseconds": 2.047604,
+          "kernel_time_percent": 0.43322482450747457
+        },
+        {
+          "name": "sm86_xmma_fprop_implicit_gemm_f16f16_f16f32_f32_nhwckrsc_nhwc_tilesize64x32x64_stage4_warpsize2x2x1_g1_tensor16x8x16_execute_kernel__5x_cudnn",
+          "calls": 100,
+          "milliseconds": 0.508254,
+          "mean_microseconds": 5.08254,
+          "kernel_time_percent": 0.4301383469757276
+        },
+        {
+          "name": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16_f16f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x16_aligna4_alignc8_execute_kernel__5x_cudnn",
+          "calls": 25,
+          "milliseconds": 0.486366,
+          "mean_microseconds": 19.454639999999998,
+          "kernel_time_percent": 0.41161440394998705
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_128x2_tn_align8>(T1::Params)",
+          "calls": 125,
+          "milliseconds": 0.462846,
+          "mean_microseconds": 3.702768,
+          "kernel_time_percent": 0.3917092897337308
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_f16_64x64_32x6_tn_align2>(T1::Params)",
+          "calls": 75,
+          "milliseconds": 0.459357,
+          "mean_microseconds": 6.12476,
+          "kernel_time_percent": 0.38875652853047754
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x2_tn_align2>(T1::Params)",
+          "calls": 75,
+          "milliseconds": 0.403071,
+          "mean_microseconds": 5.37428,
+          "kernel_time_percent": 0.34112135596346216
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_75_wmma_tensorop_f16_s161616gemm_f16_32x32_128x1_nn_align1>(T1::Params)",
+          "calls": 25,
+          "milliseconds": 0.379615,
+          "mean_microseconds": 15.1846,
+          "kernel_time_percent": 0.32127040532330453
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<c10::Half>, std::array<char *, (unsigned long)1>>(int, T2, T3)",
+          "calls": 50,
+          "milliseconds": 0.373053,
+          "mean_microseconds": 7.461060000000001,
+          "kernel_time_percent": 0.3157169461614392
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::neg_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 400,
+          "milliseconds": 0.372479,
+          "mean_microseconds": 0.9311975,
+          "kernel_time_percent": 0.31523116658830436
+        },
+        {
+          "name": "void at::native::unrolled_elementwise_kernel<at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>, std::array<char *, (unsigned long)2>, (int)4, TrivialOffsetCalculator<(int)1, unsigned int>, TrivialOffsetCalculator<(int)1, unsigned int>, at::native::memory::LoadWithCast<(int)1>, at::native::memory::StoreWithCast<(int)1>>(int, T1, T2, T4, T5, T6, T7)",
+          "calls": 300,
+          "milliseconds": 0.349536,
+          "mean_microseconds": 1.16512,
+          "kernel_time_percent": 0.2958143708628126
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<float>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          "calls": 125,
+          "milliseconds": 0.322176,
+          "mean_microseconds": 2.5774079999999997,
+          "kernel_time_percent": 0.2726594420806369
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)]>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 125,
+          "milliseconds": 0.302399,
+          "mean_microseconds": 2.419192,
+          "kernel_time_percent": 0.25592205076027547
+        },
+        {
+          "name": "void <unnamed>::softmax_warp_forward<c10::Half, float, float, (int)6, (bool)0, (bool)0>(T2 *, const T1 *, int, int, int, const bool *, int, bool)",
+          "calls": 100,
+          "milliseconds": 0.291872,
+          "mean_microseconds": 2.91872,
+          "kernel_time_percent": 0.24701298879792308
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          "calls": 300,
+          "milliseconds": 0.286688,
+          "mean_microseconds": 0.9556266666666666,
+          "kernel_time_percent": 0.24262573913393184
+        },
+        {
+          "name": "void at::native::_scatter_gather_elementwise_kernel<(int)128, (int)4, void at::native::_cuda_scatter_gather_internal_kernel<(bool)0, at::native::OpaqueType<(int)4>>::operator ()<at::native::TensorAssign>(at::TensorIterator &, long, long, long, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 75,
+          "milliseconds": 0.258975,
+          "mean_microseconds": 3.453,
+          "kernel_time_percent": 0.21917206437733705
+        },
+        {
+          "name": "void at::native::radixSortKVInPlace<(int)2, (int)-1, (int)32, (int)32, c10::Half, long, unsigned int>(at::cuda::detail::TensorInfo<T5, T7>, T7, T7, T7, at::cuda::detail::TensorInfo<T6, T7>, T7, bool)",
+          "calls": 25,
+          "milliseconds": 0.255455,
+          "mean_microseconds": 10.218200000000001,
+          "kernel_time_percent": 0.2161930676919109
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::<unnamed>::launch_clamp_scalar(at::TensorIteratorBase &, c10::Scalar, c10::Scalar, at::native::detail::ClampLimits)::[lambda() (instance 1)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 150,
+          "milliseconds": 0.242303,
+          "mean_microseconds": 1.6153533333333332,
+          "kernel_time_percent": 0.20506245280363702
+        },
+        {
+          "name": "void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<float, at::native::MeanOps<float, float, float, float>, unsigned int, float, (int)4>>(T3)",
+          "calls": 50,
+          "milliseconds": 0.221696,
+          "mean_microseconds": 4.43392,
+          "kernel_time_percent": 0.1876226276057462
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 100,
+          "milliseconds": 0.207553,
+          "mean_microseconds": 2.07553,
+          "kernel_time_percent": 0.1756533235938196
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::sigmoid_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 3)]::operator ()() const::[lambda(c10::Half) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 75,
+          "milliseconds": 0.196063,
+          "mean_microseconds": 2.614173333333333,
+          "kernel_time_percent": 0.16592926907235767
+        },
+        {
+          "name": "void at::native::bitonicSortKVInPlace<(int)2, (int)-1, (int)16, (int)16, float, long, at::native::GTOp<float, (bool)1>, unsigned int>(at::cuda::detail::TensorInfo<T5, T8>, T8, T8, T8, at::cuda::detail::TensorInfo<T6, T8>, T8, T7)",
+          "calls": 25,
+          "milliseconds": 0.194304,
+          "mean_microseconds": 7.7721599999999995,
+          "kernel_time_percent": 0.16444061703552118
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_75_wmma_tensorop_f16_s161616gemm_f16_32x32_128x1_tn_align1>(T1::Params)",
+          "calls": 50,
+          "milliseconds": 0.183007,
+          "mean_microseconds": 3.6601399999999997,
+          "kernel_time_percent": 0.15487989954823175
+        },
+        {
+          "name": "void <unnamed>::softmax_warp_forward<c10::Half, float, float, (int)4, (bool)0, (bool)0>(T2 *, const T1 *, int, int, int, const bool *, int, bool)",
+          "calls": 75,
+          "milliseconds": 0.1728,
+          "mean_microseconds": 2.304,
+          "kernel_time_percent": 0.1462416554663726
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::AUnaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float>>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 100,
+          "milliseconds": 0.16784,
+          "mean_microseconds": 1.6784000000000001,
+          "kernel_time_percent": 0.1420439783187267
+        },
+        {
+          "name": "std::enable_if<T7, void>::type internal::gemvx::kernel<int, int, __half, __half, __half, float, (bool)1, (bool)1, (bool)1, (bool)0, (int)7, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __half>, cublasGemvTensorStridedBatched<const __half>, cublasGemvTensorStridedBatched<__half>, float>>(T13)",
+          "calls": 75,
+          "milliseconds": 0.152446,
+          "mean_microseconds": 2.0326133333333334,
+          "kernel_time_percent": 0.12901594565524674
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 4)]::operator ()() const::[lambda(long) (instance 1)]>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 75,
+          "milliseconds": 0.142975,
+          "mean_microseconds": 1.9063333333333332,
+          "kernel_time_percent": 0.12100058269852211
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_128x2_tn_align2>(T1::Params)",
+          "calls": 50,
+          "milliseconds": 0.142463,
+          "mean_microseconds": 2.84926,
+          "kernel_time_percent": 0.12056727408973286
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 150,
+          "milliseconds": 0.140736,
+          "mean_microseconds": 0.93824,
+          "kernel_time_percent": 0.11910570384094568
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::AbsFunctor<long>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 125,
+          "milliseconds": 0.128096,
+          "mean_microseconds": 1.0247680000000001,
+          "kernel_time_percent": 0.10840839756146099
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 100,
+          "milliseconds": 0.11968,
+          "mean_microseconds": 1.1967999999999999,
+          "kernel_time_percent": 0.10128588730448768
+        },
+        {
+          "name": "void at::native::radixSortKVInPlace<(int)2, (int)-1, (int)32, (int)4, float, long, unsigned int>(at::cuda::detail::TensorInfo<T5, T7>, T7, T7, T7, at::cuda::detail::TensorInfo<T6, T7>, T7, bool)",
+          "calls": 25,
+          "milliseconds": 0.11136,
+          "mean_microseconds": 4.4544,
+          "kernel_time_percent": 0.09424462241166234
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase &, at::native::GeluType)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 3)]::operator ()() const::[lambda(c10::Half) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.104032,
+          "mean_microseconds": 4.16128,
+          "kernel_time_percent": 0.08804289294836616
+        },
+        {
+          "name": "void cublasLt::splitKreduce_kernel<(int)32, (int)16, int, __half, __half, float, __half, (bool)1, (bool)1, (bool)0>(cublasLt::cublasSplitKParams<T6>, const T4 *, const T5 *, T5 *, const T6 *, const T6 *, const T7 *, const T4 *, T7 *, void *, long, T6 *, int *)",
+          "calls": 50,
+          "milliseconds": 0.088382,
+          "mean_microseconds": 1.76764,
+          "kernel_time_percent": 0.07479820598049157
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::sigmoid_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 2)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 75,
+          "milliseconds": 0.08416,
+          "mean_microseconds": 1.1221333333333334,
+          "kernel_time_percent": 0.07122510256973331
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::BUnaryFunctor<long, long, long, at::native::binary_internal::div_floor_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 1)]::operator ()() const::[lambda() (instance 4)]::operator ()() const::[lambda(long, long) (instance 1)]>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 50,
+          "milliseconds": 0.069823,
+          "mean_microseconds": 1.39646,
+          "kernel_time_percent": 0.05909161521775771
+        },
+        {
+          "name": "void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 10)]::operator ()() const::[lambda(c10::Half) (instance 1)], std::array<char *, (unsigned long)2>, (int)4, TrivialOffsetCalculator<(int)1, unsigned int>, TrivialOffsetCalculator<(int)1, unsigned int>, at::native::memory::LoadWithCast<(int)1>, at::native::memory::StoreWithCast<(int)1>>(int, T1, T2, T4, T5, T6, T7)",
+          "calls": 25,
+          "milliseconds": 0.06592,
+          "mean_microseconds": 2.6368,
+          "kernel_time_percent": 0.05578848338161622
+        },
+        {
+          "name": "void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<c10::Half, at::native::MaxOps<c10::Half>, unsigned int, c10::Half, (int)4>>(T3)",
+          "calls": 25,
+          "milliseconds": 0.065824,
+          "mean_microseconds": 2.63296,
+          "kernel_time_percent": 0.05570723801746823
+        },
+        {
+          "name": "void at::native::unrolled_elementwise_kernel<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>, std::array<char *, (unsigned long)3>, (int)4, TrivialOffsetCalculator<(int)2, unsigned int>, TrivialOffsetCalculator<(int)1, unsigned int>, at::native::memory::LoadWithCast<(int)2>, at::native::memory::StoreWithCast<(int)1>>(int, T1, T2, T4, T5, T6, T7)",
+          "calls": 50,
+          "milliseconds": 0.058591,
+          "mean_microseconds": 1.1718199999999999,
+          "kernel_time_percent": 0.0495859076124435
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<long>, std::array<char *, (unsigned long)1>>(int, T2, T3)",
+          "calls": 50,
+          "milliseconds": 0.056545,
+          "mean_microseconds": 1.1309,
+          "kernel_time_percent": 0.04785436578903957
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)]>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 25,
+          "milliseconds": 0.052704,
+          "mean_microseconds": 2.10816,
+          "kernel_time_percent": 0.04460370491724364
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::AbsFunctor<float>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 50,
+          "milliseconds": 0.04944,
+          "mean_microseconds": 0.9887999999999999,
+          "kernel_time_percent": 0.04184136253621215
+        },
+        {
+          "name": "std::enable_if<!T7, void>::type internal::gemvx::kernel<int, int, __half, __half, __half, float, (bool)0, (bool)1, (bool)1, (bool)0, (int)5, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __half>, cublasGemvTensorStridedBatched<const __half>, cublasGemvTensorStridedBatched<__half>, float>>(T13)",
+          "calls": 25,
+          "milliseconds": 0.048063,
+          "mean_microseconds": 1.92252,
+          "kernel_time_percent": 0.0406759993442145
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, void at::native::<unnamed>::pow_tensor_scalar_kernel_impl<float, float>(at::TensorIteratorBase &, T2)::[lambda(float) (instance 2)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 50,
+          "milliseconds": 0.046656,
+          "mean_microseconds": 0.93312,
+          "kernel_time_percent": 0.0394852469759206
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, void at::native::<unnamed>::pow_tensor_scalar_kernel_impl<float, float>(at::TensorIteratorBase &, T2)::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 50,
+          "milliseconds": 0.046111,
+          "mean_microseconds": 0.92222,
+          "kernel_time_percent": 0.03902401027320548
+        },
+        {
+          "name": "void at::native::<unnamed>::CatArrayBatchedCopy_aligned16_contig<at::native::<unnamed>::OpaqueType<(unsigned int)4>, unsigned int, (int)4, (int)128, (int)1>(T1 *, at::native::<unnamed>::CatArrInputTensorMetadata<T1, T2, T4, T5>, at::native::<unnamed>::TensorSizeStride<T2, (unsigned int)4>, int, T2)",
+          "calls": 25,
+          "milliseconds": 0.037088,
+          "mean_microseconds": 1.48352,
+          "kernel_time_percent": 0.03138779234917145
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctorOnSelf_add<c10::Half>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.035584,
+          "mean_microseconds": 1.42336,
+          "kernel_time_percent": 0.03011494831085302
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::log_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 2)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.028224,
+          "mean_microseconds": 1.12896,
+          "kernel_time_percent": 0.023886137059507522
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::DivFunctor<float>>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.02752,
+          "mean_microseconds": 1.1008,
+          "kernel_time_percent": 0.0232903377224223
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<long>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.026912,
+          "mean_microseconds": 1.07648,
+          "kernel_time_percent": 0.02277578374948506
+        },
+        {
+          "name": "void at::native::<unnamed>::CatArrayBatchedCopy_aligned16_contig<at::native::<unnamed>::OpaqueType<(unsigned int)4>, unsigned int, (int)1, (int)128, (int)1>(T1 *, at::native::<unnamed>::CatArrInputTensorMetadata<T1, T2, T4, T5>, at::native::<unnamed>::TensorSizeStride<T2, (unsigned int)4>, int, T2)",
+          "calls": 25,
+          "milliseconds": 0.026432,
+          "mean_microseconds": 1.05728,
+          "kernel_time_percent": 0.02236955692874514
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::AUnaryFunctor<long, long, long, at::native::binary_internal::MulFunctor<long>>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.025599,
+          "mean_microseconds": 1.02396,
+          "kernel_time_percent": 0.021664584133586063
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctorOnOther_add<float>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.02368,
+          "mean_microseconds": 0.9472,
+          "kernel_time_percent": 0.02004052315650291
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<float>, std::array<char *, (unsigned long)1>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.020288,
+          "mean_microseconds": 0.81152,
+          "kernel_time_percent": 0.017169853623274115
+        }
+      ],
+      "short_kernel_calls_under_5us": 13354,
+      "gpu_activity_union_ms": 127.957962,
+      "first_to_last_gpu_activity_ms": 211.40877,
+      "gpu_activity_union_fraction": 0.6052632632033194,
+      "graph_launches": 25,
+      "graph_kernel_count": 18850,
+      "cuda_api": [
+        {
+          "name": "cudaGraphLaunch_v10000",
+          "calls": 25,
+          "host_duration_ms": 44.523616
+        },
+        {
+          "name": "cudaEventSynchronize_v3020",
+          "calls": 201,
+          "host_duration_ms": 15.102732
+        },
+        {
+          "name": "cudaEventDestroy_v3020",
+          "calls": 72,
+          "host_duration_ms": 5.791279
+        },
+        {
+          "name": "cudaMemcpyAsync_v3020",
+          "calls": 75,
+          "host_duration_ms": 2.564736
+        },
+        {
+          "name": "cudaLaunchKernel_v7000",
+          "calls": 50,
+          "host_duration_ms": 1.000887
+        },
+        {
+          "name": "cudaEventRecord_v3020",
+          "calls": 72,
+          "host_duration_ms": 0.26547
+        },
+        {
+          "name": "cudaEventCreateWithFlags_v3020",
+          "calls": 72,
+          "host_duration_ms": 0.244089
+        },
+        {
+          "name": "cudaStreamWaitEvent_v3020",
+          "calls": 50,
+          "host_duration_ms": 0.182639
+        },
+        {
+          "name": "cudaStreamIsCapturing_v10000",
+          "calls": 50,
+          "host_duration_ms": 0.083809
+        },
+        {
+          "name": "cudaDeviceSynchronize_v3020",
+          "calls": 1,
+          "host_duration_ms": 0.01775
+        },
+        {
+          "name": "cuProfilerStart",
+          "calls": 1,
+          "host_duration_ms": 0.0051
+        }
+      ],
+      "memcpy": [
+        {
+          "copyKind": 1,
+          "calls": 50,
+          "bytes": 177563200,
+          "milliseconds": 9.60288
+        },
+        {
+          "copyKind": 2,
+          "calls": 25,
+          "bytes": 480000,
+          "milliseconds": 0.047743
+        },
+        {
+          "copyKind": 8,
+          "calls": 150,
+          "bytes": 18120200,
+          "milliseconds": 0.146751
+        }
+      ],
+      "gpu_idle_gaps_ms": 83.45080800000001
+    },
+    {
+      "name": "nsys2",
+      "scope": "Inference-only cudaProfilerApi range; 200 reference images; not official E2E",
+      "kernel_count": 18900,
+      "kernel_sum_ms": 118.062985,
+      "kernels": [
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_64x64_32x6_tn_align8>(T1::Params)",
+          "calls": 550,
+          "milliseconds": 9.580452,
+          "mean_microseconds": 17.419003636363634,
+          "kernel_time_percent": 8.114695727877793
+        },
+        {
+          "name": "_pack",
+          "calls": 350,
+          "milliseconds": 7.886277,
+          "mean_microseconds": 22.532220000000002,
+          "kernel_time_percent": 6.67972015107021
+        },
+        {
+          "name": "ampere_fp16_s1688gemm_fp16_128x128_ldg8_relu_f2f_stages_32x1_tn",
+          "calls": 150,
+          "milliseconds": 6.902854,
+          "mean_microseconds": 46.01902666666666,
+          "kernel_time_percent": 5.8467554415975505
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 1575,
+          "milliseconds": 5.822462,
+          "mean_microseconds": 3.69680126984127,
+          "kernel_time_percent": 4.93165745385821
+        },
+        {
+          "name": "ampere_fp16_s1688gemm_fp16_64x128_sliced1x2_ldg8_relu_f2f_tn",
+          "calls": 175,
+          "milliseconds": 5.041302,
+          "mean_microseconds": 28.80744,
+          "kernel_time_percent": 4.270010621872723
+        },
+        {
+          "name": "void cutlass__5x_cudnn::Kernel<cutlass_tensorop_f16_s16816fprop_optimized_f16_128x64_64x3_nhwc_align8>(T1::Params)",
+          "calls": 300,
+          "milliseconds": 4.938926,
+          "mean_microseconds": 16.463086666666666,
+          "kernel_time_percent": 4.183297584759525
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x1_tn_align8>(T1::Params)",
+          "calls": 750,
+          "milliseconds": 4.754841,
+          "mean_microseconds": 6.3397879999999995,
+          "kernel_time_percent": 4.027376573614498
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::float16_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 1800,
+          "milliseconds": 4.739733,
+          "mean_microseconds": 2.633185,
+          "kernel_time_percent": 4.014580014218682
+        },
+        {
+          "name": "_relu_affine",
+          "calls": 750,
+          "milliseconds": 4.636719,
+          "mean_microseconds": 6.182292,
+          "kernel_time_percent": 3.9273265875837375
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_32x2_tn_align8>(T1::Params)",
+          "calls": 300,
+          "milliseconds": 4.537611,
+          "mean_microseconds": 15.12537,
+          "kernel_time_percent": 3.843381564509825
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::<unnamed>::silu_kernel(at::TensorIteratorBase &)::[lambda() (instance 1)]::operator ()() const::[lambda() (instance 5)]::operator ()() const::[lambda(c10::Half) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 1000,
+          "milliseconds": 4.039671,
+          "mean_microseconds": 4.039671,
+          "kernel_time_percent": 3.4216236358923164
+        },
+        {
+          "name": "void at::native::<unnamed>::max_pool_forward_nhwc<c10::Half>(const T1 *, int, long, long, long, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, T1 *, long *)",
+          "calls": 25,
+          "milliseconds": 3.950297,
+          "mean_microseconds": 158.01188,
+          "kernel_time_percent": 3.345923364549863
+        },
+        {
+          "name": "void at::native::<unnamed>::vectorized_layer_norm_kernel<float, float>(int, T2, const T1 *, const T1 *, const T1 *, T2 *, T2 *, T1 *)",
+          "calls": 300,
+          "milliseconds": 3.740033,
+          "mean_microseconds": 12.466776666666666,
+          "kernel_time_percent": 3.167828595897351
+        },
+        {
+          "name": "ampere_fp16_s16816gemm_fp16_128x64_ldg8_relu_f2f_tn",
+          "calls": 25,
+          "milliseconds": 3.59411,
+          "mean_microseconds": 143.7644,
+          "kernel_time_percent": 3.0442310094057
+        },
+        {
+          "name": "void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>, (int)4, TrivialOffsetCalculator<(int)1, unsigned int>, TrivialOffsetCalculator<(int)1, unsigned int>, at::native::memory::LoadWithCast<(int)1>, at::native::memory::StoreWithCast<(int)1>>(int, T1, T2, T4, T5, T6, T7)",
+          "calls": 150,
+          "milliseconds": 2.93302,
+          "mean_microseconds": 19.55346666666667,
+          "kernel_time_percent": 2.484284130203891
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_32x1_tn_align8>(T1::Params)",
+          "calls": 575,
+          "milliseconds": 2.831613,
+          "mean_microseconds": 4.924544347826087,
+          "kernel_time_percent": 2.39839184143955
+        },
+        {
+          "name": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16_f16f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x16_alignc4_execute_kernel__5x_cudnn",
+          "calls": 150,
+          "milliseconds": 2.275035,
+          "mean_microseconds": 15.1669,
+          "kernel_time_percent": 1.9269672031416112
+        },
+        {
+          "name": "void at::native::<unnamed>::upsample_nearest2d_nhwc_out_frame<float, &at::native::nearest_neighbor_compute_source_index>(const T1 *, T1 *, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, float, float, unsigned long)",
+          "calls": 50,
+          "milliseconds": 2.066462,
+          "mean_microseconds": 41.32924,
+          "kernel_time_percent": 1.7503047208233808
+        },
+        {
+          "name": "void <unnamed>::softmax_warp_forward<c10::Half, float, float, (int)9, (bool)0, (bool)0>(T2 *, const T1 *, int, int, int, const bool *, int, bool)",
+          "calls": 100,
+          "milliseconds": 1.809045,
+          "mean_microseconds": 18.09045,
+          "kernel_time_percent": 1.5322711008873782
+        },
+        {
+          "name": "_attention",
+          "calls": 75,
+          "milliseconds": 1.785427,
+          "mean_microseconds": 23.805693333333334,
+          "kernel_time_percent": 1.5122665245165539
+        },
+        {
+          "name": "void conv2d_c1_k1_nhwc_kernel_specialized<__half, __half, __half, float, float, (int)3, (int)2, (int)8, (int)2, (bool)1>(T5, cudnnTensorStruct, const T1 *, cudnnFilterStruct, const T3 *, cudnnConvolutionStruct, T5, cudnnTensorStruct, T2 *, C1K1NhwcParams, int)",
+          "calls": 125,
+          "milliseconds": 1.242556,
+          "mean_microseconds": 9.940448,
+          "kernel_time_percent": 1.0524517908809439
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_32x1_tn_align2>(T1::Params)",
+          "calls": 100,
+          "milliseconds": 1.218752,
+          "mean_microseconds": 12.187520000000001,
+          "kernel_time_percent": 1.0322896714834036
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 10)]::operator ()() const::[lambda(c10::Half) (instance 1)]>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 200,
+          "milliseconds": 1.1415,
+          "mean_microseconds": 5.7075,
+          "kernel_time_percent": 0.9668568010541154
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<c10::Half>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          "calls": 475,
+          "milliseconds": 1.121269,
+          "mean_microseconds": 2.3605663157894736,
+          "kernel_time_percent": 0.9497210323794543
+        },
+        {
+          "name": "void at::native::<unnamed>::CatArrayBatchedCopy_contig<at::native::<unnamed>::OpaqueType<(unsigned int)2>, unsigned int, (int)3, (int)128, (int)1>(T1 *, at::native::<unnamed>::CatArrInputTensorMetadata<T1, T2, T4, T5>, at::native::<unnamed>::TensorSizeStride<T2, (unsigned int)4>, int, T2)",
+          "calls": 25,
+          "milliseconds": 1.083036,
+          "mean_microseconds": 43.32144,
+          "kernel_time_percent": 0.9173374703341612
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::CUDAFunctor_add<float>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 400,
+          "milliseconds": 1.073372,
+          "mean_microseconds": 2.68343,
+          "kernel_time_percent": 0.9091520089891001
+        },
+        {
+          "name": "void conv2d_c1_k1_nhwc_kernel_specialized<__half, __half, __half, float, float, (int)5, (int)1, (int)8, (int)3, (bool)1>(T5, cudnnTensorStruct, const T1 *, cudnnFilterStruct, const T3 *, cudnnConvolutionStruct, T5, cudnnTensorStruct, T2 *, C1K1NhwcParams, int)",
+          "calls": 225,
+          "milliseconds": 1.062913,
+          "mean_microseconds": 4.724057777777778,
+          "kernel_time_percent": 0.9002931782556574
+        },
+        {
+          "name": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16_f16f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x16_alignc2_execute_kernel__5x_cudnn",
+          "calls": 50,
+          "milliseconds": 1.037025,
+          "mean_microseconds": 20.7405,
+          "kernel_time_percent": 0.8783658993544845
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<float>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 775,
+          "milliseconds": 1.029246,
+          "mean_microseconds": 1.3280593548387096,
+          "kernel_time_percent": 0.871777043414581
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::<unnamed>::launch_clamp_scalar(at::TensorIteratorBase &, c10::Scalar, c10::Scalar, at::native::detail::ClampLimits)::[lambda() (instance 1)]::operator ()() const::[lambda() (instance 8)]::operator ()() const::[lambda(c10::Half) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 500,
+          "milliseconds": 1.017663,
+          "mean_microseconds": 2.035326,
+          "kernel_time_percent": 0.8619661784766833
+        },
+        {
+          "name": "void at::native::unrolled_elementwise_kernel<at::native::CUDAFunctor_add<float>, std::array<char *, (unsigned long)3>, (int)4, TrivialOffsetCalculator<(int)2, unsigned int>, TrivialOffsetCalculator<(int)1, unsigned int>, at::native::memory::LoadWithCast<(int)2>, at::native::memory::StoreWithCast<(int)1>>(int, T1, T2, T4, T5, T6, T7)",
+          "calls": 300,
+          "milliseconds": 0.994941,
+          "mean_microseconds": 3.31647,
+          "kernel_time_percent": 0.8427205190517586
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_75_tensorop_f16_s1688gemm_f16_64x64_tn_align1>(T1::Params)",
+          "calls": 50,
+          "milliseconds": 0.940122,
+          "mean_microseconds": 18.802439999999997,
+          "kernel_time_percent": 0.7962885234521218
+        },
+        {
+          "name": "void at::native::sbtopk::gatherTopK<float, unsigned int, (int)2, (bool)0>(at::cuda::detail::TensorInfo<const T1, T2>, T2, T2, bool, T2, T2, at::cuda::detail::TensorInfo<T1, T2>, T2, at::cuda::detail::TensorInfo<long, T2>, T2, T1 *)",
+          "calls": 50,
+          "milliseconds": 0.867584,
+          "mean_microseconds": 17.35168,
+          "kernel_time_percent": 0.7348484370440066
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 225,
+          "milliseconds": 0.796287,
+          "mean_microseconds": 3.5390533333333334,
+          "kernel_time_percent": 0.6744594844861834
+        },
+        {
+          "name": "void at::native::reduce_kernel<(int)128, (int)4, at::native::ReduceOp<float, at::native::MeanOps<float, float, float, float>, unsigned int, float, (int)4>>(T3)",
+          "calls": 75,
+          "milliseconds": 0.788577,
+          "mean_microseconds": 10.51436,
+          "kernel_time_percent": 0.6679290719271581
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctorOnSelf_add<float>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 800,
+          "milliseconds": 0.779071,
+          "mean_microseconds": 0.97383875,
+          "kernel_time_percent": 0.6598774374542538
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, void at::native::<unnamed>::pow_tensor_scalar_kernel_impl<float, float>(at::TensorIteratorBase &, T2)::[lambda(float) (instance 4)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 625,
+          "milliseconds": 0.71734,
+          "mean_microseconds": 1.1477439999999999,
+          "kernel_time_percent": 0.6075909397005336
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::DivFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 300,
+          "milliseconds": 0.688029,
+          "mean_microseconds": 2.29343,
+          "kernel_time_percent": 0.5827643609044783
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 25,
+          "milliseconds": 0.649213,
+          "mean_microseconds": 25.96852,
+          "kernel_time_percent": 0.5498869946410385
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x1_nn_align2>(T1::Params)",
+          "calls": 75,
+          "milliseconds": 0.643614,
+          "mean_microseconds": 8.581520000000001,
+          "kernel_time_percent": 0.5451446107346855
+        },
+        {
+          "name": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16_f16f32_f32_nhwckrsc_nhwc_tilesize128x16x32_stage1_warpsize4x1x1_g1_tensor16x8x16_aligna2_alignc8_execute_kernel__5x_cudnn",
+          "calls": 25,
+          "milliseconds": 0.568382,
+          "mean_microseconds": 22.73528,
+          "kernel_time_percent": 0.48142269145575145
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 125,
+          "milliseconds": 0.567616,
+          "mean_microseconds": 4.540928,
+          "kernel_time_percent": 0.4807738852274488
+        },
+        {
+          "name": "void at::native::sbtopk::gatherTopK<c10::Half, unsigned int, (int)2, (bool)0>(at::cuda::detail::TensorInfo<const T1, T2>, T2, T2, bool, T2, T2, at::cuda::detail::TensorInfo<T1, T2>, T2, at::cuda::detail::TensorInfo<long, T2>, T2, T1 *)",
+          "calls": 25,
+          "milliseconds": 0.545055,
+          "mean_microseconds": 21.8022,
+          "kernel_time_percent": 0.46166459369124024
+        },
+        {
+          "name": "void at::native::<unnamed>::CatArrayBatchedCopy_aligned16_contig<at::native::<unnamed>::OpaqueType<(unsigned int)4>, unsigned int, (int)3, (int)128, (int)1>(T1 *, at::native::<unnamed>::CatArrInputTensorMetadata<T1, T2, T4, T5>, at::native::<unnamed>::TensorSizeStride<T2, (unsigned int)4>, int, T2)",
+          "calls": 250,
+          "milliseconds": 0.512382,
+          "mean_microseconds": 2.0495279999999996,
+          "kernel_time_percent": 0.43399038233702125
+        },
+        {
+          "name": "sm86_xmma_fprop_implicit_gemm_f16f16_f16f32_f32_nhwckrsc_nhwc_tilesize64x32x64_stage4_warpsize2x2x1_g1_tensor16x8x16_execute_kernel__5x_cudnn",
+          "calls": 100,
+          "milliseconds": 0.508669,
+          "mean_microseconds": 5.08669,
+          "kernel_time_percent": 0.43084545084134546
+        },
+        {
+          "name": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16_f16f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x16_aligna4_alignc8_execute_kernel__5x_cudnn",
+          "calls": 25,
+          "milliseconds": 0.484798,
+          "mean_microseconds": 19.39192,
+          "kernel_time_percent": 0.4106265820739667
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_128x2_tn_align8>(T1::Params)",
+          "calls": 125,
+          "milliseconds": 0.463582,
+          "mean_microseconds": 3.708656,
+          "kernel_time_percent": 0.3926565129621278
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_f16_64x64_32x6_tn_align2>(T1::Params)",
+          "calls": 75,
+          "milliseconds": 0.456192,
+          "mean_microseconds": 6.08256,
+          "kernel_time_percent": 0.38639714216949533
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x2_tn_align2>(T1::Params)",
+          "calls": 75,
+          "milliseconds": 0.40227,
+          "mean_microseconds": 5.3636,
+          "kernel_time_percent": 0.3407249105212781
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_75_wmma_tensorop_f16_s161616gemm_f16_32x32_128x1_nn_align1>(T1::Params)",
+          "calls": 25,
+          "milliseconds": 0.379072,
+          "mean_microseconds": 15.16288,
+          "kernel_time_percent": 0.3210760764688442
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<c10::Half>, std::array<char *, (unsigned long)1>>(int, T2, T3)",
+          "calls": 50,
+          "milliseconds": 0.37347,
+          "mean_microseconds": 7.469399999999999,
+          "kernel_time_percent": 0.3163311515459312
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::neg_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 400,
+          "milliseconds": 0.372508,
+          "mean_microseconds": 0.9312699999999999,
+          "kernel_time_percent": 0.315516332235713
+        },
+        {
+          "name": "void at::native::unrolled_elementwise_kernel<at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>, std::array<char *, (unsigned long)2>, (int)4, TrivialOffsetCalculator<(int)1, unsigned int>, TrivialOffsetCalculator<(int)1, unsigned int>, at::native::memory::LoadWithCast<(int)1>, at::native::memory::StoreWithCast<(int)1>>(int, T1, T2, T4, T5, T6, T7)",
+          "calls": 300,
+          "milliseconds": 0.348831,
+          "mean_microseconds": 1.16277,
+          "kernel_time_percent": 0.2954617825392099
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<float>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          "calls": 125,
+          "milliseconds": 0.32144,
+          "mean_microseconds": 2.57152,
+          "kernel_time_percent": 0.272261454341511
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)]>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 125,
+          "milliseconds": 0.302493,
+          "mean_microseconds": 2.419944,
+          "kernel_time_percent": 0.2562132407545007
+        },
+        {
+          "name": "void <unnamed>::softmax_warp_forward<c10::Half, float, float, (int)6, (bool)0, (bool)0>(T2 *, const T1 *, int, int, int, const bool *, int, bool)",
+          "calls": 100,
+          "milliseconds": 0.29059,
+          "mean_microseconds": 2.9059,
+          "kernel_time_percent": 0.2461313340502106
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          "calls": 300,
+          "milliseconds": 0.286399,
+          "mean_microseconds": 0.9546633333333333,
+          "kernel_time_percent": 0.24258153391598564
+        },
+        {
+          "name": "void at::native::_scatter_gather_elementwise_kernel<(int)128, (int)4, void at::native::_cuda_scatter_gather_internal_kernel<(bool)0, at::native::OpaqueType<(int)4>>::operator ()<at::native::TensorAssign>(at::TensorIterator &, long, long, long, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 75,
+          "milliseconds": 0.258401,
+          "mean_microseconds": 3.445346666666667,
+          "kernel_time_percent": 0.21886707336766048
+        },
+        {
+          "name": "void at::native::radixSortKVInPlace<(int)2, (int)-1, (int)32, (int)32, c10::Half, long, unsigned int>(at::cuda::detail::TensorInfo<T5, T7>, T7, T7, T7, at::cuda::detail::TensorInfo<T6, T7>, T7, bool)",
+          "calls": 25,
+          "milliseconds": 0.255679,
+          "mean_microseconds": 10.22716,
+          "kernel_time_percent": 0.21656152434228218
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::<unnamed>::launch_clamp_scalar(at::TensorIteratorBase &, c10::Scalar, c10::Scalar, at::native::detail::ClampLimits)::[lambda() (instance 1)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 150,
+          "milliseconds": 0.242336,
+          "mean_microseconds": 1.6155733333333333,
+          "kernel_time_percent": 0.20525992968922477
+        },
+        {
+          "name": "void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<float, at::native::MeanOps<float, float, float, float>, unsigned int, float, (int)4>>(T3)",
+          "calls": 50,
+          "milliseconds": 0.22176,
+          "mean_microseconds": 4.4352,
+          "kernel_time_percent": 0.18783194411017137
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 100,
+          "milliseconds": 0.207263,
+          "mean_microseconds": 2.07263,
+          "kernel_time_percent": 0.1755529050870601
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::sigmoid_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 3)]::operator ()() const::[lambda(c10::Half) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 75,
+          "milliseconds": 0.195711,
+          "mean_microseconds": 2.60948,
+          "kernel_time_percent": 0.16576829732028206
+        },
+        {
+          "name": "void at::native::bitonicSortKVInPlace<(int)2, (int)-1, (int)16, (int)16, float, long, at::native::GTOp<float, (bool)1>, unsigned int>(at::cuda::detail::TensorInfo<T5, T8>, T8, T8, T8, at::cuda::detail::TensorInfo<T6, T8>, T8, T7)",
+          "calls": 25,
+          "milliseconds": 0.193921,
+          "mean_microseconds": 7.75684,
+          "kernel_time_percent": 0.16425215743952265
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_75_wmma_tensorop_f16_s161616gemm_f16_32x32_128x1_tn_align1>(T1::Params)",
+          "calls": 50,
+          "milliseconds": 0.1832,
+          "mean_microseconds": 3.664,
+          "kernel_time_percent": 0.15517141125984574
+        },
+        {
+          "name": "void <unnamed>::softmax_warp_forward<c10::Half, float, float, (int)4, (bool)0, (bool)0>(T2 *, const T1 *, int, int, int, const bool *, int, bool)",
+          "calls": 75,
+          "milliseconds": 0.172833,
+          "mean_microseconds": 2.30444,
+          "kernel_time_percent": 0.14639050503424084
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::AUnaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float>>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 100,
+          "milliseconds": 0.168001,
+          "mean_microseconds": 1.68001,
+          "kernel_time_percent": 0.14229777436171043
+        },
+        {
+          "name": "std::enable_if<T7, void>::type internal::gemvx::kernel<int, int, __half, __half, __half, float, (bool)1, (bool)1, (bool)1, (bool)0, (int)7, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __half>, cublasGemvTensorStridedBatched<const __half>, cublasGemvTensorStridedBatched<__half>, float>>(T13)",
+          "calls": 75,
+          "milliseconds": 0.152318,
+          "mean_microseconds": 2.0309066666666666,
+          "kernel_time_percent": 0.12901418679190604
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 4)]::operator ()() const::[lambda(long) (instance 1)]>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 75,
+          "milliseconds": 0.14256,
+          "mean_microseconds": 1.9008,
+          "kernel_time_percent": 0.1207491069279673
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_128x2_tn_align2>(T1::Params)",
+          "calls": 50,
+          "milliseconds": 0.142049,
+          "mean_microseconds": 2.84098,
+          "kernel_time_percent": 0.1203162871072589
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::BUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 150,
+          "milliseconds": 0.140605,
+          "mean_microseconds": 0.9373666666666667,
+          "kernel_time_percent": 0.11909321113641165
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::AbsFunctor<long>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 125,
+          "milliseconds": 0.127775,
+          "mean_microseconds": 1.0222,
+          "kernel_time_percent": 0.10822613031510257
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::native::AUnaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 100,
+          "milliseconds": 0.119296,
+          "mean_microseconds": 1.19296,
+          "kernel_time_percent": 0.10104437051121483
+        },
+        {
+          "name": "void at::native::radixSortKVInPlace<(int)2, (int)-1, (int)32, (int)4, float, long, unsigned int>(at::cuda::detail::TensorInfo<T5, T7>, T7, T7, T7, at::cuda::detail::TensorInfo<T6, T7>, T7, bool)",
+          "calls": 25,
+          "milliseconds": 0.111103,
+          "mean_microseconds": 4.44412,
+          "kernel_time_percent": 0.09410485428604062
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase &, at::native::GeluType)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 3)]::operator ()() const::[lambda(c10::Half) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.10403,
+          "mean_microseconds": 4.1612,
+          "kernel_time_percent": 0.08811398424324102
+        },
+        {
+          "name": "void cublasLt::splitKreduce_kernel<(int)32, (int)16, int, __half, __half, float, __half, (bool)1, (bool)1, (bool)0>(cublasLt::cublasSplitKParams<T6>, const T4 *, const T5 *, T5 *, const T6 *, const T6 *, const T7 *, const T4 *, T7 *, void *, long, T6 *, int *)",
+          "calls": 50,
+          "milliseconds": 0.087999,
+          "mean_microseconds": 1.75998,
+          "kernel_time_percent": 0.07453563875248453
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::sigmoid_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 2)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 75,
+          "milliseconds": 0.084064,
+          "mean_microseconds": 1.1208533333333333,
+          "kernel_time_percent": 0.07120267203137376
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::BUnaryFunctor<long, long, long, at::native::binary_internal::div_floor_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 1)]::operator ()() const::[lambda() (instance 4)]::operator ()() const::[lambda(long, long) (instance 1)]>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 50,
+          "milliseconds": 0.069697,
+          "mean_microseconds": 1.39394,
+          "kernel_time_percent": 0.059033743725859546
+        },
+        {
+          "name": "void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<c10::Half, at::native::MaxOps<c10::Half>, unsigned int, c10::Half, (int)4>>(T3)",
+          "calls": 25,
+          "milliseconds": 0.0664,
+          "mean_microseconds": 2.656,
+          "kernel_time_percent": 0.056241166526494316
+        },
+        {
+          "name": "void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 10)]::operator ()() const::[lambda(c10::Half) (instance 1)], std::array<char *, (unsigned long)2>, (int)4, TrivialOffsetCalculator<(int)1, unsigned int>, TrivialOffsetCalculator<(int)1, unsigned int>, at::native::memory::LoadWithCast<(int)1>, at::native::memory::StoreWithCast<(int)1>>(int, T1, T2, T4, T5, T6, T7)",
+          "calls": 25,
+          "milliseconds": 0.065471,
+          "mean_microseconds": 2.61884,
+          "kernel_time_percent": 0.05545429839843538
+        },
+        {
+          "name": "void at::native::unrolled_elementwise_kernel<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float>>, std::array<char *, (unsigned long)3>, (int)4, TrivialOffsetCalculator<(int)2, unsigned int>, TrivialOffsetCalculator<(int)1, unsigned int>, at::native::memory::LoadWithCast<(int)2>, at::native::memory::StoreWithCast<(int)1>>(int, T1, T2, T4, T5, T6, T7)",
+          "calls": 50,
+          "milliseconds": 0.058592,
+          "mean_microseconds": 1.17184,
+          "kernel_time_percent": 0.04962774742651137
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<long>, std::array<char *, (unsigned long)1>>(int, T2, T3)",
+          "calls": 50,
+          "milliseconds": 0.056704,
+          "mean_microseconds": 1.13408,
+          "kernel_time_percent": 0.048028601004794176
+        },
+        {
+          "name": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)]>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "calls": 25,
+          "milliseconds": 0.052543,
+          "mean_microseconds": 2.10172,
+          "kernel_time_percent": 0.044504211036168535
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::AbsFunctor<float>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 50,
+          "milliseconds": 0.049216,
+          "mean_microseconds": 0.9843200000000001,
+          "kernel_time_percent": 0.041686223671203976
+        },
+        {
+          "name": "std::enable_if<!T7, void>::type internal::gemvx::kernel<int, int, __half, __half, __half, float, (bool)0, (bool)1, (bool)1, (bool)0, (int)5, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __half>, cublasGemvTensorStridedBatched<const __half>, cublasGemvTensorStridedBatched<__half>, float>>(T13)",
+          "calls": 25,
+          "milliseconds": 0.048064,
+          "mean_microseconds": 1.92256,
+          "kernel_time_percent": 0.040710473312190104
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, void at::native::<unnamed>::pow_tensor_scalar_kernel_impl<float, float>(at::TensorIteratorBase &, T2)::[lambda(float) (instance 2)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 50,
+          "milliseconds": 0.046432,
+          "mean_microseconds": 0.92864,
+          "kernel_time_percent": 0.03932816030358711
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, void at::native::<unnamed>::pow_tensor_scalar_kernel_impl<float, float>(at::TensorIteratorBase &, T2)::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 50,
+          "milliseconds": 0.046176,
+          "mean_microseconds": 0.92352,
+          "kernel_time_percent": 0.03911132689047291
+        },
+        {
+          "name": "void at::native::<unnamed>::CatArrayBatchedCopy_aligned16_contig<at::native::<unnamed>::OpaqueType<(unsigned int)4>, unsigned int, (int)4, (int)128, (int)1>(T1 *, at::native::<unnamed>::CatArrInputTensorMetadata<T1, T2, T4, T5>, at::native::<unnamed>::TensorSizeStride<T2, (unsigned int)4>, int, T2)",
+          "calls": 25,
+          "milliseconds": 0.037056,
+          "mean_microseconds": 1.48224,
+          "kernel_time_percent": 0.031386636548279716
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctorOnSelf_add<c10::Half>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.035456,
+          "mean_microseconds": 1.41824,
+          "kernel_time_percent": 0.030031427716316002
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::log_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 2)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.028192,
+          "mean_microseconds": 1.12768,
+          "kernel_time_percent": 0.023878779619200718
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::DivFunctor<float>>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.027391,
+          "mean_microseconds": 1.0956400000000002,
+          "kernel_time_percent": 0.023200328197698877
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<long>, std::array<char *, (unsigned long)3>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.026911,
+          "mean_microseconds": 1.07644,
+          "kernel_time_percent": 0.022793765548109766
+        },
+        {
+          "name": "void at::native::<unnamed>::CatArrayBatchedCopy_aligned16_contig<at::native::<unnamed>::OpaqueType<(unsigned int)4>, unsigned int, (int)1, (int)128, (int)1>(T1 *, at::native::<unnamed>::CatArrInputTensorMetadata<T1, T2, T4, T5>, at::native::<unnamed>::TensorSizeStride<T2, (unsigned int)4>, int, T2)",
+          "calls": 25,
+          "milliseconds": 0.026464,
+          "mean_microseconds": 1.05856,
+          "kernel_time_percent": 0.022415154080679903
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::AUnaryFunctor<long, long, long, at::native::binary_internal::MulFunctor<long>>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.025536,
+          "mean_microseconds": 1.0214400000000001,
+          "kernel_time_percent": 0.021629132958140944
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctorOnOther_add<float>, std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.023712,
+          "mean_microseconds": 0.94848,
+          "kernel_time_percent": 0.020084194889702308
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<float>, std::array<char *, (unsigned long)1>>(int, T2, T3)",
+          "calls": 25,
+          "milliseconds": 0.020319,
+          "mean_microseconds": 0.81276,
+          "kernel_time_percent": 0.017210305160419246
+        }
+      ],
+      "short_kernel_calls_under_5us": 13355,
+      "gpu_activity_union_ms": 127.947852,
+      "first_to_last_gpu_activity_ms": 192.46506,
+      "gpu_activity_union_fraction": 0.6647848289970137,
+      "graph_launches": 25,
+      "graph_kernel_count": 18850,
+      "cuda_api": [
+        {
+          "name": "cudaGraphLaunch_v10000",
+          "calls": 25,
+          "host_duration_ms": 41.485909
+        },
+        {
+          "name": "cudaEventSynchronize_v3020",
+          "calls": 201,
+          "host_duration_ms": 13.222482
+        },
+        {
+          "name": "cudaEventDestroy_v3020",
+          "calls": 72,
+          "host_duration_ms": 1.659873
+        },
+        {
+          "name": "cudaMemcpyAsync_v3020",
+          "calls": 75,
+          "host_duration_ms": 1.477909
+        },
+        {
+          "name": "cudaLaunchKernel_v7000",
+          "calls": 50,
+          "host_duration_ms": 0.887455
+        },
+        {
+          "name": "cudaEventRecord_v3020",
+          "calls": 72,
+          "host_duration_ms": 0.242128
+        },
+        {
+          "name": "cudaEventCreateWithFlags_v3020",
+          "calls": 72,
+          "host_duration_ms": 0.230759
+        },
+        {
+          "name": "cudaStreamWaitEvent_v3020",
+          "calls": 50,
+          "host_duration_ms": 0.161468
+        },
+        {
+          "name": "cudaStreamIsCapturing_v10000",
+          "calls": 50,
+          "host_duration_ms": 0.08123
+        },
+        {
+          "name": "cudaDeviceSynchronize_v3020",
+          "calls": 1,
+          "host_duration_ms": 0.01651
+        },
+        {
+          "name": "cuProfilerStart",
+          "calls": 1,
+          "host_duration_ms": 0.00466
+        }
+      ],
+      "memcpy": [
+        {
+          "copyKind": 1,
+          "calls": 50,
+          "bytes": 177563200,
+          "milliseconds": 9.690724
+        },
+        {
+          "copyKind": 2,
+          "calls": 25,
+          "bytes": 480000,
+          "milliseconds": 0.0472
+        },
+        {
+          "copyKind": 8,
+          "calls": 150,
+          "bytes": 18120200,
+          "milliseconds": 0.146943
+        }
+      ],
+      "gpu_idle_gaps_ms": 64.517208
+    }
+  ],
+  "accuracy": {
+    "reference_ap50": [
+      [
+        0.7809,
+        0.7809,
+        0.7809
+      ],
+      [
+        0.7809,
+        0.7809,
+        0.7809
+      ],
+      [
+        0.7809,
+        0.7809,
+        0.7809
+      ],
+      [
+        0.7809,
+        0.7809,
+        0.7809
+      ],
+      [
+        0.7809
+      ],
+      [
+        0.7809
+      ]
+    ],
+    "validation_ap50_parent": null,
+    "validation_measured_this_experiment": false,
+    "hidden_ap50": null
+  },
+  "caveats": [
+    "CPU future wait overlaps GPU execution and is not pure GPU idle time.",
+    "Nsight activity coverage is not SM utilization.",
+    "Do not add CPU stage totals to GPU kernel or transfer totals.",
+    "Line probes perturb scheduling and dump diagnostics before exit; formal baseline remains separate.",
+    "Warm-cache IO counters do not predict cold-disk or hidden-set behavior."
+  ]
+}
