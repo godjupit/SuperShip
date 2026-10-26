@@ -1,0 +1,52 @@
+{
+  "source_sha": "7875379eefa7f14078cf5bc943240ec1b68ea29e",
+  "clean_timing": {
+    "runs_seconds": [
+      0.265256365,
+      0.251750705,
+      0.257130582
+    ],
+    "median_seconds": 0.257130582
+  },
+  "preliminary_timing_invalid_due_to_cpu_build_overlap": {
+    "runs_seconds": [
+      0.354375896,
+      0.290314976,
+      0.312176118
+    ],
+    "median_seconds": 0.312176118
+  },
+  "reference_ap50": [
+    0.7809,
+    0.7809,
+    0.7809
+  ],
+  "validation_ap50": null,
+  "hidden_ap50": null,
+  "image_count": 200,
+  "detection_count": 6102,
+  "gpu_released": "2026-10-26 12:43 CST",
+  "env_overrides": {
+    "PYTHON_BIN": "/home/ubuntu/.cache/supership-venv/bin/python",
+    "TRITON_CACHE_DIR": "/home/ubuntu/.triton/cache"
+  },
+  "preset": "configs/fastest.env",
+  "raw_root": "/home/ubuntu/SuperShip-main 2/experiments/artifacts/main/20261026-123855-ada-unlock-audit",
+  "files": {
+    "assets-sha256.json": "d794a73a8b85d9a0a3fe6d77991869ebe144e7ffabc469df7b3a556483099ba6",
+    "stock-full.log": "4130446a11ebb9362921d268a7cdb3bed5275da15544af55d686cbe59badda6a",
+    "stock-clean.run2.json": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+    "stock.run1.json": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+    "stock.run3.json": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+    "stock-clean.run1.json": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+    "stock.run2.json": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+    "stock-clean-full.log": "d5febb9c56e3825eaadaeafae7b3c8fbbcb16f40923f32e89846a9839fe05131",
+    "stock.run1.score.log": "60310633ef7a65ab7c30cf23e95c78970175c0933f34848208062e418e4619cd",
+    "stock-clean.run3.score.log": "60310633ef7a65ab7c30cf23e95c78970175c0933f34848208062e418e4619cd",
+    "stock.run2.score.log": "60310633ef7a65ab7c30cf23e95c78970175c0933f34848208062e418e4619cd",
+    "stock-clean.run3.json": "4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c",
+    "stock-clean.run1.score.log": "8669f60c127a3698d19cbc2812263a833027d546577cc9fc36fc3aa50a13c46f",
+    "stock-clean.run2.score.log": "8669f60c127a3698d19cbc2812263a833027d546577cc9fc36fc3aa50a13c46f",
+    "stock.run3.score.log": "8669f60c127a3698d19cbc2812263a833027d546577cc9fc36fc3aa50a13c46f"
+  }
+}
