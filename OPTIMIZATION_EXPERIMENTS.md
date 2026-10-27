@@ -1,11 +1,20 @@
 # 优化版本索引
 
+## 20261027-131100-gpu-sdpa
+
+- Owner Codex/root；status planned（文件编辑阶段，不占GPU）；branch `exp/gpu-sdpa-20261027`，独立worktree `/data/run01/sczf193/SuperShip-sdpa-20261027`，基于当前main（推理实现与981d8dc相同，完整base由Git记录）。GPU仍由gpu-factorial实验独占，所有运行/测试必须等交接，不在登录节点执行。
+- 新单项假设：编码器/解码器MultiheadAttention默认need_weights=True，但调用者丢弃权重。新增默认关闭的SELF_ATTN_SDPA开关，仅在eval且禁用梯度时传need_weights=False，允许PyTorch选择SDPA，保留训练和梯度路径。与deformable cross-attention的Triton实现独立，不改权重/结构/输入，不从参考图像预计算任何内容。
+- 先验证训练/梯度guard、FP16/FP32数值、mask和CUDA Graph更新，再固定8核/原始参数测完整参考3轮、GPU时间线及精度；必要时与factorial已通过的GPU组合做明确父实验组合。只有完整合法性/精度及8组交替收益确认后晋级，失败保留，近期Accepted0.256022902秒受保护。
+
 ## 20261027-125042-gpu-factorial
 
-- Owner Codex/root；status planned；base main `981d8dc`（完整SHA由Git及原始manifest定位），当前最快8核配置已在main，已从登录节点尝试推送但认证仍失败；不因此改写历史。branch `exp/gpu-factorial-20261027`，独立worktree `/data/run01/sczf193/SuperShip-gpu-factorial-20261027`。
+- Owner Codex/root；status running；base main `981d8dc401318daaf1bb2a2f2ec04f71374abd27`，登记后base `2676385a3232ee090cbca0f5b4737fab4ddd6d31`；当前最快8核配置已在main，已从登录节点尝试推送但认证仍失败；不因此改写历史。branch `exp/gpu-factorial-20261027`，独立worktree `/data/run01/sczf193/SuperShip-gpu-factorial-20261027`。
 - 用户明确允许回看旧优化、非贪心重新组合。GPU g0005/RTX4090，分配1351172，固定8核/6解码线程，12:50CST检查GPU无其他计算进程。保持200参考集、模型权重、输入544、精度判据和完整worker计时协议；validation/hidden未测。最近Accepted0.256022902秒受保护。
 - 非贪心GPU随机输入筛查：部署融合2×1x1 Conv/Linear2×ReLU-affine三态（未融合/保留FP32输出/FP16输出）×原生cat/Tritonpack2×cuDNN调优2，共48组合；另独立回退权重FP32、未融合BN、原生注意力、原生GPU组合，以及融合归一化、融合后处理、GPU BGR、encoder layout等对照。所有组合先登记，随机顺序、重复基线，三次CUDA Event计时；随机输入完全不访问评测数据，不视作正式E2E或精度证据。
 - 根据隔离GPU结果登记少量候选后完整独立三轮、逐轮评分和完整覆盖/尾批检查，再对有希望的组合进行8组交替确认；不要求候选保留现在的全部旧开关，允许按更早组合分支。所有失败、无收益及数值改变保留，不将合成微测直接晋级或用于计分提交。GPU计算/测试只在计算节点，日志及评测输入输出全本地NVMe。
+- 设计修正：首次混合cuDNN benchmark开关的单进程预试已中断并保留，存在算法缓存跨设置沿用的风险，不用于选版或声称收益。正式微测将benchmark0与1分到全新独立进程，内部做全部联合组合/重复控制，避免将缓存状态误认为某个开关收益；不修改生产代码。
+- 62个正式合成微测已完成（48联合+8回退/融合对照+6控制），全部有限输出。当前组合GPU约4.50ms/batch，部署融合组合约4.37ms；退回原生GPU组合约8.11ms、去掉BN融合约5.66ms、原生attention约5.64ms，旧优化并非全部多余。仅GPU结果，不据此晋级。cuDNN调优增益很小，保留独立端到端检查。
+- 下一阶段预登记15组完整三轮：部署0/1×batch8/16×workers6/8共8组合；部署1/b8/w6增加fused-normalize、GPU-BGR两组；部署1/b16/w6与w8各增加GPU-BGR两组；部署1/b8/w6/cudnn1一组、原生GPU组合一组、结束控制一组。其余参数冻结。随机顺序中保留起止控制，逐轮评分和完整覆盖；不要求继续沿用刚晋级的6线程或batch8，不混同GPU微测与E2E收益。更小输入512已有validation失败证据，本轮不重复该已否定方向。TensorRT/ONNX当前未安装，先验证现有实现组合。
 
 ## 20261027-120927-supply-eightcore
 
