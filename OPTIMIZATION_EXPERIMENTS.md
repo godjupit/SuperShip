@@ -1,5 +1,12 @@
 # 优化版本索引
 
+## 20261027-125042-gpu-factorial
+
+- Owner Codex/root；status planned；base main `981d8dc`（完整SHA由Git及原始manifest定位），当前最快8核配置已在main，已从登录节点尝试推送但认证仍失败；不因此改写历史。branch `exp/gpu-factorial-20261027`，独立worktree `/data/run01/sczf193/SuperShip-gpu-factorial-20261027`。
+- 用户明确允许回看旧优化、非贪心重新组合。GPU g0005/RTX4090，分配1351172，固定8核/6解码线程，12:50CST检查GPU无其他计算进程。保持200参考集、模型权重、输入544、精度判据和完整worker计时协议；validation/hidden未测。最近Accepted0.256022902秒受保护。
+- 非贪心GPU随机输入筛查：部署融合2×1x1 Conv/Linear2×ReLU-affine三态（未融合/保留FP32输出/FP16输出）×原生cat/Tritonpack2×cuDNN调优2，共48组合；另独立回退权重FP32、未融合BN、原生注意力、原生GPU组合，以及融合归一化、融合后处理、GPU BGR、encoder layout等对照。所有组合先登记，随机顺序、重复基线，三次CUDA Event计时；随机输入完全不访问评测数据，不视作正式E2E或精度证据。
+- 根据隔离GPU结果登记少量候选后完整独立三轮、逐轮评分和完整覆盖/尾批检查，再对有希望的组合进行8组交替确认；不要求候选保留现在的全部旧开关，允许按更早组合分支。所有失败、无收益及数值改变保留，不将合成微测直接晋级或用于计分提交。GPU计算/测试只在计算节点，日志及评测输入输出全本地NVMe。
+
 ## 20261027-120927-supply-eightcore
 
 - Owner Codex/root；status completed；main parent `9e6d3c6283ab64ef5e9f4943dfede4f47144d815`，实验base `2835ecca867fa49cf349581039bf24102e164425`，晋级启动配置 `fde3318233ea55776ab15302a3521d20b88e146f`；branch `exp/supply-eightcore-20261027`，独立worktree `/data/run01/sczf193/SuperShip-eightcore-20261027`。计算运行12:09–12:34CST完成，GPU空闲后释放本会话占用，保留用户1351172分配。登录节点推送因Git认证失效失败，成果保留在本地提交。
