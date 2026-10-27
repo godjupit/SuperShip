@@ -1,5 +1,11 @@
 # 优化版本索引
 
+## 20261027-120927-supply-eightcore
+
+- Owner Codex/root；status planned；main base `9e6d3c6`（完整SHA将在隔离目录保存）；branch `exp/supply-eightcore-20261027`，独立worktree `/data/run01/sczf193/SuperShip-eightcore-20261027`。当前main已包含最近验证的thread100-light实现及完整实际参数；登录节点已尝试推送main，凭证问题单独记录，不覆盖既有成果。
+- 用户授权优化当前仓库；GPU g0005/RTX4090，分配1351172，8核固定，12:09CST检查GPU无其他计算进程。只在该计算节点进行计算、测试与评分；输入/预测/全部日志本地NVMe，结束同步output。
+- 首个假设：8核下主线程供给/小张量准备与10个解码线程存在调度争用。分别登记独立配置baseline10-start、PINNED_SIZES=1、workers8、workers6、workers4、baseline10-end各3完整轮；不改模型、精度、输入大小、JPEG模式及输出。旧机器/共享日志结果不能替代本比较组证据；所有结果保留。筛查后只对有希望的单项或明确父实验组合做8组交替对照；输出byte一致、reference门槛及尾批检查后方可晋级。validation/hidden未测，无竞赛提交授权扩展。
+
 ## 20261027-115247-profile-g0005
 
 - Owner Codex/root；main source `e41488e23da4949afbe3a192b1622b8e6689f94a`；status completed；GPU g0005/RTX4090分配1351172，8核固定，11:52–12:00CST；GPU初始无计算进程、显存1MiB、利用率0，结束后显存1MiB/利用率0，本会话任务结束，用户分配保留。
