@@ -11,6 +11,7 @@
 - Python3.11.11、torch2.5.1+cu124、OpenCV4.11.0；本机GPU驱动580.82.07。全部输入、预测和完整日志在节点NVMe `/tmp/supership-20261027-120927-supply-eightcore/`；部署复制独立于worker，worker仍在READY后访问输入。计时覆盖全部输出fsync及进程结束。
 - 完整参数基于 `configs/presets/thread100-light.json`；候选唯一性能覆盖是 `NUM_WORKERS=6`。环境另指定项目解释器、TRITON_CACHE_DIR和原始基线权重绝对路径；这些覆盖及完整命令保存在每个case的config.json/metrics.json中。晋级后完整候选为 `configs/presets/eightcore-thread6.json`。
 - 权重SHA256 `42a04535d33de94acc58ae3c66a9a2d161e975ee17adae6cae533770d1929c3e`，元数据SHA256 `7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443`。
+- 200张图像的排序相对路径→SHA256映射采用紧凑排序JSON后再哈希，聚合SHA256 `d741dba1dac8fa0eeaba7f5a80bbfd3b3b11a66c18dfb684aeef6b03203de39e`；标注SHA256 `376d0ba04ba4bbfa71f34ebc901f5bdcaaf7e829b01dafdc7b653e7307c2caed`，逐文件记录在本机data-SHA256SUMS.json。
 - 原始记录、执行脚本、37份预测、逐轮评分、manifest、源码patch及全部结果在主目录 `output/20261027-120927-supply-eightcore/`，仅本机可用，未上传Git。Git保留本报告、参数、必要测试和脱敏回执；跨机器复现需重新准备上述校验和匹配的数据/权重。
 
 ## 六组预登记筛查
@@ -66,6 +67,7 @@
 - 官方脚本SHA256：`b6dc5a8cf976fab3e9e0cc9c290521e63ab353fcc263612875e4dc56b9419cdd`。
 - 2026-10-27 12:37:20 CST：Validation Passed (dry run)。
 - 2026-10-27 12:38:08 CST：Submission Accepted，Performance 0.256022902 s，timing parsed only。
+- 之后再次查询官方排行榜，当前计时已更新为0.256022902秒，未被撤销；仅验证计时状态，不代表隐藏集AP50通过。
 - [脱敏回执](receipts/20261027-120927-supply-eightcore.txt)。官方隐藏集最优仍未知；用户名密码及原始认证回执只在Git忽略的本机.local目录，不进入报告。
 
 ## 复现
