@@ -33,6 +33,16 @@
 - 竞赛提交与 Git 推送分别记录。竞赛提交前读取 `.local/AGENTS.md`（若存在），核实本次授权范围、目标账号及要提交的日志/包的 SHA256；提交后保留脱敏回执。不要自动重传旧成绩覆盖当前提交，也不要将 Git 自动推送授权理解为任意竞赛提交授权。
 - 不自动删除历史分支、worktree、实验记录或已提交版本的必要产物。清理前确认可恢复位置与引用关系。
 
+## SuperShip 竞赛提交流程
+
+- 官方脚本：`https://lab.cs.tsinghua.edu.cn/scc/assets/submit.sh`。下载到本机 Git 忽略目录：`wget -q https://lab.cs.tsinghua.edu.cn/scc/assets/submit.sh -O .local/submit.sh`，然后 `chmod 700 .local/submit.sh`；执行前阅读脚本，核实上传目标为官方域名。不得将脚本内的认证请求或凭证写进公开日志。
+- 凭证使用 `.local/.thuscc_credentials`，格式为 `username=...`、`password=...`，权限必须为600，执行时显式设置 `THUSCC_CREDENTIALS_FILE="$PWD/.local/.thuscc_credentials"`。账号以用户本次提供的本机凭证为准；密码不得写进本文件、Git、实验记录或聊天汇报。若存在 `.local/AGENTS.md`，仍须先读取。
+- 用户已授权提交经过验证的新优成绩。提交前确认本次目标账号、源码完整SHA、实际配置、数据/权重校验和、原始完整三轮日志及其SHA256，完成输出完整性/尾批/精度检查和收益验证，并核对最近被接受的成绩。不要因单轮更快就提交，不自动重传旧日志或用较差成绩覆盖现有提交。
+- `supership.out` 是**一次完整三轮官方计时的原始文本日志**，不是预测JSON或拼接的单轮最快结果。格式校验：`THUSCC_CREDENTIALS_FILE="$PWD/.local/.thuscc_credentials" bash .local/submit.sh --dry SuperShip <本次日志路径>`；仅校验格式，不计成绩。
+- dry run通过且新成绩满足上述条件后计分提交：`THUSCC_CREDENTIALS_FILE="$PWD/.local/.thuscc_credentials" bash .local/submit.sh SuperShip <同一日志路径>`。两次必须使用同一SHA256的日志，不修改评分器或计时边界。
+- 提交后保留脱敏回执、提交时间、目标账号标识、日志SHA256和服务器消息，更新 `OPTIMIZATION_EXPERIMENTS.md`。`Submission Accepted`/计时被解析不等于隐藏集精度通过；未测hidden AP50保持null，官方隐藏集最优保持未知。
+- 竞赛提交与Git同步分别处理；`git push`只能在登录节点执行。认证失败时保留本地结果并报告，不将Git推送成功当作竞赛提交成功。
+
 ## 修改、提交与推送
 
 - **Git 推送必须在登录节点执行**：推送前确认当前主机为登录节点；GPU 计算节点仅用于已分配的计算任务，不在计算节点执行 `git push`。计算结束后回到登录节点完成提交与远程同步。
