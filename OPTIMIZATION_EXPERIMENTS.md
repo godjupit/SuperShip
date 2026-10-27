@@ -2,9 +2,14 @@
 
 ## 20261027-120927-supply-eightcore
 
-- Owner Codex/root；status planned；main base `9e6d3c6`（完整SHA将在隔离目录保存）；branch `exp/supply-eightcore-20261027`，独立worktree `/data/run01/sczf193/SuperShip-eightcore-20261027`。当前main已包含最近验证的thread100-light实现及完整实际参数；登录节点已尝试推送main，凭证问题单独记录，不覆盖既有成果。
+- Owner Codex/root；status completed；main parent `9e6d3c6283ab64ef5e9f4943dfede4f47144d815`，实验base `2835ecca867fa49cf349581039bf24102e164425`，晋级启动配置 `fde3318233ea55776ab15302a3521d20b88e146f`；branch `exp/supply-eightcore-20261027`，独立worktree `/data/run01/sczf193/SuperShip-eightcore-20261027`。计算运行12:09–12:34CST完成，GPU空闲后释放本会话占用，保留用户1351172分配。登录节点推送因Git认证失效失败，成果保留在本地提交。
 - 用户授权优化当前仓库；GPU g0005/RTX4090，分配1351172，8核固定，12:09CST检查GPU无其他计算进程。只在该计算节点进行计算、测试与评分；输入/预测/全部日志本地NVMe，结束同步output。
 - 首个假设：8核下主线程供给/小张量准备与10个解码线程存在调度争用。分别登记独立配置baseline10-start、PINNED_SIZES=1、workers8、workers6、workers4、baseline10-end各3完整轮；不改模型、精度、输入大小、JPEG模式及输出。旧机器/共享日志结果不能替代本比较组证据；所有结果保留。筛查后只对有希望的单项或明确父实验组合做8组交替对照；输出byte一致、reference门槛及尾批检查后方可晋级。validation/hidden未测，无竞赛提交授权扩展。
+- 初筛workers6三轮0.242042113 / 0.257647905 / 0.256022902秒，参考AP50均0.7809、预测byte一致。登记8组baseline10/workers6交替AB/BA对照，待六组筛查全部结束后启动，不与其他GPU任务重叠；不因为单次最快或三轮筛查而提前晋级。锁页尺寸无收益，8线程收益接近噪声，4线程明显变慢，完整结果保留。
+- 完成6组/18轮筛查、8组/16轮独立交替确认和晋级默认入口3轮，共37个完整200张worker，全部6102检测、reference AP50=0.7809、预测SHA256 `4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c`。54项初始及74项最终启动器/覆盖优先级/异步ring/尾批/像素检查通过。validation/hidden未测，官方隐藏集最优未知。
+- 8组对照baseline10中位0.3093000845秒，workers6中位0.261835146秒，快15.3459%，8/8胜，双侧符号检验p=0.0078125。默认入口自动选6复测三轮0.258169335 / 0.261901917 / 0.246521152秒，中位0.258169335；模型、GPU推理、计时器、精度及输出均未改变。仅Slurm每任务8核时默认6线程，其他环境保留10，显式NUM_WORKERS始终优先；保留完整历史10线程参数。
+- 已核对官方现有0.258409792秒后，经dry run于2026-10-27 12:38:08CST正式提交本轮初筛完整三轮原始日志，**Accepted0.256022902秒**（timing parsed only）；日志SHA256 `18fc4ebea72f851c4f972d0cac4905dc785f33b44a2a589fbec6487e2f2c1d12`，来源base2835ecc+NUM_WORKERS6，与晋级有效配置一致。未拼接单轮、未重传旧Accepted。脱敏回执：[docs/receipts/20261027-120927-supply-eightcore.txt](docs/receipts/20261027-120927-supply-eightcore.txt)。本地凭证及原始认证回执只在Git忽略的.local目录。
+- 原始命令、所有配置覆盖、完整逐轮结果、环境/数据/权重校验和、源码patch及失败/无收益结果保存在本机 `output/20261027-120927-supply-eightcore/`；跨机器需重新准备公开数据权重。源码patch SHA256 `7aa942b3a03685b920e5d391b15103e2486aa3c3c8930bd601b3213f588591a2`；完整报告及复现：[docs/optimization-eightcore-20261027.md](docs/optimization-eightcore-20261027.md)。本比较组推荐6线程；保守640完整JPEG候选保留。
 
 ## 20261027-115247-profile-g0005
 
@@ -55,13 +60,14 @@
 
 | 保留分支 | 依据 | 参数 |
 | --- | --- | --- |
-| main | 默认最快 thread100-light，完整三轮复测中位 261.305519ms | configs/fastest.env |
+| main / exp/supply-eightcore-20261027 | 固定8核推荐6线程，独立8对快15.3459%，8/8胜；完整三轮0.256022902秒Accepted（timing parsed only） | configs/presets/eightcore-thread6.json |
+| main历史10线程比较组 | thread100-light，历史完整三轮复测中位 261.305519ms | configs/presets/thread100-light.json |
 | exp/continued-sweep-20261026 | 参考集三轮 258.409792 / 256.334286 / 263.016448ms，中位 258.409792ms；8 对快 4.8507%，8/8 胜；reference AP50=0.7809 | configs/presets/thread100-light.json |
 | exp/exit-rootcause-20261026 | THP 六对中位 356.261538→289.448907ms；独立三轮中位 285.962649ms；validation AP50=0.9058，32GiB 限制通过 | configs/presets/exit-thp544.json |
 | exp/kernel-sweep-20261024 | 历史完整三轮中位 302.713346ms；内核融合十对快 6.70%；validation AP50=0.9058 | configs/presets/kernel544.json |
 | exp/rtx4090-e2e | 保守 640 输入、完整 JPEG 解码；validation AP50=0.9167 | configs/presets/conservative640.json |
 
-这些指标来自不同日期/协议比较组，不能据此跨组排名。本地最快候选为 thread100-light；保守候选为 640 完整解码。最近 Accepted：2026-10-26 08:23:38，0.258409792 秒，仅 timing parsed。thread100-light 的 validation 未测；所有 hidden AP50 未测，官方隐藏集最优未知。原始回执已清理，此处不构成新提交或新精度验证。
+这些指标来自不同日期/协议比较组，不能据此跨组排名。当前固定8核本地推荐为thread100-light/6线程；非8核环境保留原10线程，保守候选为640完整解码。最近Accepted：2026-10-27 12:38:08，0.256022902秒，仅timing parsed；本轮脱敏回执见上方。此前2026-10-26的0.258409792秒作为历史记录保留，其原始回执已清理。thread100-light及本轮6线程的validation未测；所有hidden AP50未测，官方隐藏集最优未知。
 
 ## 清理记录
 

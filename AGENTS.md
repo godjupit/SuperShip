@@ -35,7 +35,7 @@
 
 ## SuperShip 竞赛提交流程
 
-- 官方脚本：`https://lab.cs.tsinghua.edu.cn/scc/assets/submit.sh`。下载到本机 Git 忽略目录：`wget -q https://lab.cs.tsinghua.edu.cn/scc/assets/submit.sh -O .local/submit.sh`，然后 `chmod 700 .local/submit.sh`；执行前阅读脚本，核实上传目标为官方域名。不得将脚本内的认证请求或凭证写进公开日志。
+- 官方脚本：`https://lab.cs.tsinghua.edu.cn/scc/assets/submit.sh`。下载、dry run和计分上传均在登录节点执行。下载到本机 Git 忽略目录：`wget -q https://lab.cs.tsinghua.edu.cn/scc/assets/submit.sh -O .local/submit.sh`，然后 `chmod 700 .local/submit.sh`；保持官方脚本内容不变，执行前阅读脚本、记录SHA256并核实上传目标为官方域名。不得将脚本内的认证请求或凭证写进公开日志。
 - 凭证使用 `.local/.thuscc_credentials`，格式为 `username=...`、`password=...`，权限必须为600，执行时显式设置 `THUSCC_CREDENTIALS_FILE="$PWD/.local/.thuscc_credentials"`。账号以用户本次提供的本机凭证为准；密码不得写进本文件、Git、实验记录或聊天汇报。若存在 `.local/AGENTS.md`，仍须先读取。
 - 用户已授权提交经过验证的新优成绩。提交前确认本次目标账号、源码完整SHA、实际配置、数据/权重校验和、原始完整三轮日志及其SHA256，完成输出完整性/尾批/精度检查和收益验证，并核对最近被接受的成绩。不要因单轮更快就提交，不自动重传旧日志或用较差成绩覆盖现有提交。
 - `supership.out` 是**一次完整三轮官方计时的原始文本日志**，不是预测JSON或拼接的单轮最快结果。格式校验：`THUSCC_CREDENTIALS_FILE="$PWD/.local/.thuscc_credentials" bash .local/submit.sh --dry SuperShip <本次日志路径>`；仅校验格式，不计成绩。
