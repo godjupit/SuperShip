@@ -2,7 +2,7 @@
 
 ## 20261027-114732-node-g0005
 
-- Owner Codex/root；main source `7c8a161e3989b5ab341069fa7d3734975ad2145d`；status completed；用户要求切到五小时作业1351172，g0005/RTX4090/8核，分配结束15:57:33CST；11:47–11:50运行前GPU无计算进程，显存1MiB/利用率0。
+- Owner Codex/root；main source `7c8a161e3989b5ab341069fa7d3734975ad2145d`；status completed；用户要求切到五小时作业1351172，g0005/RTX4090/8核，分配结束15:57:33CST；11:47–11:48运行前GPU无计算进程，显存1MiB/利用率0。
 - 与g0067全本地运行对照：精确thread100-light JSON、固定8核、200张参考集三轮、输入/预测/完整日志均位于节点/tmp NVMe，结束后同步结果到 `output/20261027-114732-node-g0005/`。不增加CPU，不改实现，不进行竞赛提交。旧节点分配保留，不终止用户交互shell。
 - 命令：`srun --jobid=1351172 --overlap --ntasks=1 --cpus-per-task=8 --chdir=/data/run01/sczf193/SuperShip-main bash output/20261027-114732-node-g0005/run.sh`；完整执行脚本保存在上述本机输出目录，部署副本 `/tmp/supership-20261027-114732-node-g0005/` 留在g0005。环境为EPYC7502、Python3.11.11、torch2.5.1+cu124、OpenCV4.11.0，准确驱动/CPU/配置与数据权重校验和见environment.log；只有台账/运行说明未提交改动，无运行源码改动。
 - 全三轮 `0.305249523 / 0.299772560 / 0.313619927` 秒，中位 **0.305249523**；每轮完整200张、6102检测、官方格式检查及评分通过，reference AP50均0.7809。输出SHA256与历史及g0067均为 `4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c`；validation/hidden未测。新节点本轮比g0067的0.261382914秒稍慢，属于节点环境对照，不据三轮筛查宣称稳定差异或调整main候选。后续按用户要求使用五小时g0005分配，GPU任务已完成，分配保留。
