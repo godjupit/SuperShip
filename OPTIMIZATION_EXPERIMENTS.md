@@ -1,5 +1,14 @@
 # 优化版本索引
 
+## 20261027-113500-runtime-reference
+
+- Owner Codex /root；branch main；source `a39ea8e81f1ad0bcd75072f1101bc5ca1fc1e603`；status completed；2026-10-27 11:35–11:39 CST；GPU 分配 `1351209`，节点 g0067，RTX4090。启动前调度状态 RUNNING，GPU 显存占用0、利用率0，无其他计算进程；结束后GPU显存占用0，无本会话任务残留，保留用户的现有调度分配。
+- 用户授权运行项目；复用现有有效分配，不在登录节点执行计算。不修改推理实现，使用 configs/fastest.env 默认参数；参考集完整三轮和逐轮评分，独立目录 `output/20261027-113500-runtime-reference/`。新环境比较组，仅验证运行，不直接与历史速度排名，无竞赛提交。
+- 环境：8个分配CPU，Python3.11.11、torch2.5.1+cu124、OpenCV4.11.0、驱动580.82.07；依赖和CPU资源与历史环境不同，存储冷热状态未控制，不跨组比较。未改运行源码；本次未提交改动仅为台账。所有配置来自 configs/fastest.env，无性能参数覆盖。
+- 实际运行：`srun --jobid=1351209 --overlap --ntasks=1 --cpus-per-task=8 --chdir=/data/run01/sczf193/SuperShip-main bash -c 'export PYTHON_BIN=/data/run01/sczf193/supership-venv/bin/python TRITON_CACHE_DIR=/data/run01/sczf193/.triton/cache PYTHONUNBUFFERED=1 OUTPUT_DIR=output/20261027-113500-runtime-reference; source configs/fastest.env; bash tools/benchmark/evaluate.sh reference --runs 3'`。复现须替换有效作业ID和唯一输出目录，不复用本次输出路径。
+- 三轮耗时 `2.870352228 / 1.612564610 / 1.488872158` 秒，中位 `1.612564610` 秒；每轮完整处理200张（batch8，无尾批），6102条检测，官方工具格式检查及逐轮评分成功。reference AP50三轮均0.7809，相对本地参考基线0.7929比值0.984866，98%门槛0.777042、裕量0.003858；仅为本地参考判据，validation/hidden未测。
+- 三轮预测字节一致，SHA256 `4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c`；原始计时日志SHA256 `603aa2d8ae52d93ea7b9620774ee059450d301cfc6f467ed9289cc19ae901e78`；元数据SHA256 `7372e6e602a0f11edf8714c731b63709ada4644eb5feadf76a074ff64554d443`，权重SHA256与下方审查记录一致。环境、全部计时/评分日志、预测及SHA256SUMS仅存本机上述output目录，未上传。候选推荐及Accepted不变，无竞赛提交。
+
 ## 20261027-095206-sync-review
 
 - 负责人 Codex /root；分支 main；基于 `99732c143da6658efa4cc4760b68ce9a8c597e78`；审查与 Git 同步状态 completed；GPU 运行状态 blocked（当前为登录节点，无 GPU 分配，查询无空闲 GPU）。本次不是性能优化实验，无竞赛提交。
