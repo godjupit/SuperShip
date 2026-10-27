@@ -9,7 +9,7 @@
 
 `engine/`、`supership/` 是模型与推理代码，`configs/` 保存参数，`tests/` 保存检查，`tools/` 保存评测和开发工具。本机数据位于 `data/SuperShip/`，基线权重位于 `weights/baseline.pth`；新输出写入 Git 忽略的 `output/`。
 
-主线默认运行已验证的 `thread100-light`，配置在 `configs/fastest.env`；环境变量可覆盖默认值，`PIPELINE=standard` 选择标准推理。历史分支保留各自实现和默认行为，复现时显式加载匹配参数。
+主线默认运行已验证的 `thread100-light`，配置在 `configs/fastest.env`；Slurm每任务分配8核时默认用6个解码线程，其他环境保留原10线程。环境变量可覆盖默认值，`PIPELINE=standard` 选择标准推理。8核参数在 `configs/presets/eightcore-thread6.json`，历史10线程参数仍在 `configs/presets/thread100-light.json`；复现时显式加载匹配参数。
 
 ```bash
 bash run.sh --worker
