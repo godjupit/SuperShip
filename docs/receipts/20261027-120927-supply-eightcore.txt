@@ -1,0 +1,12 @@
+Account: ruc26** (verified against local credentials)
+Log SHA256: 18fc4ebea72f851c4f972d0cac4905dc785f33b44a2a589fbec6487e2f2c1d12
+Log source: 2835ecca867fa49cf349581039bf24102e164425 + NUM_WORKERS=6
+Hidden AP50: null (timing parsed only)
+
+Dry validation
+Submission Time (Asia/Shanghai): 2026-10-27 12:37:20
+Server Message: Validation Passed (dry run); Performance: 0.256022902 s; OK: median runtime = 0.256022902 s (timing JSON); timing parsed only.
+
+Scoring submission
+Submission Time (Asia/Shanghai): 2026-10-27 12:38:08
+Server Message: Submission Accepted; Performance: 0.256022902 s; OK: median runtime = 0.256022902 s (timing JSON); timing parsed only.

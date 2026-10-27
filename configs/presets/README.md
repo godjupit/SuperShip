@@ -4,7 +4,8 @@
 
 | 参数 | 对应分支 | 用途 |
 | --- | --- | --- |
-| thread100-light.json | main / exp/continued-sweep-20261026 | 当前最快已验证参考集候选 |
+| eightcore-thread6.json | main / exp/supply-eightcore-20261027 | 固定8核新候选，独立8对确认快15.35%，原始三轮0.256022902秒已Accepted（timing parsed only） |
+| thread100-light.json | main / exp/continued-sweep-20261026 | 原10线程参考集候选，保留作对照及其他环境复现 |
 | exit-thp544.json | exp/exit-rootcause-20261026 | 已测完整 validation 的 THP 版本 |
 | kernel544.json | exp/kernel-sweep-20261024 | 历史内核融合版本 |
 | conservative640.json / .env | exp/rtx4090-e2e | 640 输入、完整 JPEG 解码的保守版本 |
