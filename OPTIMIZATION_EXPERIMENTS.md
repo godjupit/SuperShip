@@ -1,5 +1,15 @@
 # 优化版本索引
 
+## 20261027-115247-profile-g0005
+
+- Owner Codex/root；main source `e41488e23da4949afbe3a192b1622b8e6689f94a`；status completed；GPU g0005/RTX4090分配1351172，8核固定，11:52–12:00CST；GPU初始无计算进程、显存1MiB、利用率0，结束后显存1MiB/利用率0，本会话任务结束，用户分配保留。
+- 用户请求当前机器瓶颈诊断；默认thread100-light，输入/预测/完整日志均节点NVMe。先不插桩正式三轮及逐轮评分，再独立轻量阶段/CPU/IO/退出诊断三轮，单独PyTorch CPU/CUDA profiler时间线；无nsys安装则记录工具限制，不修改计时器、模型或worker源码。插桩数据不作正式速度排名，不做竞赛提交，不调整CPU配额。全部产物 `output/20261027-115247-profile-g0005/`，计算只在GPU节点。
+- 11:57追加验证登记：PyTorch profiler已获得19050个kernel事件，但工具会扰动CPU调度；增加三轮仅CUDA Event的graph/H2D/D2H区间诊断，复核正常速度附近的GPU空档。标记图执行包络包含图内小间隙，不能当作精确kernel活跃率；全部结果保留。
+- 正式完整三轮 `0.285036207 / 0.293397743 / 0.326934422` 秒，中位 **0.293397743**；阶段诊断三轮核心219.948/255.780/253.151ms、剩余退出区间63.296/66.404/67.938ms。JPEG读取/解码累计810–822ms线程CPU、占进程CPU约76–77%；输入Future等待67–109ms（与GPU重叠），输出write/fsync/close2.2–3.0ms，物理read_bytes增量0。
+- PyTorch trace的kernel/copy/memset并集128.891ms，19050kernels、13731个<5us；profiler下的129.522ms空档不可直接视作正常运行值。独立低开销Event三轮graph/copy包络间空档61.372/48.644/28.284ms，核心241.291/231.451/186.414ms，核心后至退出72.248/73.394/68.359ms；含marker影响，不替代正式计时。优先级：CPU解码/供给与主线程调度，其次退出，再GPU pack/转换/短kernel；没有提高CPU配额或修改默认参数。
+- 全10个正式/诊断worker各完整处理200张、6102检测，逐轮reference AP50=0.7809，全部预测SHA256仍为 `4185ed612afb8234afae8e31eb43bafd0b68ef32c124d0d510d2da745f29100c`。validation/hidden未测、无竞赛提交，候选推荐不变。完整报告及复现说明：[docs/performance-g0005-20261027.md](docs/performance-g0005-20261027.md)；两份可复用诊断worker位于tools/reference/，实际完整输入/输出已验证，GPU节点py_compile通过。原始trace/日志/预测/命令及source-SHA256SUMS仅上述本机output目录可用。
+- 新增诊断脚本的可还原patch存于该output目录source.patch，SHA256 `6e7dcfe12a18505a0d877ef8fa050a6e02dce062653915be5961c3f57a389766`；正式worker源码无改动。Git仅提交本次报告、台账和必要诊断源码，原有未跟踪文件不包含在提交中。
+
 ## 20261027-114732-node-g0005
 
 - Owner Codex/root；main source `7c8a161e3989b5ab341069fa7d3734975ad2145d`；status completed；用户要求切到五小时作业1351172，g0005/RTX4090/8核，分配结束15:57:33CST；11:47–11:48运行前GPU无计算进程，显存1MiB/利用率0。
