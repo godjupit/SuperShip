@@ -1,5 +1,11 @@
 # 优化版本索引
 
+## 20261028-183651-profile-supply
+
+- Owner Codex/root；status running；2026-10-28 18:36 CST；branch main，source `2174a95`（完整SHA在plan中）；GPU g0030/RTX4090，Slurm1353441，固定8核。18:36确认显存1MiB、利用率0、无计算进程；所有计算/测试/分析仅在该调度分配执行。当前main仍为最快已验证eightcore-thread6；用户要求瓶颈分析后按新思路优化。
+- 当前6线程配置与旧10线程诊断不同，建立新组：原始worker完整三轮；轻量CPU阶段三轮；低开销CUDA Event三轮；一次PyTorch CPU/CUDA trace；一次strace退出诊断（工具可用才执行）。所有真实输入访问在READY后，输入/预测/完整日志本地NVMe，全部输出核对格式/完整200张/精度及历史字节。插桩结果不作为成绩，不修改评分器、worker或默认配置。
+- 原始产物 `output/20261028-183651-profile-supply/`（仅本机），独占GPU18:36开始。基于诊断提出新单项假设、独立分支登记后再实验，不重复上一轮未确认的GPU组合。最近Accepted0.256022902秒保护，validation/hidden未测，官方隐藏集最优未知。Git推送已知认证失效，完成记录后仍从登录节点同步。
+
 ## 20261028-175402-gpu-confirm
 
 - Owner Codex/root；status completed；2026-10-28 17:54–18:23 CST；branch `exp/gpu-confirm-node-20261028`，worktree `/data/run01/sczf193/SuperShip-confirm-20261028`，base `712894c`，父实验 gpu-factorial 与 gpu-sdpa；原有未提交改动保留。当前 main 仍为最快完成独立确认的候选；推送尝试因 GitHub 认证失效失败，保留本地历史。
