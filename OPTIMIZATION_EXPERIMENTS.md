@@ -2,10 +2,20 @@
 
 ## 20261028-175402-gpu-confirm
 
-- Owner Codex/root；status running；2026-10-28 17:54 CST；branch `exp/gpu-confirm-20261028`，worktree `/tmp/SuperShip-opt-20261028`，base `712894c`，父实验 gpu-factorial 与 gpu-sdpa；原有未提交改动保留。当前 main 仍为最快完成独立确认的候选；推送尝试因 GitHub 认证失效失败，保留本地历史。
+- Owner Codex/root；status completed；2026-10-28 17:54–18:23 CST；branch `exp/gpu-confirm-node-20261028`，worktree `/data/run01/sczf193/SuperShip-confirm-20261028`，base `712894c`，父实验 gpu-factorial 与 gpu-sdpa；原有未提交改动保留。当前 main 仍为最快完成独立确认的候选；推送尝试因 GitHub 认证失效失败，保留本地历史。
 - GPU g0030 / RTX4090，调度分配1353441，固定8核；17:53检查显存1MiB、利用率0、无计算进程，仅用户交互bash。所有项目计算/测试仅在该分配执行，正式计时独占GPU，数据/预测/完整日志位于节点唯一/tmp目录后同步output。
 - 新比较组（节点变化）：先完整三轮 baseline、deploy、deploy+SDPA decoder、deploy+SDPA all+MHA half、deploy batch16/workers8、baseline-end；所有配置基于eightcore-thread6。仅在完整参考AP50>=0.777042、格式/完整覆盖/尾批检查通过后，对最快候选与基线进行8组交替AB/BA确认，波动重叠则不晋级。SDPA实现来自4fa0cc2完整提交；部署/SDPA组合明确沿用父实验，不重复已否定512输入。
-- 用户授权经过验证的新优成绩直接提交；先核对官方榜单当前账号计时，使用同一份原始三轮日志先dry run再计分。最近历史Accepted0.256022902秒受保护，当前官方值待核对；validation/hidden未测，官方隐藏集最优未知。原始结果 `output/20261028-175402-gpu-confirm/`，仅本机可用。
+- 用户授权经过验证的新优成绩直接提交；先核对官方榜单当前账号计时，使用同一份原始三轮日志先dry run再计分。最近历史Accepted0.256022902秒受保护，17:53官方榜单核对ruc26**仍为0.256022902秒，榜上最快0.249195662秒；validation/hidden未测，官方隐藏集最优未知。原始结果 `output/20261028-175402-gpu-confirm/`，仅本机可用。
+
+- 驱动部署失败保留：首次worktree在登录节点/tmp，计算节点不可见，未启动任何模型；跨文件系统git worktree move失败，随后在共享路径新建隔离分支。原/tmp worktree保留。实际源码2b1505c（与父SDPA实现一致），driver-v3.log为有效运行，前两份失败日志保留。
+- 测试驱动初次误将生产INPUT_SIZE544等preset注入合成模型测试，108通过/12失败（SyntheticModel无encoder），失败日志checks-preset-failed.log保留；清理测试env后120项全部通过（187.23秒），未改生产源码或测试断言。driver-v4.log为有效筛查，18个完整worker预登记开始。
+- 六组/18完整参考worker全部完成、逐轮格式与精度通过；baseline-start中位0.283797543、baseline-end0.257816384，明显漂移。deploy0.284665107、deploy-decoder0.254883489、deploy-all-half0.256723748、deploy-b16-w8为0.253545784秒，AP50分别0.7820/0.7821/0.7807/0.7817。选择deploy-b16-w8进行预登记8组AB/BA独立确认；不按筛查直接晋级或提交。
+- 18:11追加预登记：batch16前两对均未获益；仍完成全部8对，不提前截断。如果该候选收益不成立，独立复测deploy-decoder（仅MODEL_DEPLOY1 + SELF_ATTN_SDPA=decoder，batch8/workers6），也做完整8组AB/BA，不将两候选轮次混合；只有稳定收益且新三轮优于Accepted才晋级/提交。
+- 第一轮8对：batch16中位0.2596558715→0.258028366秒，仅5/8胜、改善0.6268%，不采用。decoder SDPA中位0.2623495235→0.2582724395秒、6/8胜、改善1.5541%，属于小幅/重叠。18:18预登记另8对完全相同decoder比较，合计至少13/16胜（双侧符号检验p<=0.0213）且中位改善才继续候选新完整三轮；否则本轮不晋级/不提交，不无限重复筛选。
+- 最终：追加decoder8对仅3/8胜；合计16对9胜，基线中位0.2620592415→候选0.2600364525秒，改善0.7719%，双侧符号检验p=0.803619，不满足预登记13/16门槛。batch16与decoder两候选均不晋级、不竞赛上传；保留原main eightcore-thread6、本地最快已确认候选及Accepted0.256022902秒，保守640候选不变。validation/hidden AP50=null，官方隐藏集最优未知。
+- 完成6组/18筛查轮＋24对/48确认轮＝66完整200张worker；逐轮输出格式、参考精度及字节复核通过，候选reference AP50范围0.7807–0.7821；120项GPU节点检查通过（首次驱动污染失败另存）。完整运行日志54份，环境/源码/数据/权重manifest、全部驱动/实际命令/配置/预测/日志SHA256保存在output下，跨机器产物缺失须重新准备。18:22 GPU显存1MiB、无计算进程，本会话计算结束，保留用户1353441分配与交互shell。
+- 复现与全部逐轮表：[experiments/20261028-175402-gpu-confirm/notes.md](experiments/20261028-175402-gpu-confirm/notes.md)。没有改main运行实现；实验源码2b1505c完整SHA见报告，独立分支保留。下一步优先分析更大输入规模下CPU供给和退出开销，当前GPU微测提速未稳定转化为200张端到端收益，不继续重复筛选本轮候选。
+- Git同步：登录节点已尝试push，GitHub认证因失效的vscode-git套接字失败；文档提交本地保留，最终推送状态见交接。竞赛未提交，无新回执。
 
 ## 20261027-131100-gpu-sdpa
 
