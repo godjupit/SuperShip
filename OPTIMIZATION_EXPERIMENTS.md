@@ -2,19 +2,27 @@
 
 ## 20261028-185816-cpu-affinity
 
-- Owner Codex/root；status planned（文件阶段）；branch `exp/cpu-affinity-20261028`，worktree `/data/run01/sczf193/SuperShip-affinity-20261028`，base main `2a3206d`；父诊断20261028-183651-profile-supply，跟进cpu-supply的RGB未确认收益。GPU g0030/RTX4090、Slurm1353441固定8核，仅在cpu-supply诊断结束交接后启动。
+- Owner Codex/root；status completed（18:59–19:15）；branch `exp/cpu-affinity-20261028`，worktree `/data/run01/sczf193/SuperShip-affinity-20261028`，base main `2a3206d`；父诊断20261028-183651-profile-supply，跟进cpu-supply的RGB未确认收益。GPU g0030/RTX4090、Slurm1353441固定8核，仅在cpu-supply诊断结束交接后启动。
 - 新独立假设：同一8核内主线程/CUDA等待与解码/JSON线程迁移或争用导致慢轮。增加默认关闭CPU_AFFINITY=split/pin：保留主线程1核、JSON1核、解码6核；split允许6解码线程在6核内迁移，pin每线程固定一核。不增加资源，不改变输入/模型/精度/输出，不组合RGB或blocking新开关。
 - 先验证实际线程mask、无越过初始调度cpuset、GPU异步ring/reuse/尾批/graph，再baseline-start、split、pin、baseline-end各完整三轮及逐轮精度/byte检查。仅有希望的候选做独立16组AB/BA，预设至少13/16胜且同组中位改善，之后新完整三轮才可晋级/提交；不按单轮或插桩提速选版。
 - 所有原始产物output/20261028-185816-cpu-affinity/仅本机；配置沿用eightcore-thread6，reference门槛0.777042、validation/hidden=null，Accepted0.256022902秒保护。前两CPU单项失败保留，不将其开关默认带入本轮。Git同步认证已知失败，本地分支与历史保留。
+- 102项实际线程mask/分配边界/异步ring/尾批/CUDA Graph检查通过（21.98秒）；无资源越界，初始cpuset内保留主线程1核、解码6核、JSON1核。GPU进程查询仅本会话worker，无其他会话计算；开始12个完整参考worker筛查。
+- 初筛12轮全部完整200张/6102检测、reference AP50=0.7809、输出byte一致；起止基线中位0.274713040/0.257707816秒，split0.258639122、pin0.246115734。存在基线漂移，不能以起始10%差直接归因；选pin继续预登记16对独立AB/BA，13/16胜+同组中位改善后再新完整三轮。源码41e9fd2完整SHA见plan。
+- 独立16对全部完成：pin13/16胜，基线中位0.2682868105→0.2476920165秒，改善7.6764%，双侧符号检验p=0.02127075，达到预登记门槛，包含baseline0.679秒与candidate0.526/0.660秒等全部慢轮；进入新完整三轮及独立阶段复核。未先提交筛查单轮。
+- 新独立三轮0.259494733/0.619824306/0.691410301秒，中位0.619824306，全部精度/字节通过但速度回退，保留失败证据，暂不替换main默认。随后baseline/pin各三轮阶段诊断全部byte一致；baseline核心182.659/175.032/194.709ms，pin173.814/174.248/173.631ms。
+- 用户明确追加授权“有优秀成绩先提交”。选择本次初筛原始完整三轮0.246115734/0.245712179/0.259510564秒（非拼接单轮），三轮reference AP50=0.7809、200张/6102检测、尾批与线程mask检查通过，13/16独立对照成立。源码41e9fd21484d8b0b87258035262eb09a424d8e0b，完整配置pin/config.json。19:14:52 dry通过，19:15:08 Accepted0.246115734秒，timing parsed only；同一日志SHA256 9a3722f25f0be88e667efe84b44d0917a37dc3137703e0860cc611836068e686，账号ruc26**。
+- 最近被接受提交更新为0.246115734秒；本地稳定推荐仍eightcore-thread6，保守640保留，validation/hidden=null、官方隐藏集最优未知。回执[docs/receipts/20261028-185816-cpu-affinity.txt](docs/receipts/20261028-185816-cpu-affinity.txt)。本轮全部53个完整worker输出byte一致；102项检查通过。原始12筛查+32配对+3新三轮+6阶段诊断及所有慢轮在output/20261028-185816-cpu-affinity/，仅本机。复现驱动run.py/confirm.py/final-three.py/profile_affinity.py，须替换有效Slurm作业及唯一输出目录。用户分配保留。
 
 ## 20261028-184009-cpu-supply
 
-- Owner Codex/root；status running（18:43开始GPU检查与筛查）；branch `exp/cpu-supply-20261028`，worktree `/data/run01/sczf193/SuperShip-cpu-supply-20261028`，base main `c03c9bf`（完整SHA由Git和plan记录），父诊断20261028-183651-profile-supply；g0030/RTX4090、Slurm1353441、固定8核。必须等诊断全部结束再运行，无GPU并行计时。main仍为最快已验证版本，GitHub认证阻塞不改写历史。
+- Owner Codex/root；status completed（18:43–18:59 GPU运行）；branch `exp/cpu-supply-20261028`，worktree `/data/run01/sczf193/SuperShip-cpu-supply-20261028`，base main `c03c9bf`（完整SHA由Git和plan记录），父诊断20261028-183651-profile-supply；g0030/RTX4090、Slurm1353441、固定8核。必须等诊断全部结束再运行，无GPU并行计时。main仍为最快已验证版本，GitHub认证阻塞不改写历史。
 - 新单项A：OPENCV_RGB=1，直接按RGB解码+resize到锁页输入，去掉BGR转RGB与中间resize缓冲。OpenCV4.11原生支持RGB标志，与JPEG减采样位分别保留，禁止同时GPU_BGR；先检查不同图像格式/奇数尺寸/全部减采样与已有RGB像素完全一致。
 - 新单项B：BLOCKING_EVENTS=1，使H2D复用与D2H输出事件的CPU synchronize使用休眠等待；保留全部GPU依赖和输出完整性，避免默认忙等抢占CPU。与A独立。先GPU ring/reuse/tail/graph测试，再baseline-start、RGB、blocking、明确父组合RGB+blocking、baseline-end各完整三轮及逐轮精度/字节检查；基于诊断的CPU单项，不重复上轮SDPA/deploy组合。
 - 全配置沿用eightcore-thread6。若有收益候选，预登记独立16组AB/BA（合计至少13/16胜、同组中位改善）并新完整三轮后才晋级/提交；失败/无收益照实保留，不按微测或单轮晋级。原始产物output/20261028-184009-cpu-supply/，仅本机；reference门槛0.777042，validation/hidden未测，Accepted0.256022902秒受保护。
 - 源码初始ec089da，测试修正2860925（完整SHA见plan）。首次6失败/114通过均为原有路径对奇数PNG减采样向下取整与metadata向上取整的合同不匹配；失败发生在baseline而非新RGB路径，保留checks-odd-png-baseline-failed.log。PNG比较采用能被全部减采样整除的尺寸，奇数尺寸JPEG/灰度/CMYK均保留；不改生产尺寸合法性策略。随后120项检查全部通过（16.69秒），开始15完整worker筛查；全部阻塞事件/复用/尾批/CUDA Graph组合通过。
 - 15轮筛查全部完整200张/6102检测、reference AP50均0.7809、预测与原版本byte一致；起止基线中位0.261959731/0.269046773秒，RGB0.254450720、blocking0.261159286、RGB+blocking0.299882713。候选RGB独立16组AB/BA确认开始，沿用预登记13/16胜和同组中位收益门槛，全部轮次保留。
+- RGB16组独立确认：基线中位0.2572085385→0.255208453秒，改善0.7776%，10/16胜、p=0.454498；未达预登记13/16胜标准。不晋级、不挑新三轮、不竞赛提交，main及Accepted不变。额外原路径/RGB各3轮CPU诊断，loader累计CPU949/947/948→920/922/926ms，真实减少少量CPU工作但端到端核心仍有快慢波动。
+- 共53个完整200张/6102检测worker，reference AP50均0.7809，预测字节全等；validation/hidden=null。新开关只保留独立分支、默认关闭。18:59 GPU交给cpu-affinity，不结束用户分配。[完整结果与复现](docs/optimization-cpu-supply-20261028.md)。
 
 ## 20261028-183651-profile-supply
 
