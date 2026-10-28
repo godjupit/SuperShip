@@ -1,5 +1,12 @@
 # 优化版本索引
 
+## 20261028-184009-cpu-supply
+
+- Owner Codex/root；status planned（文件编辑中，不占GPU）；branch `exp/cpu-supply-20261028`，worktree `/data/run01/sczf193/SuperShip-cpu-supply-20261028`，base main `c03c9bf`（完整SHA由Git和plan记录），父诊断20261028-183651-profile-supply；g0030/RTX4090、Slurm1353441、固定8核。必须等诊断全部结束再运行，无GPU并行计时。main仍为最快已验证版本，GitHub认证阻塞不改写历史。
+- 新单项A：OPENCV_RGB=1，直接按RGB解码+resize到锁页输入，去掉BGR转RGB与中间resize缓冲。OpenCV4.11原生支持RGB标志，与JPEG减采样位分别保留，禁止同时GPU_BGR；先检查不同图像格式/奇数尺寸/全部减采样与已有RGB像素完全一致。
+- 新单项B：BLOCKING_EVENTS=1，使H2D复用与D2H输出事件的CPU synchronize使用休眠等待；保留全部GPU依赖和输出完整性，避免默认忙等抢占CPU。与A独立。先GPU ring/reuse/tail/graph测试，再baseline-start、RGB、blocking、明确父组合RGB+blocking、baseline-end各完整三轮及逐轮精度/字节检查；基于诊断的CPU单项，不重复上轮SDPA/deploy组合。
+- 全配置沿用eightcore-thread6。若有收益候选，预登记独立16组AB/BA（合计至少13/16胜、同组中位改善）并新完整三轮后才晋级/提交；失败/无收益照实保留，不按微测或单轮晋级。原始产物output/20261028-184009-cpu-supply/，仅本机；reference门槛0.777042，validation/hidden未测，Accepted0.256022902秒受保护。
+
 ## 20261028-183651-profile-supply
 
 - Owner Codex/root；status running；2026-10-28 18:36 CST；branch main，source `2174a95`（完整SHA在plan中）；GPU g0030/RTX4090，Slurm1353441，固定8核。18:36确认显存1MiB、利用率0、无计算进程；所有计算/测试/分析仅在该调度分配执行。当前main仍为最快已验证eightcore-thread6；用户要求瓶颈分析后按新思路优化。
