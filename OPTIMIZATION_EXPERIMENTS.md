@@ -2,16 +2,21 @@
 
 ## 20261028-184009-cpu-supply
 
-- Owner Codex/root；status planned（文件编辑中，不占GPU）；branch `exp/cpu-supply-20261028`，worktree `/data/run01/sczf193/SuperShip-cpu-supply-20261028`，base main `c03c9bf`（完整SHA由Git和plan记录），父诊断20261028-183651-profile-supply；g0030/RTX4090、Slurm1353441、固定8核。必须等诊断全部结束再运行，无GPU并行计时。main仍为最快已验证版本，GitHub认证阻塞不改写历史。
+- Owner Codex/root；status running（18:43开始GPU检查与筛查）；branch `exp/cpu-supply-20261028`，worktree `/data/run01/sczf193/SuperShip-cpu-supply-20261028`，base main `c03c9bf`（完整SHA由Git和plan记录），父诊断20261028-183651-profile-supply；g0030/RTX4090、Slurm1353441、固定8核。必须等诊断全部结束再运行，无GPU并行计时。main仍为最快已验证版本，GitHub认证阻塞不改写历史。
 - 新单项A：OPENCV_RGB=1，直接按RGB解码+resize到锁页输入，去掉BGR转RGB与中间resize缓冲。OpenCV4.11原生支持RGB标志，与JPEG减采样位分别保留，禁止同时GPU_BGR；先检查不同图像格式/奇数尺寸/全部减采样与已有RGB像素完全一致。
 - 新单项B：BLOCKING_EVENTS=1，使H2D复用与D2H输出事件的CPU synchronize使用休眠等待；保留全部GPU依赖和输出完整性，避免默认忙等抢占CPU。与A独立。先GPU ring/reuse/tail/graph测试，再baseline-start、RGB、blocking、明确父组合RGB+blocking、baseline-end各完整三轮及逐轮精度/字节检查；基于诊断的CPU单项，不重复上轮SDPA/deploy组合。
 - 全配置沿用eightcore-thread6。若有收益候选，预登记独立16组AB/BA（合计至少13/16胜、同组中位改善）并新完整三轮后才晋级/提交；失败/无收益照实保留，不按微测或单轮晋级。原始产物output/20261028-184009-cpu-supply/，仅本机；reference门槛0.777042，validation/hidden未测，Accepted0.256022902秒受保护。
+- 源码初始ec089da，测试修正2860925（完整SHA见plan）。首次6失败/114通过均为原有路径对奇数PNG减采样向下取整与metadata向上取整的合同不匹配；失败发生在baseline而非新RGB路径，保留checks-odd-png-baseline-failed.log。PNG比较采用能被全部减采样整除的尺寸，奇数尺寸JPEG/灰度/CMYK均保留；不改生产尺寸合法性策略。随后120项检查全部通过（16.69秒），开始15完整worker筛查；全部阻塞事件/复用/尾批/CUDA Graph组合通过。
+- 15轮筛查全部完整200张/6102检测、reference AP50均0.7809、预测与原版本byte一致；起止基线中位0.261959731/0.269046773秒，RGB0.254450720、blocking0.261159286、RGB+blocking0.299882713。候选RGB独立16组AB/BA确认开始，沿用预登记13/16胜和同组中位收益门槛，全部轮次保留。
 
 ## 20261028-183651-profile-supply
 
-- Owner Codex/root；status running；2026-10-28 18:36 CST；branch main，source `2174a95`（完整SHA在plan中）；GPU g0030/RTX4090，Slurm1353441，固定8核。18:36确认显存1MiB、利用率0、无计算进程；所有计算/测试/分析仅在该调度分配执行。当前main仍为最快已验证eightcore-thread6；用户要求瓶颈分析后按新思路优化。
+- Owner Codex/root；status completed；2026-10-28 18:36–18:41 CST；branch main，source `2174a95`（完整SHA在plan中）；GPU g0030/RTX4090，Slurm1353441，固定8核。18:36确认显存1MiB、利用率0、无计算进程；所有计算/测试/分析仅在该调度分配执行。当前main仍为最快已验证eightcore-thread6；用户要求瓶颈分析后按新思路优化。
 - 当前6线程配置与旧10线程诊断不同，建立新组：原始worker完整三轮；轻量CPU阶段三轮；低开销CUDA Event三轮；一次PyTorch CPU/CUDA trace；一次strace退出诊断（工具可用才执行）。所有真实输入访问在READY后，输入/预测/完整日志本地NVMe，全部输出核对格式/完整200张/精度及历史字节。插桩结果不作为成绩，不修改评分器、worker或默认配置。
 - 原始产物 `output/20261028-183651-profile-supply/`（仅本机），独占GPU18:36开始。基于诊断提出新单项假设、独立分支登记后再实验，不重复上一轮未确认的GPU组合。最近Accepted0.256022902秒保护，validation/hidden未测，官方隐藏集最优未知。Git推送已知认证失效，完成记录后仍从登录节点同步。
+- 11个完整200张worker全部6102检测、reference AP50=0.7809、预测byte一致。正式三轮0.260369892/0.325555410/0.265296650秒，中位0.265296650。CPU阶段：JPEG解码802–806ms累计线程CPU、resize116–118ms、主线程Future等待141–159ms；输出write/fsync/close约0.94–2.03ms。CPU累计不能与端到端或重叠GPU时间相加。
+- CUDA Event图/拷贝包络并集129–131ms、包络间空档21–31ms，核心后退出76–80ms。PyTorch trace19050kernels/13561个<5us、GPU活动并集130.128ms/跨度158.706ms；独立strace主进程exit_group→退出75.654ms，支持OS退出资源回收明显但未唯一定位NVIDIA函数。nsys/perf缺失。插桩非成绩。
+- [完整诊断与复现](docs/performance-g0030-20261028.md)。旧10线程大尺寸准备停顿未在当前6线程复现（约1.5–1.7ms），不再据旧数据归因。简单empty_cache/malloc_trim/device reset历史已否定，本轮未重复。18:41 GPU交给cpu-supply隔离实验；无竞赛提交，候选与Accepted不变。
 
 ## 20261028-175402-gpu-confirm
 
