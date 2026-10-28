@@ -1,5 +1,12 @@
 # 优化版本索引
 
+## 20261028-185816-cpu-affinity
+
+- Owner Codex/root；status planned（文件阶段）；branch `exp/cpu-affinity-20261028`，worktree `/data/run01/sczf193/SuperShip-affinity-20261028`，base main `2a3206d`；父诊断20261028-183651-profile-supply，跟进cpu-supply的RGB未确认收益。GPU g0030/RTX4090、Slurm1353441固定8核，仅在cpu-supply诊断结束交接后启动。
+- 新独立假设：同一8核内主线程/CUDA等待与解码/JSON线程迁移或争用导致慢轮。增加默认关闭CPU_AFFINITY=split/pin：保留主线程1核、JSON1核、解码6核；split允许6解码线程在6核内迁移，pin每线程固定一核。不增加资源，不改变输入/模型/精度/输出，不组合RGB或blocking新开关。
+- 先验证实际线程mask、无越过初始调度cpuset、GPU异步ring/reuse/尾批/graph，再baseline-start、split、pin、baseline-end各完整三轮及逐轮精度/byte检查。仅有希望的候选做独立16组AB/BA，预设至少13/16胜且同组中位改善，之后新完整三轮才可晋级/提交；不按单轮或插桩提速选版。
+- 所有原始产物output/20261028-185816-cpu-affinity/仅本机；配置沿用eightcore-thread6，reference门槛0.777042、validation/hidden=null，Accepted0.256022902秒保护。前两CPU单项失败保留，不将其开关默认带入本轮。Git同步认证已知失败，本地分支与历史保留。
+
 ## 20261028-184009-cpu-supply
 
 - Owner Codex/root；status running（18:43开始GPU检查与筛查）；branch `exp/cpu-supply-20261028`，worktree `/data/run01/sczf193/SuperShip-cpu-supply-20261028`，base main `c03c9bf`（完整SHA由Git和plan记录），父诊断20261028-183651-profile-supply；g0030/RTX4090、Slurm1353441、固定8核。必须等诊断全部结束再运行，无GPU并行计时。main仍为最快已验证版本，GitHub认证阻塞不改写历史。
