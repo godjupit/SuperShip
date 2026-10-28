@@ -1,5 +1,12 @@
 # 优化版本索引
 
+## 20261028-175402-gpu-confirm
+
+- Owner Codex/root；status running；2026-10-28 17:54 CST；branch `exp/gpu-confirm-20261028`，worktree `/tmp/SuperShip-opt-20261028`，base `712894c`，父实验 gpu-factorial 与 gpu-sdpa；原有未提交改动保留。当前 main 仍为最快完成独立确认的候选；推送尝试因 GitHub 认证失效失败，保留本地历史。
+- GPU g0030 / RTX4090，调度分配1353441，固定8核；17:53检查显存1MiB、利用率0、无计算进程，仅用户交互bash。所有项目计算/测试仅在该分配执行，正式计时独占GPU，数据/预测/完整日志位于节点唯一/tmp目录后同步output。
+- 新比较组（节点变化）：先完整三轮 baseline、deploy、deploy+SDPA decoder、deploy+SDPA all+MHA half、deploy batch16/workers8、baseline-end；所有配置基于eightcore-thread6。仅在完整参考AP50>=0.777042、格式/完整覆盖/尾批检查通过后，对最快候选与基线进行8组交替AB/BA确认，波动重叠则不晋级。SDPA实现来自4fa0cc2完整提交；部署/SDPA组合明确沿用父实验，不重复已否定512输入。
+- 用户授权经过验证的新优成绩直接提交；先核对官方榜单当前账号计时，使用同一份原始三轮日志先dry run再计分。最近历史Accepted0.256022902秒受保护，当前官方值待核对；validation/hidden未测，官方隐藏集最优未知。原始结果 `output/20261028-175402-gpu-confirm/`，仅本机可用。
+
 ## 20261027-131100-gpu-sdpa
 
 - Owner Codex/root；status planned（文件编辑阶段，不占GPU）；branch `exp/gpu-sdpa-20261027`，独立worktree `/data/run01/sczf193/SuperShip-sdpa-20261027`，基于当前main（推理实现与981d8dc相同，完整base由Git记录）。GPU仍由gpu-factorial实验独占，所有运行/测试必须等交接，不在登录节点执行。
