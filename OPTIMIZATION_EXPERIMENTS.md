@@ -1,5 +1,11 @@
 # 优化版本索引
 
+## 20261028-191716-affinity-exit
+
+- Owner Codex/root；status running；branch exp/affinity-exit-20261028，worktree沿用SuperShip-affinity-20261028，base 41e9fd21484d8b0b87258035262eb09a424d8e0b。父实验cpu-affinity；main稳定候选保持不变，Accepted0.246115734秒受保护。
+- 新单项假设：固定核仅用于推理供给，输出fsync完成后恢复原始分配cpuset，检查退出阶段波动；不扩大调度分配、不修改计时边界。新增默认关闭CPU_AFFINITY_RESTORE开关，先验证恢复mask和既有ring/尾批测试，再pin-start、pin-restore、pin-end各完整三轮与精度/byte检查，失败全部保留。不据单轮晋级或上传。
+- GPU g0030/RTX4090，Slurm1353441固定8核，前实验已结束；所有计算/测试只在GPU节点。结果output/20261028-191716-affinity-exit/；reference门槛0.777042，validation/hidden=null。正式独立对照确认前不改main。
+
 ## 20261028-185816-cpu-affinity
 
 - Owner Codex/root；status completed（18:59–19:15）；branch `exp/cpu-affinity-20261028`，worktree `/data/run01/sczf193/SuperShip-affinity-20261028`，base main `2a3206d`；父诊断20261028-183651-profile-supply，跟进cpu-supply的RGB未确认收益。GPU g0030/RTX4090、Slurm1353441固定8核，仅在cpu-supply诊断结束交接后启动。
@@ -52,9 +58,11 @@
 
 ## 20261027-131100-gpu-sdpa
 
-- Owner Codex/root；status planned（文件编辑阶段，不占GPU）；branch `exp/gpu-sdpa-20261027`，独立worktree `/data/run01/sczf193/SuperShip-sdpa-20261027`，基于当前main（推理实现与981d8dc相同，完整base由Git记录）。GPU仍由gpu-factorial实验独占，所有运行/测试必须等交接，不在登录节点执行。
+- Owner Codex/root；status running；branch `exp/gpu-sdpa-20261027`，独立worktree `/data/run01/sczf193/SuperShip-sdpa-20261027`，base `712894c`（推理实现与981d8dc相同，完整base由Git记录）。gpu-factorial的15组/45完整参考worker已结束后，GPU分配1351172/g0005交接给本实验做检查与35个合成GPU计时（32联合+3控制）；固定8核，所有运行/测试只在GPU计算节点执行。
 - 新单项假设：编码器/解码器MultiheadAttention默认need_weights=True，但调用者丢弃权重。新增默认关闭的SELF_ATTN_SDPA开关，仅在eval且禁用梯度时传need_weights=False，允许PyTorch选择SDPA，保留训练和梯度路径。与deformable cross-attention的Triton实现独立，不改权重/结构/输入，不从参考图像预计算任何内容。
 - 先验证训练/梯度guard、FP16/FP32数值、mask和CUDA Graph更新，再固定8核/原始参数测完整参考3轮、GPU时间线及精度；必要时与factorial已通过的GPU组合做明确父实验组合。只有完整合法性/精度及8组交替收益确认后晋级，失败保留，近期Accepted0.256022902秒受保护。
+- 补充独立因素登记：现有KERNEL_WEIGHT_HALF只遍历Conv/Linear，MultiheadAttention的原始in_proj参数仍是FP32，会在FP16 autocast中转换。新增默认关闭的KERNEL_MHA_HALF单项，将该模块参数在init阶段预转换；与SDPA四种范围0/encoder/decoder/1、部署0/1、batch8/16做联合合成筛查。先以原始cast路径为参照检查精确输出、参数状态及图更新，单项/组合均独立记录，不把其效果计入SDPA单项。
+- 58项组件/训练梯度保护/数值/mask/图更新检查通过，源码冻结为 `4fa0cc2e69fff25eb99e13eca5aa5354027fa8ea`。首轮合成驱动未将计时区间放入inference_mode，导致包含基线在内35项均在graph.replay报推理tensor写入保护错误；这是驱动问题，原始结果保留，不作为模型方案失败或性能证据。修正驱动上下文后按同一登记矩阵重测，结果另存gpu-results-v2.json，生产worker本来就在正确上下文内，未因驱动错误改生产实现。
 
 ## 20261027-125042-gpu-factorial
 
