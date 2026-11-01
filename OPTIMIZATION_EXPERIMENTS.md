@@ -1,5 +1,12 @@
 # 优化版本索引
 
+## 20261101-205941-ready-batch
+
+- Owner Codex/root；status planned；2026-11-01 21:02 CST；branch `exp/ready-batch-20261101`；base main `1fb6840c5050a2f5877b86fc0a8c7e96284c9ed0`。独立worktree位于 `output/20261101-205941-ready-batch/worktree`。当前main为稳定eightcore-thread6；pin独立复测回退，不以Accepted单次日志替换稳定实现。登录节点已确认main推送成功。
+- 单项假设：固定批次等待慢图导致队头阻塞；有界样本缓冲池按完成顺序组batch8，保持OpenCV半尺寸解码/544/FP16/6线程及模型不变，默认关闭。对照同缓冲池按原顺序组批，以分离额外拷贝与乱序收益。参考MinatoLoader https://arxiv.org/abs/2509.10712 、tf.data https://www.vldb.org/pvldb/vol14/p2945-klimovic.pdf 、Smol https://arxiv.org/abs/2007.13005 。历史nvJPEG/静态排序/latewait不重复。
+- 先检查READY边界、恰好一次覆盖、像素、异常、空输入、尾批、环形缓冲复用、不同尺寸及CUDA Graph；再baseline-start、ordered-pool、ready-pool、baseline-end各完整三轮，逐轮reference AP50/完整性检查。仅有希望候选做16组独立交替AB/BA，至少13/16胜且同组中位改善，再新完整三轮才考虑晋级；不选单轮、不修改计时器。
+- 新比较组须重新测基线，reference门槛暂按0.98×0.7929=0.777042核对；validation/hidden未测。全部运行/测试只在GPU计算节点，固定8核、32GiB预算、节点NVMe输入/预测/日志，原始产物本机 `output/20261101-205941-ready-batch/`。现无运行分配，用户作业1362358排队保留；准备短时GPU测试作业争取回填，不取消用户allocation。最近Accepted0.246115734秒及官方隐藏集最优未知保持不变。
+
 ## 20261028-191716-affinity-exit
 
 - Owner Codex/root；status running；branch exp/affinity-exit-20261028，worktree沿用SuperShip-affinity-20261028，base 41e9fd21484d8b0b87258035262eb09a424d8e0b。父实验cpu-affinity；main稳定候选保持不变，Accepted0.246115734秒受保护。
